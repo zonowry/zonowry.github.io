@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>浅谈三种主流前端框架的数据追踪渲染 | Kasyoumi的博客</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
+<script defer src="/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Noto&#43;Serif&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.a975d08212c5439f29e6074e7ad58e159ae1ef5efb6a31962fa3b6885557e794dd9315f4a8a16d705066d023f4eaaf07.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="本文主要分析vue、react、angular之间一些本质上的不同之处，更好地理解和学习前端框架。以及从框架中学习一些优良设计。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"浅谈三种主流前端框架的数据追踪渲染",
+      "item":"/posts/data-tracker-and-render-of-webfront/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/data-tracker-and-render-of-webfront/"
+    },
+    "headline": "浅谈三种主流前端框架的数据追踪渲染 | Kasyoumi的博客","datePublished": "2022-12-23T00:00:00+00:00",
+    "dateModified": "2022-12-23T00:00:00+00:00",
+    "wordCount":  70 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "WANG Chucheng",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "本文主要分析vue、react、angular之间一些本质上的不同之处，更好地理解和学习前端框架。以及从框架中学习一些优良设计。"
+}
+</script><meta property="og:title" content="浅谈三种主流前端框架的数据追踪渲染 | Kasyoumi的博客" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/data-tracker-and-render-of-webfront/" />
+
+
+
+<meta property="og:description" content="本文主要分析vue、react、angular之间一些本质上的不同之处，更好地理解和学习前端框架。以及从框架中学习一些优良设计。" />
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="Kasyoumi的博客" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2022-12-23T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2022-12-23T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="前端" />
+
+<meta property="article:tag" content="Angular" />
+
+<meta property="article:tag" content="React" />
+
+<meta property="article:tag" content="Vue" />
+
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">Kasyoumi的博客</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#home" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">首页</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文章</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">浅谈三种主流前端框架的数据追踪渲染</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2022-12-23</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>1 min read</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/%E6%96%87%E7%AB%A0/" class="hover:text-eureka"
+          >文章</a
+        >
+      
+    </div>
+  
+
+  
+</div>
+
+
+  
+  
+
+  <p>本文主要分析vue、react、angular之间一些本质上的不同之处，更好地理解和学习前端框架。以及从框架中学习一些优良设计。</p>
+<!-- more -->
+<hr>
+<h2 id="数据绑定与渲染">数据绑定与渲染</h2>
+<p>前端框架带来的第一个特点就是数据绑定，即页面上的操作会影响数据，数据的变动也会影响并更新页面。例如用户操作输入框让 <code>count</code> 变量改变。或者代码写一个定时器，定时累加 count ，页面实时刷新。在三种前端框架里都能很容易的实现。</p>
+<blockquote>
+<p>注：react 是基于状态的，每次都是全新的数据，也就没有数据绑定类似的概念了，稍后讲。</p>
+</blockquote>
+<p>有了数据绑定就牵扯页面怎么渲染数据了。那么我们就来思考三种前端框架通过数据渲染界面，采用的方式有什么不同。</p>
+<h2 id="vue">Vue</h2>
+<p>首先是 vue ，vue 支持 <code>v-model</code> 指令来实现双向绑定。用户在界面做的操作会直接影响model的值。</p>
+<pre><code class="language-html">&lt;input v-model=&quot;text&quot; /&gt;
+</code></pre>
+<p>本质上就是页面自动处理注册了 <code>onChange</code> 事件，事件触发就会更改 count 的值。</p>
+<p>那么界面是什么时候渲染的呢，<code>vue</code> 通过 es5 的提供的 <code>Object.defineProperty()</code> 方法。hook了每个对象 <code>get</code> 与 <code>set</code> 方法。从而监控对数据的操作。例如每当count被赋值，就可以执行类似 rerender 的方法，来重新渲染界面。这就是 vue 说自己是反应式的原因之一吧。</p>
+<h2 id="angular">Angular</h2>
+<p>angular 则是通过变更检测，也称为脏检测的机制，实现数据渲染到界面。双向绑定语法上angular与vue类似。都是一条model指令。</p>
+<pre><code class="language-html">&lt;input [(ngModel)]=&quot;text&quot; /&gt;
+</code></pre>
+<p>在angular中，变更检测执行也很简单。就是<strong>从上至下</strong>的比较对象值或引用地址是否发生了变化。如果变化了，那就更新视图界面。什么时候触发变更检测就是angular的vue不同的地方。vue是通过getter，setter。angular则是通过patch了很多方法，例如按钮等控件元素的各种鼠标事件，以及一些公有方法，例如settimeout等等。当然也可以在变更model值后，手动调用脏值检测，markAsDirty。手动触发变更检测。</p>
+<h2 id="react">React</h2>
+<p>react则没有数据双向绑定这个概念了，组件内部通过 <code>setState()</code> 更新状态（数据）。我们也一般通过类似以下方式实现“双向绑定”类似的效果。</p>
+<pre><code class="language-jsx">render() {
+	return &lt;input value={this.text} onChange={(event) =&gt; {
+		this.setState({text: event.target.value})
+	}) /&gt;
+}
+</code></pre>
+<p>为了性能考虑，这种方式不利于局部更新。所以 react 利用了虚拟DOM树，通过diff算法比较新状态与旧状态。最终打补丁的方式更新真实dom树（界面）。</p>
+<h2 id="结尾">结尾</h2>
+<p>简单了解了下三种主流前端框架核心功能区别。它们分别是如何追踪变化、渲染数据的。从这上面出发可以帮助我们更好地学习，理解三种框架的不同之处。</p>
+<p>然后vue和react是怎么利用虚拟dom树，进行diff算法的。不过这超出本文的范畴，就不再赘述了，网上有很多讲的很好的文章，例如：<a href="https://juejin.cn/post/7028107265341128740">react和vue 虚拟dom的区别</a></p>
+
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="/tags/%E5%89%8D%E7%AB%AF/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#前端</a>
+    
+    <a href="/tags/angular/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Angular</a>
+    
+    <a href="/tags/react/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#React</a>
+    
+    <a href="/tags/vue/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#Vue</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >Previous</span
+        >
+        <a href="/posts/gc-note/" class="block">垃圾回收知识梳理</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">Next</span>
+        <a href="/posts/project-thinking/" class="block">关于代码结构设计的一些思考</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>On This Page</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数据绑定与渲染">数据绑定与渲染</a></li>
+    <li><a href="#vue">Vue</a></li>
+    <li><a href="#angular">Angular</a></li>
+    <li><a href="#react">React</a></li>
+    <li><a href="#结尾">结尾</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text"> Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>
