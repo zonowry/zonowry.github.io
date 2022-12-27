@@ -1,6 +1,6 @@
 main:
   - name: 首页
-    url: '#home'
+    url: "/"
     weight: 1
   - name: 文章
     url: /posts/

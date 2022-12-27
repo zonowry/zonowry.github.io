@@ -1,8 +1,8 @@
 ---
-title: Kasyoumi的博客
+title: Zonowry 的博客
 draft: false
 avatar: images/avatar.png
-bio: 不狂妄自大，不妄自菲薄
+bio: 不骄傲自大，不妄自菲薄
 social:
   - icon: envelope
     iconPack: fas
@@ -12,7 +12,7 @@ social:
   #   url: https://bilibili.com/kasyoumi
   - icon: github
     iconPack: fab
-    url: https://github.com/kasyoumi
+    url: https://github.com/zonowry
 
 weight: 1
 widget:
@@ -26,7 +26,7 @@ widget:
     position:
     # Options: sm, md, lg and xl. Default is md.
     scale:
-  
+
   background:
     # Options: primary, secondary, tertiary or any valid color value. Default is primary.
     color: secondary
@@ -36,5 +36,5 @@ widget:
     # Options: center, top, right, bottom, left.
     position:
     # Options: fixed, local, scroll.
-    attachment: 
+    attachment:
 ---

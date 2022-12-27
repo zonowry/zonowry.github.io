@@ -1,5 +1,6 @@
 baseURL: /
-title: "Kasyoumi的博客"
+title: "Zonowry 的博客"
+paginate: 10
 
 # Uncomment when not installing with Hugo Modules
 # theme: eureka
@@ -7,14 +8,13 @@ title: "Kasyoumi的博客"
 theme: eureka
 # If you cannot access the Github mirror, you can also use the Gitee mirror: gitee.com/wangchucheng/hugo-eureka
 
-paginate: 3
 copyright:
 enableEmoji: true
 enableGitInfo: false
 summaryLength: 75
 
-defaultContentLanguage: en
-hasCJKLanguage: false # Set `true` for Chinese/Japanese/Korean.
+defaultContentLanguage: zh
+hasCJKLanguage: true # Set `true` for Chinese/Japanese/Korean.
 defaultContentLanguageInSubdir: false
 
 # Uncomment for google analytics
