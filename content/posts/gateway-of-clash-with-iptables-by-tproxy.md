@@ -1,6 +1,6 @@
 ---
 title: 透明网关之重生之我是 iptables 大师
-date: 2023-1-2
+date: 2023-01-02
 tags: [linux,网络,iptables,clash]
 categories: 知识
 toc: true
