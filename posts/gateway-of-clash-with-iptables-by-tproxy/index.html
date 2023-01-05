@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>透明网关之重生之我是 iptables 大师 | Zonowry 的博客</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
+<script defer src="/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Noto&#43;Serif&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.a975d08212c5439f29e6074e7ad58e159ae1ef5efb6a31962fa3b6885557e794dd9315f4a8a16d705066d023f4eaaf07.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="尝试用 clash tun 模式来实现网关，虽然过程很流畅也比较“新潮“，但对于我来说有点魔法了，因为比较难搞清楚 clash 帮我们做了哪些工作，出现问题不好找原因。也可能是我比较“洁癖” ，所以我采用了 `iptables &#43; tproxy` 这种更加“简单“的方式，clash 只作为流量中继，流量的路由都依靠 l`inux 内核` 的 `netfilter` 功能实现，这样搭建的网关会更加“可控”一点。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文章列表",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"透明网关之重生之我是 iptables 大师",
+      "item":"/posts/gateway-of-clash-with-iptables-by-tproxy/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/gateway-of-clash-with-iptables-by-tproxy/"
+    },
+    "headline": "透明网关之重生之我是 iptables 大师 | Zonowry 的博客","datePublished": "2023-01-02T00:00:00+00:00",
+    "dateModified": "2023-01-02T00:00:00+00:00",
+    "wordCount":  2384 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "WANG Chucheng",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "尝试用 clash tun 模式来实现网关，虽然过程很流畅也比较“新潮“，但对于我来说有点魔法了，因为比较难搞清楚 clash 帮我们做了哪些工作，出现问题不好找原因。也可能是我比较“洁癖” ，所以我采用了 `iptables \u002b tproxy` 这种更加“简单“的方式，clash 只作为流量中继，流量的路由都依靠 l`inux 内核` 的 `netfilter` 功能实现，这样搭建的网关会更加“可控”一点。"
+}
+</script><meta property="og:title" content="透明网关之重生之我是 iptables 大师 | Zonowry 的博客" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/gateway-of-clash-with-iptables-by-tproxy/" />
+
+
+
+<meta property="og:description" content="尝试用 clash tun 模式来实现网关，虽然过程很流畅也比较“新潮“，但对于我来说有点魔法了，因为比较难搞清楚 clash 帮我们做了哪些工作，出现问题不好找原因。也可能是我比较“洁癖” ，所以我采用了 `iptables &#43; tproxy` 这种更加“简单“的方式，clash 只作为流量中继，流量的路由都依靠 l`inux 内核` 的 `netfilter` 功能实现，这样搭建的网关会更加“可控”一点。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="Zonowry 的博客" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-01-02T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-01-02T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="linux" />
+
+<meta property="article:tag" content="网络" />
+
+<meta property="article:tag" content="iptables" />
+
+<meta property="article:tag" content="clash" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/arch-step/" />
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">Zonowry 的博客</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">首页</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文章</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">透明网关之重生之我是 iptables 大师</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-01-02</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>5分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/%E7%9F%A5%E8%AF%86/" class="hover:text-eureka"
+          >知识</a
+        >
+      
+    </div>
+  
+
+  
+</div>
+
+
+  
+  
+
+  <blockquote>
+<p><strong>本文尚处于填坑中</strong></p>
+<p>本文非 clash 网关搭建教程，而是借<em>富强</em> 网关的例子来学习了解 linux 网络的一些知识。不过也许能给正在搭建透明网关的你一些启发。</p>
+<p>本文提到的旁路由、网关，若无特别说明指代的是同一台机器。</p>
+</blockquote>
+<h2 id="前言">前言</h2>
+<p>尝试用 <code>clash tun</code> 模式来实现过网关，虽然过程很流畅也比较“新潮“，但对于我来说有点魔法了，因为比较难搞清楚 <code>clash</code> 帮我们做了哪些工作，出现问题不好找原因。也可能是我比较“洁癖” ，所以我采用了 <code>iptables + tproxy</code> 这种更加“简单“的方式，<code>clash</code> 只作为流量中继，流量包的路由都依靠 linux 内核的 <code>netfilter</code> 模块实现，这样搭建的网关会更加“可控”一点。</p>
+<p>然后我看了不少 <code>clash + linux netfilter(iptables/nftables) 搭建“富强”网关</code> 的教程文章。步骤都是很简单的，照着做就能实现。但每个人总会有点特殊需求，不去理解这些步骤的奥秘，很难解决一些特殊问题。</p>
+<p>我就是遇到了公网上无法访问我网关上的 <code>docker</code> 服务，debug 排查了好久，虽然最后凭感觉解决了。但一直没有理顺流量是怎么路由的，只是稍有眉目、模棱两可。所以我去尝试理解了过程中每个操作（命令）的底层逻辑，现在写篇文章梳理一下这些知识。</p>
+<hr>
+<h2 id="linux-网络之-netfilter">linux 网络之 netfilter</h2>
+<p>首先说说这一切的基石：linux 的 <code>netfilter</code> 模块及延伸工具 <code>iptables</code>。</p>
+<p>iptables 只是个命令行工具，依赖 netfilter 内核模块，也即真正实现防火墙功能的是 linux 内核的 netfilter 模块。不仅 iptables 的命令宛若天书，netfilter 的链路也错综复杂，很难去使用。想要理解使用这些工具或命令，必须得先了解一些 <code>netfilter</code> 与 <code>iptables</code> 的基础知识。</p>
+<h3 id="iptables-的链">iptables 的链</h3>
+<p><code>netfilter</code> 提供了 <strong>5 个 hook</strong> 点，<code>iptables</code> 根据这些 <strong>hook</strong> 点，搞出了 <code>链 (chain)</code> 的概念，也就<strong>内置</strong>了 <strong>5 个默认链</strong>。可以看出 5 个 <code>iptables chian</code> 和 5 个 <code>netfilter hook</code> 一一对应。当然，我们可以添加自定义链，不过想要某个自定义链生效，需要追加一条从<strong>内置链</strong>跳转到这个自定义链的规则。因为内核的 5 个 hook 点只会触发这 5 个内置链。</p>
+<table>
+<thead>
+<tr>
+<th>netfilter hook</th>
+<th>iptables chain</th>
+<th>netfilter hook 解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NF_IP_PRE_ROUTING</td>
+<td>PREROUTING</td>
+<td>接收到的包进入协议栈后立即触发此 hook，在进行任何路由判断 （将包发往哪里）之前</td>
+</tr>
+<tr>
+<td>NF_IP_LOCAL_IN</td>
+<td>INPUT</td>
+<td>接收到的包经过路由判断，如果目的是本机，将触发此 hook</td>
+</tr>
+<tr>
+<td>NF_IP_FORWARD</td>
+<td>FORWARD</td>
+<td>接收到的包经过路由判断，如果目的是其他机器，将触发此 hook</td>
+</tr>
+<tr>
+<td>NF_IP_LOCAL_OUT</td>
+<td>OUTPUT</td>
+<td> 本机产生的准备发送的包，在进入协议栈后立即触发此 hook</td>
+</tr>
+<tr>
+<td>NF_IP_POST_ROUTING</td>
+<td>POSTROUTING</td>
+<td>本机产生的准备发送的包或者转发的包，在经过路由判断之后， 将触发此 hook</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iptables-的表与动作">iptables 的表与动作</h3>
+<p><code>iptables</code> 为了更颗粒度的管理流量，又设计出 <code>table</code> 的概念。用 <code>table</code> 来组织这些链，可以理解为每个 <code>table</code> 根据其用处包含了不同的链。每个 <code>table</code> 都支持一些“<strong>动作</strong>“。例如 <code>nat</code> 表的 <code>DNAT</code> 动作支持重写目标地址。不过有些动作只在特定的 <code>chain</code>（或者说 <code>hook</code>）上才有意义。例如向 <code>INPUT</code> 链添加 <code>DNAT</code> 动作时，内核会抛出这个错误：<code>ip_tables: DNAT target: used from hooks INPUT, but only usable from PREROUTING/OUTPUT</code>。另一个例子是 <code>mangle</code> 表不允许添加 <code>SNAT</code> 等动作，所以一个<strong>动作</strong>需要 <code>table</code> + <code>chain</code> 都允许才能被添加。</p>
+<table>
+<thead>
+<tr>
+<th>表</th>
+<th>支持的内置链</th>
+<th>支持的动作（本人知道（用过）的，仅供参考）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mangle</td>
+<td>支持全部 5 个内置链</td>
+<td><code>RETURN</code> <code>TPROXY</code></td>
+</tr>
+<tr>
+<td>raw</td>
+<td><code>PREROUTING</code>  <code>OUTPUT</code></td>
+<td><code>TRACE</code></td>
+</tr>
+<tr>
+<td>nat</td>
+<td><code>PREROUTING</code> <code>INPUT</code> <code>OUTPUT</code> <code>POSTROUTING</code></td>
+<td><code>SNAT</code> <code>DNAT</code> <code>REDIRECT</code> <code>MASQURADE</code></td>
+</tr>
+<tr>
+<td>filter</td>
+<td><code>INPUT</code> <code>FORWARD</code>  <code>OUTPUT</code></td>
+<td>略</td>
+</tr>
+<tr>
+<td>security</td>
+<td>略</td>
+<td>略</td>
+</tr>
+</tbody>
+</table>
+<p>每个 <code>table</code> 的 <code>chain</code> 当然也是有触发顺序的，具体顺序可以参考那张著名的 <code>netfilter 流程图</code> ，或<a href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/">这篇文章</a>的介绍 。</p>
+<div style="background: #fff">
+<img src="https://arthurchiao.art/assets/img/deep-dive-into-iptables-netfilter/Netfilter-packet-flow.svg" title="netfilter 流程图"/>
+</div>
+*** 
+<h2 id="流量方向-与-iptables-规则">流量方向 与 iptables 规则</h2>
+<h3 id="开启内核转发功能">开启内核转发功能</h3>
+<p>要想把一台 linux 机器配置成有路由转发功能的机器，第一步需要用以下命令开启内核转发功能。</p>
+<pre><code class="language-bash">sysctl -w net.ipv4.ip_forward=1
+</code></pre>
+<p>单单这条命令只是将 linux 机器做成中继路由，一般情况下没太大意义。我们还需要处理途径机器的流量。即设定规则将途径流量“路由（转发）”到本机某些程序上（常用如 <code>clash</code> 或者 <code>v2ray</code> ），经代理中转后再原路返回。达成“加速网络”的目的。 <code>iptables</code> 等相关工具就登场了。</p>
+<h3 id="局域网流量跳过处理直连主路由">局域网流量跳过处理，直连主路由</h3>
+<p>linux 系统是可以作为<strong>主路由</strong>的，但一般的机器没有多个网口，所以都是作为<strong>旁路由</strong>来辅助主路由。既然作为旁路由来使用，我们只想代理加速公网流量，局域网内机器的流量肯定还是希望通过<strong>主路由</strong>来直连，没必要再来来回回途径一次旁路由了。所以我们就会添加以下规则，让旁路由跳过局域网内流量，原封不动转出去，让主路由继续去路由。</p>
+<pre><code class="language-bash"># clash 链负责处理转发流量
+iptables -t mangle -N clash
+
+# 目标地址为局域网或保留地址的流量跳过处理
+iptables -t mangle -A clash -d 0.0.0.0/8 -j RETURN
+iptables -t mangle -A clash -d 127.0.0.0/8 -j RETURN
+iptables -t mangle -A clash -d 10.0.0.0/8 -j RETURN
+iptables -t mangle -A clash -d 172.16.0.0/12 -j RETURN
+iptables -t mangle -A clash -d 192.168.0.0/16 -j RETURN
+iptables -t mangle -A clash -d 169.254.0.0/16 -j RETURN
+iptables -t mangle -A clash -d 224.0.0.0/4 -j RETURN
+iptables -t mangle -A clash -d 240.0.0.0/4 -j RETURN
+  
+
+# 最后让所有流量通过 clash 链进行处理
+iptables -t mangle -A PREROUTING -j clash
+</code></pre>
+<p>可以结合 [linux 网络之 netfilter](#linux\ 网络之\ netfilter) 段落内容理解这些命令。我们先逆向思维来推导一下：“<em>我们要添加一些<strong>路由规则</strong>，这些规则最终肯定是注入到 <strong>netfilter hook</strong> 里的。我们使用 <strong>iptables chain</strong> 来注入，所以规则要添加到一个<strong>合适</strong>的 <strong>chain</strong> 里，<strong>iptables</strong> 是通过 <strong>table</strong> 来组织管理 <strong>chain</strong> 的。我们还需要找一个<strong>合适</strong>的 <strong>table</strong> 来添加 <strong>chain</strong>（或者说规则）</em>”。思考了这些后，我们再回头看命令。</p>
+<p>首先 <code>iptables -t mangle -N clash</code>、<code>iptables -t mangle -A PREROUTING -j clash</code> 这两行是因为不推荐直接向内置链（这里是 <code>PREROUTING</code> ）添加规则，所以我们新建一个自定义链管理规则，然后从内置链 <code>PREROUTING</code> 跳转而来，这样更加规范一点。直译就是创建一个名为 <code>clash</code> 的链，选的表是 <code>mangle</code> 表，追加到内置链 <code>PREROUTING</code> 中。</p>
+<blockquote>
+<p>为什么是 <strong>mangle</strong> 表？</p>
+<p>仅目前这些规则来看，放到 <strong>nat</strong> 表似乎更合适。考虑到下一节我们要介绍 <strong>TPROXY</strong> 动作，放到一个链里看起来会更直观一点。</p>
+</blockquote>
+<p>总而言之，最终实现了局域网机器流量发到<strong>旁路由</strong>时，旁路由发现目标地址是局域网内ip，跳过处理，转发出去给到主路由，之后就是主路由和源主机通信了。</p>
+<h3 id="中转外网流量clash-透明代理">中转外网流量，clash 透明代理</h3>
+<p>搞定了内部（局域网内）流量，接下来处理<strong>外部</strong>（互联网）流量。这些“外部流量”应该要转发到 <code>clash</code> 中进行透明代理。</p>
+<blockquote>
+<p>如下所示，记得在 <code>clash</code> 配置中开启 <code>tproxy</code> 功能</p>
+<pre><code class="language-yaml">tproxy-port: 7893
+</code></pre>
+</blockquote>
+<p>上一步我们跳过了（局域网内）流量，其余的流量<strong>一般、基本</strong>就是外部（互联网）流量了。通过以下命令，我们指定 <code>tcp</code> ，<code>udp</code> 类型的流量转到 <code>tproxy</code> 。</p>
+<pre><code class="language-bash"># 其他所有流量转向到 7893 端口，并打上 mark
+iptables -t mangle -A clash -p tcp -j TPROXY --on-port 7893 --tproxy-mark 666
+iptables -t mangle -A clash -p udp -j TPROXY --on-port 7893 --tproxy-mark 666
+</code></pre>
+<hr>
+<h2 id="引用">引用</h2>
+<p>赞美开放的互联网，感谢大佬们。</p>
+<ul>
+<li><a href="https://moecm.com/something-about-v2ray-with-tproxy/">第一篇万字长文：围绕透明代理的又一次探究</a></li>
+<li><a href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/">「译」深入理解 iptables 和 netfilter 架构</a></li>
+<li><a href="https://mritd.com/2022/02/06/clash-tproxy/">树莓派 Clash 透明代理(TProxy)_</a></li>
+<li><a href="https://github.com/mritd/tpclash/wiki/2%E3%80%81%E8%BF%9B%E9%98%B6%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6">tpclash wiki - 2、进阶流量控制</a> 。</li>
+<li><a href="https://tinychen.com/20200414-iptables-principle-introduction/">iptables的四表五链与NAT工作原理 _</a></li>
+</ul>
+
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="/tags/linux/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#linux</a>
+    
+    <a href="/tags/%E7%BD%91%E7%BB%9C/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#网络</a>
+    
+    <a href="/tags/iptables/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#iptables</a>
+    
+    <a href="/tags/clash/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#clash</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/arch-step/" class="block">Arch &#43; Wayland 安装手册</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#linux-网络之-netfilter">linux 网络之 netfilter</a>
+      <ul>
+        <li><a href="#iptables-的链">iptables 的链</a></li>
+        <li><a href="#iptables-的表与动作">iptables 的表与动作</a></li>
+      </ul>
+    </li>
+    <li><a href="#流量方向-与-iptables-规则">流量方向 与 iptables 规则</a>
+      <ul>
+        <li><a href="#开启内核转发功能">开启内核转发功能</a></li>
+        <li><a href="#局域网流量跳过处理直连主路由">局域网流量跳过处理，直连主路由</a></li>
+        <li><a href="#中转外网流量clash-透明代理">中转外网流量，clash 透明代理</a></li>
+      </ul>
+    </li>
+    <li><a href="#引用">引用</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/arch-step/" class="no-underline">Arch &#43; Wayland 安装手册</a>
+          <br />
+        
+      </div>
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text"> Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

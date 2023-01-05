@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>教程 on Zonowry 的博客</title>
+    <link>/categories/%E6%95%99%E7%A8%8B/</link>
+    <description>Recent content in 教程 on Zonowry 的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 24 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arch &#43; Wayland 安装手册</title>
+      <link>/posts/arch-step/</link>
+      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/arch-step/</guid>
+      <description>本文填坑中... * wayland 桌面环境内容待补充中 live 内步骤 硬盘分区、格式化、挂载 先分区，需要创建一个 fat 格式分区，存放 efi 引导文件。和 ext4 主分区，存放系统文件。以及一</description>
+    </item>
+    
+  </channel>
+</rss>

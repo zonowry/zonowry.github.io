@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zonowry 的博客</title>
+    <link>/</link>
+    <description>Recent content on Zonowry 的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>透明网关之重生之我是 iptables 大师</title>
+      <link>/posts/gateway-of-clash-with-iptables-by-tproxy/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/gateway-of-clash-with-iptables-by-tproxy/</guid>
+      <description>本文尚处于填坑中 本文非 clash 网关搭建教程，而是借富强 网关的例子来学习了解 linux 网络的一些知识。不过也许能给正在搭建透明网关的你一些启发。 本文提到的旁路由、网关</description>
+    </item>
+    
+    <item>
+      <title>Arch &#43; Wayland 安装手册</title>
+      <link>/posts/arch-step/</link>
+      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/arch-step/</guid>
+      <description>本文填坑中... * wayland 桌面环境内容待补充中 live 内步骤 硬盘分区、格式化、挂载 先分区，需要创建一个 fat 格式分区，存放 efi 引导文件。和 ext4 主分区，存放系统文件。以及一</description>
+    </item>
+    
+    <item>
+      <title>垃圾回收知识梳理</title>
+      <link>/posts/gc-note/</link>
+      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/gc-note/</guid>
+      <description>堆内存与栈内存 垃圾一般就是指没用了的对象。对象的值一般存储在堆空间中。而基础类型、对象的引用以及大小确定的一些结构类型存储在栈空间中，函数执行就是靠不</description>
+    </item>
+    
+    <item>
+      <title>浅谈三种主流前端框架的数据追踪渲染</title>
+      <link>/posts/data-tracker-and-render-of-webfront/</link>
+      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/data-tracker-and-render-of-webfront/</guid>
+      <description>本文主要分析 vue、react、angular 之间一些本质上的不同之处，更好地理解和学习前端框架。以及从框架中学习一些优良设计。 数据绑定与渲染 前端框架</description>
+    </item>
+    
+    <item>
+      <title>关于代码结构设计的一些思考</title>
+      <link>/posts/project-thinking/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/project-thinking/</guid>
+      <description>其实本文标题我想命名为《通过思考一些低端代码结构设计来领略高大上技术知识这件事》来着 生疏而难理解的工程 网上冲浪时经常能看到微服务、分布式等技术分享。但</description>
+    </item>
+    
+  </channel>
+</rss>

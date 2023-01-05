@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计模式 on Zonowry 的博客</title>
+    <link>/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 设计模式 on Zonowry 的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于代码结构设计的一些思考</title>
+      <link>/posts/project-thinking/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/project-thinking/</guid>
+      <description>其实本文标题我想命名为《通过思考一些低端代码结构设计来领略高大上技术知识这件事》来着 生疏而难理解的工程 网上冲浪时经常能看到微服务、分布式等技术分享。但</description>
+    </item>
+    
+  </channel>
+</rss>
