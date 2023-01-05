@@ -2,11 +2,8 @@ name: deploy
 
 on:
   push:
-  workflow_dispatch:
-  schedule:
-    # Runs everyday at 8:00 AM
-    - cron: "0 0 * * *"
-
+    branches:
+      - main # Set a branch name to trigger deployment
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,6 +26,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-          EXTERNAL_REPOSITORY: zonowry/zonowry.github.io
           publish_dir: ./public
-          PUBLISH_BRANCH: main
+          publish_branch: gh-pages
