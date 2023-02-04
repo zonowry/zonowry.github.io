@@ -13,7 +13,7 @@
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>/posts/gateway-of-clash-with-iptables-by-tproxy/</guid>
-      <description>本文尚处于填坑中 本文非 clash 网关搭建教程，而是借富强 网关的例子来学习了解 linux 网络的一些知识。不过也许能给正在搭建透明网关的你一些启发。 本文提到的旁路由、网关</description>
+      <description>[!TIP] 本文非 clash 网关搭建教程，而是借代理网关的例子来学习了解 linux 网络的一些知识。不过也许能给正在搭建透明网关的你一些启发。 本文提到的旁路由、网关，若无特别说明</description>
     </item>
     
   </channel>
