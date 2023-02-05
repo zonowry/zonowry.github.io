@@ -74,7 +74,9 @@ sysctl -w net.ipv4.ip_forward=1
 
 ### 局域网流量跳过处理，直连主路由
 
-linux 系统是可以作为**主路由**的，但一般的机器没有多个网口，所以都是作为**旁路由**来辅助主路由。既然作为旁路由来使用，我们只想代理加速公网流量，局域网内机器的流量肯定还是希望通过**主路由**来直连，没必要再来来回回途径一次旁路由了。所以我们就会添加以下规则，让旁路由跳过局域网内流量，原封不动转出去，让主路由继续去路由。
+linux 系统是可以作为**主路由**的，但一般的机器没有多个网口，所以都是作为**旁路由**来辅助主路由。既然作为旁路由来使用，我们只想代理加速公网流量，局域网内机器的流量肯定还是希望通过**主路由**来直连，没必要再来来回回途径一次旁路由了。所以需要添加一些**转发规则**，让旁路由跳过局域网内流量，原封不动转出去，让主路由继续去路由。
+
+结合 netfilter 段落的知识，逆向思考一下要怎么做。首先我们要添加一些**路由规则**，这些规则最终肯定是注入到 netfilter hook 里的，可以通过 **iptables chain** 操作 netfikter hook。所以规则要添加到一个**合适**的 **chain** 里，**iptables** 又是通过 **table** 来组织管理 **chain** 的。我们还需要找一个**合适**的 **table** 来添加 **chain**（或者说规则）。思考了这些后，我们再回头看命令：
 
 ```bash
 # clash 链负责处理转发流量
@@ -92,17 +94,13 @@ iptables -t mangle -A clash -d 192.168.0.0/16 -j RETURN
 iptables -t mangle -A clash -d 169.254.0.0/16 -j RETURN
 iptables -t mangle -A clash -d 224.0.0.0/4 -j RETURN
 iptables -t mangle -A clash -d 240.0.0.0/4 -j RETURN
-
 ```
-
-可以结合 [linux 网络之 netfilter](<#linux\ 网络之\ netfilter>) 段落内容理解这些命令。我们先逆向思维来推导一下：“_我们要添加一些**路由规则**，这些规则最终肯定是注入到 **netfilter hook** 里的。我们使用 **iptables chain** 来注入，所以规则要添加到一个**合适**的 **chain** 里，**iptables** 是通过 **table** 来组织管理 **chain** 的。我们还需要找一个**合适**的 **table** 来添加 **chain**（或者说规则）_”。
-
-思考了这些后，我们再回头看命令：
 
 - 首先我们新建了一个自定义链管理规则：`iptables -t mangle -N clash`
 - 然后从内置链 `PREROUTING` 跳转而来：`iptables -t mangle -A PREROUTING -j clash`
   - 当然我们可以直接不写这两句，直接将规则添加到 `PREROUTING` 链。但那样写不是很规范，不推荐直接向内置链（这里是 `PREROUTING` ）添加规则。
 - 然后追加局域网 IP 直连规则到 `clash` 表中
+  我们使用的表是 mangle 表，链是 链。
   总而言之，最终实现了局域网机器流量发到**旁路由**时，旁路由发现目标地址是局域网内 ip，跳过处理，转发出去给到主路由，就是主路由和源主机直接通信了，之后的网络传输本网关就不会参与了。
 
 ### 中转外网流量，clash 透明代理
@@ -128,6 +126,41 @@ ip route add local 0.0.0.0/0 dev lo table 666
 前两句 `iptables` 命令，追加了两条 `TPROXY` 规则。将 `tcp` & `udp` 流量转发到 `clash` 的 `7893` 端口，且打了 `666` 标记。
 
 因为 `TPROXY` 不会修改 IP 数据包，数据包的 dest ip 一般都是外网地址，所以数据包下一跳会直接 forward 转出到下一跳机器上。因此 `TPROXY` 大部分情况都需要搭配 `ip route` 策略路由一起使用。比如我们这里就是新建了一个名为 `666` 的路由表，此路由表会将所有数据包发到本地回环上。这样就阻断了 forward 过程，相当于让（ `tproxy` 过的）数据包重新走一边网络栈流程。这样数据包就可以转发到 `7893` 端口上了，然后我们只让有 `666` 标记的数据包经过此路由表。
+
+### 代理网关本机的流量
+
+经过以上步骤，局域网的机器已经可以通过透明代理加速上网了。因为我是组装的 x86 平台机器，本质上一个 linux 服务器。不想只用来当一个网关，还想跑各种服务以及日常使用。那就需要将本机的流量也代理一下，也即经过 `OUTPUT` 链的数据包。类似的步骤，将本机发出的流量（OUTPUT）打上标记，触发重新路由。这样本机发出的流量就和局域网内其它机器进入的流量相同了，路由的流程也就一样了。不过 `OUTPUT` 上的数据包也包含 clash 流量，这样会出现数据包死循环，得处理一下。我们跳过 clash 发出的数据包，避免死循环。
+
+```bash
+# clash_local 链负责处理网关本身发出的流量
+iptables -t mangle -N clash_local
+
+# nerdctl 容器流量重新路由
+#iptables -t mangle -A clash_local -i nerdctl2 -p udp -j MARK --set-mark 666
+#iptables -t mangle -A clash_local -i nerdctl2 -p tcp -j MARK --set-mark 666
+
+# 跳过内网流量
+iptables -t mangle -A clash_local -d 0.0.0.0/8 -j RETURN
+iptables -t mangle -A clash_local -d 127.0.0.0/8 -j RETURN
+iptables -t mangle -A clash_local -d 10.0.0.0/8 -j RETURN
+iptables -t mangle -A clash_local -d 172.16.0.0/12 -j RETURN
+iptables -t mangle -A clash_local -d 192.168.0.0/16 -j RETURN
+iptables -t mangle -A clash_local -d 169.254.0.0/16 -j RETURN
+iptables -t mangle -A clash_local -d 224.0.0.0/4 -j RETURN
+iptables -t mangle -A clash_local -d 240.0.0.0/4 -j RETURN
+
+# 为本机发出的流量打 mark
+iptables -t mangle -A clash_local -p tcp -j MARK --set-mark 666
+iptables -t mangle -A clash_local -p udp -j MARdocK --set-mark 666
+
+# 跳过 clash 程序本身发出的流量, 防止死循环(clash 程序需要使用 "clash" 用户启动)
+iptables -t mangle -A OUTPUT -p tcp -m owner --uid-owner clash -j RETURN
+iptables -t mangle -A OUTPUT -p udp -m owner --uid-owner clash -j RETURN
+
+# 让本机发出的流量跳转到 clash_local
+# clash_local 链会为本机流量打 mark, 打过 mark 的流量会重新回到 PREROUTING 上
+iptables -t mangle -A OUTPUT -j clash_local
+```
 
 ---
 
