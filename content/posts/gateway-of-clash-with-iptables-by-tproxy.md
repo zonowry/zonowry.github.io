@@ -21,8 +21,6 @@ description: "尝试用 clash tun 模式来实现网关，虽然过程很流畅�
 
 我就是遇到了公网上无法访问我网关上的 `docker` 服务，debug 排查了好久，虽然最后凭感觉解决了。但一直没有理顺流量是怎么路由的，只是稍有眉目、模棱两可。所以我去尝试理解了过程中每个操作（命令）的底层逻辑，现在写篇文章梳理一下这些知识。
 
----
-
 ## linux 网络之 netfilter
 
 首先说说这一切的基石：linux 的 `netfilter` 模块及延伸工具 `iptables`。
@@ -58,7 +56,6 @@ description: "尝试用 clash tun 模式来实现网关，虽然过程很流畅�
 <div style="background: #fff">
 <img src="https://arthurchiao.art/assets/img/deep-dive-into-iptables-netfilter/Netfilter-packet-flow.svg" title="netfilter 流程图"/>
 </div>
-***
 
 ## 流量方向 与 iptables 规则
 
@@ -129,7 +126,9 @@ ip route add local 0.0.0.0/0 dev lo table 666
 
 ### 代理网关本机的流量
 
-经过以上步骤，局域网的机器已经可以通过透明代理加速上网了。因为我是组装的 x86 平台机器，本质上一个 linux 服务器。不想只用来当一个网关，还想跑各种服务以及日常使用。那就需要将本机的流量也代理一下，也即经过 `OUTPUT` 链的数据包。类似的步骤，将本机发出的流量（OUTPUT）打上标记，触发重新路由。这样本机发出的流量就和局域网内其它机器进入的流量相同了，路由的流程也就一样了。不过 `OUTPUT` 上的数据包也包含 clash 流量，这样会出现数据包死循环，得处理一下。我们跳过 clash 发出的数据包，避免死循环。
+经过以上步骤，局域网内的其它机器已可以正常使用本网关了。当然，一台 llinux 机器只用来当一个网关太浪费了，还可以跑各种服务以及日常使用。顺便将本机的流量也代理一下，也即代理本机发出（经过 `OUTPUT` 链）的数据包。
+
+首先与上一步类似的步骤，将本机发出的流量（OUTPUT）打上标记，触发重新路由。这样本机发出的流量就和局域网内其它机器进入的流量相同了，路由的流程也就一样了。不过 `OUTPUT` 上的数据包也会包含 clash 发出流量，这样会出现数据包死循环，得处理一下。只需要跳过 clash 程序发出的数据包，避免死循环。用 clash 用户启动 clash 程序，根据 uid 跳过数据包即可。。
 
 ```bash
 # clash_local 链负责处理网关本身发出的流量
@@ -162,7 +161,24 @@ iptables -t mangle -A OUTPUT -p udp -m owner --uid-owner clash -j RETURN
 iptables -t mangle -A OUTPUT -j clash_local
 ```
 
----
+## 外网访问内网 docker 问题
+
+也可以说外网访问局域网内机器（非网关机器）的问题。我们这样配置好后，会发现无法从外网访问内网的 docker 服务（设置路由器端口转发）。可以通过手机流量访问测试。
+
+我是参考该 [github issue](https://github.com/Dreamacro/clash/issues/432#issuecomment-571634905) 受到了启发，最终解决了。
+
+```bash
+# 跳过 docker0 的 ip 范围。即跳过 docker 服务的出站数据包
+sudo iptables -t mangle -A clash -p tcp -s 172.18.0.0/16 -j RETURN
+```
+
+然后以下是个人的推测，可能有误，仅供参考。
+
+首先手机入站数据包经过路由器，`NAT` 到 `docker` 服务（网关机器）上。此时因为 **dest ip** 是内网 ip，**clash 链** 会跳过。**DOCKER 链** 接手处理，通过 `DNAT` 转发到了 **docker0 bridge** 网卡上，这几步都很正常。顺利到达 docker 容器。
+
+随后是 docker 容器的出站数据包，此时数据包会从 **docker0 bridge** 发到宿主机的物理网卡 **eth** 网卡。这时数据包之于宿主机来说，是一个入站数据包。数据包会经过 `PREROUTING` 链，jump 到 **clash** 链，而此时的 **dest ip** 为手机的 ip 。会被转发到 clash 上处理，但这个数据包只在出站时转发给 clash 处理。入站的时候跳过了。估计 clash 无法处理这个数据包，可能就丢弃了。就出现了外网无法访问内网 docker 容器的问题。
+
+所以根据 source ip 判断， 将 docker 容器的数据包也跳过。跳过后就解决了～
 
 ## 参考
 
