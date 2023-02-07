@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>关于代码结构设计的一些思考 | Zonowry 的博客</title>
+<title>关于思考一些简单代码设计来领略高大上架构这件事 | Zonowry 的博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,8 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="网上冲浪时经常能看到微服务、分布式等技术分享。但我们大多数开发面向的都是政企小群体用户，工作中很难实操这些技术。 也就在我们与高大上工程之间筑起了知识障壁。为了能理解高大上的技术，我们从简单的开始分析。
-所以接下来我们不聊庞大的工程设计，来看看如何从我们日常的工作中学习这些模式的底层思想。 希望这篇文章能带来一点代码结构设计的启发，这层障壁或许会变薄一些。">
+  content="关于思考一些简单代码设计来领略高大上架构这件事 生疏而难理解的工程 网上冲浪时经常能看到微服务、分布式等技术分享。但我们大多数开发面向的都是政企小群体用户">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -88,7 +87,7 @@
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"关于代码结构设计的一些思考",
+      "name":"关于思考一些简单代码设计来领略高大上架构这件事",
       "item":"/posts/project-thinking/"}]
 }
 </script>
@@ -103,9 +102,9 @@
         "@type": "WebPage",
         "@id": "/posts/project-thinking/"
     },
-    "headline": "关于代码结构设计的一些思考 | Zonowry 的博客","datePublished": "2022-12-22T00:00:00+00:00",
+    "headline": "关于思考一些简单代码设计来领略高大上架构这件事 | Zonowry 的博客","datePublished": "2022-12-22T00:00:00+00:00",
     "dateModified": "2022-12-22T00:00:00+00:00",
-    "wordCount":  3144 ,
+    "wordCount":  3136 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -114,9 +113,9 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "网上冲浪时经常能看到微服务、分布式等技术分享。但我们大多数开发面向的都是政企小群体用户，工作中很难实操这些技术。 也就在我们与高大上工程之间筑起了知识障壁。为了能理解高大上的技术，我们从简单的开始分析。\n所以接下来我们不聊庞大的工程设计，来看看如何从我们日常的工作中学习这些模式的底层思想。 希望这篇文章能带来一点代码结构设计的启发，这层障壁或许会变薄一些。"
+    "description": "关于思考一些简单代码设计来领略高大上架构这件事 生疏而难理解的工程 网上冲浪时经常能看到微服务、分布式等技术分享。但我们大多数开发面向的都是政企小群体用户"
 }
-</script><meta property="og:title" content="关于代码结构设计的一些思考 | Zonowry 的博客" />
+</script><meta property="og:title" content="关于思考一些简单代码设计来领略高大上架构这件事 | Zonowry 的博客" />
 <meta property="og:type" content="article" />
 
 
@@ -127,8 +126,9 @@
 
 
 
-<meta property="og:description" content="网上冲浪时经常能看到微服务、分布式等技术分享。但我们大多数开发面向的都是政企小群体用户，工作中很难实操这些技术。 也就在我们与高大上工程之间筑起了知识障壁。为了能理解高大上的技术，我们从简单的开始分析。
-所以接下来我们不聊庞大的工程设计，来看看如何从我们日常的工作中学习这些模式的底层思想。 希望这篇文章能带来一点代码结构设计的启发，这层障壁或许会变薄一些。" />
+
+<meta property="og:description" content="关于思考一些简单代码设计来领略高大上架构这件事 生疏而难理解的工程 网上冲浪时经常能看到微服务、分布式等技术分享。但我们大多数开发面向的都是政企小群体用户" />
+
 
 
 
@@ -241,7 +241,7 @@
       class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">关于代码结构设计的一些思考</h1>
+  <h1 class="mb-4">关于思考一些简单代码设计来领略高大上架构这件事</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -261,8 +261,8 @@
     <div class="me-6 my-2">
       <i class="fas fa-folder me-1"></i>
       
-        <a href="/categories/%E7%9F%A5%E8%AF%86/" class="hover:text-eureka"
-          >知识</a
+        <a href="/categories/%E6%96%87%E7%AB%A0/" class="hover:text-eureka"
+          >文章</a
         >
       
     </div>
@@ -275,8 +275,7 @@
   
   
 
-  <pre><code>其实本文标题我想命名为《通过思考一些低端代码结构设计来领略高大上技术知识这件事》来着
-</code></pre>
+  <h1 id="关于思考一些简单代码设计来领略高大上架构这件事">关于思考一些简单代码设计来领略高大上架构这件事</h1>
 <h2 id="生疏而难理解的工程">生疏而难理解的工程</h2>
 <p>网上冲浪时经常能看到微服务、分布式等技术分享。但我们大多数开发面向的都是政企小群体用户，工作中很难实操这些技术。 也就在我们与高大上工程之间筑起了知识障壁。为了能理解高大上的技术，我们从简单的开始分析。</p>
 <p>所以接下来我们不聊庞大的工程设计，来看看如何从我们日常的工作中学习这些模式的底层思想。
@@ -296,7 +295,7 @@
 @PostMapping(&quot;/user/register&quot;)
 fun registerUser(
     // 2. 提取请求体中的参数数据
-	@RequestParam name: String,
+	@RequestParam name: String, 
 	@RequestParam userRole: UserRole
 ) {
     // 3. 业务逻辑：用户名不能重复
@@ -314,7 +313,7 @@ fun registerUser(
 	user.password = encrypt(randomPwd())
 	user.registerTime = Instant.now()
 	user.role = userRole
-
+	
 	// 6. 持久化
 	database.save(&quot;insert into user values(?1)&quot;, user)
 }
@@ -322,13 +321,13 @@ fun registerUser(
 <p>以上代码明显是一个面向过程式的写法。在项目简单时，没有任何问题。但是参与的人变多，项目代码量变大，会面临很多问题（代码重用、逻辑分散等）。</p>
 <p>所以我们尝试分析这块代码的职责，可以简单的划分一下哪些一些业务逻辑代码，哪些不是业务逻辑代码。</p>
 <ul>
-<li>首先函数声明部分帮我们从 http 请求中提取参数值以及将此方法映射成请求的处理方法，依靠的 <code>spring boot</code> 框架来实现。</li>
+<li>首先函数声明部分帮我们从http请求中提取参数值以及将此方法映射成请求的处理方法，依靠的 <code>spring boot</code> 框架来实现。</li>
 <li>函数体部分是一些逻辑安全性校验和根据业务逻辑（随机密码，注册时间，用户角色）创建一个用户并保存到数据库中</li>
-<li>除此之外，还有一些明显的 SQL 语句对验证数据以及持久化数据提供支持</li>
+<li>除此之外，还有一些明显的SQL语句对验证数据以及持久化数据提供支持</li>
 </ul>
 <p>分析完毕，首先我们把函数声明部分的注解，依赖 <code>spring</code> 技术框架的地方放到页面层，供外部（前端页面）调用。</p>
 <p>然后我们新增一个 <code>UserService</code> 服务类放到业务层，它有一个 <code>registry(xxx)</code> 方法。我们将业务逻辑部分代码放到该方法中。</p>
-<p>然后是持久化 <code>sql</code> 脚本，我们业务逻辑层只依赖一个数据访问接口，这个接口的具体实现就是这些 sql。</p>
+<p>然后是持久化 <code>sql</code> 脚本，我们业务逻辑层只依赖一个数据访问接口，这个接口的具体实现就是这些sql。</p>
 <p>最终大概写成这样就是简单的三层架构。</p>
 <pre><code class="language-kotlin">
 // 界面层
@@ -339,7 +338,7 @@ class UserController {
 	@PostMapping(&quot;/user/register&quot;)
 	fun registerUser(
 	    // 2. 提取请求体中的参数数据
-		@RequestParam name: String,
+		@RequestParam name: String, 
 		@RequestParam userRole: UserRole
 	) {
 		// 3. 调用业务层方法
@@ -352,7 +351,7 @@ class UserController {
 class UserService {
 	private val userDao: UserDao
 	fun registry(name: String, role: UserRole) {
-		// 业务逻辑：用户名不能重复
+		// 业务逻辑：用户名不能重复	    
 	    if (this.userDao.findByName(name) != null ) {
 		    throw RuntimeException(&quot;用户名已存在&quot;)
 	    }
@@ -369,7 +368,7 @@ class UserService {
 
 		// 持久化
 		this.userDao.save(user)
-
+	
 }
 
 // 数据访问层
@@ -380,8 +379,8 @@ interface UserDao {
 }
 
 // 文件：UserDaoImpl.kt
-class UserDaoImpl : UserDao {
-	// Sql 脚本实现
+class UserDaoImpl : UserDao { 
+	// Sql 脚本实现 
 }
 
 
@@ -400,7 +399,7 @@ class UserDaoImpl : UserDao {
     inserUser(user: User)
 }
 
-
+  
 class UserBLL {
 
 	private val dal : UserDAL = MysqlUserDAL()
@@ -422,13 +421,13 @@ class UserBLL {
 </code></pre>
 <p>我们只替换一下实现，就可以迁移。虽然例子可能不是很好，但却是体现了面向接口的一个好处。</p>
 <h3 id="依赖倒置依赖注入">依赖倒置（依赖注入）</h3>
-<p>还是上面这个例子，我们发现我们抽象的还是不够彻底，我们在 BLL（业务层）还是能够看到 Oracle，Mysql 之类的技术实现细节。此时我们就可以通过接口的依赖倒置（依赖注入）来进一步抽象。我们可以改成这样</p>
+<p>还是上面这个例子，我们发现我们抽象的还是不够彻底，我们在BLL（业务层）还是能够看到Oracle，Mysql之类的技术实现细节。此时我们就可以通过接口的依赖倒置（依赖注入）来进一步抽象。我们可以改成这样</p>
 <pre><code class="language-kotlin">interface UserDAL {
     // 向数据库插入一个用户对象
     inserUser(user: User)
 }
 
-
+  
 class UserBLL(private val dal : UserDAL) {
   fun addUser() {
       dal.inserUser(xxx)
@@ -449,14 +448,14 @@ UserBLL(OracleUserDAL()
 </code></pre>
 <p>可以发现，数据访问对象被我们声明成从构造函数中传入，我们编写业务逻辑代码时，就不再需要考虑用的是什么数据库了，降低了心智负担。</p>
 <h2 id="模型层">模型层</h2>
-<p>三层架构对付很多小项目足够了，业务变大后，我们 BLL 层互相之间也会出现重用逻辑。我们会习惯性的封装各种对象 <code>Model</code> 。想必大家都叫作 <code>UserUtils</code> 之类的吧。可以将这个模型取一个更侧重业务的名字，例如上面提到的 <code>class User</code>。即形成了模型层，在 DDD 中也被称作领域层。</p>
+<p>三层架构对付很多小项目足够了，业务变大后，我们BLL层互相之间也会出现重用逻辑。我们会习惯性的封装各种对象 <code>Model</code> 。想必大家都叫作 <code>UserUtils</code> 之类的吧。可以将这个模型取一个更侧重业务的名字，例如上面提到的 <code>class User</code>。即形成了模型层，在 DDD 中也被称作领域层。</p>
 <h3 id="业务场景业务模型">业务场景、业务模型</h3>
-<p>我们将 <code>registry</code> 方法放到 User 类中。业务层转变为应用层，负责编排业务模型的方法。就初步形成了类似 DDD 模式的四层架构。我们的 Service（应用层）就只剩下了：</p>
-<pre><code class="language-kotlin">class UserService {
-	fun registry(name: String, role: UserRole) {
+<p>我们将 <code>registry</code> 方法放到 User 类中。业务层转变为应用层，负责编排业务模型的方法。就初步形成了类似DDD模式的四层架构。我们的Service（应用层）就只剩下了：</p>
+<pre><code class="language-kotlin">class UserService { 
+	fun registry(name: String, role: UserRole) {		
 		// 用户名重名判断
 		if (this.userDao.findByName(name) != null)  {
-			return
+			return 
 		}
 		val user = new User(name, role)
 		user.registry()
@@ -511,13 +510,13 @@ class OrderBLL {
 <p>这样是否 BLL 业务逻辑层看起来好点了，似乎只用到了两个对象。不过此时业务逻辑层没有了业务逻辑，变成了应用层。业务逻辑都内聚到了模型中。</p>
 <p>最终从用户（调用者）方看，主要就是调用了一个 order.accpet(user) 方法而已，就完成了”同意订单”这个业务。我们需要调整逻辑时，也只需要查看 Order 类的业务方法。</p>
 <h2 id="结尾">结尾</h2>
-<p>再深入一些其实就是领域驱动的内容了，如何建模模型层，以及会遇见的一些问题。和 DDD 中代码三难问题的取舍。</p>
+<p>再深入一些其实就是领域驱动的内容了，如何建模模型层，以及会遇见的一些问题。和DDD中代码三难问题的取舍。</p>
 <ul>
 <li>领域模型的纯度</li>
 <li>领域模型的完整度</li>
 <li>性能</li>
 </ul>
-<p>大部分情况下，我们在以上三个特性中，只能同时满足 2 个特性。所以回到工作中，我们只要确保自己有根据职责划分代码，时刻思考代码结构就好。最后放一个简单地分层图片，也是我们大多情况下使用的分层模式吧。很多开源大项目也都是基于这些分层的思考设计的。</p>
+<p>大部分情况下，我们在以上三个特性中，只能同时满足2个特性。所以回到工作中，我们只要确保自己有根据职责划分代码，时刻思考代码结构就好。最后放一个简单地分层图片，也是我们大多情况下使用的分层模式吧。很多开源大项目也都是基于这些分层的思考设计的。</p>
 <p><img src="/images/blog/DDD-layer.png" alt="DDD-layer.png"></p>
 
 </article>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>透明网关之重生之我是 iptables 大师 | Zonowry 的博客</title>
+<title>clash 透明网关之重生之我是 iptables 大师 | Zonowry 的博客</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -87,7 +87,7 @@
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"透明网关之重生之我是 iptables 大师",
+      "name":"clash 透明网关之重生之我是 iptables 大师",
       "item":"/posts/gateway-of-clash-with-iptables-by-tproxy/"}]
 }
 </script>
@@ -102,9 +102,9 @@
         "@type": "WebPage",
         "@id": "/posts/gateway-of-clash-with-iptables-by-tproxy/"
     },
-    "headline": "透明网关之重生之我是 iptables 大师 | Zonowry 的博客","datePublished": "2023-01-02T00:00:00+00:00",
+    "headline": "clash 透明网关之重生之我是 iptables 大师 | Zonowry 的博客","datePublished": "2023-01-02T00:00:00+00:00",
     "dateModified": "2023-01-02T00:00:00+00:00",
-    "wordCount":  3580 ,
+    "wordCount":  3592 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -115,7 +115,7 @@
         },
     "description": "尝试用 clash tun 模式来实现网关，虽然过程很流畅也比较“新潮“，但对于我来说有点魔法了，因为比较难搞清楚 clash 帮我们做了哪些工作，出现问题不好找原因。也可能是我比较“洁癖” ，所以我采用了 `iptables \u002b tproxy` 这种更加“简单“的方式，clash 只作为流量中继，流量的路由都依靠 l`inux 内核` 的 `netfilter` 功能实现，这样搭建的网关会更加“可控”一点。"
 }
-</script><meta property="og:title" content="透明网关之重生之我是 iptables 大师 | Zonowry 的博客" />
+</script><meta property="og:title" content="clash 透明网关之重生之我是 iptables 大师 | Zonowry 的博客" />
 <meta property="og:type" content="article" />
 
 
@@ -247,7 +247,7 @@
       class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
     >
       <article class="prose">
-  <h1 class="mb-4">透明网关之重生之我是 iptables 大师</h1>
+  <h1 class="mb-4">clash 透明网关之重生之我是 iptables 大师</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -292,7 +292,7 @@
 <p>我就是遇到了公网上无法访问我网关上的 <code>docker</code> 服务，debug 排查了好久，虽然最后凭感觉解决了。但一直没有理顺流量是怎么路由的，只是稍有眉目、模棱两可。所以我去尝试理解了过程中每个操作（命令）的底层逻辑，现在写篇文章梳理一下这些知识。</p>
 <h2 id="linux-网络之-netfilter">linux 网络之 netfilter</h2>
 <p>首先说说这一切的基石：linux 的 <code>netfilter</code> 模块及延伸工具 <code>iptables</code>。</p>
-<p><code>iptables</code> 只是个命令行工具，依赖 <code>netfilter</code> 内核模块，也即真正实现防火墙功能的是 linux 内核的 <code>netfilter</code> 模块。不仅 <code>iptables</code> 的命令宛若天书，<code>netfilter</code> 的链路也错综复杂，很难去使用。想要理解使用这些工具或命令，必须得先了解一些 <code>netfilter</code> 与 <code>iptables</code> 的基础知识。</p>
+<p><code>iptables</code> 只是个命令行工具，依赖 <code>netfilter</code> 内核模块，也即真正实现防火墙功能的是 linux 内核的 <code>netfilter</code> 模块。可惜不仅 <code>iptables</code> 的命令宛若天书，<code>netfilter</code> 的链路也错综复杂，很难去使用。想要理解使用这些工具或命令，必须得先了解一些 <code>netfilter</code> 与 <code>iptables</code> 的基础知识。</p>
 <h3 id="iptables-的链">iptables 的链</h3>
 <p><code>netfilter</code> 提供了 <strong>5 个 hook</strong> 点，<code>iptables</code> 根据这些 <strong>hook</strong> 点，搞出了 <code>链 (chain)</code> 的概念，也就<strong>内置</strong>了 <strong>5 个默认链</strong>。可以看出 5 个 <code>iptables chian</code> 和 5 个 <code>netfilter hook</code> 一一对应。当然，我们可以添加自定义链，不过想要某个自定义链生效，需要追加一条从<strong>内置链</strong>跳转到这个自定义链的规则。因为内核的 5 个 hook 点只会触发这 5 个内置链。</p>
 <table>
@@ -322,7 +322,7 @@
 <tr>
 <td>NF_IP_LOCAL_OUT</td>
 <td>OUTPUT</td>
-<td>  本机产生的准备发送的包，在进入协议栈后立即触发此 hook</td>
+<td> 本机产生的准备发送的包，在进入协议栈后立即触发此 hook</td>
 </tr>
 <tr>
 <td>NF_IP_POST_ROUTING</td>
@@ -349,7 +349,7 @@
 </tr>
 <tr>
 <td>raw</td>
-<td style="text-align:left"><code>PREROUTING</code> <code>OUTPUT</code></td>
+<td style="text-align:left"><code>PREROUTING</code>  <code>OUTPUT</code></td>
 <td style="text-align:left"><code>TRACE</code></td>
 </tr>
 <tr>
@@ -359,7 +359,7 @@
 </tr>
 <tr>
 <td>filter</td>
-<td style="text-align:left"><code>INPUT</code> <code>FORWARD</code> <code>OUTPUT</code></td>
+<td style="text-align:left"><code>INPUT</code> <code>FORWARD</code>  <code>OUTPUT</code></td>
 <td style="text-align:left">略</td>
 </tr>
 <tr>
@@ -405,9 +405,9 @@ iptables -t mangle -A clash -d 240.0.0.0/4 -j RETURN
 <li>当然我们可以直接不写这两句，直接将规则添加到 <code>PREROUTING</code> 链。但那样写不是很规范，不推荐直接向内置链（这里是 <code>PREROUTING</code> ）添加规则。</li>
 </ul>
 </li>
-<li>然后追加局域网 IP 直连规则到 <code>clash</code> 表中
-我们使用的表是 mangle 表，链是 链。
-总而言之，最终实现了局域网机器流量发到<strong>旁路由</strong>时，旁路由发现目标地址是局域网内 ip，跳过处理，转发出去给到主路由，就是主路由和源主机直接通信了，之后的网络传输本网关就不会参与了。</li>
+<li>然后追加局域网IP直连规则到 <code>clash</code> 表中
+我们使用的表是 mangle 表，链是  链。
+总而言之，最终实现了局域网机器流量发到<strong>旁路由</strong>时，旁路由发现目标地址是局域网内ip，跳过处理，转发出去给到主路由，就是主路由和源主机直接通信了，之后的网络传输本网关就不会参与了。</li>
 </ul>
 <h3 id="中转外网流量clash-透明代理">中转外网流量，clash 透明代理</h3>
 <p>由于上一步我们跳过了内部（局域网内）流量，剩下的流量基本就是外部（互联网）流量了。这些<strong>外部流量</strong>应该要转发到 <code>clash</code> 中进行透明代理。</p>
@@ -450,7 +450,7 @@ iptables -t mangle -A clash_local -d 240.0.0.0/4 -j RETURN
 iptables -t mangle -A clash_local -p tcp -j MARK --set-mark 666
 iptables -t mangle -A clash_local -p udp -j MARdocK --set-mark 666
 
-# 跳过 clash 程序本身发出的流量, 防止死循环(clash 程序需要使用 &quot;clash&quot; 用户启动)
+# 跳过 clash 程序本身发出的流量, 防止死循环(clash 程序需要使用 &quot;clash&quot; 用户启动) 
 iptables -t mangle -A OUTPUT -p tcp -m owner --uid-owner clash -j RETURN
 iptables -t mangle -A OUTPUT -p udp -m owner --uid-owner clash -j RETURN
 
@@ -474,7 +474,7 @@ sudo iptables -t mangle -A clash -p tcp -s 172.18.0.0/16 -j RETURN
 <li><a href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/">「译」深入理解 iptables 和 netfilter 架构</a></li>
 <li><a href="https://mritd.com/2022/02/06/clash-tproxy/">树莓派 Clash 透明代理(TProxy)_</a></li>
 <li><a href="https://github.com/mritd/tpclash/wiki/2%E3%80%81%E8%BF%9B%E9%98%B6%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6">tpclash wiki - 2、进阶流量控制</a> 。</li>
-<li><a href="https://tinychen.com/20200414-iptables-principle-introduction/">iptables 的四表五链与 NAT 工作原理  _</a></li>
+<li><a href="https://tinychen.com/20200414-iptables-principle-introduction/">iptables的四表五链与NAT工作原理 _</a></li>
 <li><a href="https://www.zhaohuabing.com/learning-linux/docs/tproxy/">https://www.zhaohuabing.com/learning-linux/docs/tproxy/</a></li>
 </ul>
 
@@ -507,11 +507,16 @@ sudo iptables -t mangle -A clash -p tcp -s 172.18.0.0/16 -j RETURN
   >
     <div>
       
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/posts/performance-of-database/" class="block">我的数据库优化手法果然有问题</a>
+      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/performance-of-database/" class="block">我的数据库优化手法果然有问题</a>
+        <a href="/posts/arch-step/" class="block">Arch &#43; Wayland 安装手册</a>
       
     </div>
   </div>

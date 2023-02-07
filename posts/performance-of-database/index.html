@@ -102,9 +102,9 @@
         "@type": "WebPage",
         "@id": "/posts/performance-of-database/"
     },
-    "headline": "我的数据库优化手法果然有问题 | Zonowry 的博客","datePublished": "2023-01-02T00:00:00+00:00",
-    "dateModified": "2023-01-02T00:00:00+00:00",
-    "wordCount":  757 ,
+    "headline": "我的数据库优化手法果然有问题 | Zonowry 的博客","datePublished": "2023-02-07T00:00:00+00:00",
+    "dateModified": "2023-02-07T00:00:00+00:00",
+    "wordCount":  1265 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -142,10 +142,10 @@
 
 
 
-<meta property="article:published_time" content="2023-01-02T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2023-02-07T00:00:00&#43;00:00" />
 
 
-<meta property="article:modified_time" content="2023-01-02T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2023-02-07T00:00:00&#43;00:00" />
 
 
 
@@ -247,12 +247,12 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-01-02</span
+      >2023-02-07</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>2分钟阅读时长</span>
+    <span>3分钟阅读时长</span>
   </div>
 
   
@@ -282,18 +282,32 @@
 </blockquote>
 <h2 id="数据库知识点">数据库知识点</h2>
 <h3 id="数据库锁">数据库锁</h3>
-<p>讲到为什么需要锁，基本是因为多线程场景下并发操作同一个数据（变量）时会导致的线程安全问题，要想解决此类问题就需要一种”<strong>锁</strong>“机制。数据库根据颗粒度划分出<strong>行级锁</strong>、<strong>页级锁</strong>、<strong>表级锁</strong>。根据行为来说的话又有<strong>共享锁</strong>和<strong>互斥锁</strong>。共享锁能够将数据设为只读，其它线程可以向更新数据时会被阻塞，直到共享锁释放。互斥锁则是为了保障写入数据的一致性，表现形式就是其它线程无法再对次数据添加任何锁。只有持有互斥锁的线程对该数据可读可写。</p>
-<p>结合一个并发的先读后写的场景的业务场景。比如支付订单减少库存。a 用户 和 b 用户同时了购买同一个商品，且同时支付成功。我们的业务逻辑是，为了保险，需要判断库存是否还有剩余，如果有剩余，就减少商品库存。</p>
-<pre><code class="language-sql">update product set stock = stock - 1 where product_id = x and stock &gt; 0;
+<p>讲到为什么需要锁，因为多线程场景下并发操作同一个数据（变量）时会导致线程安全问题，要想解决此类问题就需要一种”<strong>锁</strong>“机制。于是数据库根据颗粒度划分出<strong>行级锁</strong>、<strong>页级锁</strong>、<strong>表级锁</strong>。这些锁顾名思义就很容易理解了。根据行为来说的话又有<strong>共享锁</strong>和<strong>互斥锁</strong>。共享锁能够将数据设为只读，任一线程都可以读（共享数据），不过任一线程企图更新数据时都会被阻塞，直到共享锁释放。互斥锁则是为了保障写入数据的一致性，表现形式就是其它线程无法再对次数据添加任何锁。只有持有互斥锁的线程对该数据可读可写。</p>
+<p>结合一个并发的先读后写的场景的业务场景。比如支付订单减少库存。a 用户 和 b 用户同时了购买同一个商品，且同时支付成功。我们的业务逻辑是，首先为了保险，需要判断库存是否还有剩余，如果有剩余，就减少商品库存。</p>
+<pre><code class="language-sql">-- upodate 语句会自动请求互斥锁（锁定需要的数据）
+update product set stock = stock - 1 where product_id = x and stock &gt; 0;
 </code></pre>
 <p>这句 sql 利用了互斥锁，保证数据的一致性。但如果放在日经问题 - 抢购业务上来看，同时上万个用户进行秒杀，数据一致性是没问题。但由于竞争互斥锁会出现阻塞，那响应速度可想而知，数据库链接是昂贵的资源，小鸡承受不住呀。</p>
-<p>这时候我们想到将 <code>stock</code> 这个变量做下缓存，互斥锁只用来进行在某个时间段一次简单地更新赋值。</p>
+<p>这时候我们想到将 <code>stock</code> 这个变量做下缓存。当然，缓存那边怎么去实现，就牵扯到更多的设计了。一般是缓存好（预热/懒加载）数据，在缓存中原子性的更改缓存数据（库存）。然后在某个时间点进行一次简单地数据库更新写入，保证缓存与数据库的一致性。</p>
 <pre><code class="language-sql">update product set stock = #{stock_from_cache} where product_id = x
 </code></pre>
-<p>当然，缓存那边怎么去实现，就牵扯到更多的设计了。一般是预热+懒加载，缓存中原子性的更改库存。</p>
-<p>事先了解数据库锁的一点知识，就能避免遇到类似的性能啦。</p>
+<p>可以看出如果事先了解数据库锁的一点知识，就能避免很多类似的性能问题啦。</p>
+<h3 id="数据库索引结构">数据库索引结构</h3>
+<p>可能会首先联想到 <code>HashMap</code> 和 <code>Array</code>，它们的 <strong>键值(HashCode)</strong> 和 <strong>元素下标(Index)</strong> 就是其索引。数据库索引的概念（或者说出发点）也是类似的。为了提高搜索效率，避免枚举所有数据。但数据库的索引结构设计上就复杂很多了，通常采用平衡多叉树结构，也就是 <code>B+ Tree</code> 。</p>
+<p>考虑在1亿条数据中，找到 id 为 4396 的数据，不使用索引的话，最差可能需要枚举1亿次才能找到。看看索引是如何工作的。因为有序平衡树结构本质上都是二分查找法的延伸。所以先看看二分法，1亿条数据一直对半分，最坏大概只需要 $log_2(1,0000,0000) \approx 26$ 次查询，可以看出仅仅二叉树就可以指数级提升查找效率。然后再来理解一下 <code>B+ Tree</code> ，与二叉树最大的区别就是其多叉，即底数可能大于 2。</p>
+<p>想想一下一棵多叉树，工作机制类似二叉树，效率很高。但显而易见的，当我们增删数据时，需要分裂、合并叶子节点，那这棵树的结构波动会很大，因为树需要按照 <code>B+ Tree</code> 的规则（定义）平衡自己。所以我们常说建立索引后查询变快，但会导致插入、删除变慢。</p>
 <h3 id="聚簇索引">聚簇索引</h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
 <h3 id="mysql-和-postgres-的区别">mysql 和 postgres 的区别</h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://www.modb.pro/db/78756">https://www.modb.pro/db/78756</a></li>
+</ul>
 
 </article>
 
@@ -320,16 +334,11 @@
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/posts/gateway-of-clash-with-iptables-by-tproxy/" class="block">透明网关之重生之我是 iptables 大师</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/posts/arch-step/" class="block">Arch &#43; Wayland 安装手册</a>
+        <a href="/posts/gateway-of-clash-with-iptables-by-tproxy/" class="block">clash 透明网关之重生之我是 iptables 大师</a>
       
     </div>
   </div>
@@ -360,10 +369,12 @@
     <li><a href="#数据库知识点">数据库知识点</a>
       <ul>
         <li><a href="#数据库锁">数据库锁</a></li>
+        <li><a href="#数据库索引结构">数据库索引结构</a></li>
         <li><a href="#聚簇索引">聚簇索引</a></li>
         <li><a href="#mysql-和-postgres-的区别">mysql 和 postgres 的区别</a></li>
       </ul>
     </li>
+    <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
 </div>

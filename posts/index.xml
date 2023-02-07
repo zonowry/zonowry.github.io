@@ -6,23 +6,23 @@
     <description>Recent content in 文章列表 on Zonowry 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>透明网关之重生之我是 iptables 大师</title>
+      <title>我的数据库优化手法果然有问题</title>
+      <link>/posts/performance-of-database/</link>
+      <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/performance-of-database/</guid>
+      <description>前言 身为一个后端开发，肯定都会写点数据库增删改查脚本。但牵扯到业务场景时，只会写增删改查是不太够的。优秀的数据库设计直接影响业务系统的响应速度，所以整</description>
+    </item>
+    
+    <item>
+      <title>clash 透明网关之重生之我是 iptables 大师</title>
       <link>/posts/gateway-of-clash-with-iptables-by-tproxy/</link>
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>/posts/gateway-of-clash-with-iptables-by-tproxy/</guid>
       <description>[!TIP] 本文非 clash 网关搭建教程，而是借代理网关的例子来学习了解 linux 网络的一些知识。不过也许能给正在搭建透明网关的你一些启发。 本文提到的旁路由、网关，若无特别说明</description>
-    </item>
-    
-    <item>
-      <title>我的数据库优化手法果然有问题</title>
-      <link>/posts/performance-of-database/</link>
-      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/performance-of-database/</guid>
-      <description>前言 身为一个后端开发，肯定都会写点数据库增删改查脚本。但牵扯到业务场景时，只会写增删改查是不太够的。优秀的数据库设计直接影响业务系统的响应速度，所以整</description>
     </item>
     
     <item>
@@ -53,12 +53,12 @@
     </item>
     
     <item>
-      <title>关于代码结构设计的一些思考</title>
+      <title>关于思考一些简单代码设计来领略高大上架构这件事</title>
       <link>/posts/project-thinking/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/project-thinking/</guid>
-      <description>其实本文标题我想命名为《通过思考一些低端代码结构设计来领略高大上技术知识这件事》来着 生疏而难理解的工程 网上冲浪时经常能看到微服务、分布式等技术分享。但</description>
+      <description>关于思考一些简单代码设计来领略高大上架构这件事 生疏而难理解的工程 网上冲浪时经常能看到微服务、分布式等技术分享。但我们大多数开发面向的都是政企小群体用户</description>
     </item>
     
   </channel>

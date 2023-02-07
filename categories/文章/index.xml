@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DDD on Zonowry 的博客</title>
-    <link>/tags/ddd/</link>
-    <description>Recent content in DDD on Zonowry 的博客</description>
+    <title>文章 on Zonowry 的博客</title>
+    <link>/categories/%E6%96%87%E7%AB%A0/</link>
+    <description>Recent content in 文章 on Zonowry 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ddd/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E6%96%87%E7%AB%A0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于思考一些简单代码设计来领略高大上架构这件事</title>
       <link>/posts/project-thinking/</link>
