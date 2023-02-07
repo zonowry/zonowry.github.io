@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>我的数据库优化手法果然有问题</title>
+      <link>/posts/performance-of-database/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/performance-of-database/</guid>
+      <description>前言 身为一个后端开发，肯定都会写点数据库增删改查脚本。但牵扯到业务场景时，只会写增删改查是不太够的。优秀的数据库设计直接影响业务系统的响应速度，所以整</description>
+    </item>
+    
+    <item>
       <title>垃圾回收知识梳理</title>
       <link>/posts/gc-note/</link>
       <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>

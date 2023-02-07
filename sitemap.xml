@@ -8,6 +8,9 @@
     <loc>/tags/clash/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/tags/database/</loc>
+    <lastmod>2023-01-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/tags/iptables/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
   </url><url>
@@ -20,6 +23,9 @@
     <loc>/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2023-01-02T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/posts/gateway-of-clash-with-iptables-by-tproxy/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
   </url><url>
@@ -27,6 +33,9 @@
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
+    <lastmod>2023-01-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/performance-of-database/</loc>
     <lastmod>2023-01-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/%E7%9F%A5%E8%AF%86/</loc>
