@@ -1,17 +1,13 @@
 ---
-title: 关于代码结构设计的一些思考
+title: 关于思考一些简单代码设计来领略高大上架构这件事
 date: 2022-12-22
-tags: [DDD, 设计模式]
+tags: [DDD,设计模式]
+categories: 文章
 toc: true
-categories: 知识
-description: "网上冲浪时经常能看到微服务、分布式等技术分享。但我们大多数开发面向的都是政企小群体用户，工作中很难实操这些技术。 也就在我们与高大上工程之间筑起了知识障壁。为了能理解高大上的技术，我们从简单的开始分析。
-
-所以接下来我们不聊庞大的工程设计，来看看如何从我们日常的工作中学习这些模式的底层思想。
-希望这篇文章能带来一点代码结构设计的启发，这层障壁或许会变薄一些。"
-
+mathjax: true
 ---
 
-    其实本文标题我想命名为《通过思考一些低端代码结构设计来领略高大上技术知识这件事》来着
+# 关于思考一些简单代码设计来领略高大上架构这件事
 
 ## 生疏而难理解的工程
 
@@ -21,12 +17,12 @@ description: "网上冲浪时经常能看到微服务、分布式等技术分享
 希望这篇文章能带来一点代码结构设计的启发，这层障壁或许会变薄一些。
 
 <!-- more -->
+***
 
----
 
 ## 从三层架构开始
 
-    最简单的架构，最单纯的思想。
+	最简单的架构，最单纯的思想。
 
 ### 为什么要分层
 
@@ -45,7 +41,7 @@ description: "网上冲浪时经常能看到微服务、分布式等技术分享
 @PostMapping("/user/register")
 fun registerUser(
     // 2. 提取请求体中的参数数据
-	@RequestParam name: String,
+	@RequestParam name: String, 
 	@RequestParam userRole: UserRole
 ) {
     // 3. 业务逻辑：用户名不能重复
@@ -63,7 +59,7 @@ fun registerUser(
 	user.password = encrypt(randomPwd())
 	user.registerTime = Instant.now()
 	user.role = userRole
-
+	
 	// 6. 持久化
 	database.save("insert into user values(?1)", user)
 }
@@ -72,18 +68,18 @@ fun registerUser(
 以上代码明显是一个面向过程式的写法。在项目简单时，没有任何问题。但是参与的人变多，项目代码量变大，会面临很多问题（代码重用、逻辑分散等）。
 
 所以我们尝试分析这块代码的职责，可以简单的划分一下哪些一些业务逻辑代码，哪些不是业务逻辑代码。
-
-- 首先函数声明部分帮我们从 http 请求中提取参数值以及将此方法映射成请求的处理方法，依靠的 `spring boot` 框架来实现。
-- 函数体部分是一些逻辑安全性校验和根据业务逻辑（随机密码，注册时间，用户角色）创建一个用户并保存到数据库中
-- 除此之外，还有一些明显的 SQL 语句对验证数据以及持久化数据提供支持
+*  首先函数声明部分帮我们从http请求中提取参数值以及将此方法映射成请求的处理方法，依靠的 `spring boot` 框架来实现。
+* 函数体部分是一些逻辑安全性校验和根据业务逻辑（随机密码，注册时间，用户角色）创建一个用户并保存到数据库中
+* 除此之外，还有一些明显的SQL语句对验证数据以及持久化数据提供支持
 
 分析完毕，首先我们把函数声明部分的注解，依赖 `spring` 技术框架的地方放到页面层，供外部（前端页面）调用。
 
 然后我们新增一个 `UserService` 服务类放到业务层，它有一个 `registry(xxx)` 方法。我们将业务逻辑部分代码放到该方法中。
 
-然后是持久化 `sql` 脚本，我们业务逻辑层只依赖一个数据访问接口，这个接口的具体实现就是这些 sql。
+然后是持久化 `sql` 脚本，我们业务逻辑层只依赖一个数据访问接口，这个接口的具体实现就是这些sql。
 
 最终大概写成这样就是简单的三层架构。
+
 
 ```kotlin
 
@@ -95,7 +91,7 @@ class UserController {
 	@PostMapping("/user/register")
 	fun registerUser(
 	    // 2. 提取请求体中的参数数据
-		@RequestParam name: String,
+		@RequestParam name: String, 
 		@RequestParam userRole: UserRole
 	) {
 		// 3. 调用业务层方法
@@ -108,7 +104,7 @@ class UserController {
 class UserService {
 	private val userDao: UserDao
 	fun registry(name: String, role: UserRole) {
-		// 业务逻辑：用户名不能重复
+		// 业务逻辑：用户名不能重复	    
 	    if (this.userDao.findByName(name) != null ) {
 		    throw RuntimeException("用户名已存在")
 	    }
@@ -125,7 +121,7 @@ class UserService {
 
 		// 持久化
 		this.userDao.save(user)
-
+	
 }
 
 // 数据访问层
@@ -136,17 +132,18 @@ interface UserDao {
 }
 
 // 文件：UserDaoImpl.kt
-class UserDaoImpl : UserDao {
-	// Sql 脚本实现
+class UserDaoImpl : UserDao { 
+	// Sql 脚本实现 
 }
 
 
 ```
 
-可见三层架构真的很简单，就像是把过程式的代码分开放了。我们主要理解我们是在划分职责就好，这样每块代码不牵扯多余地任务，只负责干好“自己”的事情，分层架构的优点：
 
-- 单向依赖
-- 隔离不同职责的代码块
+可见三层架构真的很简单，就像是把过程式的代码分开放了。我们主要理解我们是在划分职责就好，这样每块代码不牵扯多余地任务，只负责干好“自己”的事情，分层架构的优点：
+* 单向依赖
+* 隔离不同职责的代码块
+
 
 ## 面向接口
 
@@ -162,7 +159,7 @@ interface UserDAL {
     inserUser(user: User)
 }
 
-
+  
 class UserBLL {
 
 	private val dal : UserDAL = MysqlUserDAL()
@@ -187,7 +184,7 @@ class UserBLL {
 
 ### 依赖倒置（依赖注入）
 
-还是上面这个例子，我们发现我们抽象的还是不够彻底，我们在 BLL（业务层）还是能够看到 Oracle，Mysql 之类的技术实现细节。此时我们就可以通过接口的依赖倒置（依赖注入）来进一步抽象。我们可以改成这样
+还是上面这个例子，我们发现我们抽象的还是不够彻底，我们在BLL（业务层）还是能够看到Oracle，Mysql之类的技术实现细节。此时我们就可以通过接口的依赖倒置（依赖注入）来进一步抽象。我们可以改成这样
 
 ```kotlin
 interface UserDAL {
@@ -195,7 +192,7 @@ interface UserDAL {
     inserUser(user: User)
 }
 
-
+  
 class UserBLL(private val dal : UserDAL) {
   fun addUser() {
       dal.inserUser(xxx)
@@ -217,20 +214,23 @@ UserBLL(OracleUserDAL()
 
 可以发现，数据访问对象被我们声明成从构造函数中传入，我们编写业务逻辑代码时，就不再需要考虑用的是什么数据库了，降低了心智负担。
 
+
+
 ## 模型层
 
-三层架构对付很多小项目足够了，业务变大后，我们 BLL 层互相之间也会出现重用逻辑。我们会习惯性的封装各种对象 `Model` 。想必大家都叫作 `UserUtils` 之类的吧。可以将这个模型取一个更侧重业务的名字，例如上面提到的 `class User`。即形成了模型层，在 DDD 中也被称作领域层。
+三层架构对付很多小项目足够了，业务变大后，我们BLL层互相之间也会出现重用逻辑。我们会习惯性的封装各种对象 `Model` 。想必大家都叫作 `UserUtils` 之类的吧。可以将这个模型取一个更侧重业务的名字，例如上面提到的 `class User`。即形成了模型层，在 DDD 中也被称作领域层。
+
 
 ### 业务场景、业务模型
 
-我们将 `registry` 方法放到 User 类中。业务层转变为应用层，负责编排业务模型的方法。就初步形成了类似 DDD 模式的四层架构。我们的 Service（应用层）就只剩下了：
+我们将 `registry` 方法放到 User 类中。业务层转变为应用层，负责编排业务模型的方法。就初步形成了类似DDD模式的四层架构。我们的Service（应用层）就只剩下了：
 
 ```kotlin
-class UserService {
-	fun registry(name: String, role: UserRole) {
+class UserService { 
+	fun registry(name: String, role: UserRole) {		
 		// 用户名重名判断
 		if (this.userDao.findByName(name) != null)  {
-			return
+			return 
 		}
 		val user = new User(name, role)
 		user.registry()
@@ -294,14 +294,15 @@ class OrderBLL {
 
 最终从用户（调用者）方看，主要就是调用了一个 order.accpet(user) 方法而已，就完成了”同意订单”这个业务。我们需要调整逻辑时，也只需要查看 Order 类的业务方法。
 
+
 ## 结尾
 
-再深入一些其实就是领域驱动的内容了，如何建模模型层，以及会遇见的一些问题。和 DDD 中代码三难问题的取舍。
+再深入一些其实就是领域驱动的内容了，如何建模模型层，以及会遇见的一些问题。和DDD中代码三难问题的取舍。
 
-- 领域模型的纯度
-- 领域模型的完整度
-- 性能
+* 领域模型的纯度
+* 领域模型的完整度
+* 性能
 
-大部分情况下，我们在以上三个特性中，只能同时满足 2 个特性。所以回到工作中，我们只要确保自己有根据职责划分代码，时刻思考代码结构就好。最后放一个简单地分层图片，也是我们大多情况下使用的分层模式吧。很多开源大项目也都是基于这些分层的思考设计的。
+大部分情况下，我们在以上三个特性中，只能同时满足2个特性。所以回到工作中，我们只要确保自己有根据职责划分代码，时刻思考代码结构就好。最后放一个简单地分层图片，也是我们大多情况下使用的分层模式吧。很多开源大项目也都是基于这些分层的思考设计的。
 
 ![DDD-layer.png](/images/blog/DDD-layer.png)
