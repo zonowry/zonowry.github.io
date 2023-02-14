@@ -6,7 +6,7 @@ categories: 知识
 toc: true
 mathjax: true
 author: zonowry
-description: "身为一个后端开发，肯定都会写点数据库增删改查脚本。但牵扯到业务场景时，只会写增删改查是不太够的。优秀的数据库设计直接影响业务系统的响应速度，所以整理了一下数据库常用知识点。每个知识点我都想了一个业务场景，结合着简单聊一下。（阅读本文最好有一些多线程编程经验"
+description: "身为一个后端开发，肯定都会写点数据库增删改查脚本。但牵扯到业务场景时，只会写增删改查是不太够的。优秀的数据库设计直接影响业务系统的响应速度，所以整理了一些数据库优化相关的知识点，意识流的简单聊一下吧。（阅读本文最好有一些多线程编程经验"
 ---
 
 ## 前言
@@ -106,12 +106,11 @@ select age from user where age > 20;
 
 所以来看看 Postgres 和 MySQL(InnoDB) 底层设计的区别。Postgres 和 InnoDB 主要区别就是的表组织方式不同，Postgres 采用堆表的形式，InnoDB 则采用索引表。索引表若按照主键（聚集索引）查询会更快，因为堆表则没有聚集索引，全都是二级索引，多一次 IO。但索引表在非覆盖索引下的优势就不存在了。数据离散插入时，堆表物理数据不会受影响，只需要调整索引。索引表的索引分裂会影响物理数据的存储顺序，导致插入性能大大降低。
 
-InnoDB 采用线程模式处理多连接，能更好的利用机器内存。Postgres 采用进成模式处理多连接。
-
+InnoDB 采用线程模式处理多连接，能更好的利用机器内存。Postgres 采用进成模式处理多连接，资源开销更大一些，不过好像可以通过使用连接池中间件（[pgpool-II](https://www.pgpool.net/docs/pgpool-II-3.5.4/doc/pgpool-zh_cn.html)）来解决。
 
 
 
 ## 参考
 
 - [MySQL为什么不用数组、哈希表、二叉树等数据结构作为索引呢](https://www.modb.pro/db/78756)
-- [PostgreSQL 与 MySQL 相比，优势何在？ - 动力节点在线的回答 - 知乎](https://www.zhihu.com/question/20010554/answer/743955463)
+- [PostgreSQL与MySQL比较](http://bbs.chinaunix.net/thread-1688208-1-1.html)
