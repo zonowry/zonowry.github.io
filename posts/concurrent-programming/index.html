@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Draft：我们仍未确定那刻所看见的变量的状态 | Zonowry 的博客</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
+<script defer src="/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Noto&#43;Serif&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.8c77c7521b1f95ec2031c2a79f5c6a698aa4a0dba5ba649dfbc7f73994cddf3f494be6aac7e5724f35cbf72cfde09703.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="协程、反应式、异步、非阻塞、线程、进程、结构化并发、虚拟线程等等术语太多了。这些技术都可以让多个**任务**产生同时运行·中的效果，也就是并发执行，乍一看好像都是一回事嘛。为了彻底扫清迷雾，就来捋一捋并发编程相关知识，没有学术般的介绍，纯自己的心得总结，纯纯的私货，谨慎食用。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文章列表",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"Draft：我们仍未确定那刻所看见的变量的状态",
+      "item":"/posts/concurrent-programming/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/concurrent-programming/"
+    },
+    "headline": "Draft：我们仍未确定那刻所看见的变量的状态 | Zonowry 的博客","datePublished": "2023-02-15T00:00:00+00:00",
+    "dateModified": "2023-02-15T00:00:00+00:00",
+    "wordCount":  977 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "WANG Chucheng",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "协程、反应式、异步、非阻塞、线程、进程、结构化并发、虚拟线程等等术语太多了。这些技术都可以让多个**任务**产生同时运行·中的效果，也就是并发执行，乍一看好像都是一回事嘛。为了彻底扫清迷雾，就来捋一捋并发编程相关知识，没有学术般的介绍，纯自己的心得总结，纯纯的私货，谨慎食用。"
+}
+</script><meta property="og:title" content="Draft：我们仍未确定那刻所看见的变量的状态 | Zonowry 的博客" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/concurrent-programming/" />
+
+
+
+<meta property="og:description" content="协程、反应式、异步、非阻塞、线程、进程、结构化并发、虚拟线程等等术语太多了。这些技术都可以让多个**任务**产生同时运行·中的效果，也就是并发执行，乍一看好像都是一回事嘛。为了彻底扫清迷雾，就来捋一捋并发编程相关知识，没有学术般的介绍，纯自己的心得总结，纯纯的私货，谨慎食用。" />
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="Zonowry 的博客" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-02-15T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2023-02-15T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="java" />
+
+<meta property="article:tag" content="并发" />
+
+
+
+
+
+<meta property="og:see_also" content="/posts/gc-note/" />
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">Zonowry 的博客</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">首页</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文章</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+  
+  
+  <div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12">
+    <div
+      class=" bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"
+    >
+      <article class="prose">
+  <h1 class="mb-4">Draft：我们仍未确定那刻所看见的变量的状态</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-02-15</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>2分钟阅读时长</span>
+  </div>
+
+  
+    <div class="me-6 my-2">
+      <i class="fas fa-folder me-1"></i>
+      
+        <a href="/categories/%E7%9F%A5%E8%AF%86/" class="hover:text-eureka"
+          >知识</a
+        >
+      
+    </div>
+  
+
+  
+</div>
+
+
+  
+  
+
+  <blockquote>
+<p>从前有个程序员遇到了一个性能问题。他想，没事，我懂，用线程就好了。现他有在个两题了问。</p>
+</blockquote>
+<h2 id="前言">前言</h2>
+<p><strong>协程、反应式、异步、非阻塞、线程、进程、结构化并发、虚拟线程</strong>等等术语太多了。这些技术都可以让多个<strong>任务</strong>产生同时运行·中的效果，也就是多任务并发执行，乍一看好像都是一回事嘛。为了彻底扫清迷雾，就来捋一捋并发编程相关知识，没有学术般的介绍，纯自己的心得总结，纯纯的私货，谨慎食用。</p>
+<blockquote>
+<p>并发、并行、异步、非阻塞等术语就不过多讲究了，讲究下去，可能半篇都要用来介绍术语名词</p>
+</blockquote>
+<h2 id="理论指导实践">理论指导实践</h2>
+<p>接触 <strong>Thread、协程、webflux、rxjava、js 事件队列</strong>等具体技术框架的时候，也许看看 Api 文档就能懂一点原理、轻松上手，但有时候遇到复杂点的场景，问题就会在脑子里绕来绕去，捋不清执行过程。不过只要知道他们都是并发，然后抛开上层实现，从工作机理(?)层面上思考，我认为并发技术主要可以概括为以下两大类：</p>
+<ul>
+<li>抢占式：竞争控制权，A 任务与 B 任务互相抢占执行。通常指 cpu 时钟中断时多进程、多线程的工作模式，每次中断都代表一个线程抢到了时间片（控制权）。当然也可以在用户态实现一套抢占式的并发框架。</li>
+<li>协作式：也叫非抢占式，主动让渡控制权，A 任务与 B 任务可以在合适的时机主动让渡控制权。特点就是主动让出，这个主动性就说明我们是可以操作这个让渡时机的，减少了些不确定性，例如不确定何时线程会被操作系统中断，被其它线程抢走。我们就可以通过编程来实现。例如各大语言的协程。</li>
+</ul>
+<p>在操作系统的抢占式的机制下，单个程序想要并发执行，首先需要分割代码，然后让不同的代码块快速交替执行，看起来像同时运行一样，就是并发了。那如何让代码块适配操作系统的抢占式调度，线程就被设计出来了。我们编写代码时，如果想要这个代码并发执行，只需要 <code>new Thread</code>，接着 run it 。之后的事情就是操作系统调度了，我们不知道自己的代码块（线程）什么时候会被执行（一般很快）。</p>
+<p>，。协作式的特性可以让我们像编写同步代码一样，基本不需要考虑这么一看好像抢占式没有优势，协作式全是优点。但抢占式确有个必不可少特性，因为它能确保任务总能执行。总会有一个老大哥样的角色，例如”操作系统“，平等的对待每一个线程，确保每个线程都能跑几毫秒。如果是协作式，当一个任务耗时很长，迟迟不让渡，其它的任务就干巴巴等它完成了。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://jolestar.com/parallel-programming-model-thread-goroutine-actor/">并发之痛 Thread，Goroutine，Actor</a></li>
+</ul>
+
+</article>
+
+
+      
+        <div class="my-4">
+    
+    <a href="/tags/java/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#java</a>
+    
+    <a href="/tags/%E5%B9%B6%E5%8F%91/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 me-2 hover:text-eureka">#并发</a>
+    
+</div>
+      
+
+      
+
+
+
+      
+
+      
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/posts/performance-of-database/" class="block">我的数据库优化手法果然有问题</a>
+      
+    </div>
+  </div>
+
+
+      
+
+
+
+    </div>
+    
+      <div class="col-span-2">
+        
+        
+          <div
+  class="
+    bg-primary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc  hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#理论指导实践">理论指导实践</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+        
+      </div>
+    
+
+    
+    
+      <div
+        class=" bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"
+      >
+        <h3>相关</h3>
+        
+          <a href="/posts/gc-note/" class="no-underline">垃圾回收知识梳理</a>
+          <br />
+        
+      </div>
+    
+  </div>
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        hljs.highlightAll();
+      });
+    </script>
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text"> Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>
