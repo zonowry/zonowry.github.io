@@ -6,15 +6,14 @@
     <description>Recent content in 设计模式 on Zonowry 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于思考一些简单代码设计来领略高大上架构这件事</title>
       <link>/posts/project-thinking/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>/posts/project-thinking/</guid>
       <description>关于思考一些简单代码设计来领略高大上架构这件事 生疏而难理解的工程 网上冲浪时经常能看到微服务、分布式等技术分享。但我们大多数开发面向的都是政企小群体用户</description>
     </item>
-    
   </channel>
 </rss>

@@ -5,6 +5,7 @@
     <link>/authors/</link>
     <description>Recent content in Authors on Zonowry 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language><atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh</language>
+    <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -6,15 +6,14 @@
     <description>Recent content in database on Zonowry 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/database/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>我的数据库优化手法果然有问题</title>
       <link>/posts/performance-of-database/</link>
       <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>/posts/performance-of-database/</guid>
       <description>前言 身为一个后端开发，肯定都会写点数据库增删改查脚本。但牵扯到业务场景时，只会写增删改查是不太够的。优秀的数据库设计直接影响业务系统的响应速度，所以整</description>
     </item>
-    
   </channel>
 </rss>

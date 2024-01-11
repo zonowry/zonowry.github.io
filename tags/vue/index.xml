@@ -6,15 +6,14 @@
     <description>Recent content in Vue on Zonowry 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/vue/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/vue/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>浅谈三种主流前端框架的数据追踪渲染</title>
       <link>/posts/data-tracker-and-render-of-webfront/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>/posts/data-tracker-and-render-of-webfront/</guid>
       <description>本文主要分析 vue、react、angular 之间一些本质上的不同之处，更好地理解和学习前端框架。以及从框架中学习一些优良设计。 数据绑定与渲染 前端框架</description>
     </item>
-    
   </channel>
 </rss>
