@@ -6,8 +6,15 @@
     <description>Recent content in 文章列表 on Zonowry 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 15 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何写一手容易维护的代码</title>
+      <link>/posts/software-system-thinks/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/software-system-thinks/</guid>
+      <description>免责声明 程序员对抽象、设计可能会有不同的习惯。同样一个功能有人用发布订阅，有人用消息队列，他们都有自己的一套设计理念。最终是谁能说服谁的问题，哪一种方</description>
+    </item>
     <item>
       <title>Draft：我们仍未确定那刻所看见的变量的状态</title>
       <link>/posts/concurrent-programming/</link>
@@ -28,13 +35,6 @@
       <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
       <guid>/posts/gateway-of-clash-with-iptables-by-tproxy/</guid>
       <description>[!TIP] 本文非 clash 网关搭建教程，而是借代理网关的例子来学习了解 linux 网络的一些知识。不过也许能给正在搭建透明网关的你一些启发。 本文提到的旁路由、网关，若无特别说明</description>
-    </item>
-    <item>
-      <title>如何写一手容易维护的代码</title>
-      <link>/posts/software-system-thinks/</link>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>/posts/software-system-thinks/</guid>
-      <description>免责声明 程序员对抽象、设计可能会有不同的习惯。同样一个功能有人用发布订阅，有人用消息队列，他们都有自己的一套设计理念。最终是谁能说服谁的问题，哪一种方</description>
     </item>
     <item>
       <title>Arch &#43; Wayland 安装手册</title>

@@ -6,20 +6,20 @@
     <description>Recent content in Categories on Zonowry 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 15 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>文章</title>
+      <link>/categories/%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>/categories/%E6%96%87%E7%AB%A0/</guid>
+      <description></description>
+    </item>
     <item>
       <title>知识</title>
       <link>/categories/%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
       <guid>/categories/%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>文章</title>
-      <link>/categories/%E6%96%87%E7%AB%A0/</link>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>/categories/%E6%96%87%E7%AB%A0/</guid>
       <description></description>
     </item>
     <item>
