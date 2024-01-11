@@ -1,10 +1,11 @@
 ---
 title: 如何写一手容易维护的代码
-date: 2023-01-01
+date: 2024-01-01
 tags: [DDD]
 categories: 文章
 toc: true
 descriptions: "可能是关于软件系统架构、工程设计、代码抽象的一些思考。"
+author: zonowry
 ---
 
 # 免责声明
