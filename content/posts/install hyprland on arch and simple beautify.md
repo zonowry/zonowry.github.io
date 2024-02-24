@@ -20,6 +20,10 @@ keywords:
   - wayland
 ---
 
+首先展示成果
+
+![preview](/images/blog/arch/image-2024_02_25_03_47_36.png)
+
 ## 首先安装 Arch
 
 进入 live 。

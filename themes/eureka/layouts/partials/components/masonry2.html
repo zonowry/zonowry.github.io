@@ -1,0 +1,42 @@
+{{ with . }}
+<div class="mx-4 xl:mx-16">
+    <div class="masonry grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {{ range . }}
+        <div class="item">
+            <div class="grid-content">
+                <div class="bg-secondary-bg dark:border-tertiary-bg overflow-hidden rounded border transition duration-200 ease-in-out hover:shadow-lg"
+                    >
+                    {{ $featured := partial "utils/get-featured" . }}
+                    {{ with $featured }}
+                        {{ . }}
+                    {{ end }}
+                    <div class="prose px-6 pt-6 pb-4">
+                        <div class="no-underline">
+                            <i class="fas fa-calendar me-1"></i>
+                            <span
+                            >{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</span
+                            >
+                        <!-- <h3 class="mt-0">{{ .LinkTitle }}</h3> -->
+                        </div>
+                        <!-- <div class="text-tertiary-text not-prose flex flex-row flex-wrap items-center">
+                            <div class="me-6 my-2">
+                                <i class="fas fa-calendar me-1"></i>
+                                <span
+                                >{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</span
+                                >
+                            </div>
+                        </div> -->
+                        {{ .Content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        enableMasonry()
+    })
+</script>
+{{ end }}

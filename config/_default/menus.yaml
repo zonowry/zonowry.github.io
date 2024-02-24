@@ -5,3 +5,9 @@ main:
   - name: 文章
     url: /posts/
     weight: 2
+  - name: 碎碎念
+    url: /thinks/
+    weight: 3
+  - name: 友链
+    url: /firends/
+    weight: 4

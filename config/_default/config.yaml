@@ -8,7 +8,7 @@ paginate: 10
 theme: eureka
 # If you cannot access the Github mirror, you can also use the Gitee mirror: gitee.com/wangchucheng/hugo-eureka
 
-copyright:
+copyright: zonowry
 enableEmoji: true
 enableGitInfo: false
 summaryLength: 75

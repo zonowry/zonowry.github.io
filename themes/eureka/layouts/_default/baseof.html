@@ -16,7 +16,7 @@
       </div>
     </header>
     <main class="grow pt-16">
-      {{- if or .IsHome (and (eq .Type "authors") (eq .Kind "term")) }}
+      {{- if or .IsHome (and (eq .Type "authors") (eq .Kind "term")) (eq .Params.type "single") }}
         {{- block "main" . }}{{- end }}
       {{- else }}
         <div class="pl-scrollbar">
