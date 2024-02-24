@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[bookmine]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib\media\favicon.png</url><title>bookmine</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sat, 24 Feb 2024 16:28:43 GMT</lastBuildDate><atom:link href="lib\rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sat, 24 Feb 2024 16:28:37 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[如何写一手容易维护的代码]]></title><description><![CDATA[ 
+ <br><br>程序员对抽象、设计可能会有不同的习惯。同样一个功能有人用发布订阅，有人用消息队列，他们都有自己的一套设计理念。最终是谁能说服谁的问题，哪一种方式都不是绝对正确的，就像本文一样。<br>内容有点偏意识流，不过总结的都是些很简单的东西。文中提到的诸多“本质”，应该会再写一篇来举例说明吧。<br><br>人类的智商难以理解庞大而复杂的软件系统，所以我们尝试用抽象来设计软件，设法以人类的智商也可以理解庞大的软件系统。<br><br>管理自己的磁盘时，都会建立类似 Work、Software、Temp、Repo ...之类的文件夹。怎么分类文件夹最合理在这里不重要，重要的是分类文件夹前，肯定会进行的简单的设计。这个设计的思考过程我认为就是正在抽象。<br>举个不是很恰当的例子。我们不会为某一个 IDE 单独建立文件夹，来存放用它开发的代码文件。例如 Intellij Projects、Visual Studio Projects 。而是会尝试建立 Projects、Repo、Workspace 存放代码文件。这期间我们就是在抽象，把文件和具体的软件分离开，思考了这些文件的本质是”代码文件“，而非”某款软件的文件“。<br>抽象本质就是简化信息，是为了降低复杂度、是控制软件系统混乱程度的外在做功。<br><br>三层架构是一个很简单的，但抽象程度很高的模式。它可以解释大多数程序的组成：”有对外交互、有核心逻辑、有数据读写“。这就是它的高度抽象，把信息简化到了极致，所有程序都可以遵循三层架构模式写出来。三层本质是规范了代码边界，划分出三层边界：<br>
+<br>用户交互层：接收“用户”的输入，向“用户”输出处理结果。
+<br>核心逻辑层：只负责程序的核心“算法”，如何处理数据。
+<br>数据交互层：妥协层，内存实现不了持久化，抽象出一个数据读写层代替内存。
+<br>代码设计的前期阶段，如何思考出一个模块的组成部分？三层架构给了我们一个优秀的示范。不需要思考功能的太多细节，全力以赴的简化功能的细节，简单直接的阐述功能的本质。<br>不过三层架构太抽象了，就像将「用户注册」抽象成「新增数据」，相当于没有细节。如果只从三层中学到了“把代码按照交互、核心、读写划分”的话，那实现细节还是会剪不断理还乱。只会套用三层架构范式，而不去思考功能本质的软件最终会难以维护，也许是屎山多是三层架构的原因（风评被害）。<br><br>简单的东西却蕴藏大设计，架构大道反而在最简单的三层之中。只要适当的简化信息，边界划分的足够合适，架构最终会形成一个个聚合，开始有了领域驱动的味道。可难点就是边界如何划分的足够合适，信息如何简化才算符合抽象。<br>因为现实世界复杂的，软件系统的复杂度是不断熵增的。不变的设计总会有一天会遇到冲击。总会遇见两难抉择：重构还是硬怼？<br>例如我曾碰见的 getRowDef(rowIndex) ，起初这个方法是为了获取数据的类型定义，以此解析并转换数据内容。但后来 Excel 变的很复杂，我们需要根据内容来推断列定义。所以方法变成了 getRowDef(rowIndex, rowReader, totalLines, prevRowDef...)，多了很多参数，以便在方法内部推断此行的类型定义。变成了让人困惑的屎山代码：获取数据的类型定义，需要先读取数据，然后再拿定义去转换数据。理念上有了冲突，让人产生了困惑。但还是选择了硬怼，因为这样改动最省力，写好注释后也能让人理解。<br>看似上面例子重构一下成本也不大，但其实功能本质已经变了。也就是设计理念变了。类型定义和数据内容的关系变了。重构就要从类型定义和数据内容这种基层代码改起。结合实际工期限制，适当的抽象减轻维护难度就可以了。如果碰到设计瑕疵就要重构，反而会给自己增加压力，延后工期，浪费人力，失去工作。<br>《架构整洁之道》里提到：“软件架构的终极⽬标是，⽤最⼩的⼈⼒成本来满⾜构建和维护该系统的需求”。遇到设计瑕疵时，有重构的想法时，需要慎重思考自己新的设计，减少的维护复杂度和花费的精力相比是否值得。<br><br>百科对抽象的解释是「找出事物的本质，剥离其它表象、杂质，最终形成一个概念」。<br><br>务实的看，抽象可以帮助我们简化代码，封装复用、继承多态、接口声明。都是在抽象代码，以形成“某某功能”的概念，实现细节则是在具象（补完）这个概念。这个概念就是前文一直在提到的功能本质、设计理念等抽象的词汇。<br>使用第三方库时，遇到一些不清楚的方法，一般只需要在源码中找几个接口定义（注释）看看，或者阅读官网文档的 Api Reference 就能理解。这些框架都是作者的匠心之作，单从它们的版本发布就能略知一二，它们的更新维护通常都是非 breaks 的。屎山才会经常不停的重构，导致 breaks。<br>这些框架怎么做到的？虽然框架支持的特性多样且复杂。但框架作者依靠抽象简化了信息，思考本质。不论是修复 bug，还是新增功能，作者只需要确保框架的概念还是不变的。这里的概念相当于其抽象的出发点，或者本质。每次维护、更新只需要确定这个本质不会发生改变。<br><br>理解抽象，彻底的理解什么是“简化信息”很关键。并非是单纯的精简代码，而是一种形意拳。精简代码只是其形。意在降低复杂度。<br>我在《代码大全》里看到信息隐藏时，意识到到这个东西可以和简化信息联系起来，更直观的解释抽象。我们降低复杂度、抽象代码、简化信息。最终达成的效果就是隐藏了代码所蕴含的信息。<br>结合一段代码，有点极端但简单地例子。直观的看一下信息隐藏是什么。<br>// domain
+class User {
+	fun login(): Boolean {
+	     // 核心逻辑：只有周一允许登录
+	     return if(today() == '周一') true else false
+	}
+}
+
+// service
+fun loginService() {
+	val user = getUser()
+    if(!user.login()) {
+        // 错误的
+        return "登录失败，失败原因：只有周一才能登录"
+        // 正确的
+        return "登录失败" // “我”不知道失败原因，因为原因被“隐藏”了
+    } else {
+	    // ...
+    }
+}
+Copy<br>例子中，代码的边界体现在「今天是周一才能登录系统」这个核心逻辑。服务层不应该知道这个信息。只应根据业务对象的返回值来做判断，或者说我们隐藏了这个信息。<br>为什么”告知用户“「只有周一才能登录」的写法是错误的？因为核心逻辑层只返回了 false，没有说原因。服务层及更上层理应不知道原因，即使所有代码都是同一个程序员写的。<br>程序员应该克制，或者说欺骗自己。这样才能保持住代码的边界，即使告知用户「只有周一才能登录」是更好的用户体验，仅从代码设计来看，隐藏信息是首要的。<br>简单来说就是，“我”忘记了核心逻辑，业务对象只返回了一个 Boolean，只包含了“登录是否成功”这条信息。这样“我”的做法是「登录失败，但我不知道原因」就很合理了。<br>当然上边的例子有点极端。来点实际的例子，就像我们写 java，不用去理解 public void main() 背后发生了什么，只需要知道这是程序的主入口。这就是设计 java 语言的人，隐藏了信息，我们只需要往 main 方法里浇灌屎山代码就行了，降低不少复杂度。<br>简化信息，降低复杂度的本质，似乎就是信息隐藏。<br><br>再来理解依赖接口而非实现就很简单了，接口就是隐藏信息的集大成者，如果没有 go to implementation，就是在天然的在隐藏信息，达成：<br>
+<br>这个接口的实现是哪个同事写的？
+
+<br>我不在意（除非要找个人背锅了）
+
+
+<br>这个接口的实现具体做了什么，怎么写的，用到了什么技术？
+
+<br>关我什么事。我只关注它可以达成什么效果，我要给它什么参数，它返回了什么。
+
+
+<br>接口调用出错了，这可咋办？
+
+<br>确认调用方式没问题。那抽空修复、替换下实现吧。
+
+
+<br>就算脱离了接口实现，软件代码也能被理解。这样说明了简化信息很成功，复杂度理所应当的被降低了。<br><br>想要理解领域驱动，理解限界上下文必不可少。直接看限界上下文会感觉很抽象。不过通过信息隐藏，可以很简单的理解、接纳限界上下文的理念。<br><br>边界像是一种约束，只允许边界外知道边界内泄漏出的信息。例如登录失败的原因，只泄漏了 True 或 False，真正的登录失败原因，被我们隐藏起来了。<br>这种隐藏方式和我们在面向对象代码语言里的 private 私有特性密切相关。例如边界内的业务对象的 set 方法通常是私有的，不对外公开。这就是一种约束、或者隐藏。边界外只允许获取边界内公开的信息。<br>构成边界内/边界外的约束就可以理解为限界上下文。上下文内一个领域、一个聚合，都是一些很纯粹、完整的业务信息，因为他们被约束了，不会泄漏核心信息，不会被外界影响。上下文外则是服务层，应用层，包含诸多的技术细节等“噪音信息”。<br><br>约定大于配置你可能在某些技术框架里看到过这个理念，可以理解为一种更轻量的约束。这种约定随处可见：<br>
+<br>在 Spring 中，我们依赖注入一个 @Resource 。一般是不会特意配置 name 的 。而是采用默认的约定，即按属性名称注入。
+<br>Asp Net Core 会约定文件夹结构，如 Controller、Views... HomeController.Index()  会被”翻译“为 /Home/Index 路由等。
+<br>或者更通用的一种约定，客户端调用后端 REST 规范接口时，一般没有强制性的约束。意味着客户端无法确定接口的输入输出结构。这种情况多靠程序猿们之间的约定，如文档注释，甚至是口头传达。<br>这种约定看似需要我们多记住一些规则，增加了心智负担。但反过来想，如果没有这些约定，我们要做的工作是不是会更复杂，要显示配置很多东西，引入更多的技术框架，如 Swagger、Spring XML Configuration...<br>例子说的太多，有点偏上层应用了。回到约定的抽象意义。有时我们只想为特定的服务公开一些领域内的能力，但不可避免地泄漏了这部分能力给所有的服务，此时我们会定下约定：在注释里写上“只允许在 XXXXService 内使用此方法，所有程序员必须遵守此约定“。这条约定就成为了边界的一部分，为功能的抽象边界填砖加瓦。<br>总之，这些约定也可以形成边界。<br><br>受限于个人表达水平以及技术尚未炉火纯青。我只能分享这点个人理解了。然后推荐看些 DDD 相关的文章，就算不用，知道 DDD 中的诸多概念后，对写一手容易维护的代码会有很大的帮助。]]></description><link>article\如何写一手容易维护的代码.html</link><guid isPermaLink="false">Article/如何写一手容易维护的代码.md</guid><pubDate>Thu, 15 Feb 2024 15:16:03 GMT</pubDate></item><item><title><![CDATA[我们仍未确定那天所见变量的状态]]></title><description><![CDATA[ 
+ 从前有个程序员遇到了一个性能问题。他想，没事，我懂，用线程就好了。现他有在个两题了问。]]></description><link>article\我们仍未确定那天所见变量的状态.html</link><guid isPermaLink="false">Article/我们仍未确定那天所见变量的状态.md</guid><pubDate>Thu, 15 Feb 2024 15:16:03 GMT</pubDate></item><item><title><![CDATA[前言]]></title><description><![CDATA[ 
+ <br><br>尝试用 clash tun 模式来实现过网关，虽然过程很流畅也比较“新潮“，但对于我来说有点魔法了，因为比较难搞清楚 clash 帮我们做了哪些工作，出现问题不好找原因。也可能是我比较“洁癖” ，所以我采用了 iptables + tproxy 这种更加“简单“的方式，clash 只作为流量中继，流量包的路由都依靠 linux 内核的 netfilter 模块实现，这样搭建的网关会更加“可控”一点。<br>然后我看了不少 clash + linux netfilter(iptables/nftables) 搭建“富强”网关 的教程文章。步骤都是很简单的，照着做就能实现。但每个人总会有点特殊需求，不去理解这些步骤的奥秘，很难解决一些特殊问题。<br>我就是遇到了公网上无法访问我网关上的 docker 服务，debug 排查了好久，虽然最后凭感觉解决了。但一直没有理顺流量是怎么路由的，只是稍有眉目、模棱两可。所以我去尝试理解了过程中每个操作（命令）的底层逻辑，现在写篇文章梳理一下这些知识。<br><br>首先说说这一切的基石：linux 的 netfilter 模块及延伸工具 iptables。<br>iptables 只是个命令行工具，依赖 netfilter 内核模块，也即真正实现防火墙功能的是 linux 内核的 netfilter 模块。可惜不仅 iptables 的命令宛若天书，netfilter 的链路也错综复杂，很难去使用。想要理解使用这些工具或命令，必须得先了解一些 netfilter 与 iptables 的基础知识。<br><br>netfilter 提供了 5 个 hook 点，iptables 根据这些 hook 点，搞出了 链 (chain) 的概念，也就内置了 5 个默认链。可以看出 5 个 iptables chian 和 5 个 netfilter hook 一一对应。当然，我们可以添加自定义链，不过想要某个自定义链生效，需要追加一条从内置链跳转到这个自定义链的规则。因为内核的 5 个 hook 点只会触发这 5 个内置链。<br><br><br>iptables 为了更颗粒度的管理流量，又设计出 table 的概念。用 table 来组织这些链，可以理解为每个 table 根据其用处包含了不同的链。每个 table 都支持一些“动作“。例如 nat 表的 DNAT 动作支持重写目标地址。不过有些动作只在特定的 chain（或者说 hook）上才有意义。例如向 INPUT 链添加 DNAT 动作时，内核会抛出这个错误：ip_tables: DNAT target: used from hooks INPUT, but only usable from PREROUTING/OUTPUT。另一个例子是 mangle 表不允许添加 SNAT 等动作，所以一个动作需要 table + chain 都允许才能被添加。<br><br>每个 table 的 chain 当然也是有触发顺序的，具体顺序可以参考那张著名的 netfilter 流程图 ，或<a data-tooltip-position="top" aria-label="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" rel="noopener" class="external-link" href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" target="_blank">这篇文章</a>的介绍 。<br>
+<img title="netfilter 流程图" src="https://arthurchiao.art/assets/img/deep-dive-into-iptables-netfilter/Netfilter-packet-flow.svg" referrerpolicy="no-referrer">
+<br><br><br>要想把一台 linux 机器配置成有路由转发功能的机器，第一步需要用以下命令开启内核转发功能。<br>sysctl -w net.ipv4.ip_forward=1
+Copy<br>单单这条命令只是将 linux 机器做成中继路由，一般情况下没太大意义。我们还需要处理途径机器的流量。即设定规则将途径流量“路由（转发）”到本机某些程序上（常用如 clash 或者 v2ray ），经代理中转后再原路返回。达成“加速网络”的目的。 iptables 等相关工具就登场了。<br><br>linux 系统是可以作为主路由的，但一般的机器没有多个网口，所以都是作为旁路由来辅助主路由。既然作为旁路由来使用，我们只想代理加速公网流量，局域网内机器的流量肯定还是希望通过主路由来直连，没必要再来来回回途径一次旁路由了。所以需要添加一些转发规则，让旁路由跳过局域网内流量，原封不动转出去，让主路由继续去路由。<br>结合 netfilter 段落的知识，逆向思考一下要怎么做。首先我们要添加一些路由规则，这些规则最终肯定是注入到 netfilter hook 里的，可以通过 iptables chain 操作 netfikter hook。所以规则要添加到一个合适的 chain 里，iptables 又是通过 table 来组织管理 chain 的。我们还需要找一个合适的 table 来添加 chain（或者说规则）。思考了这些后，我们再回头看命令：<br># clash 链负责处理转发流量
+iptables -t mangle -N clash
+
+# 让所有流量通过 clash 链进行处理
+iptables -t mangle -A PREROUTING -j clash
+
+# 目标地址为局域网或保留地址的流量跳过处理
+iptables -t mangle -A clash -d 0.0.0.0/8 -j RETURN
+iptables -t mangle -A clash -d 127.0.0.0/8 -j RETURN
+iptables -t mangle -A clash -d 10.0.0.0/8 -j RETURN
+iptables -t mangle -A clash -d 172.16.0.0/12 -j RETURN
+iptables -t mangle -A clash -d 192.168.0.0/16 -j RETURN
+iptables -t mangle -A clash -d 169.254.0.0/16 -j RETURN
+iptables -t mangle -A clash -d 224.0.0.0/4 -j RETURN
+iptables -t mangle -A clash -d 240.0.0.0/4 -j RETURN
+Copy<br>
+<br>首先我们新建了一个自定义链管理规则：iptables -t mangle -N clash
+<br>然后从内置链 PREROUTING 跳转而来：iptables -t mangle -A PREROUTING -j clash 
+
+<br>当然我们可以直接不写这两句，直接将规则添加到 PREROUTING 链。但那样写不是很规范，不推荐直接向内置链（这里是 PREROUTING ）添加规则。
+
+
+<br>然后追加局域网IP直连规则到 clash 表中<br>
+我们使用的表是 mangle 表，链是  链。<br>
+总而言之，最终实现了局域网机器流量发到旁路由时，旁路由发现目标地址是局域网内ip，跳过处理，转发出去给到主路由，就是主路由和源主机直接通信了，之后的网络传输本网关就不会参与了。
+<br><br>由于上一步我们跳过了内部（局域网内）流量，剩下的流量基本就是外部（互联网）流量了。这些外部流量应该要转发到 clash 中进行透明代理。<br>虽然可以简单的通过 REDIRECT 动作将流量转发到 7893 端口。但 REDIRECT 不能很好的支持 UDP 流量。所以采用 TPROXY 方式，这样 TCP 和 UDP 都能支持。<br># tproxy 7893（clash） 端口，并打上 mark 666 命中策略，走 666 路由表
+iptables -t mangle -A clash -p tcp -j TPROXY --on-port 7893 --tproxy-mark 666
+iptables -t mangle -A clash -p udp -j TPROXY --on-port 7893 --tproxy-mark 666
+
+# 转发所有 DNS 查询到 1053 端口
+# 此操作会导致所有 DNS 请求全部返回虚假 IP(fake ip 198.18.0.1/16)
+iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to 1053
+
+# 添加策略与路由表（）
+ip rule add fwmark 666 lookup 666
+ip route add local 0.0.0.0/0 dev lo table 666
+Copy<br>前两句 iptables 命令，追加了两条 TPROXY 规则。将 tcp &amp; udp 流量转发到 clash 的 7893 端口，且打了 666 标记。<br>因为 TPROXY 不会修改 IP 数据包，数据包的 dest ip 一般都是外网地址，所以数据包下一跳会直接 forward 转出到下一跳机器上。因此 TPROXY 大部分情况都需要搭配 ip route 策略路由一起使用。比如我们这里就是新建了一个名为 666 的路由表，此路由表会将所有数据包发到本地回环上。这样就阻断了 forward 过程，相当于让（ tproxy 过的）数据包重新走一边网络栈流程。这样数据包就可以转发到 7893 端口上了，然后我们只让有 666 标记的数据包经过此路由表。<br><br>经过以上步骤，局域网内的其它机器已可以正常使用本网关了。当然，一台 llinux 机器只用来当一个网关太浪费了，还可以跑各种服务以及日常使用。顺便将本机的流量也代理一下，也即代理本机发出（经过 OUTPUT 链）的数据包。<br>首先与上一步类似的步骤，将本机发出的流量（OUTPUT）打上标记，触发重新路由。这样本机发出的流量就和局域网内其它机器进入的流量相同了，路由的流程也就一样了。不过 OUTPUT 上的数据包也会包含 clash 发出流量，这样会出现数据包死循环，得处理一下。只需要跳过 clash 程序发出的数据包，避免死循环。用 clash 用户启动 clash 程序，根据 uid 跳过数据包即可。。<br># clash_local 链负责处理网关本身发出的流量
+iptables -t mangle -N clash_local
+
+# nerdctl 容器流量重新路由
+#iptables -t mangle -A clash_local -i nerdctl2 -p udp -j MARK --set-mark 666
+#iptables -t mangle -A clash_local -i nerdctl2 -p tcp -j MARK --set-mark 666
+
+# 跳过内网流量
+iptables -t mangle -A clash_local -d 0.0.0.0/8 -j RETURN
+iptables -t mangle -A clash_local -d 127.0.0.0/8 -j RETURN
+iptables -t mangle -A clash_local -d 10.0.0.0/8 -j RETURN
+iptables -t mangle -A clash_local -d 172.16.0.0/12 -j RETURN
+iptables -t mangle -A clash_local -d 192.168.0.0/16 -j RETURN
+iptables -t mangle -A clash_local -d 169.254.0.0/16 -j RETURN
+iptables -t mangle -A clash_local -d 224.0.0.0/4 -j RETURN
+iptables -t mangle -A clash_local -d 240.0.0.0/4 -j RETURN
+
+# 为本机发出的流量打 mark
+iptables -t mangle -A clash_local -p tcp -j MARK --set-mark 666
+iptables -t mangle -A clash_local -p udp -j MARdocK --set-mark 666
+
+# 跳过 clash 程序本身发出的流量, 防止死循环(clash 程序需要使用 "clash" 用户启动) 
+iptables -t mangle -A OUTPUT -p tcp -m owner --uid-owner clash -j RETURN
+iptables -t mangle -A OUTPUT -p udp -m owner --uid-owner clash -j RETURN
+
+# 让本机发出的流量跳转到 clash_local
+# clash_local 链会为本机流量打 mark, 打过 mark 的流量会重新回到 PREROUTING 上
+iptables -t mangle -A OUTPUT -j clash_local
+Copy<br><br>也可以说外网访问局域网内机器（非网关机器）的问题。我们这样配置好后，会发现无法从外网访问内网的 docker 服务（设置路由器端口转发）。可以通过手机流量访问测试。<br>我是参考该 <a data-tooltip-position="top" aria-label="https://github.com/Dreamacro/clash/issues/432#issuecomment-571634905" rel="noopener" class="external-link" href="https://github.com/Dreamacro/clash/issues/432#issuecomment-571634905" target="_blank">github issue</a> 受到了启发，最终解决了。<br># 跳过 docker0 的 ip 范围。即跳过 docker 服务的出站数据包
+sudo iptables -t mangle -A clash -p tcp -s 172.18.0.0/16 -j RETURN
+Copy<br>然后以下是个人的推测，可能有误，仅供参考。<br>首先手机入站数据包经过路由器，NAT 到 docker 服务（网关机器）上。此时因为 dest ip 是内网 ip，clash 链 会跳过。DOCKER 链 接手处理，通过 DNAT 转发到了 docker0 bridge 网卡上，这几步都很正常。顺利到达 docker 容器。<br>随后是 docker 容器的出站数据包，此时数据包会从 docker0 bridge 发到宿主机的物理网卡 eth 网卡。这时数据包之于宿主机来说，是一个入站数据包。数据包会经过 PREROUTING 链，jump 到 clash 链，而此时的 dest ip 为手机的 ip 。会被转发到 clash 上处理，但这个数据包只在出站时转发给 clash 处理。入站的时候跳过了。估计 clash 无法处理这个数据包，可能就丢弃了。就出现了外网无法访问内网 docker 容器的问题。<br>所以根据 source ip 判断， 将 docker 容器的数据包也跳过。跳过后就解决了～<br><br>
+<br><a data-tooltip-position="top" aria-label="https://moecm.com/something-about-v2ray-with-tproxy/" rel="noopener" class="external-link" href="https://moecm.com/something-about-v2ray-with-tproxy/" target="_blank">第一篇万字长文：围绕透明代理的又一次探究</a>
+<br><a data-tooltip-position="top" aria-label="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" rel="noopener" class="external-link" href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" target="_blank">「译」深入理解 iptables 和 netfilter 架构</a>
+<br><a data-tooltip-position="top" aria-label="https://mritd.com/2022/02/06/clash-tproxy/" rel="noopener" class="external-link" href="https://mritd.com/2022/02/06/clash-tproxy/" target="_blank">树莓派 Clash 透明代理(TProxy)_</a>
+<br><a data-tooltip-position="top" aria-label="https://github.com/mritd/tpclash/wiki/2%E3%80%81%E8%BF%9B%E9%98%B6%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6" rel="noopener" class="external-link" href="https://github.com/mritd/tpclash/wiki/2%E3%80%81%E8%BF%9B%E9%98%B6%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6" target="_blank">tpclash wiki - 2、进阶流量控制</a> 。
+<br><a data-tooltip-position="top" aria-label="https://tinychen.com/20200414-iptables-principle-introduction/" rel="noopener" class="external-link" href="https://tinychen.com/20200414-iptables-principle-introduction/" target="_blank">iptables的四表五链与NAT工作原理&nbsp;_</a>
+<br><a rel="noopener" class="external-link" href="https://www.zhaohuabing.com/learning-linux/docs/tproxy/" target="_blank">https://www.zhaohuabing.com/learning-linux/docs/tproxy/</a> 
+]]></description><link>article\iptables-+-clash-透明网关实践与总结.html</link><guid isPermaLink="false">Article/iptables + clash 透明网关实践与总结.md</guid><pubDate>Thu, 15 Feb 2024 15:16:03 GMT</pubDate><enclosure url="https://arthurchiao.art/assets/img/deep-dive-into-iptables-netfilter/Netfilter-packet-flow.svg" length="0" type="image/svg+xml"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;https://arthurchiao.art/assets/img/deep-dive-into-iptables-netfilter/Netfilter-packet-flow.svg&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Zonowry‘s Blog]]></title><description><![CDATA[ 
+ <br><br>错误的活着，还是正确的挂掉？<br><br>
+<br><a data-href="如何写一手容易维护的代码" href="\article\如何写一手容易维护的代码.html" class="internal-link" target="_self" rel="noopener">如何写一手容易维护的代码</a>
+<br><a data-href="iptables + clash 透明网关实践与总结" href="\article\iptables-+-clash-透明网关实践与总结.html" class="internal-link" target="_self" rel="noopener">iptables + clash 透明网关实践与总结</a>
+<br>Draft：<a data-href="我们仍未确定那天所见变量的状态" href="\article\我们仍未确定那天所见变量的状态.html" class="internal-link" target="_self" rel="noopener">我们仍未确定那天所见变量的状态</a>
+<br>Draft：<a data-href="Arch 安装手册" href="\article\draft\arch-安装手册.html" class="internal-link" target="_self" rel="noopener">Arch 安装手册</a>
+<br><br>
+<br>github: <a data-tooltip-position="top" aria-label="https://github.com/zonowry" rel="noopener" class="external-link" href="https://github.com/zonowry" target="_blank">zonowry</a>
+<br>mail: <a data-tooltip-position="top" aria-label="mailto:zonowry@outlook.com" rel="noopener" class="external-link" href="mailto:zonowry@outlook.com" target="_blank">zonowry@outlook.com</a>
+]]></description><link>index.html</link><guid isPermaLink="false">Index.md</guid><pubDate>Sat, 24 Feb 2024 16:23:55 GMT</pubDate></item></channel></rss>
