@@ -2,11 +2,11 @@
 title: Zonowry 的博客
 draft: false
 avatar: images/avatar.png
-bio: 不骄傲自大，不妄自菲薄
+bio: 错误的活着，还是正确的挂掉？
 social:
   - icon: envelope
     iconPack: fas
-    url: mailto:kaakira@outlook.com
+    url: mailto:zonowry@outlook.com
   # - icon: bilibili
   #   iconPack: fa
   #   url: https://bilibili.com/kasyoumi
