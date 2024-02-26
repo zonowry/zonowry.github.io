@@ -8,7 +8,6 @@ title: 如何写一手容易维护的代码
 descriptions: 关于软件系统架构、工程设计、代码抽象的一些思考。
 creation date: 2023-12-01
 
-
 description: 关于软件系统架构、工程设计、代码抽象的一些思考。
 date: 2024-01-18
 toc: true
