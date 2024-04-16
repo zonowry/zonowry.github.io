@@ -17,7 +17,26 @@ keywords:
   - 在 PVE 容器上部署 k3s + rancher
 ---
 
-## 设置 LXC 权限
+## 折腾历程
+
+目的本来是实操 `k8s` 的，部署时搞了一堆花里胡哨的（不过对理解 k8s 各种“组件”很有帮助）：
+
+> 部署工具：kubeadm
+> 容器运行时 CRI： cri-o
+> 容器底层交互接口 OCI ：crun
+> 容器网络 CNI： cilium
+
+不过部署完这套，小鸡性能吃紧，遂换到了 `k3s`。
+
+但将 `k3s` 作为 `HomeServer` 使用一段时间后，手写各种 depolyment yaml 很是折磨，远不比 `docker-compose` 方便，维护工作反而变麻烦了，一度想放弃折腾。
+
+不过心底还是想坚持用 `k8s` ~~(大概是跟风吧）~~，痛点不过是手写 `yaml`，命令行看日志等等琐碎操作，这些问题 `rancher` 都可以解决。~~不过写一些 `k8s` 的 `yaml` 后再用 webui 会很容易上手。~~
+
+> 也有其它的 management，不过 rancher 比较流行，虽然**很重**。轻量一点的也有一个 [GitHub - skooner-k8s.](https://github.com/skooner-k8s/skooner)，没啥资源的家庭服务器感觉可以考虑。
+
+## LXC 前置条件
+
+### 1. LXC 的权限
 
 设置容器 /proc /sys 读写权限、cgroup 权限等
 
@@ -34,6 +53,52 @@ lxc.cgroup.devices.allow: a
 lxc.cap.drop:
 lxc.mount.auto: "proc:rw sys:rw"
 ```
+
+### 2. 为容器创建 /dev/kmsg
+
+容器一般不存在 /dev/kmsg 内核日志，`k3s` 大概会向此“文件”输出消息，所以需要保证容器启动后存在这个文件，容器里存在一个 /dev/console，可以用这个“文件”作替身用。
+
+- 自动创建 /dev/kmsg
+
+```bash
+vim /usr/local/bin/conf-kmsg.sh
+```
+
+```bash
+#!/bin/sh -e
+if [ ! -e /dev/kmsg ]; then
+        ln -s /dev/console /dev/kmsg
+fi
+mount --make-rshared /
+```
+
+- 创建 systemd 开机执行脚本
+
+```bash
+vim /etc/systemd/system/conf-kmsg.service
+```
+
+```ini
+[Unit]
+Description=Make sure /dev/kmsg exists
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/conf-kmsg.sh
+TimeoutStartSec=0
+[Install]
+WantedBy=default.target
+```
+
+- 启用生效
+
+```bash
+chmod +x /usr/local/bin/conf-kmsg.sh  
+systemctl daemon-reload  
+systemctl enable --now conf-kmsg
+```
+
+# 参考
 
 ## 安装 k3s
 
@@ -101,8 +166,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 helm install rancher rancher-stable/rancher --namespace cattle-system --set hostname=rancher.my.org --set bootstrapPassword=admin --version 2.8.3
 ```
 
-
-## 部署一个 NEO4J 熟悉一下（可选）
+## 最后部署一个 NEO4J 熟悉一下 rancher（可选）
 
 - 新建个持久化卷资源
 	- `PersistentVolumes`
