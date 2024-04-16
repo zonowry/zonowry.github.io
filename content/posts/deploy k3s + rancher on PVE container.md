@@ -98,8 +98,6 @@ systemctl daemon-reload
 systemctl enable --now conf-kmsg
 ```
 
-# 参考
-
 ## 安装 k3s
 
 - 从官方中国源安装，默认装最新版
