@@ -2,7 +2,7 @@
 title: Zonowry 的博客
 draft: false
 avatar: images/avatar.png
-bio: 错误的活着，还是正确的挂掉？
+bio: no worry, everything will be over in the end.
 social:
   - icon: envelope
     iconPack: fas

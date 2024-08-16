@@ -4,8 +4,8 @@ tags:
   - nat
   - network
 name: NAT in different environments
-title: NAT 穿透在不同环境下的表现
-descriptions: 给我一根网线，我可以在北极打开家里那台笨重但大马力的台式机。接着坐在冰面上，望着电脑桌面上不重样的游戏图标。当一阵寒风吹过，回神时发现手里亮着的手机，正循环播放着一种黑色丝绸类的竖屏视频。
+title: "Drafft: NAT 穿透在不同环境下的表现"
+description: 给我一根网线，我可以在北极打开家里那台笨重但大马力的台式机。接着坐在冰面上，望着电脑桌面上不重样的游戏图标。当一阵寒风吹过，回神时发现手里亮着的手机，正循环播放着一种黑色丝绸类的竖屏视频。
 date: 2024-08-16
 toc: true
 isCJKLanguage: true
