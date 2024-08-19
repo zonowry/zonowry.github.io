@@ -4,18 +4,17 @@ tags:
   - nat
   - network
 name: NAT in different environments
-title: "Drafft: NAT 穿透在不同环境下的表现"
-description: 给我一根网线，我可以在北极打开家里那台笨重但大马力的台式机。接着坐在冰面上，望着电脑桌面上不重样的游戏图标。当一阵寒风吹过，回神时发现手里亮着的手机，正循环播放着一种黑色丝绸类的竖屏视频。
+title: NAT 穿透在不同环境下的差异
+description: 愿数据包出走半生，归来时还是我们期望的那个样子
 date: 2024-08-16
-toc: true
-isCJKLanguage: true
 keywords:
   - zonowry
-  - network
-  - nat
   - wireguard
   - tailscale
-  - headscale
+  - vpn
+  - network
+isCJKLanguage: true
+toc: true
 ---
 
 ## 前言
@@ -37,6 +36,8 @@ wireguard 已经足够“完整“了。跨平台的客户端、声明式的配�
 最终采用了 headscale，是 tailscale 服务器的开源版，基于 wireguard 实现。也算是一个 wireguard 自动化配置工具。简单配置下即可实现端到端直连需求，tailscale 客户端会自动添加 iptables 规则等路由操作。
 
 回到正题，接下来从简单到困难，盘点下 NAT 穿透的各种难度。
+
+
 ## 最简陋的环境
 
 首先抽象一个“很简陋”的 NAT 环境下的端到端直连，简陋是指对端防火墙允许一切传入。此时只要一端想办法得到对端的公网地址后，就可以直连。如何得到对端的公网地址也很简单，架设一个类似 DDNS 服务的“协调器”，两个端点访问协调器时，协调器自然可以看到端点的公网地址。
@@ -81,26 +82,29 @@ Hard NAT 就是依赖目的地址那种了，特点是：内网机器就算用�
 
 众所周知端口的数量只有 65535 个，让 Easy NAT 背后的端点暴力猜测那个“专属”端口也不是不可以~~（傲娇早就退环境了啊！）~~。不过从 1 开始遍历有点傻，让 Hard NAT 背后的端点多开点 socket 向 Easy NAT 发几次包，再利用点算法（生日悖论）提高猜中的概率。
 
-当Easy NAT 猜中后，就可以基于这个猜中的端口通信了~~（可以继续愉快的为所欲为了）~~。
-
+当 Easy NAT 一端猜中端口，就可以基于这个端口通信了。
 
 ## 搞不定的环境
 
-当一端是 Easy NAT，另一端是 Hard NAT 的话，限制又多了一个穿透必须由 Hard NAT 端发起。但只要从 STUN 服务器拿到对端IP，再花费几秒钟猜测一次端口，这也是可以接受的。
+当一端是 Easy NAT，另一端是 Hard NAT 的话，限制又多了一个穿透必须由 Hard NAT 端发起。但只要从 STUN 服务器拿到对端 IP，再花费几秒钟猜测一次端口，这也是可以接受的。
 
-可当两端都是 Hard NAT 呢？所以 STUN 服务器是无法在两端都是 Hard Nat 情况下的协助打洞的，只能走中转方案。
+可当两端都是 Hard NAT 呢？记得吗，Hard NAT 的映射规则是：\[socket,dest ip:port\]，一端打开的每个端口（socket）猜测对端端口时，会映射一个新的端口，对端也是同理，一端的每个端口都要猜 65535 次，单纯暴力的话大概需要两端各进行 65535\^2 次，如此巨大的复杂度就算上生日悖论算法也是难以接受。
 
+所以在两端都是 Hard Nat 情况下的继续采用 STUN 协助打洞目前来看有点不太现实，只能走中转方案。
 
+## 99.99% 可以成功的环境
 
-本文可以当作 tailscale + headscale 搭建手册食用，不过更多的是梳理一些碎片知识，以便理解我们到底在配置些什么。
+最常见的一种 NAT 实现就是 Linux 内核 netfilter 框架了，用 iptables 等工具可以简单的配置转换规则，连接的应答包也会自动应用“反向规则”。例如我们只需要配置 SNAT，当应答数据包经过 netfilter hook 时，会自动应用 DNAT （反向 SNAT）。
 
-最终我的打洞&组网方式是”tailscale + headscale“。
+这都依托于有状态防火墙的链路追踪，基于这个特性，我们可以得出结论：不管两端的链路经历了多少 NAT 设备节点，最关键的 NAT 节点，始终只有距离发出端和接收端最近的那两个 NAT 节点。就像引用透明的函数式，不管函数多么复杂，其没有副作用。~~（正如本文的引言，数据包出走半生，归来时一定得是 NAT 设备期望的返回，令人忍俊不禁）~~
 
-> 百分百成功率让两个 peer 打洞直连，至少有一个 peer 持有公网 IP，且可以配置这个 peer 的 NAT 设备的端口转发，目的是转发 tailscale 监听的 41641 端口。这里要问了，可以配置端口转发了，还打什么洞。这种情况下利用 tailscale 打洞的优点是只需要转发一个 41641 端口，安全性只交给 tailscale（wireguard）。 
-> 
-> 有公网 ip 的话，即使不配置端口转发，成功率也是很高的，只要线路上没有 `hard nat` 设备。
-
+综上所述，只要确认有一端是 Easy NAT 就 `99.99%` 可以让 N2N 转为 P2P。当出现一端是 Easy NAT 却没有打洞成功的话。肯定是经过了奇奇怪怪的“NAT”，例如各种 proxy vpn。与 STUN 通信经过了 proxy，发出端变成了 proxy 节点，距离发出端最近的 NAT 也就变成了 proxy 节点的 NAT。对于这个 NAT ，我们能做的只有什么都不做。
 
 ## 百分百可以成功的环境
 
+端口转发，或者公网 ip，选一个吧。
 
+## 参考
+
+- [\[译\] NAT - 网络地址转换（2016）](https://arthurchiao.art/blog/nat-zh/)
+- [\[译\] 深入理解 iptables 和 netfilter 架构](https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/)
