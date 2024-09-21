@@ -1,28 +1,23 @@
 ---
-tags:
-  - article
-  - arch
-  - hyprland
-creation date: 2024-02-16 04:12:28
 name: install hyprland on arch and simple beautify
-title: "Arch + Hyprland 安装美化手册"
-description: "对 CJK 输入法用户最友好的一集"
+title: Arch + Hyprland 安装美化手册
+description: 对 CJK 输入法用户最友好的一集
 date: 2024-09-20
-tag:
-  - article
-  - blog
-  - hyprland
-  - archlinux
 keywords:
-  - zonowry
-  - hyprland
-  - arch
-  - linux
-  - btrfs
-  - theme
-  - fcitx
+- zonowry
+- hyprland
+- linux
+- arch
+- btrfs
+- theme
+- fcitx
 isCJKLanguage: true
 toc: true
+tag:
+- article
+- blog
+- hyprland
+- archlinux
 ---
 
 > !TIPS
@@ -33,6 +28,7 @@ toc: true
 首先展示成果
 
 ![preview](/images/blog/arch/image-2024_02_25_03_47_36.png)
+
 
 ## 进入 Arch LiveCD 开始安装
 
@@ -129,6 +125,7 @@ neovim \
 networkmanager \
 openssh \
 git \
+git-lfs
 zsh \
 grub \
 efibootmgr \
@@ -405,6 +402,32 @@ paru -S phinger-cursors
 
 安装好主题图标后，依次使用 `kvantum`、`nwg-look`、`qt5ct`、`qt6ct` 软件应用下主题图标即可，qt5ct/qt6ct 的主题选择 kvantum。最后重启 Hyprland 让主题生效。
 
+### 命令行美化
+
+```bash
+pacman -S fzf
+```
+
+- oh-my-zsh
+
+```shell
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+
+- zsh 插件，有些是自带的，第三方插件都有 git 仓库。
+
+以下都可以通过例如  `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestion` 来安装。
+
+```bash
+sudo
+git
+zsh-autosuggestions
+zsh-syntax-highlighting
+fzf-zsh-plugin
+docker
+docker-compose
+zsh-shift-select
+```
 ## 备份
 
 一系列繁琐操作后，得到了一个纯净的系统，当务之急是备份当前环境，避免重装。得益于 btrfs，备份十分简单。
