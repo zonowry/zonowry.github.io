@@ -5,13 +5,14 @@ tags:
   - hyprland
 creation date: 2024-02-16 04:12:28
 name: install hyprland on arch and simple beautify
-title: Arch + Hyprland 安装美化手册
-description: 对 CJK 输入法用户最友好的一集
-tags:
-  - article
-  - nat
-  - network
+title: "Arch + Hyprland 安装美化手册"
+description: "对 CJK 输入法用户最友好的一集"
 date: 2024-09-20
+tag:
+  - article
+  - blog
+  - hyprland
+  - archlinux
 keywords:
   - zonowry
   - hyprland
@@ -23,6 +24,11 @@ keywords:
 isCJKLanguage: true
 toc: true
 ---
+
+> !TIPS
+> 文中提到的软件配置、dotfiles相关都可以在
+> [zonowry/dotfiles](https://github.com/zonowry/dotfiles) 仓库中找到。
+
 
 首先展示成果
 
