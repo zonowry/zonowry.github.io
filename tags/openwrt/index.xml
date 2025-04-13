@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OpenWRT on Zonowry</title><link>https://blog.zonowry.com/tags/openwrt/</link><description>Recent content in OpenWRT on Zonowry</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>zonowry</copyright><lastBuildDate>Mon, 01 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zonowry.com/tags/openwrt/index.xml" rel="self" type="application/rss+xml"/><item><title>红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤</title><link>https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/</link><pubDate>Sun, 31 Mar 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/</guid><description>&lt;img src="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39.png" alt="Featured image of post 红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤" />&lt;h2 id="启用路由器的-telnet">启用路由器的 telnet
+&lt;/h2>&lt;p>为了启用 telnet，需要手动升级路由器固件到开发版，开发版固件可以在 &lt;a class="link" href="https://github.com/YangWang92/AX6S-unlock" target="_blank" rel="noopener"
+>GitHub - YangWang92/AX6S-unlock&lt;/a> 仓库下载。(&lt;a class="link" href="https://github.com/YangWang92/AX6S-unlock/blob/master/miwifi_rb03_firmware_stable_1.2.7.bin" target="_blank" rel="noopener"
+>miwifi_rb03_firmware_stable_1.2.7.bin&lt;/a>)&lt;/p>
+&lt;h2 id="通过-sn-码获取路由器-root-密码">通过 SN 码获取路由器 root 密码
+&lt;/h2>&lt;p>在网页 &lt;a class="link" href="https://miwifi.dev/ssh" target="_blank" rel="noopener"
+>Xiaomi Router Developer Guide &amp;amp; Tools&lt;/a> 内输入路由器 SN 码，计算出 root 密码。&lt;/p>
+&lt;h2 id="telnet-登录路由器开启-ssh-等服务">Telnet 登录路由器开启 ssh 等服务
+&lt;/h2>&lt;p>登录 telnet，用户名 root，密码你刚刚拿到了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">telnet 192.168.31.1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>执行以下三条命令，开启些服务，主要是 ssh，照做就是了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">ssh_en&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">uart_en&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">boot_wait&lt;/span>&lt;span class="o">=&lt;/span>on &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">bootdelay&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">3&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">flag_try_sys1_failed&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">flag_try_sys2_failed&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">flag_boot_rootfs&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="s2">&amp;#34;boot_fw1=run boot_rd_img;bootm&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">flag_boot_success&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram commit &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> /etc/init.d/dropbear &lt;span class="nb">enable&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> /etc/init.d/dropbear start
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="下载纯净原版的-immortalwrt-固件">下载纯净（原版）的 ImmortalWrt 固件
+&lt;/h2>&lt;p>&lt;a class="link" href="https://firmware-selector.immortalwrt.org/" target="_blank" rel="noopener"
+>ImmortalWrt Firmware Selector&lt;/a>&lt;/p>
+&lt;p>搜索自己的路由器型号，下载 &lt;strong>factory.bin&lt;/strong>。&lt;del>如果没有话只能自己编译了&lt;/del>&lt;/p>
+&lt;h2 id="通过-scp-上传固件">通过 scp 上传固件
+&lt;/h2>&lt;p>scp 上传刚刚下载的原版固件。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">scp path/to/file/factory.bin root@192.168.31.1:/tmp
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后 ssh 登录路由器，刷写 openwrt 固件。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 刷入上一步 scp 传过来的底包&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mtd -r write /tmp/factory.bin firmware
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="访问-openwrt-配置-lan-接口">访问 openwrt 配置 lan 接口
+&lt;/h2>&lt;p>原版的 openwrt 网址是 &lt;code>192.168.1.1&lt;/code>。这个 IP 地址可能会和光猫冲突，所以首先编辑 &lt;code>网络/接口/lan&lt;/code>，修改网段为你喜欢的，例如 &lt;code>10.0.0.1&lt;/code>。&lt;/p>
+&lt;h2 id="配置路由器拨号">配置路由器拨号
+&lt;/h2>&lt;p>配置好 lan 接口后，再配置下 wan 口的 PPPoE 信息，确保路由器可以联网~&lt;/p>
+&lt;h2 id="安装-argon-管理界面主题">安装 argon 管理界面主题
+&lt;/h2>&lt;p>仓库地址： &lt;a class="link" href="https://github.com/jerrykuku/luci-theme-argon" target="_blank" rel="noopener"
+>GitHub - jerrykuku/luci-theme-argon&lt;/a>。&lt;/p>
+&lt;p>安装的版本：&lt;a class="link" href="https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.3.1/luci-theme-argon_2.3.1_all.ipk" target="_blank" rel="noopener"
+>2.3.1&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">opkg install luci-compat
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">opkg install luci-lib-ipkg
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># scp path\to\file\luci-theme-argon_2.3.1_all.ipk root@10.0.0.1:/tmp&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装 scp 传递下载好的 ipk&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">opkg install /tmp/luci-theme-argon*.ipk
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="安装-openclash">安装 openclash
+&lt;/h2>&lt;p>仓库地址： &lt;a class="link" href="https://github.com/vernesong/OpenClash" target="_blank" rel="noopener"
+>GitHub - OpenClash&lt;/a>。&lt;/p>
+&lt;p>安装的版本：&lt;a class="link" href="https://github.com/vernesong/OpenClash/releases/tag/v0.46.003-beta" target="_blank" rel="noopener"
+>v0.46.003-beta&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 同理先使用 scp 上传到路由器，然后 opkg 安装&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">opkg install /tmp/luci-app-openclash_0.46.003-beta_all.ipk
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安装后重启路由器，就可以看到“服务”菜单了。按照自己需求配置 &lt;code>openclash&lt;/code> ，接入&lt;strong>互联网&lt;/strong>。&lt;/p>
+&lt;p>&lt;img src="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39.png"
+width="931"
+height="690"
+srcset="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39_hu_4171761ed476956d.png 480w, https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39_hu_2c9784e0a5f1e60b.png 1024w"
+loading="lazy"
+alt="preview"
+class="gallery-image"
+data-flex-grow="134"
+data-flex-basis="323px"
+>&lt;/p>
+&lt;h2 id="为什么不装整合包">为什么不装整合包
+&lt;/h2>&lt;p>整合包挺方便的，不过内核都比较老旧，直接更新还容易变砖。而且大多服务/插件都没什么用。&lt;/p>
+&lt;p>这样是获得了一个最新版本的 openwrt 内核，不会再碰见内核版本不兼容问题了，可以放心的安装各种新版插件了。&lt;/p>
+&lt;p>最主要的是它很&lt;strong>干净&lt;/strong>哇！&lt;/p>
+&lt;h2 id="参考">参考
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.right.com.cn/forum/thread-8187405-1-1.html" target="_blank" rel="noopener"
+>\[2-2\]AX6S 闭源无线驱动 Openwrt 刷机教程/固件下载-小米无线路由器及小米网络设备-恩山无线论坛&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.right.com.cn/forum/thread-8290496-1-1.html" target="_blank" rel="noopener"
+>360T7 安装 immortalwrt 官方原版固件（含 Luci Web 页面），供新手参考-360 无线路由器及其他 360 网络设备-恩山无线论坛&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

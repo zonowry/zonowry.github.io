@@ -1,202 +1,383 @@
-<!doctype html><html lang=zh dir=ltr><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Arch + Hyprland 安装美化手册 | Zonowry 的博客</title><meta name=generator content="Hugo Eureka 0.9.3"><link rel=stylesheet href=https://blog.zonowry.com/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css><script defer src=https://blog.zonowry.com/js/eureka.min.fa9a6bf6d7a50bb635b4cca7d2ba5cf3dfb095ae3798773f1328f7950028b48c17d06276594e1b5f244a25a6c969a705.js></script>
-<link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload='this.onload=null,this.rel="stylesheet"'><link rel=stylesheet href=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css media=print onload='this.media="all",this.onload=null' crossorigin><script defer src=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js crossorigin></script>
-<script defer src=https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js crossorigin></script>
-<link rel=stylesheet href=https://blog.zonowry.com/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css media=print onload='this.media="all",this.onload=null'><script defer type=text/javascript src=https://blog.zonowry.com/js/fontawesome.min.8c77c7521b1f95ec2031c2a79f5c6a698aa4a0dba5ba649dfbc7f73994cddf3f494be6aac7e5724f35cbf72cfde09703.js></script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css integrity=sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ media=print onload='this.media="all",this.onload=null' crossorigin><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js integrity=sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY crossorigin></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}]})})</script><script defer src=https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js integrity=sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0 crossorigin></script>
-<link rel=icon type=image/png sizes=32x32 href=https://blog.zonowry.com/images/avatar_hu592978886036387a2c13d6a63e534067_442061_32x32_fill_box_center_3.png><link rel=apple-touch-icon sizes=180x180 href=https://blog.zonowry.com/images/avatar_hu592978886036387a2c13d6a63e534067_442061_180x180_fill_box_center_3.png><meta name=description content="对 CJK 输入法用户最友好的一集"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"文章列表","item":"https://blog.zonowry.com/posts/"},{"@type":"ListItem","position":2,"name":"Arch + Hyprland 安装美化手册","item":"https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/"},"headline":"Arch \u002b Hyprland 安装美化手册 | Zonowry 的博客","datePublished":"2024-09-20T00:00:00+00:00","dateModified":"2024-09-20T00:00:00+00:00","wordCount":2329,"publisher":{"@type":"Person","name":"WANG Chucheng","logo":{"@type":"ImageObject","url":"https://blog.zonowry.com/images/avatar.png"}},"description":"对 CJK 输入法用户最友好的一集"}</script><meta property="og:title" content="Arch + Hyprland 安装美化手册 | Zonowry 的博客"><meta property="og:type" content="article"><meta property="og:image" content="https://blog.zonowry.com/images/avatar.png"><meta property="og:url" content="https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/"><meta property="og:description" content="对 CJK 输入法用户最友好的一集"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Zonowry 的博客"><meta property="article:published_time" content="2024-09-20T00:00:00+00:00"><meta property="article:modified_time" content="2024-09-20T00:00:00+00:00"><meta property="article:section" content="posts"><meta property="og:see_also" content="https://blog.zonowry.com/posts/nat-in-different-environments/"><meta property="og:see_also" content="https://blog.zonowry.com/posts/deploy-k3s-+-rancher-on-pve-container/"><meta property="og:see_also" content="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/"><meta property="og:see_also" content="https://blog.zonowry.com/posts/how-to-do-safe-concurrent-programming/"><meta property="og:see_also" content="https://blog.zonowry.com/posts/how-to-write-code-that-is-easy-to-maintain/"><meta property="og:see_also" content="https://blog.zonowry.com/posts/build-a-proxy-gateway-based-on-iptables-and-clash/"><body class="flex min-h-screen flex-col"><header class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"><div class="mx-auto w-full max-w-screen-xl"><script>let storageColorScheme=localStorage.getItem("lightDarkMode");((storageColorScheme=="Auto"||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches||storageColorScheme=="Dark")&&document.getElementsByTagName("html")[0].classList.add("dark")</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="me-6 text-primary-text text-xl font-bold">Zonowry 的博客</a>
-<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
-<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent me-4">首页</a>
-<a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item me-4">文章</a>
-<a href=/thinks/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent me-4">碎碎念</a>
-<a href=/firends/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent me-4">友链</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
-<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
-<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById("lightDarkMode");storageColorScheme==null||storageColorScheme=="Auto"?document.addEventListener("DOMContentLoaded",()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",switchDarkMode)}):storageColorScheme=="Light"?(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","sun"),element.firstElementChild.classList.add("fa-sun")):storageColorScheme=="Dark"&&(element.firstElementChild.classList.remove("fa-adjust"),element.firstElementChild.setAttribute("data-icon","moon"),element.firstElementChild.classList.add("fa-moon")),document.addEventListener("DOMContentLoaded",()=>{getcolorscheme(),switchBurger()})</script></div></header><main class="grow pt-16"><div class=pl-scrollbar><div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8"><div class="grid grid-cols-2 gap-4 lg:grid-cols-8 lg:pt-12"><div class="bg-secondary-bg col-span-2 rounded px-6 py-8 lg:col-span-6"><article class=prose><h1 class=mb-4>Arch + Hyprland 安装美化手册</h1><div class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"><div class="me-6 my-2"><i class="fas fa-calendar me-1"></i>
-<span>2024-09-20</span></div><div class="me-6 my-2"><i class="fas fa-clock me-1"></i>
-<span>5分钟阅读时长</span></div></div><blockquote><p>!TIPS
-文中提到的软件配置、dotfiles相关都可以在
-<a href=https://github.com/zonowry/dotfiles>zonowry/dotfiles</a> 仓库中找到。</p></blockquote><p>首先展示成果</p><p><img src=/images/blog/arch/image-2024_02_25_03_47_36.png alt=preview></p><h2 id=进入-arch-livecd-开始安装>进入 Arch LiveCD 开始安装</h2><h3 id=硬盘分区>硬盘分区</h3><p>先使用 <code>fdisk</code> 对磁盘分区，至少需要创建一个 <code>fat</code> 格式分区，存放 <code>efi</code> 引导文件。和一个 <code>btrfs</code> 主分区，存放系统文件。</p><blockquote><p>下文使用 /dev/nvme0n1 作为例子。</p></blockquote><pre><code class=language-bash>fdisk /dev/nvme0n1 # 选择一块硬盘进行分区
-&gt; g # gpt 分区表，uefi 启动
-&gt; n # 新建分区
-&gt; ...
-&gt; w # 保存退出
-</code></pre><h3 id=格式化磁盘>格式化磁盘</h3><pre><code class=language-bash># 主分区
-mkfs.vfat /dev/nvme0n1p1
-mkfs.btrfs -L arch-btrfs /dev/nvme0n1p2 # 建立 btrfs 分区并命名 Label
-</code></pre><h3 id=挂载分区--初始化-btrfs>挂载分区 & 初始化 btrfs</h3><pre><code class=language-bash>mkdir -p /mnt/efi
-mount /dev/sda1 /mnt/efi
-</code></pre><p>挂载主分区安装系统到磁盘。</p><blockquote><p>btrfs 压缩算法区别 <a href=https://btrfs.readthedocs.io/en/latest/Compression.html#incompressible-data>Compression</a></p></blockquote><pre><code class=language-bash>mount -t btrfs -o compress=zstd /dev/nvme0n1p2 /mnt
-btrfs subvol create /mnt/@
-btrfs subvol create /mnt/@home
-btrfs subvol create /mnt/@var-cache
-btrfs subvol create /mnt/@var-temp
-btrfs subvol create /mnt/@opt
-btrfs subvol create /mnt/@swap
-
-umount /mnt
-mount -t btrfs -o compress=zstd,subvol=@ /dev/nvme0n1p2 /mnt
-mount --mkdir -t btrfs -o subvol=@home /dev/nvme0n1p2 /mnt/home
-mount --mkdir -t btrfs -o subvol=@opt /dev/nvme0n1p2 /mnt/opt
-mount --mkdir -t btrfs -o subvol=@var-cache /dev/nvme0n1p2 /mnt/var/cache
-mount --mkdir -t btrfs -o subvol=@var-temp /dev/nvme0n1p2 /mnt/var/temp
-
-btrfs fi mkswapfile /mnt/swap/swapfile --uuid clear --size 16G
-swapon /swap/swapfile
-</code></pre><h3 id=替换-pacman-安装源>替换 pacman 安装源</h3><p>加速 <code>pacman</code> 安装速度。用 <code>reflector</code> 自动配置 <code>pacman</code> 使用国内镜像源。</p><pre><code class=language-bash>reflector --age 24 --country China --sort rate --verbose --protocol http --protocol https --save /etc/pacman.d/mirrorlist
-</code></pre><p><del>也可以编辑 mirrorlist 文件，解开 <code>[China]</code> 下的镜像源注释并注释掉官方源，或者用手机上网搜索最新的国内 archlinuxcn 镜像源吧，然后手动敲上。</del></p><h3 id=pacman-配置>pacman 配置</h3><p>如果安装时遇到签名错误，应该可以通过以下方式解决。<del>如果你的 <code>live</code> 不是很新那么大概率会签名错误，所以推荐先执行以下，也没坏处。</del></p><pre><code class=language-bash>pacman-key --init
-pacman-key --populate archlinux
-# Syy 刷新下
-pacman -Syy archlinux-keyring
-</code></pre><h3 id=开始安装>开始安装：</h3><p>下载安装系统内核，以及网络管理、ssh 之类的<strong>必备软件</strong>。</p><blockquote><p>PS：如果是当作日常桌面系统使用，系统内核推荐安装 <code>linux-zen</code> ，看 <a href=https://liquorix.net/>linux-lqx(zen) 官网介绍</a> 是比较适合桌面/游戏用户的。但会遇到因为不是官方标准内核，所以会碰见部分驱动需要用 <code>dkms</code> 自己编译的情况。例如 <code>nvidia</code> ，简单起见就先用 <code>linux</code> 标准内核吧，以后可以再安装切换到 <code>linux-zen</code>，也不麻烦。</p></blockquote><blockquote><p>PPS：如果你是 intel 就安装 intel-ucode，amd 就安装 amd-ucode（大概是这个名字，参考 archlinux wiki 吧）。</p></blockquote><pre><code class=language-bash>pacstrap /mnt \
-linux \
-linux-firmware \
-base \
-sudo \
-neovim \
-networkmanager \
-openssh \
-git \
-git-lfs
-zsh \
-grub \
-efibootmgr \
-intel-ucode \
-base-devel \
-devtools \
-btrfs-progs
-</code></pre><h3 id=chroot-进入系统>chroot 进入系统</h3><p>安装完成后，进入系统，方便后续做一些处理。</p><pre><code class=language-bash>arch-chroot /mnt
-ln -s /usr/bin/nvim /usr/bin/vim
-</code></pre><h3 id=grub-启动项配置>grub 启动项配置</h3><pre><code class=language-bash>mkdir /efi
-# 挂载第一步创建的 vfat 分区
-mount /dev/sda1 /efi
-# grub uefi 启动项
-grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
-
-# TODO
-vim /etc/default/grub
-
-# loglevel=5, nowatchdog
-
-# grub 引导/菜单配置
-grub-mkconfig -o /boot/grub/grub.cfg
-</code></pre><h3 id=添加用户>添加用户</h3><p>设置用户密码，配置普通用户 sudo 权限。</p><blockquote><p>用户名「zonowry」改成自己的即可。</p></blockquote><pre><code class=language-bash>useradd -m zonowry
-# 为新用户设置密码
-passwd zonowry
-# 为 root 设置密码
-passwd root
-# 允许新用户使用 sudo 命令， 这里我设置了 sudo 免密码，可以去掉
-echo &quot;zonowry ALL=(ALL) NOPASSWD:NOPASSWD:ALL&quot; &gt;&gt; /etc/sudoers
-</code></pre><h3 id=fstab-配置>fstab 配置</h3><p>设置系统启动时自动挂载的分区，退出 <code>arch-chroot</code> ，通过 <code>arch</code> 安装脚本自动生成 <code>fstab</code> 配置。</p><pre><code class=language-bash>exit # 退出 chroot /mnt 环境
-genfstab /mnt &gt; /mnt/etc/fstab
-</code></pre><p>建议验证下，生成的是否正确</p><pre><code class=language-bash>cat /mnt/etc/fstab
-</code></pre><p>![[image-2023_09_25_16_44_46.png]]</p><h2 id=重启进入系统>重启进入系统</h2><p>上边的步骤做完，重启应该就可以引导并进入系统了。</p><h3 id=初始化网络>初始化网络</h3><pre><code class=language-bash>systemctl enable NetworkManager
-systemctl start NetworkManager
-
-systemctl enable sshd
-systemctl start sshd
-</code></pre><h3 id=时区本地化配置>时区本地化配置</h3><pre><code class=language-bash>timedatectl set-ntp true # ntp 同步时间
-timedatectl set-timezone Asia/Shanghai
-timedatectl # 查看验证
-</code></pre><h3 id=语言本地化配置>语言本地化配置</h3><p>可能影响一些系统的提示语言，货币和时间的显示格式。</p><blockquote><p>程序员的话建议就用 en_US.utf8 吧，一些命令报错，英文的话比较好搜索解决方法。</p></blockquote><pre><code class=language-bash>vim /etc/locale.gen
-# 解除 en_US.UTF-8 的注释，
-# :wq 保存退出
-
-# 生成
-locale-gen
-localectl set-locale LANG=en_US.UTF-8
-</code></pre><h3 id=aur-客户端>Aur 客户端</h3><p>一般使用 <code>yay</code> ，不过我图新鲜用的 <code>paru</code> 。其实也不知道具体啥区别，到底哪个好用。感觉除了开发语言不同，功能上都差不多吧。</p><p>去 <code>paru</code> 的 <code>github</code> release 页面下载二进制包，然后解压创建 <code>/usr/bin/paru</code> 软链接就好了。</p><pre><code class=language-bash># 或者直接 `wget` ，需要自己判断版本链接。
-wget https://github.com/Morganamilo/paru/releases/download/v1.11.2/paru-v1.11.2-x86_64.tar.zst
-
-# tar 解压 paru-v1.11.2-x86_64.tar.zst
-tar xvf paru-v1.11.2-x86_64.tar.zst
-mkdir /opt/paru
-mv ./paru /opt/paru
-chmod +x paru
-ln -s /opt/paru/paru  /usr/bin/paru
-
-paru -Syyu
-</code></pre><h2 id=hyprland-安装>hyprland 安装</h2><p><code>hyprland</code>，一款平铺桌面管理器。动画流畅，丰富的自定义选项。最好配合 <code>hyprland</code> 官网食用。</p><pre><code class=language-bash>pacman -Sy hyprland
-</code></pre><p>安装后可以命令行执行 <code>Hyprland</code> 启动小窥一眼，默认配置比较简陋，<code>win+M</code> 退出继续折腾。</p><p>hyprland 的配置例如动画样式、窗口规则、按键绑定、屏幕设置等不是很重要，默认配置也够用了，且个人差异太大，找个自己喜欢的 dotfiles 参考即可。比较重要的配置是环境变量</p><h3 id=byprland-环境变量>byprland 环境变量</h3><p>亲身感受下来是很多疑难杂症都可能和某个环境变量有关，只能靠多搜索多踩坑。</p><blockquote><p>每个人环境不一样，所以也仅供参考。</p></blockquote><pre><code class=language-bash># Some default env vars.
-env = XDG_CURRENT_DESKTOP,Hyprland
-env = XCURSOR_SIZE,24
-env = QT_QPA_PLATFORMTHEME,qt6ct # change to qt6ct if you have that
-# env = LIBVA_DRIVER_NAME,nvidia
-env = XDG_SESSION_TYPE,wayland
-# env = GBM_BACKEND,nvidia-drm
-env = GDK_BACKEND,wayland
-# env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-env = WLR_NO_HARDWARE_CURSORS,1
-env = OZONE_PLATFORM,wayland
-# env = GLFW_IM_MODULE,ibus
-env = QT_IM_MODULE,fcitx
-env = XMODIFIERS,@im=fcitx
-env = LANG,zh_CN.UTF-8
-env = LANGUAGE,zh_CN:en_US
-env = JDK_JAVA_OPTIONS,-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
-env = _JAVA_AWT_WM_NONREPARENTING,1
-env = AWT_TOOLKIT,MToolkit
-env = JAVA_HOME,/opt/apps/jdk/jdk1.8.0_261
-</code></pre><h2 id=桌面配置--常用应用>桌面配置 & 常用应用</h2><p>以下软件大多都和 dotfiles 配置相关，可以在 <a href=https://github.com/zonowry/dotfiles>dotfiles</a> 找到各个软件对应的配置。例如 <code>~/.config/fontconfig/fonts.conf</code> 字体配置。</p><h3 id=must-have>Must Have</h3><blockquote><p>中文字体是必备的，但也看个人喜好。不过字体对 waybar 等应用影响比较大，很容易出现在编辑器里很好看，但在 GUI 界面上很难看（对不齐之类的）。需要自己调整或者采用别人的挑选好的字体。</p></blockquote><pre><code class=language-bash># 权限
-pacman -Sy polkit-kde-agent \
-dunst \
-pipewire \
-wireplumber \
-xdg-desktop-portal-hyprland \
-xdg-desktop-portal-wlr \
-xdg-desktop-portal-gtk \
-qt5-wayland \
-qt6-wayland 
-# 字体
-ttf-lxgw-wenkai \
-ttf-iosevka-nerd \
-wqy-microhei
-
-
-
-paru -S ttf-cascadia-code-nerd \
-ttf-lxgw-wenkai-screen \
-noto-fonts-emoji \
-ttf-firecode-nerd \
-ttf-material-design-icons-extended
-
-fc-cache -vf # 刷新字体缓存
-</code></pre><h3 id=输入法>输入法</h3><p>得益于 Hyprland 作者好像也是日语输入法用户，所以 Hyprland 的 input-method 相关协议较其它 wayland 合成器更为完善。现在 Hyprland 安装 chrome，fcitx5 之后，基本是开箱即用了，~~（只需要设置 fcitix5 环境变量与 electron flags）~~好起来了！</p><pre><code class=language-bash>pacman -S fcitx5-im \
-fcitx5-rime \
-fcitx5-configtool \
-fcitx5-material-color
-</code></pre><p>强推下雾凇拼音 <a href=https://github.com/iDvel/rime-ice>https://github.com/iDvel/rime-ice</a></p><pre><code class=language-bash>paru -S rime-ice-git
-</code></pre><h3 id=常用软件>常用软件</h3><blockquote><p>下列应用不一定适合所有人，大多都有平替，仅供参考。</p></blockquote><pre><code class=language-bash>pacman -Sy kitty \
-wofi \
-waybar \
-thunar \
-nfs-utils
-</code></pre><pre><code class=language-bash>paru -Sy visual-studio-code-bin \
-google-chrome
-</code></pre><h2 id=美化>美化</h2><h3 id=前置软件>前置软件</h3><pre><code class=language-bash>paru -Sy kvantum \
-qt5ct \
-qt6ct \
-nwg-look
-</code></pre><p>以下是我采用的主题图标，若不喜欢。也可以去 <a href=https://pling.com>pling.com</a> 找自己喜欢的，安装方式大同小异。</p><h3 id=主题>主题</h3><pre><code class=language-bash>git clone --depth=1 https://github.com/vinceliuice/Orchis-kde.git
-cd ./Orchis-kde
-./install.sh
-</code></pre><h3 id=图标>图标</h3><pre><code class=language-bash>git clone --depth=1 https://github.com/vinceliuice/Tela-icon-theme.git
-cd ./Tela-icon-theme
-./install.sh -a
-</code></pre><h3 id=指针>指针</h3><p><a href=https://github.com/phisch/phinger-cursors>phinger-cursors</a></p><pre><code class=language-bash>paru -S phinger-cursors
-# 打开 nwg-look 设置指针即可
-</code></pre><p>安装好主题图标后，依次使用 <code>kvantum</code>、<code>nwg-look</code>、<code>qt5ct</code>、<code>qt6ct</code> 软件应用下主题图标即可，qt5ct/qt6ct 的主题选择 kvantum。最后重启 Hyprland 让主题生效。</p><h3 id=命令行美化>命令行美化</h3><pre><code class=language-bash>pacman -S fzf
-</code></pre><ul><li>oh-my-zsh</li></ul><pre><code class=language-shell>git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-</code></pre><ul><li>zsh 插件，有些是自带的，第三方插件都有 git 仓库。</li></ul><p>以下都可以通过例如 <code>git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestion</code> 来安装。</p><pre><code class=language-bash>sudo
-git
-zsh-autosuggestions
-zsh-syntax-highlighting
-fzf-zsh-plugin
-docker
-docker-compose
-zsh-shift-select
-</code></pre><h2 id=备份>备份</h2><p>一系列繁琐操作后，得到了一个纯净的系统，当务之急是备份当前环境，避免重装。得益于 btrfs，备份十分简单。</p><blockquote><p>timeshift 只会备份名为 @、@home 的子卷，够用了。</p></blockquote><pre><code class=language-bash>sudo pacman -S timeshift grub-btrfs
-</code></pre><blockquote><p>timeshift 需要 root， wofi 调起 timeshift，polkit 输入密码后，没有反应。懒得排查原因了，只能 sudo -E timeshift-gtk 启动了，问题不大。</p></blockquote><pre><code class=language-bash>sudo -E timeshift-gtk
-</code></pre><p>按照操作来即可创建一个快照了。</p><h2 id=小技巧>小技巧</h2><ul><li><code>wev</code><ul><li>命令行工具，查看键码</li></ul></li><li><code>hyprctl clients</code><ul><li>查看当前客户端列表信息，可以用来排查是否是 xwayland 启动。</li></ul></li></ul></article><div class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"><div></div><div class="mt-4 md:mt-0 md:text-right"><span class="text-primary-text block font-bold">下一页</span>
-<a href=https://blog.zonowry.com/posts/nat-in-different-environments/ class=block>NAT 穿透在不同环境下的差异</a></div></div></div><div class=col-span-2><div class="bg-primary-bg
-prose sticky top-16 z-10 hidden px-6 py-4 lg:block"><h3>本页内容</h3></div><div class="sticky-toc hidden px-6 pb-6 lg:block"><nav id=TableOfContents><ul><li><a href=#进入-arch-livecd-开始安装>进入 Arch LiveCD 开始安装</a><ul><li><a href=#硬盘分区>硬盘分区</a></li><li><a href=#格式化磁盘>格式化磁盘</a></li><li><a href=#挂载分区--初始化-btrfs>挂载分区 & 初始化 btrfs</a></li><li><a href=#替换-pacman-安装源>替换 pacman 安装源</a></li><li><a href=#pacman-配置>pacman 配置</a></li><li><a href=#开始安装>开始安装：</a></li><li><a href=#chroot-进入系统>chroot 进入系统</a></li><li><a href=#grub-启动项配置>grub 启动项配置</a></li><li><a href=#添加用户>添加用户</a></li><li><a href=#fstab-配置>fstab 配置</a></li></ul></li><li><a href=#重启进入系统>重启进入系统</a><ul><li><a href=#初始化网络>初始化网络</a></li><li><a href=#时区本地化配置>时区本地化配置</a></li><li><a href=#语言本地化配置>语言本地化配置</a></li><li><a href=#aur-客户端>Aur 客户端</a></li></ul></li><li><a href=#hyprland-安装>hyprland 安装</a><ul><li><a href=#byprland-环境变量>byprland 环境变量</a></li></ul></li><li><a href=#桌面配置--常用应用>桌面配置 & 常用应用</a><ul><li><a href=#must-have>Must Have</a></li><li><a href=#输入法>输入法</a></li><li><a href=#常用软件>常用软件</a></li></ul></li><li><a href=#美化>美化</a><ul><li><a href=#前置软件>前置软件</a></li><li><a href=#主题>主题</a></li><li><a href=#图标>图标</a></li><li><a href=#指针>指针</a></li><li><a href=#命令行美化>命令行美化</a></li></ul></li><li><a href=#备份>备份</a></li><li><a href=#小技巧>小技巧</a></li></ul></nav></div><script>window.addEventListener("DOMContentLoaded",()=>{enableStickyToc()})</script></div><div class="bg-secondary-bg prose col-span-2 rounded p-6 lg:col-span-6"><h3>相关</h3><a href=https://blog.zonowry.com/posts/nat-in-different-environments/ class=no-underline>NAT 穿透在不同环境下的差异</a><br><a href=https://blog.zonowry.com/posts/deploy-k3s-+-rancher-on-pve-container/ class=no-underline>在 PVE 容器上部署 k3s + rancher</a><br><a href=https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/ class=no-underline>红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤</a><br><a href=https://blog.zonowry.com/posts/how-to-do-safe-concurrent-programming/ class=no-underline>怎样安全的并发编程</a><br><a href=https://blog.zonowry.com/posts/how-to-write-code-that-is-easy-to-maintain/ class=no-underline>如何写一手容易维护的代码</a><br><a href=https://blog.zonowry.com/posts/build-a-proxy-gateway-based-on-iptables-and-clash/ class=no-underline>iptables + clash 透明网关实践与总结</a><br></div></div><script>document.addEventListener("DOMContentLoaded",()=>{hljs.highlightAll()})</script></div></div></main><footer class=pl-scrollbar><div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">zonowry &#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="对 CJK 输入法用户最友好的一集"><meta name=keywords content="zonowry,hyprland,linux,arch,btrfs,theme,fcitx"><title>Arch + Hyprland 安装美化手册</title>
+<link rel=canonical href=https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/><link rel=stylesheet href=/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css><meta property='og:title' content="Arch + Hyprland 安装美化手册"><meta property='og:description' content="对 CJK 输入法用户最友好的一集"><meta property='og:url' content='https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/'><meta property='og:site_name' content='Zonowry'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:published_time' content='2024-09-20T00:00:00+00:00'><meta property='article:modified_time' content='2024-09-20T00:00:00+00:00'><meta property='og:image' content='https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/image-2024_02_25_03_47_36.png'><meta name=twitter:title content="Arch + Hyprland 安装美化手册"><meta name=twitter:description content="对 CJK 输入法用户最友好的一集"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content='https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/image-2024_02_25_03_47_36.png'><link rel="shortcut icon" href=/favicon.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_983aea9f35263846.png width=300 height=300 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/>Zonowry</a></h1><h2 class=site-description>zonowry's blog</h2></div></header><ol class=menu-social><li><a href=https://github.com/zonowry target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=mailto:zonowry@outlook.com target=_blank title=Outlook rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/page/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/page/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/page/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>Links</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#进入-arch-livecd-开始安装>进入 Arch LiveCD 开始安装</a><ol><li><a href=#硬盘分区>硬盘分区</a></li><li><a href=#格式化磁盘>格式化磁盘</a></li><li><a href=#挂载分区--初始化-btrfs>挂载分区 & 初始化 btrfs</a></li><li><a href=#替换-pacman-安装源>替换 pacman 安装源</a></li><li><a href=#pacman-配置>pacman 配置</a></li><li><a href=#开始安装>开始安装：</a></li><li><a href=#chroot-进入系统>chroot 进入系统</a></li><li><a href=#grub-启动项配置>grub 启动项配置</a></li><li><a href=#添加用户>添加用户</a></li><li><a href=#fstab-配置>fstab 配置</a></li></ol></li><li><a href=#重启进入系统>重启进入系统</a><ol><li><a href=#初始化网络>初始化网络</a></li><li><a href=#时区本地化配置>时区本地化配置</a></li><li><a href=#语言本地化配置>语言本地化配置</a></li><li><a href=#aur-客户端>Aur 客户端</a></li></ol></li><li><a href=#hyprland-安装>hyprland 安装</a><ol><li><a href=#byprland-环境变量>byprland 环境变量</a></li></ol></li><li><a href=#桌面配置--常用应用>桌面配置 & 常用应用</a><ol><li><a href=#must-have>Must Have</a></li><li><a href=#输入法>输入法</a></li><li><a href=#常用软件>常用软件</a></li></ol></li><li><a href=#美化>美化</a><ol><li><a href=#前置软件>前置软件</a></li><li><a href=#主题>主题</a></li><li><a href=#图标>图标</a></li><li><a href=#指针>指针</a></li><li><a href=#命令行美化>命令行美化</a></li></ol></li><li><a href=#备份>备份</a></li><li><a href=#小技巧>小技巧</a></li></ol></nav></div></section></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><a href=/posts/install-hyprland-on-arch-and-simple-beautify/><img src=/posts/install-hyprland-on-arch-and-simple-beautify/image-2024_02_25_03_47_36_hu_7298195a29c6c1b8.png srcset="/posts/install-hyprland-on-arch-and-simple-beautify/image-2024_02_25_03_47_36_hu_7298195a29c6c1b8.png 800w, /posts/install-hyprland-on-arch-and-simple-beautify/image-2024_02_25_03_47_36_hu_7fa84b6e2d3a010.png 1600w" width=800 height=450 loading=lazy alt="Featured image of post Arch + Hyprland 安装美化手册"></a></div><div class=article-details><div class=article-title-wrapper><h2 class=article-title><a href=/posts/install-hyprland-on-arch-and-simple-beautify/>Arch + Hyprland 安装美化手册</a></h2><h3 class=article-subtitle>对 CJK 输入法用户最友好的一集</h3></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Sep 20, 2024</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 6 分钟</time></div></footer></div></header><section class=article-content><blockquote><p>!TIPS
+文中提到的软件配置、dotfiles 相关都可以在
+<a class=link href=https://github.com/zonowry/dotfiles target=_blank rel=noopener>zonowry/dotfiles</a> 仓库中找到。</p></blockquote><p>首先展示成果</p><p><img src=/images/blog/arch/image-2024_02_25_03_47_36.png loading=lazy alt=preview></p><h2 id=进入-arch-livecd-开始安装>进入 Arch LiveCD 开始安装</h2><h3 id=硬盘分区>硬盘分区</h3><p>先使用 <code>fdisk</code> 对磁盘分区，至少需要创建一个 <code>fat</code> 格式分区，存放 <code>efi</code> 引导文件。和一个 <code>btrfs</code> 主分区，存放系统文件。</p><blockquote><p>下文使用 /dev/nvme0n1 作为例子。</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>fdisk /dev/nvme0n1 <span class=c1># 选择一块硬盘进行分区</span>
+</span></span><span class=line><span class=cl>&gt; g <span class=c1># gpt 分区表，uefi 启动</span>
+</span></span><span class=line><span class=cl>&gt; n <span class=c1># 新建分区</span>
+</span></span><span class=line><span class=cl>&gt; ...
+</span></span><span class=line><span class=cl>&gt; w <span class=c1># 保存退出</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=格式化磁盘>格式化磁盘</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 主分区</span>
+</span></span><span class=line><span class=cl>mkfs.vfat /dev/nvme0n1p1
+</span></span><span class=line><span class=cl>mkfs.btrfs -L arch-btrfs /dev/nvme0n1p2 <span class=c1># 建立 btrfs 分区并命名 Label</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=挂载分区--初始化-btrfs>挂载分区 & 初始化 btrfs</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir -p /mnt/efi
+</span></span><span class=line><span class=cl>mount /dev/sda1 /mnt/efi
+</span></span></code></pre></td></tr></table></div></div><p>挂载主分区安装系统到磁盘。</p><blockquote><p>btrfs 压缩算法区别 <a class=link href=https://btrfs.readthedocs.io/en/latest/Compression.html#incompressible-data target=_blank rel=noopener>Compression</a></p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mount -t btrfs -o <span class=nv>compress</span><span class=o>=</span>zstd /dev/nvme0n1p2 /mnt
+</span></span><span class=line><span class=cl>btrfs subvol create /mnt/@
+</span></span><span class=line><span class=cl>btrfs subvol create /mnt/@home
+</span></span><span class=line><span class=cl>btrfs subvol create /mnt/@var-cache
+</span></span><span class=line><span class=cl>btrfs subvol create /mnt/@var-temp
+</span></span><span class=line><span class=cl>btrfs subvol create /mnt/@opt
+</span></span><span class=line><span class=cl>btrfs subvol create /mnt/@swap
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>umount /mnt
+</span></span><span class=line><span class=cl>mount -t btrfs -o <span class=nv>compress</span><span class=o>=</span>zstd,subvol<span class=o>=</span>@ /dev/nvme0n1p2 /mnt
+</span></span><span class=line><span class=cl>mount --mkdir -t btrfs -o <span class=nv>subvol</span><span class=o>=</span>@home /dev/nvme0n1p2 /mnt/home
+</span></span><span class=line><span class=cl>mount --mkdir -t btrfs -o <span class=nv>subvol</span><span class=o>=</span>@opt /dev/nvme0n1p2 /mnt/opt
+</span></span><span class=line><span class=cl>mount --mkdir -t btrfs -o <span class=nv>subvol</span><span class=o>=</span>@var-cache /dev/nvme0n1p2 /mnt/var/cache
+</span></span><span class=line><span class=cl>mount --mkdir -t btrfs -o <span class=nv>subvol</span><span class=o>=</span>@var-temp /dev/nvme0n1p2 /mnt/var/temp
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>btrfs <span class=k>fi</span> mkswapfile /mnt/swap/swapfile --uuid clear --size 16G
+</span></span><span class=line><span class=cl>swapon /swap/swapfile
+</span></span></code></pre></td></tr></table></div></div><h3 id=替换-pacman-安装源>替换 pacman 安装源</h3><p>加速 <code>pacman</code> 安装速度。用 <code>reflector</code> 自动配置 <code>pacman</code> 使用国内镜像源。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>reflector --age <span class=m>24</span> --country China --sort rate --verbose --protocol http --protocol https --save /etc/pacman.d/mirrorlist
+</span></span></code></pre></td></tr></table></div></div><p><del>也可以编辑 mirrorlist 文件，解开 <code>[China]</code> 下的镜像源注释并注释掉官方源，或者用手机上网搜索最新的国内 archlinuxcn 镜像源吧，然后手动敲上。</del></p><h3 id=pacman-配置>pacman 配置</h3><p>如果安装时遇到签名错误，应该可以通过以下方式解决。<del>如果你的 <code>live</code> 不是很新那么大概率会签名错误，所以推荐先执行以下，也没坏处。</del></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacman-key --init
+</span></span><span class=line><span class=cl>pacman-key --populate archlinux
+</span></span><span class=line><span class=cl><span class=c1># Syy 刷新下</span>
+</span></span><span class=line><span class=cl>pacman -Syy archlinux-keyring
+</span></span></code></pre></td></tr></table></div></div><h3 id=开始安装>开始安装：</h3><p>下载安装系统内核，以及网络管理、ssh 之类的<strong>必备软件</strong>。</p><blockquote><p>PS：如果是当作日常桌面系统使用，系统内核推荐安装 <code>linux-zen</code> ，看 <a class=link href=https://liquorix.net/ target=_blank rel=noopener>linux-lqx(zen) 官网介绍</a> 是比较适合桌面/游戏用户的。但会遇到因为不是官方标准内核，所以会碰见部分驱动需要用 <code>dkms</code> 自己编译的情况。例如 <code>nvidia</code> ，简单起见就先用 <code>linux</code> 标准内核吧，以后可以再安装切换到 <code>linux-zen</code>，也不麻烦。</p></blockquote><blockquote><p>PPS：如果你是 intel 就安装 intel-ucode，amd 就安装 amd-ucode（大概是这个名字，参考 archlinux wiki 吧）。</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacstrap /mnt <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>linux <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>linux-firmware <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>base <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>sudo <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>neovim <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>networkmanager <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>openssh <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>git <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>git-lfs
+</span></span><span class=line><span class=cl>zsh <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>grub <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>efibootmgr <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>intel-ucode <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>base-devel <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>devtools <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>btrfs-progs
+</span></span></code></pre></td></tr></table></div></div><h3 id=chroot-进入系统>chroot 进入系统</h3><p>安装完成后，进入系统，方便后续做一些处理。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>arch-chroot /mnt
+</span></span><span class=line><span class=cl>ln -s /usr/bin/nvim /usr/bin/vim
+</span></span></code></pre></td></tr></table></div></div><h3 id=grub-启动项配置>grub 启动项配置</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir /efi
+</span></span><span class=line><span class=cl><span class=c1># 挂载第一步创建的 vfat 分区</span>
+</span></span><span class=line><span class=cl>mount /dev/sda1 /efi
+</span></span><span class=line><span class=cl><span class=c1># grub uefi 启动项</span>
+</span></span><span class=line><span class=cl>grub-install --target<span class=o>=</span>x86_64-efi --efi-directory<span class=o>=</span>/efi --bootloader-id<span class=o>=</span>GRUB
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># TODO</span>
+</span></span><span class=line><span class=cl>vim /etc/default/grub
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># loglevel=5, nowatchdog</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># grub 引导/菜单配置</span>
+</span></span><span class=line><span class=cl>grub-mkconfig -o /boot/grub/grub.cfg
+</span></span></code></pre></td></tr></table></div></div><h3 id=添加用户>添加用户</h3><p>设置用户密码，配置普通用户 sudo 权限。</p><blockquote><p>用户名「zonowry」改成自己的即可。</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>useradd -m zonowry
+</span></span><span class=line><span class=cl><span class=c1># 为新用户设置密码</span>
+</span></span><span class=line><span class=cl>passwd zonowry
+</span></span><span class=line><span class=cl><span class=c1># 为 root 设置密码</span>
+</span></span><span class=line><span class=cl>passwd root
+</span></span><span class=line><span class=cl><span class=c1># 允许新用户使用 sudo 命令， 这里我设置了 sudo 免密码，可以去掉</span>
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=s2>&#34;zonowry ALL=(ALL) NOPASSWD:NOPASSWD:ALL&#34;</span> &gt;&gt; /etc/sudoers
+</span></span></code></pre></td></tr></table></div></div><h3 id=fstab-配置>fstab 配置</h3><p>设置系统启动时自动挂载的分区，退出 <code>arch-chroot</code> ，通过 <code>arch</code> 安装脚本自动生成 <code>fstab</code> 配置。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>exit</span> <span class=c1># 退出 chroot /mnt 环境</span>
+</span></span><span class=line><span class=cl>genfstab /mnt &gt; /mnt/etc/fstab
+</span></span></code></pre></td></tr></table></div></div><p>建议验证下，生成的是否正确</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>cat /mnt/etc/fstab
+</span></span></code></pre></td></tr></table></div></div><p>![[cat-fstab.png]]</p><h2 id=重启进入系统>重启进入系统</h2><p>上边的步骤做完，重启应该就可以引导并进入系统了。</p><h3 id=初始化网络>初始化网络</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>systemctl <span class=nb>enable</span> NetworkManager
+</span></span><span class=line><span class=cl>systemctl start NetworkManager
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>systemctl <span class=nb>enable</span> sshd
+</span></span><span class=line><span class=cl>systemctl start sshd
+</span></span></code></pre></td></tr></table></div></div><h3 id=时区本地化配置>时区本地化配置</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>timedatectl set-ntp <span class=nb>true</span> <span class=c1># ntp 同步时间</span>
+</span></span><span class=line><span class=cl>timedatectl set-timezone Asia/Shanghai
+</span></span><span class=line><span class=cl>timedatectl <span class=c1># 查看验证</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=语言本地化配置>语言本地化配置</h3><p>可能影响一些系统的提示语言，货币和时间的显示格式。</p><blockquote><p>程序员的话建议就用 en_US.utf8 吧，一些命令报错，英文的话比较好搜索解决方法。</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>vim /etc/locale.gen
+</span></span><span class=line><span class=cl><span class=c1># 解除 en_US.UTF-8 的注释，</span>
+</span></span><span class=line><span class=cl><span class=c1># :wq 保存退出</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 生成</span>
+</span></span><span class=line><span class=cl>locale-gen
+</span></span><span class=line><span class=cl>localectl set-locale <span class=nv>LANG</span><span class=o>=</span>en_US.UTF-8
+</span></span></code></pre></td></tr></table></div></div><h3 id=aur-客户端>Aur 客户端</h3><p>一般使用 <code>yay</code> ，不过我图新鲜用的 <code>paru</code> 。其实也不知道具体啥区别，到底哪个好用。感觉除了开发语言不同，功能上都差不多吧。</p><p>去 <code>paru</code> 的 <code>github</code> release 页面下载二进制包，然后解压创建 <code>/usr/bin/paru</code> 软链接就好了。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 或者直接 `wget` ，需要自己判断版本链接。</span>
+</span></span><span class=line><span class=cl>wget https://github.com/Morganamilo/paru/releases/download/v1.11.2/paru-v1.11.2-x86_64.tar.zst
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># tar 解压 paru-v1.11.2-x86_64.tar.zst</span>
+</span></span><span class=line><span class=cl>tar xvf paru-v1.11.2-x86_64.tar.zst
+</span></span><span class=line><span class=cl>mkdir /opt/paru
+</span></span><span class=line><span class=cl>mv ./paru /opt/paru
+</span></span><span class=line><span class=cl>chmod +x paru
+</span></span><span class=line><span class=cl>ln -s /opt/paru/paru  /usr/bin/paru
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>paru -Syyu
+</span></span></code></pre></td></tr></table></div></div><h2 id=hyprland-安装>hyprland 安装</h2><p><code>hyprland</code>，一款平铺桌面管理器。动画流畅，丰富的自定义选项。最好配合 <code>hyprland</code> 官网食用。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacman -Sy hyprland
+</span></span></code></pre></td></tr></table></div></div><p>安装后可以命令行执行 <code>Hyprland</code> 启动小窥一眼，默认配置比较简陋，<code>win+M</code> 退出继续折腾。</p><p>hyprland 的配置例如动画样式、窗口规则、按键绑定、屏幕设置等不是很重要，默认配置也够用了，且个人差异太大，找个自己喜欢的 dotfiles 参考即可。比较重要的配置是环境变量</p><h3 id=byprland-环境变量>byprland 环境变量</h3><p>亲身感受下来是很多疑难杂症都可能和某个环境变量有关，只能靠多搜索多踩坑。</p><blockquote><p>每个人环境不一样，所以也仅供参考。</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># Some default env vars.</span>
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> XDG_CURRENT_DESKTOP,Hyprland
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> XCURSOR_SIZE,24
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> QT_QPA_PLATFORMTHEME,qt6ct <span class=c1># change to qt6ct if you have that</span>
+</span></span><span class=line><span class=cl><span class=c1># env = LIBVA_DRIVER_NAME,nvidia</span>
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> XDG_SESSION_TYPE,wayland
+</span></span><span class=line><span class=cl><span class=c1># env = GBM_BACKEND,nvidia-drm</span>
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> GDK_BACKEND,wayland
+</span></span><span class=line><span class=cl><span class=c1># env = __GLX_VENDOR_LIBRARY_NAME,nvidia</span>
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> WLR_NO_HARDWARE_CURSORS,1
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> OZONE_PLATFORM,wayland
+</span></span><span class=line><span class=cl><span class=c1># env = GLFW_IM_MODULE,ibus</span>
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> QT_IM_MODULE,fcitx
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> XMODIFIERS,@im<span class=o>=</span>fcitx
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> LANG,zh_CN.UTF-8
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> LANGUAGE,zh_CN:en_US
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> JDK_JAVA_OPTIONS,-Dawt.useSystemAAFontSettings<span class=o>=</span>on -Dswing.aatext<span class=o>=</span><span class=nb>true</span> -Dswing.defaultlaf<span class=o>=</span>com.sun.java.swing.plaf.gtk.GTKLookAndFeel
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> _JAVA_AWT_WM_NONREPARENTING,1
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> AWT_TOOLKIT,MToolkit
+</span></span><span class=line><span class=cl><span class=nv>env</span> <span class=o>=</span> JAVA_HOME,/opt/apps/jdk/jdk1.8.0_261
+</span></span></code></pre></td></tr></table></div></div><h2 id=桌面配置--常用应用>桌面配置 & 常用应用</h2><p>以下软件大多都和 dotfiles 配置相关，可以在 <a class=link href=https://github.com/zonowry/dotfiles target=_blank rel=noopener>dotfiles</a> 找到各个软件对应的配置。例如 <code>~/.config/fontconfig/fonts.conf</code> 字体配置。</p><h3 id=must-have>Must Have</h3><blockquote><p>中文字体是必备的，但也看个人喜好。不过字体对 waybar 等应用影响比较大，很容易出现在编辑器里很好看，但在 GUI 界面上很难看（对不齐之类的）。需要自己调整或者采用别人的挑选好的字体。</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 权限</span>
+</span></span><span class=line><span class=cl>pacman -Sy polkit-kde-agent <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>dunst <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>pipewire <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>wireplumber <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>xdg-desktop-portal-hyprland <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>xdg-desktop-portal-wlr <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>xdg-desktop-portal-gtk <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>qt5-wayland <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>qt6-wayland
+</span></span><span class=line><span class=cl><span class=c1># 字体</span>
+</span></span><span class=line><span class=cl>ttf-lxgw-wenkai <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>ttf-iosevka-nerd <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>wqy-microhei
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>paru -S ttf-cascadia-code-nerd <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>ttf-lxgw-wenkai-screen <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>noto-fonts-emoji <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>ttf-firecode-nerd <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>ttf-material-design-icons-extended
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fc-cache -vf <span class=c1># 刷新字体缓存</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=输入法>输入法</h3><p>得益于 Hyprland 作者好像也是日语输入法用户，所以 Hyprland 的 input-method 相关协议较其它 wayland 合成器更为完善。现在 Hyprland 安装 chrome，fcitx5 之后，基本是开箱即用了，~~（只需要设置 fcitix5 环境变量与 electron flags）~~好起来了！</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacman -S fcitx5-im <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>fcitx5-rime <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>fcitx5-configtool <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>fcitx5-material-color
+</span></span></code></pre></td></tr></table></div></div><p>强推下雾凇拼音 <a class=link href=https://github.com/iDvel/rime-ice target=_blank rel=noopener>https://github.com/iDvel/rime-ice</a></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>paru -S rime-ice-git
+</span></span></code></pre></td></tr></table></div></div><h3 id=常用软件>常用软件</h3><blockquote><p>下列应用不一定适合所有人，大多都有平替，仅供参考。</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacman -Sy kitty <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>wofi <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>waybar <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>thunar <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>nfs-utils
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>paru -Sy visual-studio-code-bin <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>google-chrome
+</span></span></code></pre></td></tr></table></div></div><h2 id=美化>美化</h2><h3 id=前置软件>前置软件</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>paru -Sy kvantum <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>qt5ct <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>qt6ct <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>nwg-look
+</span></span></code></pre></td></tr></table></div></div><p>以下是我采用的主题图标，若不喜欢。也可以去 <a class=link href=https://pling.com target=_blank rel=noopener>pling.com</a> 找自己喜欢的，安装方式大同小异。</p><h3 id=主题>主题</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>git clone --depth<span class=o>=</span><span class=m>1</span> https://github.com/vinceliuice/Orchis-kde.git
+</span></span><span class=line><span class=cl><span class=nb>cd</span> ./Orchis-kde
+</span></span><span class=line><span class=cl>./install.sh
+</span></span></code></pre></td></tr></table></div></div><h3 id=图标>图标</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>git clone --depth<span class=o>=</span><span class=m>1</span> https://github.com/vinceliuice/Tela-icon-theme.git
+</span></span><span class=line><span class=cl><span class=nb>cd</span> ./Tela-icon-theme
+</span></span><span class=line><span class=cl>./install.sh -a
+</span></span></code></pre></td></tr></table></div></div><h3 id=指针>指针</h3><p><a class=link href=https://github.com/phisch/phinger-cursors target=_blank rel=noopener>phinger-cursors</a></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>paru -S phinger-cursors
+</span></span><span class=line><span class=cl><span class=c1># 打开 nwg-look 设置指针即可</span>
+</span></span></code></pre></td></tr></table></div></div><p>安装好主题图标后，依次使用 <code>kvantum</code>、<code>nwg-look</code>、<code>qt5ct</code>、<code>qt6ct</code> 软件应用下主题图标即可，qt5ct/qt6ct 的主题选择 kvantum。最后重启 Hyprland 让主题生效。</p><h3 id=命令行美化>命令行美化</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pacman -S fzf
+</span></span></code></pre></td></tr></table></div></div><ul><li>oh-my-zsh</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>git clone --depth<span class=o>=</span><span class=m>1</span> https://github.com/romkatv/powerlevel10k.git <span class=si>${</span><span class=nv>ZSH_CUSTOM</span><span class=k>:-</span><span class=nv>$HOME</span><span class=p>/.oh-my-zsh/custom</span><span class=si>}</span>/themes/powerlevel10k
+</span></span></code></pre></td></tr></table></div></div><ul><li>zsh 插件，有些是自带的，第三方插件都有 git 仓库。</li></ul><p>以下都可以通过例如 <code>git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestion</code> 来安装。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo
+</span></span><span class=line><span class=cl>git
+</span></span><span class=line><span class=cl>zsh-autosuggestions
+</span></span><span class=line><span class=cl>zsh-syntax-highlighting
+</span></span><span class=line><span class=cl>fzf-zsh-plugin
+</span></span><span class=line><span class=cl>docker
+</span></span><span class=line><span class=cl>docker-compose
+</span></span><span class=line><span class=cl>zsh-shift-select
+</span></span></code></pre></td></tr></table></div></div><h2 id=备份>备份</h2><p>一系列繁琐操作后，得到了一个纯净的系统，当务之急是备份当前环境，避免重装。得益于 btrfs，备份十分简单。</p><blockquote><p>timeshift 只会备份名为 @、@home 的子卷，够用了。</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo pacman -S timeshift grub-btrfs
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>timeshift 需要 root， wofi 调起 timeshift，polkit 输入密码后，没有反应。懒得排查原因了，只能 sudo -E timeshift-gtk 启动了，问题不大。</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo -E timeshift-gtk
+</span></span></code></pre></td></tr></table></div></div><p>按照操作来即可创建一个快照了。</p><h2 id=小技巧>小技巧</h2><ul><li><code>wev</code><ul><li>命令行工具，查看键码</li></ul></li><li><code>hyprctl clients</code><ul><li>查看当前客户端列表信息，可以用来排查是否是 xwayland 启动。</li></ul></li></ul></section><footer class=article-footer><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><div class=disqus-container></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2025 zonowry</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.30.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

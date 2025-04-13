@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pve on Zonowry</title><link>https://blog.zonowry.com/tags/pve/</link><description>Recent content in Pve on Zonowry</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>zonowry</copyright><lastBuildDate>Mon, 15 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zonowry.com/tags/pve/index.xml" rel="self" type="application/rss+xml"/><item><title>在 PVE 容器上部署 k3s + rancher</title><link>https://blog.zonowry.com/posts/deploy_k3s/</link><pubDate>Mon, 15 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/deploy_k3s/</guid><description>&lt;img src="https://blog.zonowry.com/posts/deploy_k3s/image-2024_04_16_12_36_53.png" alt="Featured image of post 在 PVE 容器上部署 k3s + rancher" />&lt;h2 id="折腾历程">折腾历程
+&lt;/h2>&lt;p>目的本来是实操 &lt;code>k8s&lt;/code> 的，部署时搞了一堆花里胡哨的，虽然因为复杂度与资源消耗原因放弃了这套方案~~（=白折腾）~~，但对理解 k8s 的组成部分帮助很大。&lt;/p>
+&lt;blockquote>
+&lt;p>曾经的解决方案：&lt;/p>
+&lt;ul>
+&lt;li>部署工具：kubeadm&lt;/li>
+&lt;li>容器运行时 CRI： cri-o&lt;/li>
+&lt;li>容器底层交互接口 OCI ：crun&lt;/li>
+&lt;li>容器网络 CNI： cilium&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;p>不过部署完这套，小鸡性能吃紧，遂换到了 &lt;code>k3s&lt;/code>。&lt;/p>
+&lt;p>但将 &lt;code>k3s&lt;/code> 作为 &lt;code>HomeServer&lt;/code> 使用一段时间后，手写各种 depolyment yaml 很是折磨，远不比 &lt;code>docker-compose&lt;/code> 方便，维护工作反而变麻烦了，一度想放弃折腾。&lt;/p>
+&lt;p>不过心底还是想坚持用 &lt;code>k8s&lt;/code> &lt;del>(大概是跟风吧）&lt;/del>，痛点不过是手写 &lt;code>yaml&lt;/code>，命令行看日志等等琐碎操作，这些问题 &lt;code>rancher&lt;/code> 都可以解决。&lt;del>不过写一些 &lt;code>k8s&lt;/code> 的 &lt;code>yaml&lt;/code> 后再用 webui 会很容易上手。&lt;/del>&lt;/p>
+&lt;blockquote>
+&lt;p>也有其它的 management，不过 rancher 比较流行，虽然&lt;strong>很重&lt;/strong>。轻量一点的也有一个 &lt;a class="link" href="https://github.com/skooner-k8s/skooner" target="_blank" rel="noopener"
+>GitHub - skooner-k8s.&lt;/a>，没啥资源的家庭服务器感觉可以考虑。&lt;/p>&lt;/blockquote>
+&lt;h2 id="lxc-前置条件">LXC 前置条件
+&lt;/h2>&lt;h3 id="1-lxc-的权限">1. LXC 的权限
+&lt;/h3>&lt;p>设置容器 /proc /sys 读写权限、cgroup 权限等&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim /etc/pve/lxc/&lt;span class="o">{&lt;/span>lxc id&lt;span class="o">}&lt;/span>.conf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 放开权限&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">unprivileged: &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-properties" data-lang="properties">&lt;span class="line">&lt;span class="cl">&lt;span class="na">lxc.apparmor.profile&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s">unconfined&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">lxc.cgroup.devices.allow&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s">a&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">lxc.cap.drop&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">lxc.mount.auto&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s">&amp;#34;proc:rw sys:rw&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-为容器创建-devkmsg">2. 为容器创建 /dev/kmsg
+&lt;/h3>&lt;p>容器一般不存在 /dev/kmsg 内核日志，&lt;code>k3s&lt;/code> 大概会向此“文件”输出消息，所以需要保证容器启动后存在这个文件，容器里存在一个 /dev/console，可以用这个“文件”作替身用。&lt;/p>
+&lt;ul>
+&lt;li>自动创建 /dev/kmsg&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim /usr/local/bin/conf-kmsg.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/sh -e
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> ! -e /dev/kmsg &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ln -s /dev/console /dev/kmsg
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount --make-rshared /
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>创建 systemd 开机执行脚本&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim /etc/systemd/system/conf-kmsg.service
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="k">[Unit]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">Description&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">Make sure /dev/kmsg exists&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">[Service]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">Type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">simple&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">RemainAfterExit&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">yes&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">ExecStart&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">/usr/local/bin/conf-kmsg.sh&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">TimeoutStartSec&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">[Install]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">WantedBy&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">default.target&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>启用生效&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">chmod +x /usr/local/bin/conf-kmsg.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl &lt;span class="nb">enable&lt;/span> --now conf-kmsg
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="安装-k3s">安装 k3s
+&lt;/h2>&lt;ul>
+&lt;li>从官方中国源安装，默认装最新版&lt;/li>
+&lt;li>注意版本号，要与 rancher 兼容&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh &lt;span class="p">|&lt;/span> &lt;span class="nv">INSTALL_K3S_MIRROR&lt;/span>&lt;span class="o">=&lt;/span>cn &lt;span class="nv">INSTALL_K3S_VERSION&lt;/span>&lt;span class="o">=&lt;/span>v1.28.7+k3s1 sh -s - server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>需要安装 rancher 支持的 k3s/k8s 版本。k3s 版本列表：&lt;a class="link" href="https://docs.k3s.io/zh/release-notes/v1.28.X" target="_blank" rel="noopener"
+>K3s&lt;/a>；
+rancher 兼容表： &lt;a class="link" href="https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-8-3/" target="_blank" rel="noopener"
+>Rancher Manager v2.8.3 | SUSE&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h2 id="安装-rancher">安装 Rancher
+&lt;/h2>&lt;h3 id="1-安装-helm">1. 安装 Helm
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod &lt;span class="m">700&lt;/span> get_helm.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./get_helm.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>为了使用 Helm，需要 &lt;code>Kubeconfig&lt;/code> 环境变量&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat &amp;gt;&amp;gt; /etc/profile &lt;span class="s">&amp;lt;&amp;lt; EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> /etc/profile
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 验证一下&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">helm list -A
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-helm-添加仓库">2. Helm 添加仓库
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>国内可以用镜像： &lt;code>https://rancher-mirror.rancher.cn/server-charts/stable&lt;/code> ，版本可能落后。&lt;/p>&lt;/blockquote>
+&lt;h3 id="3-为-rancher-创建命名空间">3. 为 Rancher 创建命名空间
+&lt;/h3>&lt;p>你需要定义一个 Kubernetes 命名空间，用于安装由 Chart 创建的资源。这个命名空间的名称为  &lt;code>cattle-system&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl create namespace cattle-system
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="4-rancher-默认需要-ssl-相关配置">4. rancher 默认需要 SSL 相关配置
+&lt;/h3>&lt;p>需要安装 &lt;code>cert-manager&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.crds.yaml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="5-部署-rancher">5. 部署 rancher
+&lt;/h3>&lt;p>&lt;strong>部署后需要通过 &lt;code>hostname&lt;/code> 访问 &lt;code>rancher&lt;/code>&lt;/strong>，如果没有 DNS 服务器，应该可以通过修改 &lt;code>hosts&lt;/code> 文件映射 &lt;code>ip&lt;/code> 访问。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">helm install rancher rancher-stable/rancher --namespace cattle-system --set &lt;span class="nv">hostname&lt;/span>&lt;span class="o">=&lt;/span>rancher.my.org --set &lt;span class="nv">bootstrapPassword&lt;/span>&lt;span class="o">=&lt;/span>admin --version 2.8.3
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="最后部署一个-neo4j-熟悉一下-rancher可选">最后部署一个 NEO4J 熟悉一下 rancher（可选）
+&lt;/h2>&lt;ul>
+&lt;li>新建个持久化卷资源
+&lt;ul>
+&lt;li>&lt;code>PersistentVolumes&lt;/code>
+&lt;ul>
+&lt;li>&lt;code>HostPath&lt;/code> 类型&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>再新建个持久化卷请求声明
+&lt;ul>
+&lt;li>&lt;code>PersistentVolumeClaims&lt;/code>
+&lt;ul>
+&lt;li>选择刚才建立的 &lt;code>PV&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://blog.zonowry.com/posts/deploy_k3s/image-2024_04_16_12_36_53.png"
+width="2093"
+height="816"
+srcset="https://blog.zonowry.com/posts/deploy_k3s/image-2024_04_16_12_36_53_hu_349c3b402a4b78fa.png 480w, https://blog.zonowry.com/posts/deploy_k3s/image-2024_04_16_12_36_53_hu_817e8be0dd3ae308.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="256"
+data-flex-basis="615px"
+>&lt;/p>
+&lt;ul>
+&lt;li>新增 &lt;code>Deployments&lt;/code>
+&lt;ul>
+&lt;li>为 &lt;code>Pod&lt;/code> 指定 &lt;code>PVC&lt;/code>&lt;/li>
+&lt;li>容器镜像：&lt;code>neo4j:5.19.0&lt;/code>&lt;/li>
+&lt;li>配置下 &lt;code>Service&lt;/code>
+&lt;ul>
+&lt;li>简单点就先 &lt;code>NodePort&lt;/code> 了，后面在配 &lt;code>Ingress&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>加个环境变量
+&lt;ul>
+&lt;li>&lt;code>NEO4J_AUTH=user/pwd&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://blog.zonowry.com/images/blog/image-2024_04_16_12_42_41.png"
+loading="lazy"
+>&lt;/p>
+&lt;ul>
+&lt;li>可以查看日志、服务状态，启动成功后。
+&lt;ul>
+&lt;li>访问 Neo4j http://ip:30075 (nodeport 监听的端口)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item></channel></rss>

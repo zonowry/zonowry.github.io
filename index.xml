@@ -1,1 +1,2125 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zonowry 的博客</title><link>https://blog.zonowry.com/</link><description>Recent content on Zonowry 的博客</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>zonowry</copyright><lastBuildDate>Fri, 20 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zonowry.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Arch + Hyprland 安装美化手册</title><link>https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/</link><pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/</guid><description>!TIPS 文中提到的软件配置、dotfiles相关都可以在 zonowry/dotfiles 仓库中找到。 首先展示成果 进入 Arch LiveCD 开始安装 硬盘分区 先使用 fdisk 对磁盘分区，至少需要创建一个 fat 格式分区，存</description></item><item><title>NAT 穿透在不同环境下的差异</title><link>https://blog.zonowry.com/posts/nat-in-different-environments/</link><pubDate>Fri, 16 Aug 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/nat-in-different-environments/</guid><description>前言 有时候会觉得 BT 以及可以实现 P2P 的 VPN 很”魔法“，因为一直对端到端直连的技术细节好像知道，又好像不知道。借着捣鼓了一阵 wireguard 组网，写下本文加深下对 P2P 理解。 配</description></item><item><title>关系型数据库如何检索数据</title><link>https://blog.zonowry.com/posts/how-to-retrieve-data-in-relational-database/</link><pubDate>Thu, 18 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/how-to-retrieve-data-in-relational-database/</guid><description>说实话研究数据库的底层对常见的项目帮助不大，或者说不受重视，更多是在业务编排上。数据库随便建建，增删改查随便写写，功能就完成了，项目就上线了。但程序员</description></item><item><title>在 PVE 容器上部署 k3s + rancher</title><link>https://blog.zonowry.com/posts/deploy-k3s-+-rancher-on-pve-container/</link><pubDate>Mon, 15 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/deploy-k3s-+-rancher-on-pve-container/</guid><description>折腾历程 目的本来是实操 k8s 的，部署时搞了一堆花里胡哨的，虽然因为复杂度与资源消耗原因放弃了这套方案~~（=白折腾）~~，但对理解 k8s 的组成部分帮助很大。 曾</description></item><item><title>红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤</title><link>https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/</link><pubDate>Sun, 31 Mar 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/</guid><description>启用路由器的 telnet 为了启用 telnet，需要手动升级路由器固件到开发版，开发版固件可以在 GitHub - YangWang92/AX6S-unlock 仓库下载。(miwifi_rb03_firmware_sta</description></item><item><title>怎样安全的并发编程</title><link>https://blog.zonowry.com/posts/how-to-do-safe-concurrent-programming/</link><pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/how-to-do-safe-concurrent-programming/</guid><description>引言 说到并发，首先会想到多线程。若只关注多线程如何使用，却对并发编程没有深入的了解，很容易在代码里挖坑，变成这个段子的模样：“从前有个程序员遇到了一个</description></item><item><title/><link>https://blog.zonowry.com/thinks/01/</link><pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/thinks/01/</guid><description>hyprland 的社区搞耍的人好多哈哈。 起因：hyprland 移除了二次元 waifu 壁纸 https://github.com/hyprwm/Hyprland/pull/4089 https://www.reddit.com/r/hyprland/comments/1am6434/what_the_fuck_is_this_where_are_the_waifus_i_want/ https://github.com/hyprwm/Hyprland/issues/4706</description></item><item><title/><link>https://blog.zonowry.com/thinks/02/</link><pubDate>Fri, 23 Feb 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/thinks/02/</guid><description>意外看到一句老外的名言。 To see things in the seed, that is genius —— LaoZi 然后发现应该是个乌龙翻译：https://huaren.us/showtopic.html?topic</description></item><item><title/><link>https://blog.zonowry.com/thinks/023/</link><pubDate>Wed, 21 Feb 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/thinks/023/</guid><description>测试一下。。。</description></item><item><title>如何写一手容易维护的代码</title><link>https://blog.zonowry.com/posts/how-to-write-code-that-is-easy-to-maintain/</link><pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/how-to-write-code-that-is-easy-to-maintain/</guid><description>免责声明 程序员对抽象、设计可能会有不同的习惯。同样一个功能有人用发布订阅，有人用消息队列，他们都有自己的一套设计理念。最终是谁能说服谁的问题，哪一种方</description></item><item><title>iptables + clash 透明网关实践与总结</title><link>https://blog.zonowry.com/posts/build-a-proxy-gateway-based-on-iptables-and-clash/</link><pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/build-a-proxy-gateway-based-on-iptables-and-clash/</guid><description>前言 尝试用 clash tun 模式来实现过网关，虽然过程很流畅也比较“新潮“，但对于我来说有点魔法了，因为比较难搞清楚 clash 帮我们做了哪些工作，出现问题不好找原因。也可能</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zonowry</title><link>https://blog.zonowry.com/</link><description>Recent content on Zonowry</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>zonowry</copyright><lastBuildDate>Sun, 13 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zonowry.com/index.xml" rel="self" type="application/rss+xml"/><item><title>并发安全的生成一个时间相关的订单流水号</title><link>https://blog.zonowry.com/posts/generate-time-related-serial-number-in-concurrently/</link><pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/generate-time-related-serial-number-in-concurrently/</guid><description>&lt;p>总结下利用 redis 生成流水号的一个解决方案。&lt;/p>
+&lt;h2 id="序列号部分">序列号部分
+&lt;/h2>&lt;p>得益于 redis 的原子性与其自增方法 &lt;code>INCR&lt;/code>，我们业务方法并不需要线程锁，即可获取一个并发安全的自增序列号；随后将序列号的 key 精确到秒，我们就可以获得一个秒级别的自增序列号。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">val&lt;/span> &lt;span class="py">dateStr&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">now&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">format&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nc">DateTimeFormatter&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ofPattern&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;yyMMddhhmmss&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">val&lt;/span> &lt;span class="py">redisKey&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;order_seq:&lt;/span>&lt;span class="si">$dateStr&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">val&lt;/span> &lt;span class="py">seq&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">redis&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">opsForValue&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">increment&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">redisKey&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">?:&lt;/span> &lt;span class="k">throw&lt;/span> &lt;span class="n">IllegalStateException&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Redis INCR 失败&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// MAX_SEQ = (2 shl 14) -1
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">require&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">seq&lt;/span> &lt;span class="o">&amp;lt;=&lt;/span> &lt;span class="n">MAX_SEQ&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="s2">&amp;#34;超过每秒最大订单数限制&amp;#34;&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">seq&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="m">1L&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 设置过期时间，避免 Redis 键爆炸（设置为2秒即可）
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">redis&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">expire&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">redisKey&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nc">Duration&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ofSeconds&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="时间戳部分">时间戳部分
+&lt;/h2>&lt;p>再将序列号拼接上时间戳就是一个相对完整的流水号了；时间戳很好获取，根据当前服务器系统时间计算即可。&lt;/p>
+&lt;p>这里我们的时间戳格式为 &lt;code>yyMMddhhmmss&lt;/code>。这样的话 &lt;code>250413120000&lt;/code> 就代表 25 年 4 月 13 号 12 点 0 分 0 秒，再拼接上序列号 &lt;code>0001&lt;/code> ，流水号就是 &lt;code>25_04_13_12_00_00_0001&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">val&lt;/span> &lt;span class="py">dateInt&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">dateStr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toInt&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 假定序列号只有 14 位
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">val&lt;/span> &lt;span class="py">currentNumber&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">dateInt&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toLong&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="n">shl&lt;/span> &lt;span class="m">14&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">or&lt;/span> &lt;span class="n">seq&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="时钟回拨问题">时钟回拨问题
+&lt;/h2>&lt;p>如此简单就基本完成了核心逻辑，但很不「高可用」。如果业务服务器（即调用 redis &lt;code>INCR&lt;/code> 的服务器）的系统时间回拨了呢？那么&lt;strong>新序列号可能会比老序列号更小&lt;/strong>，例如系统时间回拨一年，重启服务，则会生成 24 年的流水号 &lt;code>24_04_13...&lt;/code>。&lt;/p>
+&lt;p>可见让这个流水号生成器「高可用」的主要的挑战在于预防「时钟回拨」。&lt;/p>
+&lt;p>当服务器的系统时间异常了，原因可能会五花八门，不过导致的根本问题都是「新序列号比老序列号更小」。&lt;/p>
+&lt;blockquote>
+&lt;p>至于 redis 重启问题，在我们这个生成逻辑下，redis 得是秒级重启。如果 redis 花费了一秒多的时间重启成功，那么序列号可以透明的、自动的从零重新开始自增，基本不用考虑这个问题。&lt;/p>&lt;/blockquote>
+&lt;p>我们需要将「新序列号」与「（上一个）旧序列号」比较，才能知道新序列号是否正确。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">private&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">prev&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="p">-&lt;/span>&lt;span class="m">1L&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">currentNumber&lt;/span> &lt;span class="p">&amp;lt;&lt;/span> &lt;span class="n">prev&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// TODO: 解决时钟回拨问题
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">throw&lt;/span> &lt;span class="n">IllegalStateException&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;时钟回拨：&lt;/span>&lt;span class="si">$currentNumber&lt;/span>&lt;span class="s2"> &amp;lt; &lt;/span>&lt;span class="si">$prev&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>现在的问题变成了 &lt;code>prev&lt;/code> 怎么读写。&lt;/p>
+&lt;h2 id="即时更新序列号">即时更新序列号
+&lt;/h2>&lt;p>很方便的是，我们（业务服务器）是生成者，生成新序列号后更新下变量即可。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">currentNumber&lt;/span> &lt;span class="p">&amp;lt;&lt;/span> &lt;span class="n">prev&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">throw&lt;/span> &lt;span class="n">IllegalStateException&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;时钟回拨：&lt;/span>&lt;span class="si">$currentNumber&lt;/span>&lt;span class="s2"> &amp;lt; &lt;/span>&lt;span class="si">$prev&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">prev&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">currentNumber&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>出现了，竟态条件！前面说到我们的生成器只依赖 redis 的 &lt;code>INCR&lt;/code>，本来是不需要线程锁的，但现在 &lt;code>prev&lt;/code> 变量的出现，导致生成器线程不安全了。&lt;/p>
+&lt;p>可以直接给生成器方法上锁，但不够轻便和&lt;strong>优雅&lt;/strong>。因为我们的序列号是秒级别内并发才需要同步，不需要时时刻刻同步，可以乐观一点，使用 &lt;code>AtomicLong&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">private&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">lastNumber&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">AtomicLong&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">0&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>简单的实现，利用原子变量尝试单次更新。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">val&lt;/span> &lt;span class="py">updated&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">lastNumber&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">updateAndGet&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">prev&lt;/span> &lt;span class="o">-&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">currentNumber&lt;/span> &lt;span class="p">&amp;gt;&lt;/span> &lt;span class="n">prev&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">currentNumber&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="n">prev&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">currentNumber&lt;/span> &lt;span class="p">&amp;lt;&lt;/span> &lt;span class="n">updated&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">throw&lt;/span> &lt;span class="n">IllegalStateException&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;时钟回拨，无法生成订单号&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>当我们需要在时钟回拨时做些处理的时候，我们就可以基于原子变量封装一个乐观锁。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 保证线程安全地维护 lastNumber，避免时钟回拨
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">true&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">prev&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">lastNumber&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="k">get&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">currentNumber&lt;/span> &lt;span class="p">&amp;lt;&lt;/span> &lt;span class="n">prev&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// throw IllegalStateException(&amp;#34;时钟回拨，无法生成订单号&amp;#34;)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="c1">// 或者等待时间修复，重新生成 currentNumber
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">currentNumber&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">waitClockSyncAndGenerate&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">continue&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">lastNumber&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">compareAndSet&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">prev&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">currentNumber&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">break&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="启动时恢复序列号">启动时恢复序列号
+&lt;/h2>&lt;p>及时更新很完美，但当业务服务器重启，就会丢失 &lt;code>lastNumber&lt;/code> 值，需要一个行为在服务启动时恢复 &lt;code>lastNumber&lt;/code>。&lt;/p>
+&lt;h3 id="plan-1---redis-缓存">plan 1 - Redis 缓存
+&lt;/h3>&lt;p>首当其冲，我们的 redis 服务器还健在，直接从 redis 服务器中恢复。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">postInit&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">last&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">redis&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">opsForValue&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="k">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LAST_NUMBER_KEY&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">last&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">null&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">lastNumber&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">last&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="plan-2---生命周期-hook">plan 2 - 生命周期 Hook
+&lt;/h2>&lt;p>如果 redis 服务也重启了，还是要想办法持久化 &lt;code>lastNumber&lt;/code>。什么时候持久化比较好呢，因为持久化是一个 IO 操作，在每次生成时即时持久化不够优雅，最好是通过各种手段监控到业务服务的销毁后，在业务服务启动前持久化 &lt;code>lastNumber&lt;/code>。&lt;/p>
+&lt;p>当然设计允许的话，也可以直接从相关业务表里恢复，例如 &lt;code>select max(orderNumber) from order&lt;/code>，获取最大（新）的订单号。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">val&lt;/span> &lt;span class="py">last&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">sql&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">query&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;select max(orderNumber) from order&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">last&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">null&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">lastNumber&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">last&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>如果这个生成器专门为这个业务服务，这样做没什么不好。若是一个通用生成器，就不够优雅了，会使我们的生成器要和某个业务强绑定。&lt;/p>
+&lt;p>紧随其后的就是业务服务器本地文件，当业务服务是正常停止的，一般都会给我们提供一些 hook，例如 spring 的 &lt;code>@PreDestory&lt;/code> 注解。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@PreDestory&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">preDestory&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">LAST_NUMBER_FILE&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">parentFile&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">mkdirs&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nc">LAST_NUMBER_FILE&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">writeText&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">lastNumber&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="k">get&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">toString&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Exception&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">println&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;写入本地 lastNumber 失败：&lt;/span>&lt;span class="si">${e.message}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@PostConstructor&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">postInit&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Plan 2: 尝试从本地文件恢复
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nc">LAST_NUMBER_FILE&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">exists&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">fileVal&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nc">LAST_NUMBER_FILE&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">readText&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">trim&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">toLongOrNull&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">fileVal&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="k">null&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">lastNumber&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fileVal&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="plan-3---守卫服务">plan 3 - 守卫服务
+&lt;/h3>&lt;p>但前面的还是不靠谱，单机服务、机房淹水，来不及正常停止服务，这些容错方案就不起作用了。&lt;/p>
+&lt;p>我们可以抽象一个 &lt;code>StateStorage&lt;/code> 出来，交给下游实现，主要作用是持久化 &lt;code>lastNumber&lt;/code>，例如 ``&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@PostConstruct&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">initLastNumber&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// Plan 3: 尝试从状态存储器恢复 ，大概会是这样
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">val&lt;/span> &lt;span class="py">last&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">stateStorage&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">getLast&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">lastNumber&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fileVal&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>StateStorage&lt;/code> 怎么实现就敬请想象了，可以利用心跳检测，服务监控等各种中间件，部署一个外部监控服务（守卫），在一系列连环措施下，终于可以安全的 hook 掉业务服务宕机了。&lt;/p>
+&lt;p>或者简单点，让业务服务自己监控自己，实现一个内部的 scheduler ，例如以 heartbeat 的形式持久化 &lt;code>lastNumber&lt;/code>。&lt;/p>
+&lt;h3 id="其它">其它
+&lt;/h3>&lt;p>关于启动时恢复，是为了解决新序列号过小牵扯出来的问题。那只要我们的业务服务的系统时间恢复正常，解决掉「新序列号 &amp;lt; 旧序列号」的问题。新旧序列号大小比较通过，此时启动时恢复的靠不靠谱就不重要了。&lt;/p>
+&lt;p>或者不够优雅也无所谓了，我这个业务很重要，不太关心性能，那就每次生成后即时持久化。&lt;/p>
+&lt;p>当然也可以不强依赖 redis，将 redis 抽象成一个原子性质的自增方法，称之为「分发器」。把 redis 作为一种分发器的实现，这样或许会更「通用」一点。&lt;/p>
+&lt;p>分布式场景的话，再加上一个 machineid 节点标识位，但也会有&lt;/p>
+&lt;h2 id="参考">参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://cosid.ahoo.me/guide/snowflake.html" target="_blank" rel="noopener"
+>SnowflakeId | CosId&lt;/a>&lt;/p></description></item><item><title>Arch + Hyprland 安装美化手册</title><link>https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/</link><pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/</guid><description>&lt;img src="https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/image-2024_02_25_03_47_36.png" alt="Featured image of post Arch + Hyprland 安装美化手册" />&lt;blockquote>
+&lt;p>!TIPS
+文中提到的软件配置、dotfiles 相关都可以在
+&lt;a class="link" href="https://github.com/zonowry/dotfiles" target="_blank" rel="noopener"
+>zonowry/dotfiles&lt;/a> 仓库中找到。&lt;/p>&lt;/blockquote>
+&lt;p>首先展示成果&lt;/p>
+&lt;p>&lt;img src="https://blog.zonowry.com/images/blog/arch/image-2024_02_25_03_47_36.png"
+loading="lazy"
+alt="preview"
+>&lt;/p>
+&lt;h2 id="进入-arch-livecd-开始安装">进入 Arch LiveCD 开始安装
+&lt;/h2>&lt;h3 id="硬盘分区">硬盘分区
+&lt;/h3>&lt;p>先使用 &lt;code>fdisk&lt;/code> 对磁盘分区，至少需要创建一个 &lt;code>fat&lt;/code> 格式分区，存放 &lt;code>efi&lt;/code> 引导文件。和一个 &lt;code>btrfs&lt;/code> 主分区，存放系统文件。&lt;/p>
+&lt;blockquote>
+&lt;p>下文使用 /dev/nvme0n1 作为例子。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">fdisk /dev/nvme0n1 &lt;span class="c1"># 选择一块硬盘进行分区&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; g &lt;span class="c1"># gpt 分区表，uefi 启动&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; n &lt;span class="c1"># 新建分区&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; ...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; w &lt;span class="c1"># 保存退出&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="格式化磁盘">格式化磁盘
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 主分区&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkfs.vfat /dev/nvme0n1p1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkfs.btrfs -L arch-btrfs /dev/nvme0n1p2 &lt;span class="c1"># 建立 btrfs 分区并命名 Label&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="挂载分区--初始化-btrfs">挂载分区 &amp;amp; 初始化 btrfs
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir -p /mnt/efi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount /dev/sda1 /mnt/efi
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>挂载主分区安装系统到磁盘。&lt;/p>
+&lt;blockquote>
+&lt;p>btrfs 压缩算法区别 &lt;a class="link" href="https://btrfs.readthedocs.io/en/latest/Compression.html#incompressible-data" target="_blank" rel="noopener"
+>Compression&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mount -t btrfs -o &lt;span class="nv">compress&lt;/span>&lt;span class="o">=&lt;/span>zstd /dev/nvme0n1p2 /mnt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">btrfs subvol create /mnt/@
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">btrfs subvol create /mnt/@home
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">btrfs subvol create /mnt/@var-cache
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">btrfs subvol create /mnt/@var-temp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">btrfs subvol create /mnt/@opt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">btrfs subvol create /mnt/@swap
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">umount /mnt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount -t btrfs -o &lt;span class="nv">compress&lt;/span>&lt;span class="o">=&lt;/span>zstd,subvol&lt;span class="o">=&lt;/span>@ /dev/nvme0n1p2 /mnt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount --mkdir -t btrfs -o &lt;span class="nv">subvol&lt;/span>&lt;span class="o">=&lt;/span>@home /dev/nvme0n1p2 /mnt/home
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount --mkdir -t btrfs -o &lt;span class="nv">subvol&lt;/span>&lt;span class="o">=&lt;/span>@opt /dev/nvme0n1p2 /mnt/opt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount --mkdir -t btrfs -o &lt;span class="nv">subvol&lt;/span>&lt;span class="o">=&lt;/span>@var-cache /dev/nvme0n1p2 /mnt/var/cache
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount --mkdir -t btrfs -o &lt;span class="nv">subvol&lt;/span>&lt;span class="o">=&lt;/span>@var-temp /dev/nvme0n1p2 /mnt/var/temp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">btrfs &lt;span class="k">fi&lt;/span> mkswapfile /mnt/swap/swapfile --uuid clear --size 16G
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">swapon /swap/swapfile
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="替换-pacman-安装源">替换 pacman 安装源
+&lt;/h3>&lt;p>加速 &lt;code>pacman&lt;/code> 安装速度。用 &lt;code>reflector&lt;/code> 自动配置 &lt;code>pacman&lt;/code> 使用国内镜像源。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">reflector --age &lt;span class="m">24&lt;/span> --country China --sort rate --verbose --protocol http --protocol https --save /etc/pacman.d/mirrorlist
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;del>也可以编辑 mirrorlist 文件，解开 &lt;code>[China]&lt;/code> 下的镜像源注释并注释掉官方源，或者用手机上网搜索最新的国内 archlinuxcn 镜像源吧，然后手动敲上。&lt;/del>&lt;/p>
+&lt;h3 id="pacman-配置">pacman 配置
+&lt;/h3>&lt;p>如果安装时遇到签名错误，应该可以通过以下方式解决。&lt;del>如果你的 &lt;code>live&lt;/code> 不是很新那么大概率会签名错误，所以推荐先执行以下，也没坏处。&lt;/del>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman-key --init
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pacman-key --populate archlinux
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Syy 刷新下&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pacman -Syy archlinux-keyring
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="开始安装">开始安装：
+&lt;/h3>&lt;p>下载安装系统内核，以及网络管理、ssh 之类的&lt;strong>必备软件&lt;/strong>。&lt;/p>
+&lt;blockquote>
+&lt;p>PS：如果是当作日常桌面系统使用，系统内核推荐安装 &lt;code>linux-zen&lt;/code> ，看 &lt;a class="link" href="https://liquorix.net/" target="_blank" rel="noopener"
+>linux-lqx(zen) 官网介绍&lt;/a> 是比较适合桌面/游戏用户的。但会遇到因为不是官方标准内核，所以会碰见部分驱动需要用 &lt;code>dkms&lt;/code> 自己编译的情况。例如 &lt;code>nvidia&lt;/code> ，简单起见就先用 &lt;code>linux&lt;/code> 标准内核吧，以后可以再安装切换到 &lt;code>linux-zen&lt;/code>，也不麻烦。&lt;/p>&lt;/blockquote>
+&lt;blockquote>
+&lt;p>PPS：如果你是 intel 就安装 intel-ucode，amd 就安装 amd-ucode（大概是这个名字，参考 archlinux wiki 吧）。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacstrap /mnt &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>linux &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>linux-firmware &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>base &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>sudo &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>neovim &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>networkmanager &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>openssh &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>git &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>git-lfs
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zsh &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>grub &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>efibootmgr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>intel-ucode &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>base-devel &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>devtools &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>btrfs-progs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="chroot-进入系统">chroot 进入系统
+&lt;/h3>&lt;p>安装完成后，进入系统，方便后续做一些处理。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">arch-chroot /mnt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ln -s /usr/bin/nvim /usr/bin/vim
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="grub-启动项配置">grub 启动项配置
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">mkdir /efi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 挂载第一步创建的 vfat 分区&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount /dev/sda1 /efi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># grub uefi 启动项&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">grub-install --target&lt;span class="o">=&lt;/span>x86_64-efi --efi-directory&lt;span class="o">=&lt;/span>/efi --bootloader-id&lt;span class="o">=&lt;/span>GRUB
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># TODO&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">vim /etc/default/grub
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># loglevel=5, nowatchdog&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># grub 引导/菜单配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">grub-mkconfig -o /boot/grub/grub.cfg
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="添加用户">添加用户
+&lt;/h3>&lt;p>设置用户密码，配置普通用户 sudo 权限。&lt;/p>
+&lt;blockquote>
+&lt;p>用户名「zonowry」改成自己的即可。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">useradd -m zonowry
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 为新用户设置密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">passwd zonowry
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 为 root 设置密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">passwd root
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 允许新用户使用 sudo 命令， 这里我设置了 sudo 免密码，可以去掉&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;zonowry ALL=(ALL) NOPASSWD:NOPASSWD:ALL&amp;#34;&lt;/span> &amp;gt;&amp;gt; /etc/sudoers
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="fstab-配置">fstab 配置
+&lt;/h3>&lt;p>设置系统启动时自动挂载的分区，退出 &lt;code>arch-chroot&lt;/code> ，通过 &lt;code>arch&lt;/code> 安装脚本自动生成 &lt;code>fstab&lt;/code> 配置。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exit&lt;/span> &lt;span class="c1"># 退出 chroot /mnt 环境&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">genfstab /mnt &amp;gt; /mnt/etc/fstab
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>建议验证下，生成的是否正确&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat /mnt/etc/fstab
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>![[cat-fstab.png]]&lt;/p>
+&lt;h2 id="重启进入系统">重启进入系统
+&lt;/h2>&lt;p>上边的步骤做完，重启应该就可以引导并进入系统了。&lt;/p>
+&lt;h3 id="初始化网络">初始化网络
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">systemctl &lt;span class="nb">enable&lt;/span> NetworkManager
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl start NetworkManager
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl &lt;span class="nb">enable&lt;/span> sshd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl start sshd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="时区本地化配置">时区本地化配置
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">timedatectl set-ntp &lt;span class="nb">true&lt;/span> &lt;span class="c1"># ntp 同步时间&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">timedatectl set-timezone Asia/Shanghai
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">timedatectl &lt;span class="c1"># 查看验证&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="语言本地化配置">语言本地化配置
+&lt;/h3>&lt;p>可能影响一些系统的提示语言，货币和时间的显示格式。&lt;/p>
+&lt;blockquote>
+&lt;p>程序员的话建议就用 en_US.utf8 吧，一些命令报错，英文的话比较好搜索解决方法。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim /etc/locale.gen
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 解除 en_US.UTF-8 的注释，&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># :wq 保存退出&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 生成&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">locale-gen
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">localectl set-locale &lt;span class="nv">LANG&lt;/span>&lt;span class="o">=&lt;/span>en_US.UTF-8
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="aur-客户端">Aur 客户端
+&lt;/h3>&lt;p>一般使用 &lt;code>yay&lt;/code> ，不过我图新鲜用的 &lt;code>paru&lt;/code> 。其实也不知道具体啥区别，到底哪个好用。感觉除了开发语言不同，功能上都差不多吧。&lt;/p>
+&lt;p>去 &lt;code>paru&lt;/code> 的 &lt;code>github&lt;/code> release 页面下载二进制包，然后解压创建 &lt;code>/usr/bin/paru&lt;/code> 软链接就好了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 或者直接 `wget` ，需要自己判断版本链接。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wget https://github.com/Morganamilo/paru/releases/download/v1.11.2/paru-v1.11.2-x86_64.tar.zst
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># tar 解压 paru-v1.11.2-x86_64.tar.zst&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">tar xvf paru-v1.11.2-x86_64.tar.zst
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir /opt/paru
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mv ./paru /opt/paru
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod +x paru
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ln -s /opt/paru/paru /usr/bin/paru
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">paru -Syyu
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="hyprland-安装">hyprland 安装
+&lt;/h2>&lt;p>&lt;code>hyprland&lt;/code>，一款平铺桌面管理器。动画流畅，丰富的自定义选项。最好配合 &lt;code>hyprland&lt;/code> 官网食用。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -Sy hyprland
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安装后可以命令行执行 &lt;code>Hyprland&lt;/code> 启动小窥一眼，默认配置比较简陋，&lt;code>win+M&lt;/code> 退出继续折腾。&lt;/p>
+&lt;p>hyprland 的配置例如动画样式、窗口规则、按键绑定、屏幕设置等不是很重要，默认配置也够用了，且个人差异太大，找个自己喜欢的 dotfiles 参考即可。比较重要的配置是环境变量&lt;/p>
+&lt;h3 id="byprland-环境变量">byprland 环境变量
+&lt;/h3>&lt;p>亲身感受下来是很多疑难杂症都可能和某个环境变量有关，只能靠多搜索多踩坑。&lt;/p>
+&lt;blockquote>
+&lt;p>每个人环境不一样，所以也仅供参考。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Some default env vars.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> XDG_CURRENT_DESKTOP,Hyprland
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> XCURSOR_SIZE,24
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> QT_QPA_PLATFORMTHEME,qt6ct &lt;span class="c1"># change to qt6ct if you have that&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># env = LIBVA_DRIVER_NAME,nvidia&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> XDG_SESSION_TYPE,wayland
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># env = GBM_BACKEND,nvidia-drm&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> GDK_BACKEND,wayland
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># env = __GLX_VENDOR_LIBRARY_NAME,nvidia&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> WLR_NO_HARDWARE_CURSORS,1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> OZONE_PLATFORM,wayland
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># env = GLFW_IM_MODULE,ibus&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> QT_IM_MODULE,fcitx
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> XMODIFIERS,@im&lt;span class="o">=&lt;/span>fcitx
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> LANG,zh_CN.UTF-8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> LANGUAGE,zh_CN:en_US
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> JDK_JAVA_OPTIONS,-Dawt.useSystemAAFontSettings&lt;span class="o">=&lt;/span>on -Dswing.aatext&lt;span class="o">=&lt;/span>&lt;span class="nb">true&lt;/span> -Dswing.defaultlaf&lt;span class="o">=&lt;/span>com.sun.java.swing.plaf.gtk.GTKLookAndFeel
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> _JAVA_AWT_WM_NONREPARENTING,1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> AWT_TOOLKIT,MToolkit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">env&lt;/span> &lt;span class="o">=&lt;/span> JAVA_HOME,/opt/apps/jdk/jdk1.8.0_261
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="桌面配置--常用应用">桌面配置 &amp;amp; 常用应用
+&lt;/h2>&lt;p>以下软件大多都和 dotfiles 配置相关，可以在 &lt;a class="link" href="https://github.com/zonowry/dotfiles" target="_blank" rel="noopener"
+>dotfiles&lt;/a> 找到各个软件对应的配置。例如 &lt;code>~/.config/fontconfig/fonts.conf&lt;/code> 字体配置。&lt;/p>
+&lt;h3 id="must-have">Must Have
+&lt;/h3>&lt;blockquote>
+&lt;p>中文字体是必备的，但也看个人喜好。不过字体对 waybar 等应用影响比较大，很容易出现在编辑器里很好看，但在 GUI 界面上很难看（对不齐之类的）。需要自己调整或者采用别人的挑选好的字体。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 权限&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pacman -Sy polkit-kde-agent &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>dunst &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>pipewire &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>wireplumber &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>xdg-desktop-portal-hyprland &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>xdg-desktop-portal-wlr &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>xdg-desktop-portal-gtk &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>qt5-wayland &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>qt6-wayland
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 字体&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ttf-lxgw-wenkai &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>ttf-iosevka-nerd &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>wqy-microhei
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">paru -S ttf-cascadia-code-nerd &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>ttf-lxgw-wenkai-screen &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>noto-fonts-emoji &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>ttf-firecode-nerd &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>ttf-material-design-icons-extended
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">fc-cache -vf &lt;span class="c1"># 刷新字体缓存&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="输入法">输入法
+&lt;/h3>&lt;p>得益于 Hyprland 作者好像也是日语输入法用户，所以 Hyprland 的 input-method 相关协议较其它 wayland 合成器更为完善。现在 Hyprland 安装 chrome，fcitx5 之后，基本是开箱即用了，~~（只需要设置 fcitix5 环境变量与 electron flags）~~好起来了！&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -S fcitx5-im &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>fcitx5-rime &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>fcitx5-configtool &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>fcitx5-material-color
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>强推下雾凇拼音 &lt;a class="link" href="https://github.com/iDvel/rime-ice" target="_blank" rel="noopener"
+>https://github.com/iDvel/rime-ice&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">paru -S rime-ice-git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="常用软件">常用软件
+&lt;/h3>&lt;blockquote>
+&lt;p>下列应用不一定适合所有人，大多都有平替，仅供参考。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -Sy kitty &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>wofi &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>waybar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>thunar &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>nfs-utils
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">paru -Sy visual-studio-code-bin &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>google-chrome
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="美化">美化
+&lt;/h2>&lt;h3 id="前置软件">前置软件
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">paru -Sy kvantum &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>qt5ct &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>qt6ct &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>nwg-look
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以下是我采用的主题图标，若不喜欢。也可以去 &lt;a class="link" href="https://pling.com" target="_blank" rel="noopener"
+>pling.com&lt;/a> 找自己喜欢的，安装方式大同小异。&lt;/p>
+&lt;h3 id="主题">主题
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone --depth&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> https://github.com/vinceliuice/Orchis-kde.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> ./Orchis-kde
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./install.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="图标">图标
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone --depth&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> https://github.com/vinceliuice/Tela-icon-theme.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> ./Tela-icon-theme
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./install.sh -a
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="指针">指针
+&lt;/h3>&lt;p>&lt;a class="link" href="https://github.com/phisch/phinger-cursors" target="_blank" rel="noopener"
+>phinger-cursors&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">paru -S phinger-cursors
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 打开 nwg-look 设置指针即可&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安装好主题图标后，依次使用 &lt;code>kvantum&lt;/code>、&lt;code>nwg-look&lt;/code>、&lt;code>qt5ct&lt;/code>、&lt;code>qt6ct&lt;/code> 软件应用下主题图标即可，qt5ct/qt6ct 的主题选择 kvantum。最后重启 Hyprland 让主题生效。&lt;/p>
+&lt;h3 id="命令行美化">命令行美化
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pacman -S fzf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>oh-my-zsh&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git clone --depth&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> https://github.com/romkatv/powerlevel10k.git &lt;span class="si">${&lt;/span>&lt;span class="nv">ZSH_CUSTOM&lt;/span>&lt;span class="k">:-&lt;/span>&lt;span class="nv">$HOME&lt;/span>&lt;span class="p">/.oh-my-zsh/custom&lt;/span>&lt;span class="si">}&lt;/span>/themes/powerlevel10k
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>zsh 插件，有些是自带的，第三方插件都有 git 仓库。&lt;/li>
+&lt;/ul>
+&lt;p>以下都可以通过例如 &lt;code>git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestion&lt;/code> 来安装。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zsh-autosuggestions
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zsh-syntax-highlighting
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">fzf-zsh-plugin
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker-compose
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zsh-shift-select
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="备份">备份
+&lt;/h2>&lt;p>一系列繁琐操作后，得到了一个纯净的系统，当务之急是备份当前环境，避免重装。得益于 btrfs，备份十分简单。&lt;/p>
+&lt;blockquote>
+&lt;p>timeshift 只会备份名为 @、@home 的子卷，够用了。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo pacman -S timeshift grub-btrfs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>timeshift 需要 root， wofi 调起 timeshift，polkit 输入密码后，没有反应。懒得排查原因了，只能 sudo -E timeshift-gtk 启动了，问题不大。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo -E timeshift-gtk
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>按照操作来即可创建一个快照了。&lt;/p>
+&lt;h2 id="小技巧">小技巧
+&lt;/h2>&lt;ul>
+&lt;li>&lt;code>wev&lt;/code>
+&lt;ul>
+&lt;li>命令行工具，查看键码&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;code>hyprctl clients&lt;/code>
+&lt;ul>
+&lt;li>查看当前客户端列表信息，可以用来排查是否是 xwayland 启动。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>NAT 穿透在不同环境下的差异</title><link>https://blog.zonowry.com/posts/nat-in-different-environments/</link><pubDate>Fri, 16 Aug 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/nat-in-different-environments/</guid><description>&lt;h2 id="前言">前言
+&lt;/h2>&lt;p>有时候会觉得 BT 以及可以实现 P2P 的 VPN 很”魔法“，因为一直对端到端直连的技术细节好像知道，又好像不知道。借着捣鼓了一阵 wireguard 组网，写下本文加深下对 P2P 理解。&lt;/p>
+&lt;p>配置这些工具没什么难度，但背后的技术路径却很有意思。 tailscale 那片著名的 NAT 文章讲的很全面，本文也是主要结合这篇文章总结下 NAT 穿透的各种难度。&lt;/p>
+&lt;h2 id="完整又原始的-wireguard">完整又原始的 wireguard
+&lt;/h2>&lt;p>单纯用 wireguard 实现中转组网的话很简单，只需要一个中转服务器。且有很多的开源工具辅助，例如 wireguard-ui、easy-wireguard&amp;hellip;利用这些工具可以管理各个 peer，生成 conf 文件。&lt;/p>
+&lt;p>wireguard 已经足够“完整“了。跨平台的客户端、声明式的配置、自动化的路由 AllowIPs 等等。如上段所说，wireguard 算的上最轻便的组网方案了，一般情况下很好用。&lt;/p>
+&lt;p>但想用 vanilla wireugard 实现 &lt;code>peer-to-peer&lt;/code> 直连的话，就要手动配置每个 peer 的 endpoint。如果 peer 的数量是 n ，那么这将是一个 &lt;code>O(n^2 - n)&lt;/code> 的工作，还不包括路由转发的配置工作，并且每个 peer 的公网地址也很难是固定的。&lt;/p>
+&lt;p>这些任务很繁重，没有在 github 上找到一个 vanilla wireguard 的自动化处理这些任务的工具，不过基于 wireguard 的上层工具倒是不少。&lt;/p>
+&lt;p>最终采用了 headscale，是 tailscale 服务器的开源版，基于 wireguard 实现。也算是一个 wireguard 自动化配置工具。简单配置下即可实现端到端直连需求，tailscale 客户端会自动添加 iptables 规则等路由操作。&lt;/p>
+&lt;p>回到正题，接下来从简单到困难，盘点下 NAT 穿透的各种难度。&lt;/p>
+&lt;h2 id="最简陋的环境">最简陋的环境
+&lt;/h2>&lt;p>首先抽象一个“很简陋”的 NAT 环境下的端到端直连，简陋是指对端防火墙允许一切传入。此时只要一端想办法得到对端的公网地址后，就可以直连。如何得到对端的公网地址也很简单，架设一个类似 DDNS 服务的“协调器”，两个端点访问协调器时，协调器自然可以看到端点的公网地址。&lt;/p>
+&lt;p>这个协调器服务称之为 &lt;code>STUN (Session Traversal Utilities for NAT)&lt;/code>，STUN 记录了每个端点的公网 IP，可以告诉各个端点对端的地址，让其自己去建立连接。&lt;/p>
+&lt;p>只要各个端点向 STUN 上报自己的地址就可以，虽然很简单，但这样确实就足够了。&lt;/p>
+&lt;h2 id="最常见的环境">最常见的环境
+&lt;/h2>&lt;p>STUN 的原理看上去十分简单，其实就是很简单。不过当 NAT 环境变得不“简陋”，即对端不允许一切传入，只允许传出的响应数据包。这也是大多 NAT 防火墙的默认配置。此时 STUN 会受到一些限制。&lt;/p>
+&lt;p>想象一下这种情况下 STUN 协助端到端建连的过程：首先一端建立一个 socket 访问 STUN 获取对端的地址，接着再建立一个 socket 访问对端，这时当然会被对端的 NAT 防火墙拦截，因为对端拒绝一切传入。&lt;/p>
+&lt;p>穿透只能到此为止了吗？前面说到，有状态防火墙允许一种“特殊的传入”，即自身传出的响应，否则我们就没办法愉快问对方是 GG 还是 MM 了。&lt;/p>
+&lt;p>回到 STUN 的限制上，就是我们要让对端防火墙认为我们的是“响应”。记得吗，对端也向 STUN 传出了数据包，所以 STUN 知道对端 NAT 此时开放（映射）的地址（端口），这个端口可以接受响应传入。&lt;/p>
+&lt;p>另一端则可以向对端的这个端口发送数据包，随后基于这个端口开始通信~~，可以开始为所欲为了~~。显而易见我们用来直连（穿透）的 socket 重用了访问 STUN 的 socket。&lt;/p>
+&lt;p>这就是为什么与 STUN 通信和 NAT 穿透要使用同一个 socket。&lt;/p>
+&lt;h2 id="有点难度的环境">有点难度的环境
+&lt;/h2>&lt;p>STUN 的限制似乎也不是很麻烦，最终来看只是限制只使用一个端口而已。&lt;/p>
+&lt;p>不过都知道 NAT 按照所谓的“锥形“分为四个等级，这个“锥形”划分比较抽象，我们不用。更容易理解的分类是 easy nat 和 hard nat，根据“是否依赖目的地址”划分的。&lt;/p>
+&lt;p>easy nat 是不依赖目的地址的一种 nat，顾名思义是较为容易穿透 (?) 的 NAT。Esay NAT 的特点是：内网机器同一个 socket 发出去数据包，经过 nat 映射后，nat 为此 socket 创建的端口是固定的。不管这个 socket 是发往 1.1.1.1，还是发往 2.2.2.2 的，即目的地址不相关。这也是我们上一步“最常见的环境”中可以成功直连的原因。&lt;/p>
+&lt;p>Hard NAT 就是依赖目的地址那种了，特点是：内网机器就算用同一个 socket 发出的数据包，经过 NAT 后，如果发往目的地址不一致。NAT 会为该 socket 的每一个目的地址映射一个不同的端口，等待目的地址的响应。&lt;/p>
+&lt;p>回到 STUN 上，当 Hard NAT 的一端向 STUN 服务器上报地址时，STUN 拿到的是独属于自己（STUN）的地址，只有 STUN 的响应被允许传入，对端的“响应”会被 Hard NAT 拦截。&lt;/p>
+&lt;p>想象一个理想的流程，肯定得由 Hard NAT 的一端先向 Easy NAT 的对端发送请求，Esay NAT 的一端拿到了独属于自己的地址（端口），开始基于这个端口开始通信。好像很自然，但问题是此时 Easy NAT 会拦截掉这个数据包，Hard NAT 给我们开放的这个专属端口遗落进网络长河中。&lt;/p>
+&lt;p>简单的魔改下 NAT 设备，让其记录下这个对端地址，如果可以办得到的话。除此以外，我们如何找到这个被遗落的端口？&lt;/p>
+&lt;p>前文说到 Hard NAT 设备对于 socket 的目的地址是关心的。即同一个 socket 发往 1.1.1.1 与发往 2.2.2.2 的数据包在经过 Hard NAT 设备映射后，是两个端口。所以当两端向对端发送数据包时，各个端点 NAT 设备映射的端口只有自己那端的 NAT 设备自己知道。&lt;/p>
+&lt;p>众所周知端口的数量只有 65535 个，让 Easy NAT 背后的端点暴力猜测那个“专属”端口也不是不可以~~（傲娇早就退环境了啊！）~~。不过从 1 开始遍历有点傻，让 Hard NAT 背后的端点多开点 socket 向 Easy NAT 发几次包，再利用点算法（生日悖论）提高猜中的概率。&lt;/p>
+&lt;p>当 Easy NAT 一端猜中端口，就可以基于这个端口通信了。&lt;/p>
+&lt;h2 id="搞不定的环境">搞不定的环境
+&lt;/h2>&lt;p>当一端是 Easy NAT，另一端是 Hard NAT 的话，限制又多了一个穿透必须由 Hard NAT 端发起。但只要从 STUN 服务器拿到对端 IP，再花费几秒钟猜测一次端口，这也是可以接受的。&lt;/p>
+&lt;p>可当两端都是 Hard NAT 呢？记得吗，Hard NAT 的映射规则是：&lt;/p>
+\[socket,dest ip:port\]&lt;p>，一端打开的每个端口（socket）猜测对端端口时，会映射一个新的端口，对端也是同理，一端的每个端口都要猜 65535 次，单纯暴力的话大概需要两端各进行 65535^2 次，如此巨大的复杂度就算上生日悖论算法也是难以接受。&lt;/p>
+&lt;p>所以在两端都是 Hard Nat 情况下的继续采用 STUN 协助打洞目前来看有点不太现实，只能走中转方案。&lt;/p>
+&lt;h2 id="9999-可以成功的环境">99.99% 可以成功的环境
+&lt;/h2>&lt;p>最常见的一种 NAT 实现就是 Linux 内核 netfilter 框架了，用 iptables 等工具可以简单的配置转换规则，连接的应答包也会自动应用“反向规则”。例如我们只需要配置 SNAT，当应答数据包经过 netfilter hook 时，会自动应用 DNAT （反向 SNAT）。&lt;/p>
+&lt;p>这都依托于有状态防火墙的链路追踪，基于这个特性，我们可以得出结论：不管两端的链路经历了多少 NAT 设备节点，最关键的 NAT 节点，始终只有距离发出端和接收端最近的那两个 NAT 节点。就像引用透明的函数式，不管函数多么复杂，其没有副作用。&lt;del>（正如本文的引言，数据包出走半生，归来时一定得是 NAT 设备期望的返回，令人忍俊不禁）&lt;/del>&lt;/p>
+&lt;p>综上所述，只要确认有一端是 Easy NAT 就 &lt;code>99.99%&lt;/code> 可以让 N2N 转为 P2P。当出现一端是 Easy NAT 却没有打洞成功的话。肯定是经过了奇奇怪怪的“NAT”，例如各种 proxy vpn。与 STUN 通信经过了 proxy，发出端变成了 proxy 节点，距离发出端最近的 NAT 也就变成了 proxy 节点的 NAT。对于这个 NAT ，我们能做的只有什么都不做。&lt;/p>
+&lt;h2 id="百分百可以成功的环境">百分百可以成功的环境
+&lt;/h2>&lt;p>端口转发，或者公网 ip，选一个吧。&lt;/p>
+&lt;h2 id="参考">参考
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a class="link" href="https://arthurchiao.art/blog/nat-zh/" target="_blank" rel="noopener"
+>\[译\] NAT - 网络地址转换（2016）&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" target="_blank" rel="noopener"
+>\[译\] 深入理解 iptables 和 netfilter 架构&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>关系型数据库如何检索数据</title><link>https://blog.zonowry.com/posts/how-to-retrieve-data-in-relational-database/</link><pubDate>Thu, 18 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/how-to-retrieve-data-in-relational-database/</guid><description>&lt;p>说实话研究数据库的底层对常见的项目帮助不大，或者说不受重视，更多是在业务编排上。数据库随便建建，增删改查随便写写，功能就完成了，项目就上线了。但程序员总要有些追求，并且数据库的细节知识很泛用。如 Schema、索引、数据结构、事务、锁，这些知识不止是数据库独有的，说是学习数据库，不如说是借由数据库来学习一下这些知识。&lt;del>不参透数据库设计，就像四大名著不读红楼梦，后面忘了…&lt;/del>。&lt;/p>
+&lt;blockquote>
+&lt;p>本文主要讨论关系型数据库，可能会顺带一提与 NoSql 相关的知识。&lt;/p>&lt;/blockquote>
+&lt;h2 id="数据库的-schema">数据库的 Schema
+&lt;/h2>&lt;p>数据库大多是通过索引、表、数据类型等特性管理数据。但对于&lt;strong>关系型数据库&lt;/strong>来说，需要从&lt;strong>强类型&lt;/strong>说起。强类型主要是降低调用方的负担，编译期间就会给出报错，将类型错误扼杀在生产之前，不过需要编写强类型的一方“负重前行”。&lt;del>不过大家都会在类型上偷点懒， typescript 经常会被戏称为 anyscript 似乎是个很好的例子。&lt;/del>&lt;/p>
+&lt;p>所谓“负重”，其实就是我们&lt;strong>使用 &lt;code>Schema （模式）&lt;/code> 描述一个元素&lt;/strong>。Graphql 的接口定义是一个例子，关系型数据库更是如此。使用 Schema 描述表、列、索引、视图、以及外键约束各种关系等。不用钻研 Schema 是如何运作的，只需知道只有数据不会平白无故形成，为此你必须要提供一个 Schema 。&lt;/p>
+&lt;p>数据库是通过 &lt;code>Schema&lt;/code> 实现对数据结构的高度控制（&lt;strong>强类型&lt;/strong>）。进行诸如 &lt;code>create table&lt;/code> 操作时，本质就是在写一个 &lt;code>Schema&lt;/code> 。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>NoSQL&lt;/code> 一般会被称为 &lt;code>Schemaless&lt;/code> 数据库，侧面说明了 &lt;code>NoSQL&lt;/code> 弱模式的特性。不过数据通常会有相当“连贯”的结构，为了建立索引，我们还是会&lt;strong>显式&lt;/strong>的编写部分 &lt;code>Schema&lt;/code> 描述这些 &lt;code>连贯（consistent structure）&lt;/code> 的数据。&lt;/p>&lt;/blockquote>
+&lt;h2 id="索引的数据结构">索引的数据结构
+&lt;/h2>&lt;p>索引字面上很容易理解，例如 HashMap 和 Array，它们的 &lt;strong>键值 (HashCode)&lt;/strong> 和 &lt;strong>元素下标 (Index)&lt;/strong> 就是其索引。但数据库作为一个&lt;strong>系统&lt;/strong>，在索引上的设计上就略微繁琐一些了，不过索引目的都是&lt;strong>为了提高搜索效率&lt;/strong>，避免检索时枚举所有数据。&lt;/p>
+&lt;blockquote>
+&lt;p>索引本质是一种数据结构，将数据按照某种规律排列就形成了索引，借用别人的话来说“索引就是排序的艺术”。&lt;/p>&lt;/blockquote>
+&lt;p>考虑在 1 亿条数据中，找到 id 为 4396 的数据这个场景。暴力遍历最差需要枚举 1 亿次才能找到。那 &lt;code>B+Tree&lt;/code> 结构如何优化索引，考虑到有序树基本都是参考了二分法的思想，所以先从简单的二分法开始。&lt;/p>
+&lt;p>1 亿条数据一直对半分，最坏大概只需要 $log_2(1,0000,0000) \approx 26$ 次查询，可以看出仅仅一个平衡的二叉树（二分法）就可以指数级提升查找效率。&lt;/p>
+&lt;p>而数据库通常采用&lt;strong>平衡多叉树&lt;/strong>结构，也就是 &lt;code>B+ Tree&lt;/code>，&lt;code>B+ Tree&lt;/code> 与二叉树最大的区别就是其多叉，即底数 N 可能大于 2，也就降低了阶数。但是每阶可能需要比较 N 次，这样算下来效率好像没有比二叉树好。不过结合现实世界考虑，通过索引磁盘 IO 读取数据的次数约等于树的阶数，多叉树远比二叉树的阶数少，减少了磁盘 IO 次数。&lt;/p>
+&lt;p>简单的理解一次 IO 然后 CPU 内存批量判断索引，比精确但频繁的 IO 读取索引挨个判断更快，CPU 是比磁盘快 IO 得多的。这也就是数据库系统中 &lt;code>B+ Tree&lt;/code> 也就比二叉树的查询速度更快的原因了。&lt;/p>
+&lt;p>但显而易见的一棵多叉树，工作机制类似二分法，搜索效率很高~~（那么代价是什么）~~。但当我们增删数据时，需要分裂、合并叶子节点，那这棵树的结构会受到很大波动。因为树需要按照 &lt;code>B+ Tree&lt;/code> 的规则（定义）平衡自己，称之为页的&lt;strong>分裂与合并&lt;/strong>，一般是为了保持每个页的大小为 16K。所以常说建立索引后查询变快，但会导致增删改变慢。&lt;/p>
+&lt;h2 id="表的存储结构">表的存储结构
+&lt;/h2>&lt;p>&lt;code>模式 (Schema)&lt;/code> 与 &lt;code>索引 (Index)&lt;/code> 终归和“物理数据”不太相关，物理数据是如何存储的？主要与&lt;strong>表的存储结构&lt;/strong>相关。存储结构直接影响到数据的存储方式，间接影响到增删改查。关系型数据库的存储结构有两种：&lt;code>索引组织表 (Index Organzation Table)&lt;/code> 与 &lt;code>堆表 （Heap Table）&lt;/code>。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>NoSql&lt;/code> 因为不使用&lt;strong>关系表&lt;/strong>，在 &lt;code>NoSql&lt;/code> 中或许可以类比的概念是&lt;strong>数据模型&lt;/strong>。例如&lt;strong>键值对模型、文档模型、图模型&lt;/strong>等。&lt;code>NoSql&lt;/code> 按照模型定义把数据存储成&lt;strong>非结构化（unstructured）数据&lt;/strong>。&lt;/p>&lt;/blockquote>
+&lt;h3 id="索引组织表">索引组织表
+&lt;/h3>&lt;p>表的存储结构依附于索引，物理数据存储在一个索引的 &lt;code>B+ Tree&lt;/code> 上，也可以说索引直接指向物理数据，找到了索引，就找到了数据，这个索引称之为&lt;strong>聚集索引&lt;/strong>。物理数据只有一份，所以每个表也只能有一个聚集索引，一般为主键（唯一索引）。除聚集索引外的索引就是&lt;strong>二级索引&lt;/strong>，也被称为&lt;strong>辅助索引&lt;/strong>。&lt;/p>
+&lt;p>可以想象聚集索引是有序的，所以物理数据也是有序的，这意味着物理数据存储位置是随索引动态变化的，二级索引只能指向一个聚集索引（主键 ID）。当使用二级索引检索数据时，获取到聚集索引（主键 ID），再用主键 ID 去检索物理数据，这个过程叫作&lt;strong>回表&lt;/strong>。&lt;/p>
+&lt;h3 id="堆表">堆表
+&lt;/h3>&lt;p>堆表则没有&lt;strong>聚集索引&lt;/strong>，顾名思义堆表是一个 Heap，物理数据无序的堆在一起。数据与索引分开存储，通过索引只能获取到数据的物理地址（页号、偏移位置），再根据地址去&lt;strong>直取&lt;/strong>物理数据。&lt;/p>
+&lt;p>表面上看这与索引组织表的&lt;strong>二级索引&lt;/strong>机制大致相同，可以说堆表的索引全部都是&lt;strong>二级索引&lt;/strong>，但堆表的二级索引不存在&lt;strong>回表&lt;/strong>问题。与索引表的二级索引相比，存储的是数据的物理地址，所以少了&lt;strong>回表&lt;/strong>步骤，不过与聚集索引相比，还是慢一点的。&lt;/p>
+&lt;p>另外显而易见由于堆表无序，所以存储速度比索引表快一些。&lt;/p>
+&lt;h2 id="对于索引的优化">对于索引的优化
+&lt;/h2>&lt;h3 id="聚集索引">聚集索引
+&lt;/h3>&lt;p>聚集索引影响一个表的物理数据存储顺序，数据存储到哪个位置取决于这个聚集索引，会影响存储速度。不过找到索引，也就找到了数据，提升查询速度。数据和索引聚集到一起了，两者间有很强的关系。然后我们把这个索引叫做 &lt;code>聚集索引&lt;/code>，这种表结构的存储方式叫做 &lt;code>索引组织表&lt;/code>。因为聚集索引影响表的物理数据存储顺序，所以一个表只能有一个聚集索引，通常是根据主键建立的 &lt;code>B+ Tree&lt;/code> 索引。&lt;/p>
+&lt;p>根据聚集索引特性，我们可以优化的点：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>范围查询时尽量命中聚集索引&lt;/strong>，可以降低回表次数。&lt;/li>
+&lt;li>&lt;strong>更新数据时尽量不更改聚集索引本身&lt;/strong>。&lt;/li>
+&lt;li>&lt;strong>尽量不要离散的增删数据&lt;/strong>。例如隔 10 条数据删一条这种。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>MySQL 的 InnoDB 存储引擎就采用&lt;strong>索引组织表&lt;/strong>。&lt;/p>&lt;/blockquote>
+&lt;h2 id="二级索引-辅助索引非聚集索引">二级索引 (辅助索引/非聚集索引)
+&lt;/h2>&lt;p>二级索引的通常只存储了一个指向数据行存储位置的指针~~，当然还有索引列本身（作为键）~~。当我们通过二级索引列查询数据时，会先从辅助索引中找到记录的位置，这个位置上存放了数据行的&lt;strong>指针&lt;/strong>。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>在索引组织表结构下拿到的这个数据指针是主键（聚集索引）的值。&lt;/strong> 通过主键的值再去&lt;strong>聚集索引树里&lt;/strong>查询数据，这个过程叫做&lt;strong>回表&lt;/strong>&lt;del>，SQL 语句耗时长的多数原因&lt;/del>。&lt;/li>
+&lt;li>&lt;strong>在堆表结构下拿到的数据指针则是数据存放的绝对位置（页码、偏移量）。&lt;/strong> 在&lt;strong>堆表&lt;/strong>结构下，所有索引都可以看作是二级索引。&lt;/li>
+&lt;/ul>
+&lt;p>简单想象一个场景，现在我们想根据员工年龄查询数据，但我们目前只有一个用户 ID 列的聚集（主键）索引，数据库需要枚举所有数据再进行筛选。这时候我们就可以为年龄列建立一个二级索引。有了年龄列索引，数据库会先通过年龄列索引查询到符合条件的数据指针，再通过数据指针取到数据。&lt;/p>
+&lt;p>堆表与索引表的二级索引在读取数据时小有差异，不过宏观上看都是进行了两次 IO 读写，一次读取索引结构，一次读取数据页。这里可以把索引表的“数据页”看成聚集索引树，所以需要用&lt;strong>主键指针&lt;/strong>重新走一遍聚集索引，查找数据。虽然都是两次 IO，不过这个过程肯定是不如堆表的&lt;strong>绝对位置指针&lt;/strong>快的，不过也有优化方法。&lt;/p>
+&lt;h2 id="覆盖索引">覆盖索引
+&lt;/h2>&lt;p>&lt;strong>覆盖索引&lt;/strong>特性可以改善&lt;strong>索引组织表&lt;/strong>的&lt;strong>回表&lt;/strong>现象。简单来说，只要我们保证要查询的数据列都是索引列，这样找到二级索引就找到了所需要的数据，避免了再去聚集索引中查询数据。&lt;/p>
+&lt;p>例如我们要只想查询用户的 age 和 name，而恰好我们建立了 name 列和 age 列二级组合索引。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="k">create&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">index&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">on&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">age&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>那我们此时应该避免写出类似 &lt;code>select *&lt;/code> 语句。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">-- 可能查询到不需要的列，会触发回表
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">select&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">from&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">where&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">age&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">20&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">order&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">by&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>原因是查询 user 表没有索引的列会导致&lt;strong>回表&lt;/strong>。例如 create_time 没有索引，数据库会再去聚集索引中取 create_time 数据，可我们的业务又不需要 create_time，白白浪费性能。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="k">select&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">age&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">create_time&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">from&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">where&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">age&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">20&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">order&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">by&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>只需要通过二级索引覆盖了要查询的所有数据，因为 &lt;code>(age,name)&lt;/code> 组合索引本身就是 &lt;code>age, name&lt;/code> 列的数据，通过这个索引筛选数据时，找到了索引，就找到了数据，所以避免了&lt;strong>回表&lt;/strong>操作。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="k">select&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">age&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">from&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">where&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">age&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">20&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">order&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">by&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">-- or
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">select&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">age&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">from&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">user&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">where&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">age&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">20&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="数据库锁">数据库锁
+&lt;/h2>&lt;p>并发领域中常见术语：锁。&lt;/p>
+&lt;blockquote>
+&lt;p>或许可以先看看我的《[[怎样安全的并发编程]]》文章 😳。&lt;/p>&lt;/blockquote>
+&lt;p>数据库根据颗粒度划分出&lt;strong>行级锁&lt;/strong>、&lt;strong>页级锁&lt;/strong>、&lt;strong>表级锁&lt;/strong>。这些锁顾名思义就很容易理解了。根据行为来说的话又有&lt;strong>共享锁&lt;/strong>和&lt;strong>互斥锁&lt;/strong>。共享锁能够将数据设为只读，任一线程都可以读（共享数据），不过任一线程企图更新数据时都会被阻塞，直到共享锁释放。互斥锁则是为了保障写入数据的一致性，表现形式就是其它线程无法再对次数据添加任何锁。只有持有互斥锁的线程对该数据可读可写。&lt;/p>
+&lt;p>结合一个并发的先读后写的场景的业务场景。比如支付订单减少库存。A 用户和 b 用户同时了购买同一个商品，且同时支付成功。我们的业务逻辑是，首先为了保险，需要判断库存是否还有剩余，如果有剩余，就减少商品库存。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">-- upodate 语句会自动请求互斥锁（锁定需要的数据）
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">update&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">product&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">stock&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">stock&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">where&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">product_id&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">and&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">stock&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这句 sql 利用了互斥锁，保证了数据的一致性。但如果放在日经问题“抢购/秒杀”上来看，同时上万个用户进行秒杀，数据一致性是没问题。但由于竞争互斥锁会出现阻塞，那响应速度可想而知，且数据库链接是昂贵的资源，开了连接却阻塞等待，~~（占着茅坑不拉屎），~~小鸡承受不住呀。&lt;/p>
+&lt;p>缓存一招鲜秒了，将 &lt;code>stock&lt;/code> 这个数据缓存。当然，缓存那边怎么去实现，就牵扯到更多的缓存数据库设计了，一般是缓存好（预热/懒加载）数据，在缓存中原子性的更改缓存数据（库存）。然后在某个时间点进行一次简单地数据库更新写入，保证缓存与数据库的一致性。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">-- 在某个时刻，写入最新缓存数据。节流数据库写入请求
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">update&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">product&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">set&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">stock&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">#&lt;/span>&lt;span class="err">{&lt;/span>&lt;span class="n">stock_from_cache&lt;/span>&lt;span class="err">}&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">where&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">product_id&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>也没什么好说的，只要对并发编程理解足够深，把类似概念套用到数据库的锁、事务上也是一样的~~，只要打好基础，写啥都轻松~~。&lt;/p>
+&lt;h2 id="参考">参考
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.mongodb.com/unstructured-data/schemaless" target="_blank" rel="noopener"
+>What is a Schemaless Database?&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.modb.pro/db/78756" target="_blank" rel="noopener"
+>MySQL 为什么不用数组、哈希表、二叉树等数据结构作为索引呢&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="http://bbs.chinaunix.net/thread-1688208-1-1.html" target="_blank" rel="noopener"
+>PostgreSQL 与 MySQL 比较&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.modb.pro/db/107906" target="_blank" rel="noopener"
+>数据库之堆表和索引组织表 - 墨天轮&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>在 PVE 容器上部署 k3s + rancher</title><link>https://blog.zonowry.com/posts/deploy_k3s/</link><pubDate>Mon, 15 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/deploy_k3s/</guid><description>&lt;img src="https://blog.zonowry.com/posts/deploy_k3s/image-2024_04_16_12_36_53.png" alt="Featured image of post 在 PVE 容器上部署 k3s + rancher" />&lt;h2 id="折腾历程">折腾历程
+&lt;/h2>&lt;p>目的本来是实操 &lt;code>k8s&lt;/code> 的，部署时搞了一堆花里胡哨的，虽然因为复杂度与资源消耗原因放弃了这套方案~~（=白折腾）~~，但对理解 k8s 的组成部分帮助很大。&lt;/p>
+&lt;blockquote>
+&lt;p>曾经的解决方案：&lt;/p>
+&lt;ul>
+&lt;li>部署工具：kubeadm&lt;/li>
+&lt;li>容器运行时 CRI： cri-o&lt;/li>
+&lt;li>容器底层交互接口 OCI ：crun&lt;/li>
+&lt;li>容器网络 CNI： cilium&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;p>不过部署完这套，小鸡性能吃紧，遂换到了 &lt;code>k3s&lt;/code>。&lt;/p>
+&lt;p>但将 &lt;code>k3s&lt;/code> 作为 &lt;code>HomeServer&lt;/code> 使用一段时间后，手写各种 depolyment yaml 很是折磨，远不比 &lt;code>docker-compose&lt;/code> 方便，维护工作反而变麻烦了，一度想放弃折腾。&lt;/p>
+&lt;p>不过心底还是想坚持用 &lt;code>k8s&lt;/code> &lt;del>(大概是跟风吧）&lt;/del>，痛点不过是手写 &lt;code>yaml&lt;/code>，命令行看日志等等琐碎操作，这些问题 &lt;code>rancher&lt;/code> 都可以解决。&lt;del>不过写一些 &lt;code>k8s&lt;/code> 的 &lt;code>yaml&lt;/code> 后再用 webui 会很容易上手。&lt;/del>&lt;/p>
+&lt;blockquote>
+&lt;p>也有其它的 management，不过 rancher 比较流行，虽然&lt;strong>很重&lt;/strong>。轻量一点的也有一个 &lt;a class="link" href="https://github.com/skooner-k8s/skooner" target="_blank" rel="noopener"
+>GitHub - skooner-k8s.&lt;/a>，没啥资源的家庭服务器感觉可以考虑。&lt;/p>&lt;/blockquote>
+&lt;h2 id="lxc-前置条件">LXC 前置条件
+&lt;/h2>&lt;h3 id="1-lxc-的权限">1. LXC 的权限
+&lt;/h3>&lt;p>设置容器 /proc /sys 读写权限、cgroup 权限等&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim /etc/pve/lxc/&lt;span class="o">{&lt;/span>lxc id&lt;span class="o">}&lt;/span>.conf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 放开权限&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">unprivileged: &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-properties" data-lang="properties">&lt;span class="line">&lt;span class="cl">&lt;span class="na">lxc.apparmor.profile&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s">unconfined&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">lxc.cgroup.devices.allow&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s">a&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">lxc.cap.drop&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">lxc.mount.auto&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s">&amp;#34;proc:rw sys:rw&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-为容器创建-devkmsg">2. 为容器创建 /dev/kmsg
+&lt;/h3>&lt;p>容器一般不存在 /dev/kmsg 内核日志，&lt;code>k3s&lt;/code> 大概会向此“文件”输出消息，所以需要保证容器启动后存在这个文件，容器里存在一个 /dev/console，可以用这个“文件”作替身用。&lt;/p>
+&lt;ul>
+&lt;li>自动创建 /dev/kmsg&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim /usr/local/bin/conf-kmsg.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/sh -e
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> ! -e /dev/kmsg &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ln -s /dev/console /dev/kmsg
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mount --make-rshared /
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>创建 systemd 开机执行脚本&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">vim /etc/systemd/system/conf-kmsg.service
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-ini" data-lang="ini">&lt;span class="line">&lt;span class="cl">&lt;span class="k">[Unit]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">Description&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">Make sure /dev/kmsg exists&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">[Service]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">Type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">simple&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">RemainAfterExit&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">yes&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">ExecStart&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">/usr/local/bin/conf-kmsg.sh&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">TimeoutStartSec&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">[Install]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">WantedBy&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">default.target&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>启用生效&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">chmod +x /usr/local/bin/conf-kmsg.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">systemctl &lt;span class="nb">enable&lt;/span> --now conf-kmsg
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="安装-k3s">安装 k3s
+&lt;/h2>&lt;ul>
+&lt;li>从官方中国源安装，默认装最新版&lt;/li>
+&lt;li>注意版本号，要与 rancher 兼容&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh &lt;span class="p">|&lt;/span> &lt;span class="nv">INSTALL_K3S_MIRROR&lt;/span>&lt;span class="o">=&lt;/span>cn &lt;span class="nv">INSTALL_K3S_VERSION&lt;/span>&lt;span class="o">=&lt;/span>v1.28.7+k3s1 sh -s - server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>需要安装 rancher 支持的 k3s/k8s 版本。k3s 版本列表：&lt;a class="link" href="https://docs.k3s.io/zh/release-notes/v1.28.X" target="_blank" rel="noopener"
+>K3s&lt;/a>；
+rancher 兼容表： &lt;a class="link" href="https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-8-3/" target="_blank" rel="noopener"
+>Rancher Manager v2.8.3 | SUSE&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h2 id="安装-rancher">安装 Rancher
+&lt;/h2>&lt;h3 id="1-安装-helm">1. 安装 Helm
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod &lt;span class="m">700&lt;/span> get_helm.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./get_helm.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>为了使用 Helm，需要 &lt;code>Kubeconfig&lt;/code> 环境变量&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat &amp;gt;&amp;gt; /etc/profile &lt;span class="s">&amp;lt;&amp;lt; EOF
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> /etc/profile
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 验证一下&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">helm list -A
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-helm-添加仓库">2. Helm 添加仓库
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>国内可以用镜像： &lt;code>https://rancher-mirror.rancher.cn/server-charts/stable&lt;/code> ，版本可能落后。&lt;/p>&lt;/blockquote>
+&lt;h3 id="3-为-rancher-创建命名空间">3. 为 Rancher 创建命名空间
+&lt;/h3>&lt;p>你需要定义一个 Kubernetes 命名空间，用于安装由 Chart 创建的资源。这个命名空间的名称为  &lt;code>cattle-system&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl create namespace cattle-system
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="4-rancher-默认需要-ssl-相关配置">4. rancher 默认需要 SSL 相关配置
+&lt;/h3>&lt;p>需要安装 &lt;code>cert-manager&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.crds.yaml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="5-部署-rancher">5. 部署 rancher
+&lt;/h3>&lt;p>&lt;strong>部署后需要通过 &lt;code>hostname&lt;/code> 访问 &lt;code>rancher&lt;/code>&lt;/strong>，如果没有 DNS 服务器，应该可以通过修改 &lt;code>hosts&lt;/code> 文件映射 &lt;code>ip&lt;/code> 访问。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">helm install rancher rancher-stable/rancher --namespace cattle-system --set &lt;span class="nv">hostname&lt;/span>&lt;span class="o">=&lt;/span>rancher.my.org --set &lt;span class="nv">bootstrapPassword&lt;/span>&lt;span class="o">=&lt;/span>admin --version 2.8.3
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="最后部署一个-neo4j-熟悉一下-rancher可选">最后部署一个 NEO4J 熟悉一下 rancher（可选）
+&lt;/h2>&lt;ul>
+&lt;li>新建个持久化卷资源
+&lt;ul>
+&lt;li>&lt;code>PersistentVolumes&lt;/code>
+&lt;ul>
+&lt;li>&lt;code>HostPath&lt;/code> 类型&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>再新建个持久化卷请求声明
+&lt;ul>
+&lt;li>&lt;code>PersistentVolumeClaims&lt;/code>
+&lt;ul>
+&lt;li>选择刚才建立的 &lt;code>PV&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://blog.zonowry.com/posts/deploy_k3s/image-2024_04_16_12_36_53.png"
+width="2093"
+height="816"
+srcset="https://blog.zonowry.com/posts/deploy_k3s/image-2024_04_16_12_36_53_hu_349c3b402a4b78fa.png 480w, https://blog.zonowry.com/posts/deploy_k3s/image-2024_04_16_12_36_53_hu_817e8be0dd3ae308.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="256"
+data-flex-basis="615px"
+>&lt;/p>
+&lt;ul>
+&lt;li>新增 &lt;code>Deployments&lt;/code>
+&lt;ul>
+&lt;li>为 &lt;code>Pod&lt;/code> 指定 &lt;code>PVC&lt;/code>&lt;/li>
+&lt;li>容器镜像：&lt;code>neo4j:5.19.0&lt;/code>&lt;/li>
+&lt;li>配置下 &lt;code>Service&lt;/code>
+&lt;ul>
+&lt;li>简单点就先 &lt;code>NodePort&lt;/code> 了，后面在配 &lt;code>Ingress&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>加个环境变量
+&lt;ul>
+&lt;li>&lt;code>NEO4J_AUTH=user/pwd&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://blog.zonowry.com/images/blog/image-2024_04_16_12_42_41.png"
+loading="lazy"
+>&lt;/p>
+&lt;ul>
+&lt;li>可以查看日志、服务状态，启动成功后。
+&lt;ul>
+&lt;li>访问 Neo4j http://ip:30075 (nodeport 监听的端口)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤</title><link>https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/</link><pubDate>Sun, 31 Mar 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/</guid><description>&lt;img src="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39.png" alt="Featured image of post 红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤" />&lt;h2 id="启用路由器的-telnet">启用路由器的 telnet
+&lt;/h2>&lt;p>为了启用 telnet，需要手动升级路由器固件到开发版，开发版固件可以在 &lt;a class="link" href="https://github.com/YangWang92/AX6S-unlock" target="_blank" rel="noopener"
+>GitHub - YangWang92/AX6S-unlock&lt;/a> 仓库下载。(&lt;a class="link" href="https://github.com/YangWang92/AX6S-unlock/blob/master/miwifi_rb03_firmware_stable_1.2.7.bin" target="_blank" rel="noopener"
+>miwifi_rb03_firmware_stable_1.2.7.bin&lt;/a>)&lt;/p>
+&lt;h2 id="通过-sn-码获取路由器-root-密码">通过 SN 码获取路由器 root 密码
+&lt;/h2>&lt;p>在网页 &lt;a class="link" href="https://miwifi.dev/ssh" target="_blank" rel="noopener"
+>Xiaomi Router Developer Guide &amp;amp; Tools&lt;/a> 内输入路由器 SN 码，计算出 root 密码。&lt;/p>
+&lt;h2 id="telnet-登录路由器开启-ssh-等服务">Telnet 登录路由器开启 ssh 等服务
+&lt;/h2>&lt;p>登录 telnet，用户名 root，密码你刚刚拿到了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">telnet 192.168.31.1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>执行以下三条命令，开启些服务，主要是 ssh，照做就是了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">ssh_en&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">uart_en&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">boot_wait&lt;/span>&lt;span class="o">=&lt;/span>on &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">bootdelay&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">3&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">flag_try_sys1_failed&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">flag_try_sys2_failed&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">flag_boot_rootfs&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram &lt;span class="nb">set&lt;/span> &lt;span class="s2">&amp;#34;boot_fw1=run boot_rd_img;bootm&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nvram &lt;span class="nb">set&lt;/span> &lt;span class="nv">flag_boot_success&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> nvram commit &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> /etc/init.d/dropbear &lt;span class="nb">enable&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> /etc/init.d/dropbear start
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="下载纯净原版的-immortalwrt-固件">下载纯净（原版）的 ImmortalWrt 固件
+&lt;/h2>&lt;p>&lt;a class="link" href="https://firmware-selector.immortalwrt.org/" target="_blank" rel="noopener"
+>ImmortalWrt Firmware Selector&lt;/a>&lt;/p>
+&lt;p>搜索自己的路由器型号，下载 &lt;strong>factory.bin&lt;/strong>。&lt;del>如果没有话只能自己编译了&lt;/del>&lt;/p>
+&lt;h2 id="通过-scp-上传固件">通过 scp 上传固件
+&lt;/h2>&lt;p>scp 上传刚刚下载的原版固件。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">scp path/to/file/factory.bin root@192.168.31.1:/tmp
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后 ssh 登录路由器，刷写 openwrt 固件。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 刷入上一步 scp 传过来的底包&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mtd -r write /tmp/factory.bin firmware
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="访问-openwrt-配置-lan-接口">访问 openwrt 配置 lan 接口
+&lt;/h2>&lt;p>原版的 openwrt 网址是 &lt;code>192.168.1.1&lt;/code>。这个 IP 地址可能会和光猫冲突，所以首先编辑 &lt;code>网络/接口/lan&lt;/code>，修改网段为你喜欢的，例如 &lt;code>10.0.0.1&lt;/code>。&lt;/p>
+&lt;h2 id="配置路由器拨号">配置路由器拨号
+&lt;/h2>&lt;p>配置好 lan 接口后，再配置下 wan 口的 PPPoE 信息，确保路由器可以联网~&lt;/p>
+&lt;h2 id="安装-argon-管理界面主题">安装 argon 管理界面主题
+&lt;/h2>&lt;p>仓库地址： &lt;a class="link" href="https://github.com/jerrykuku/luci-theme-argon" target="_blank" rel="noopener"
+>GitHub - jerrykuku/luci-theme-argon&lt;/a>。&lt;/p>
+&lt;p>安装的版本：&lt;a class="link" href="https://github.com/jerrykuku/luci-theme-argon/releases/download/v2.3.1/luci-theme-argon_2.3.1_all.ipk" target="_blank" rel="noopener"
+>2.3.1&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">opkg install luci-compat
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">opkg install luci-lib-ipkg
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># scp path\to\file\luci-theme-argon_2.3.1_all.ipk root@10.0.0.1:/tmp&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装 scp 传递下载好的 ipk&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">opkg install /tmp/luci-theme-argon*.ipk
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="安装-openclash">安装 openclash
+&lt;/h2>&lt;p>仓库地址： &lt;a class="link" href="https://github.com/vernesong/OpenClash" target="_blank" rel="noopener"
+>GitHub - OpenClash&lt;/a>。&lt;/p>
+&lt;p>安装的版本：&lt;a class="link" href="https://github.com/vernesong/OpenClash/releases/tag/v0.46.003-beta" target="_blank" rel="noopener"
+>v0.46.003-beta&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 同理先使用 scp 上传到路由器，然后 opkg 安装&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">opkg install /tmp/luci-app-openclash_0.46.003-beta_all.ipk
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安装后重启路由器，就可以看到“服务”菜单了。按照自己需求配置 &lt;code>openclash&lt;/code> ，接入&lt;strong>互联网&lt;/strong>。&lt;/p>
+&lt;p>&lt;img src="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39.png"
+width="931"
+height="690"
+srcset="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39_hu_4171761ed476956d.png 480w, https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39_hu_2c9784e0a5f1e60b.png 1024w"
+loading="lazy"
+alt="preview"
+class="gallery-image"
+data-flex-grow="134"
+data-flex-basis="323px"
+>&lt;/p>
+&lt;h2 id="为什么不装整合包">为什么不装整合包
+&lt;/h2>&lt;p>整合包挺方便的，不过内核都比较老旧，直接更新还容易变砖。而且大多服务/插件都没什么用。&lt;/p>
+&lt;p>这样是获得了一个最新版本的 openwrt 内核，不会再碰见内核版本不兼容问题了，可以放心的安装各种新版插件了。&lt;/p>
+&lt;p>最主要的是它很&lt;strong>干净&lt;/strong>哇！&lt;/p>
+&lt;h2 id="参考">参考
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.right.com.cn/forum/thread-8187405-1-1.html" target="_blank" rel="noopener"
+>\[2-2\]AX6S 闭源无线驱动 Openwrt 刷机教程/固件下载-小米无线路由器及小米网络设备-恩山无线论坛&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.right.com.cn/forum/thread-8290496-1-1.html" target="_blank" rel="noopener"
+>360T7 安装 immortalwrt 官方原版固件（含 Luci Web 页面），供新手参考-360 无线路由器及其他 360 网络设备-恩山无线论坛&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>怎样安全的并发编程</title><link>https://blog.zonowry.com/posts/safe-concurrent-programming/</link><pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/safe-concurrent-programming/</guid><description>&lt;h2 id="引言">引言
+&lt;/h2>&lt;p>说到并发，首先会想到多线程。若只关注多线程如何使用，却对并发编程没有深入的了解，很容易在代码里挖坑，变成这个段子的模样：“从前有个程序员遇到了一个性能问题。他想，没事，我懂，用线程就好了。现他有在个两题了问“。&lt;/p>
+&lt;p>为了避免这种情况，我们该思考“为什么需要多线程，为什么 &lt;code>js&lt;/code> 里没有多线程？”等诸类问题。将多线程看成是并发的一种手段，也就是让我们往下面 （the lower）走一点，越过线程理解并发编程。&lt;/p>
+&lt;blockquote>
+&lt;p>如果逻辑控制流在时间上重叠，那么它们就是&lt;strong>并发的&lt;/strong>（concurrent）
+—— 《CSAPP》&lt;/p>&lt;/blockquote>
+&lt;h2 id="理论指导实践">理论指导实践
+&lt;/h2>&lt;p>分析 &lt;code>thread（线程）&lt;/code>、&lt;code>coroutine（协程）&lt;/code>、&lt;code>reactive（反应式）&lt;/code>、&lt;code>event/task queue（任务队列）&lt;/code> 等各种并发&lt;strong>手段&lt;/strong>。不讨论它们的用法、优劣，而是关注它们的的相似之处——它们实际都是通过编排、调度&lt;strong>逻辑控制流&lt;/strong>实现的并发。所以只需要搞清楚它们是如何调度&lt;strong>执行单元&lt;/strong>的，就掌握了核心&lt;del>科技&lt;/del>。&lt;/p>
+&lt;blockquote>
+&lt;p>逻辑控制流，底层一点的理解是硬件电路形成的一组逻辑。应用级一点的解释是一个可以被执行的内容，可能是线程、协程、一个可观察对象 Observable、Subscription、FutureTask、Event Callback&amp;hellip;&amp;hellip; 等等。不过用 &lt;code>CSAPP&lt;/code> 书中的&lt;strong>逻辑控制流&lt;/strong>表示一个可执行内容有点极简，所以下文就称之为&lt;strong>任务&lt;/strong>或&lt;strong>执行单元&lt;/strong>吧，&lt;strong>代表一个可被执行的片段&lt;/strong>（you know it）。&lt;/p>&lt;/blockquote>
+&lt;h3 id="抢占式调度">抢占式调度
+&lt;/h3>&lt;p>首先是最常见的抢占式调度，执行单元间呈&lt;strong>竞争&lt;/strong>关系，A 任务与 B 任务互相争夺执行机会。最常见的例子是“操作系统内核利用 CPU 时钟中断，达成多线程并发“。每次中断都代表某个线程抢到了 CPU 时间片”。因为 CPU 中断是纳秒级的，实际效果是内核在飞快的切换执行单元以交错执行。提供一种所有执行单元在&lt;strong>并行&lt;/strong>的假象。在多核心 CPU 下，内核的抢占式调度也足以实现真正的&lt;strong>并行&lt;/strong>。&lt;/p>
+&lt;p>抢占式调度下，执行单元无法确定自己什么时候会被执行，且任何时刻都可能会被中断执行。反过来说，只要我们基于此特性，处理好执行单元的竞争与中断，就可以实现一个抢占式调度器。也可以看出抢占式调度的好处是不会存在独占情况——某个执行单元永远占用着 CPU。因为每个执行单元都有被执行的机会，就像在等红绿灯一样。&lt;/p>
+&lt;h3 id="协作式调度">协作式调度
+&lt;/h3>&lt;p>协作式调度可以引出一大堆技术，例如 &lt;code>IO 多路复用&lt;/code> 、&lt;code>迭代器&lt;/code>、&lt;code>事件驱动&lt;/code> 等等。&lt;/p>
+&lt;p>它们都有一个点——主动让渡控制权，或者说主动挂起的（释放并等待）。A 任务与 B 任务可以在&lt;strong>合适&lt;/strong>的时机&lt;strong>主动&lt;/strong>让渡出控制权。特点是持有控制权的任务主动中断，~~抛开现实不谈（例如 CPU 中断），~~这也突出了协作式调度的优点与理念——“调度不会影响&lt;strong>顺序性&lt;/strong>“。因为我们是主动让出的，继续执行时可以找到让渡时的节点来保证顺序性，也可以理解为调度器会帮我们将执行单元恢复到让渡前一刻的状态，然后就像没让渡过一样继续执行。&lt;/p>
+&lt;p>协作式调度，执行单元知道自己什么时候会让出，但同时对程序员也是&lt;strong>无感知&lt;/strong>的，因为当再次拿到控制权时，协作式调度器可以保持顺序性&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>。这个特性提高了程序员们的并发编程体验。于是出现了很多协作式调度框架。抽象的角度看，不论是 &lt;code>Reactive Stream&lt;/code>，还是 &lt;code>coroutine&lt;/code> ，在我看来都是协作式调度的不同实现。它们都有着执行单元可以主动挂起的特性，与其它执行单元&lt;strong>协作式&lt;/strong>的完成逻辑。&lt;/p>
+&lt;h2 id="实践中的问题">实践中的问题
+&lt;/h2>&lt;p>是时候为线程正名一下了，虽然前面段落回避提及线程，但现在开始线程必不可少，因为线程作为系统内核最小的调度单位，实现&lt;strong>并行&lt;/strong>基本&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>离不开线程。协程、反应式等用户态的并发模型到底还是跑在线程上的。&lt;/p>
+&lt;p>单线程的话，就不存在着并发编程中的问题，无非就是线程安全了。原因只有&lt;strong>并发环境下访问共享可变的状态&lt;/strong>一种。但为什么&lt;strong>共享状态&lt;/strong>这个操作会引起问题？因为数据读写不一致。为什么会读写不一致？需要搞清楚并发下计算机是如何读写状态的。&lt;/p>
+&lt;blockquote>
+&lt;p>专业一点的说共享状态就是&lt;strong>竞态条件&lt;/strong>。也说明两个执行单元可能有某种依赖关系，它们需要协商好谁可以使用这个状态。&lt;/p>&lt;/blockquote>
+&lt;h3 id="缓存一致性">缓存一致性
+&lt;/h3>&lt;p>假设计算机的内存&lt;strong>非常快&lt;/strong>且&lt;strong>非常大&lt;/strong>，那我们就不需要担心&lt;strong>缓存一致性&lt;/strong>问题了，为什么？因为每次读取状态，都是最新的状态，这是纳秒级实时读写。&lt;del>（最后说一次，时间要加速了）&lt;/del>，这是美好的未来。可现实世界的计算机是有极限的（&lt;del>我不做电子计算机了！JOJO！&lt;/del>），计算机的妥协设计是每个 CPU 核心都有一块&lt;strong>独立的&lt;/strong>非常快，但非常小的内存，称之为&lt;strong>高速缓存&lt;/strong>；再加一块速度尚可（远不及 CPU 计算速度），但非常大的内存，它就是我们的内存条，称之为&lt;strong>主内存&lt;/strong>。&lt;/p>
+&lt;p>两块内存特性互补，让数据读写不至于拖慢 CPU 计算。妥协的代价就是数据一致性问题，或者说数据可见性问题。因为 cpu 运行一个线程时，需要先从主内存读取数据拷贝到高速缓存里，之后就是 cpu 与高速缓存的时间了，期间 CPU 会适时的将高速缓存里的堆积数据刷写到主内存中。问题出在线程间可以共享数据，会牵扯到&lt;strong>数据同步&lt;/strong>（&lt;del>最小的分布式了吧？&lt;/del>），有数据同步就不可避免的有一致性问题了，与分布式、数据库领域的&lt;strong>数据一致性&lt;/strong>大同小异。&lt;/p>
+&lt;p>高级语言为了避免我们太操心这些事情，抽象了运行时内存区域（堆栈、常量区、方法区&amp;hellip;），然后设计了内存模型，负责线程间通信，保证线程间数据同步，线程空间隔离。让多线程容易使用，程序员们要操心的事情变少了（不用和系统底层打交道），但也也让线程间通信变的陷阱重重。&lt;/p>
+&lt;h3 id="读写有序性">读写有序性
+&lt;/h3>&lt;p>不考虑性能，假设不存在中间&lt;strong>缓存&lt;/strong>，每个 CPU 核心实时读写主内存，可以保证所有线程共享数据的&lt;strong>一致性&lt;/strong>。但这样能解决线程安全问题吗？还是不行，因为计算机并不会 &lt;code>line by line&lt;/code> 的执行代码，因为计算机/虚拟机会在不影响语义的情况下，优化代码的执行顺序。也就是优化后应该与不优化执行的结果一致，称之为&lt;strong>重排序&lt;/strong>。&lt;/p>
+&lt;p>想象&lt;strong>多个线程&lt;/strong>只共享&lt;strong>一个变量&lt;/strong>时，我们的假设确实有用——指令重排序对我们来说不会是问题。但&lt;strong>多个线程&lt;/strong>共享&lt;strong>多个变量&lt;/strong>时，指令重排序的情况就很复杂了。线程是独立的，无法确保另一个线程的重排序会不会影响。举个简单的例子，方便理解：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="k">var&lt;/span> &lt;span class="py">value&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Int&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">var&lt;/span> &lt;span class="py">flag&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">Boolean&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">false&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">​&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">init&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">value&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">8&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">flag&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">​&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">getValue&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">flag&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">println&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">value&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">fun&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// thread 1 可能会先执行 flag = true，后执行 value = 8
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">thread&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="k">init&lt;/span>&lt;span class="p">();&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 在这钟情况下，thread 2 则有可能 print 0;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">thread&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">getValue&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>如果没有重排序，因为我们知道线程就算是抢占的，交错执行。但也不会造成 &lt;code>print&lt;/code>
+0 的情况，因为赋值 &lt;code>value = 8&lt;/code> 是&lt;strong>原子操作&lt;/strong>（下面介绍）。&lt;del>2 个线程，2 个共享变量，非常简单代码，使我的大脑宕机，爱来自&amp;hellip;..&lt;/del>&lt;/p>
+&lt;p>真实的代码会更复杂，可见编译器和 CPU 很难确保&lt;strong>重排序&lt;/strong>优化在&lt;strong>多线程多共享&lt;/strong>的情况下不会出现异外结果。就像这个理论不该出现的 &lt;code>print&lt;/code> 0，即使我们理解线程的交错执行，且阅读并人脑编译了代码可能的执行过程，但因为指令重排序的存在，这一切变得混沌。&lt;/p>
+&lt;h3 id="原子一致性">原子一致性
+&lt;/h3>&lt;p>进一步假设~~（现在是幻想时间）~~，不存在指令重排序，不存在缓存一致性问题，相当于 &lt;code>java&lt;/code> 的 &lt;code>volatile&lt;/code> 关键字的效果。线程安全问题还会存在吗？还是会存在，因为程序不仅有指令、数据，还有&lt;strong>算法&lt;/strong>（&lt;strong>逻辑&lt;/strong>）。&lt;/p>
+&lt;p>编排一系列指令形成逻辑，可以称之为&lt;strong>算法&lt;/strong>或操作（&lt;del>算法帅一点，所以下文统称算法&lt;/del>）。既然是一系列指令，那么每条指令都有可能会被系统内核中断或被其它并行的线程影响，导致算法结果不符合预期。而原子性的百科定义是：&lt;/p>
+&lt;blockquote>
+&lt;p>原文：&lt;strong>线性一致性&lt;/strong>（Linearizability），或称&lt;strong>原子一致性&lt;/strong>或&lt;strong>严格一致性&lt;/strong>指的是程序在执行的历史中在存在可线性化点 P 的执行模型，这意味着一个操作将在程序的调用和返回之间的某个点 P 起作用。这里“起作用”的意思是被系统中并发运行的所有其他线程所感知。&lt;/p>&lt;/blockquote>
+&lt;p>大概意思是如果某个指令被执行，其它线程一定会知道这个指令被某个线程执行了，就像单线程一样，等待执行的代码行可以感知到已执行的代码行。或者常见的理解基于「原子是不可再分割的最小物质」并发原子性就是「不可再打断的最小操作序列」。这个解释与&lt;strong>数据库的原子性&lt;/strong>「要么全都成功，要么全都失败」异曲同工，当然细说还是有区别的，例如并发的原子性不会 &lt;code>rollback&lt;/code> 。&lt;/p>
+&lt;p>我的解释是，如果一个算法执行过程中，即使被内核中断切换了线程，或存在共享状态的并行线程，也不会被影响结果。就可以说这个算法是&lt;strong>线程安全&lt;/strong>的，也可以理解为算法不会被&lt;strong>打断&lt;/strong>，具有原子性。&lt;/p>
+&lt;p>原子性我认为是比较容易理解的，因为非原子性算法造成的影响用户态可以很明显的感知到。例如两个线程同时执行 &lt;code>i++&lt;/code> ，最后 &lt;code>i&lt;/code> 的结果通常会小于预期值。&lt;/p>
+&lt;p>无论如何，这是最后一步了，不会继续假设了。只要保证原子性，就可以使线程同步，线程同步了，线程安全问题自然烟消云散。&lt;/p>
+&lt;h2 id="高速的安全并发">高速的安全并发
+&lt;/h2>&lt;p>步入正题，前文可得，只要我们灵活运用三大特性即可避免线程安全问题。不过我们并发初衷可不是为了安全，而是 fot the speed！速度！&lt;/p>
+&lt;p>《Java 并发编程实践》中写过，如何修复线程安全问题：&lt;/p>
+&lt;blockquote>
+&lt;p>如果当多个线程访问同一个可变的状态变量时没有使用合适的同步，那么程序就会出现错误。有三种方式可以修复该问题：&lt;/p>
+&lt;ul>
+&lt;li>不在线程之间共享该状态变量&lt;/li>
+&lt;li>将该状态变量修改为不可变的变量&lt;/li>
+&lt;li>再访问该状态变量时使用同步&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;h3 id="串行编程">串行编程
+&lt;/h3>&lt;p>先看最简单的一种：&lt;strong>在访问该状态变量时使用同步&lt;/strong>，也就是串行化线程了。&lt;/p>
+&lt;p>前文也提到「只要保证了原子性，就可以使线程同步」。可以总结出两种为线程添加原子性的主要方式：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>原子指令&lt;/strong>：CPU 指令级别的&lt;strong>原子操作&lt;/strong>。如大名鼎鼎的 &lt;code>CAS - 比较并较换&lt;/code> 指令。&lt;/li>
+&lt;li>&lt;strong>信号量&lt;/strong>：是一种底层思想，以&lt;strong>信号量的不变性&lt;/strong>实现出&lt;strong>原子指令&lt;/strong>、&lt;strong>线程锁&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;h4 id="原子指令">原子指令
+&lt;/h4>&lt;p>原子指令比较容易理解，就像定理一样。从 CPU 硬件级别限制了此指令不会被中断，一但执行，不可取消。&lt;/p>
+&lt;p>常见的 &lt;code>CAS&lt;/code> 原子指令就是实现各种&lt;strong>乐观锁&lt;/strong>的关键，因为 &lt;code>CAS&lt;/code> 指令不可被中断，才能保证乐观锁自旋的检测与更新是线程安全的。例如 &lt;code>AtomicInteger&lt;/code>。&lt;/p>
+&lt;p>&lt;strong>原子指令&lt;/strong>在性能损耗上大大小于整块代码加锁，但使用场景上也比较受限。~~因为不如加锁一把梭简单。~~对于一段多线程代码，需要人脑编译来判断“仅依靠原子指令是否可以保证线程安全“，说多线程优化通常就是在说这个，依靠原子指令让你的线程锁（阻塞）变少。就像乐观锁做的一样，通过 &lt;code>CAS&lt;/code> 指令，来应对多读少写的场景。&lt;del>或者直接改变你的算法逻辑&lt;/del>&lt;/p>
+&lt;h4 id="信号量">信号量
+&lt;/h4>&lt;blockquote>
+&lt;p>以提供互斥为目的的二元信号量常常也称为&lt;strong>互斥锁&lt;/strong>（mutex）。
+——《CSAPP》&lt;/p>&lt;/blockquote>
+&lt;p>同步线程都知道用&lt;strong>线程锁&lt;/strong>，常用的线程锁基于&lt;strong>信号量&lt;/strong>的思想。使用二元&lt;strong>信号量&lt;/strong>变量实现&lt;strong>互斥锁&lt;/strong>的例子：&lt;/p>
+&lt;ul>
+&lt;li>执行线程前，首先获取信号量
+&lt;ul>
+&lt;li>如果信号量为 &lt;code>0&lt;/code> ，则挂起线程，等待重启，重启后继续判断信号量。&lt;/li>
+&lt;li>如果信号量为 &lt;code>1&lt;/code> ，则立即返回，并 &lt;code>- 1&lt;/code>，这将导致其它线程挂起，本线程执行。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>执行线程后（包括被中断），必须释放信号量：
+&lt;ul>
+&lt;li>将信号量 &lt;code>+ 1&lt;/code>，并尝试重启一个因为此信号量挂起的线程。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>然后我的建议是不要在信号量、互斥量、自旋锁、乐观锁、悲观锁、互斥锁等等这些术语上浪费太多脑筋。信号量是底层的一种思想，各种锁都是基于这个思想实现的，只是互斥的级别不同，根据锁的用途对锁进行了概念上的分类。不用在名字上过于讲究。&lt;/p>
+&lt;h3 id="不可变变量">不可变变量
+&lt;/h3>&lt;p>&lt;strong>将该状态变量修改为不可变的变量&lt;/strong>，很容易理解的一种方式。说起来也很简单：你的共享变量不可变了，相当于只允许读取，必然就不涉及同步问题了。&lt;/p>
+&lt;p>做起来的话会很艰难，每个线程的数据都像快照一样。数据一致性的控制权回到了你的手里。需要你来编排数据的“流向”，进入什么数据，出来的会是什么，线程没有了&lt;strong>副作用&lt;/strong>，线程的输出你可以预测，就像一条功能明确的加工流水线。&lt;/p>
+&lt;blockquote>
+&lt;p>副作用就是指不会对外界产生影响&lt;/p>&lt;/blockquote>
+&lt;p>不可变变量，函数式的思想，一种优雅至极的方案，但会让你束手束脚，不过如果完美贯彻函数式，应该会很流畅，不过需要很高的脑力吧&amp;hellip; 不过尽量让变量不可变，从而让函数保持无副作用，是一种好习惯。&lt;/p>
+&lt;h3 id="分布式事务">分布式事务
+&lt;/h3>&lt;p>再来看好像最简单的一种：&lt;strong>不在线程之间共享该状态变量&lt;/strong>。&lt;del>作者本意应该不是让我们放弃。&lt;/del>&lt;/p>
+&lt;p>其实联想一下，不共享状态，每个线程对于变量的当前正确值是没有感知的，把每个线程看作一个分布式节点，像不像分布式里的数据一致性问题？那瞬间就变的很复杂了。&lt;/p>
+&lt;p>不共享状态，但我们又需要访问该状态。只要我们可以接受短暂的线程不安全，退一步，就会有很多方案。可以参考分布式事务的一些成熟做法，例如&lt;strong>最终一致性&lt;/strong>、&lt;strong>两阶段提交&lt;/strong>等。~~不过这已经算脱离了线程安全话题了，算是数据设计了。~~简单的介绍一下吧，其实纯编程实现没太大意义，通常结合数据库、消息队列等中间件来实现。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>最终一致性&lt;/strong>：两个线程执行时，拿到的是共享变量的副本，各自执行完成后，可能还有定时器在不停的纠正数据。&lt;/li>
+&lt;li>&lt;strong>两阶段提交&lt;/strong>：每个线程执行完毕后，发出准备提交的通知。主线程收到所有线程&lt;strong>都准备就绪&lt;/strong>后，允许各个线程进行提交。然后各个线程开始提交。&lt;/li>
+&lt;li>&lt;strong>多版本并发控制&lt;/strong>：&lt;/li>
+&lt;/ul>
+&lt;p>本质上我们就是需要一些保险手段，在尽可能不影响线程效率的情况下，保障数据不出错。&lt;/p>
+&lt;h2 id="参考">参考
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a class="link" href="https://jolestar.com/parallel-programming-model-thread-goroutine-actor/" target="_blank" rel="noopener"
+>并发之痛 Thread，Goroutine，Actor&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.zhihu.com/question/296949412" target="_blank" rel="noopener"
+>既然 CPU 有缓存一致性协议（MESI），为什么 JMM 还需要 volatile 关键字？&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>可能会对 &lt;code>rx&lt;/code> 的顺序性提出质疑，这里非指过程式一样的代码的编写顺序，例如容易理解的协程的顺序性，而是“可以较为容易”的预测代码执行的顺序。例如 &lt;code>rx&lt;/code> 的 &lt;code>obserable.flatmap().reduce().publishOn().map().tap()&lt;/code> 例子，还是可以预测出这段代码的整体顺序性的，只是操作符联合起来会很复杂，让人难以理解，不过还是可以说 &lt;code>rx&lt;/code> 是有一定顺序性的，毕竟本质上是一个流处理，流的流转过程就是顺序。&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li id="fn:2">
+&lt;p>如果不把异步 IO 看作一个特殊的“线程”，那将 IO 读写操作交由内核调度，注册回调后继续干活，变相实现了一个线程逻辑计算的同时，其它 IO 硬件也正在读写数据（如网卡），实现并行处理：一个 IO 硬件，一个 CPU。虽然多数场景我们都是要挂起线程，等待 IO 硬件响应的。再展开就是 IO 模型的话题了，本文不过多讨论，不过也可以看出 IO 模型与并发编程的关系密不可分。&amp;#160;&lt;a href="#fnref:2" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>如何写一手容易维护的代码</title><link>https://blog.zonowry.com/posts/easy_ddd/</link><pubDate>Thu, 18 Jan 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/easy_ddd/</guid><description>&lt;img src="https://blog.zonowry.com/posts/easy_ddd/1.webp" alt="Featured image of post 如何写一手容易维护的代码" />&lt;h2 id="免责声明">免责声明
+&lt;/h2>&lt;p>程序员对抽象、设计可能会有不同的习惯。同样一个功能有人用发布订阅，有人用消息队列，他们都有自己的一套设计理念。最终是谁能说服谁的问题，哪一种方式都不是绝对正确的，就像本文一样。&lt;/p>
+&lt;p>内容有点偏意识流，不过总结的都是些很简单的东西。文中提到的诸多“本质”，应该会再写一篇来举例说明吧。&lt;/p>
+&lt;h2 id="人类智商受限">人类智商受限
+&lt;/h2>&lt;p>人类的智商难以理解庞大而复杂的软件系统，所以我们尝试用抽象来设计软件，设法以人类的智商也可以理解庞大的软件系统。&lt;/p>
+&lt;h3 id="抽象是什么">抽象是什么
+&lt;/h3>&lt;p>管理自己的磁盘时，都会建立类似 &lt;code>Work、Software、Temp、Repo&lt;/code> &amp;hellip;之类的文件夹。怎么分类文件夹最合理在这里不重要，重要的是分类文件夹前，肯定会进行的简单的&lt;strong>设计&lt;/strong>。这个设计的思考过程我认为就是正在抽象。&lt;/p>
+&lt;p>举个不是很恰当的例子。我们不会为某一个 IDE 单独建立文件夹，来存放用它开发的代码文件。例如 &lt;code>Intellij Projects&lt;/code>、&lt;code>Visual Studio Projects&lt;/code> 。而是会尝试建立 &lt;code>Projects&lt;/code>、&lt;code>Repo&lt;/code>、&lt;code>Workspace&lt;/code> 存放代码文件。这期间我们就是在抽象，把文件和具体的软件分离开，思考了这些文件的本质是”代码文件“，而非”某款软件的文件“。&lt;/p>
+&lt;p>抽象本质就是简化信息，是为了降低复杂度、是控制软件系统混乱程度的外在做功。&lt;/p>
+&lt;h3 id="从三层架构开始思考">从三层架构开始思考
+&lt;/h3>&lt;p>三层架构是一个很简单的，但抽象程度很高的模式。它可以解释大多数程序的组成：”有对外交互、有核心逻辑、有数据读写“。这就是它的高度抽象，把信息简化到了极致，所有程序都可以遵循三层架构模式写出来。三层本质是规范了代码边界，划分出三层边界：&lt;/p>
+&lt;ul>
+&lt;li>用户交互层：接收“用户”的输入，向“用户”输出处理结果。&lt;/li>
+&lt;li>核心逻辑层：只负责程序的核心“算法”，如何处理数据。&lt;/li>
+&lt;li>数据交互层：妥协层，内存实现不了持久化，抽象出一个数据读写层代替内存。&lt;/li>
+&lt;/ul>
+&lt;p>代码设计的前期阶段，如何思考出一个模块的组成部分？三层架构给了我们一个优秀的示范。不需要思考功能的太多细节，&lt;strong>全力以赴的简化功能的细节，简单直接的阐述功能的本质&lt;/strong>。&lt;/p>
+&lt;p>不过三层架构太抽象了，就像将「用户注册」抽象成「新增数据」，相当于没有细节。如果只从三层中学到了“把代码按照交互、核心、读写划分”的话，那实现细节还是会剪不断理还乱。只会套用三层架构范式，而不去思考功能本质的软件最终会难以维护，也许是屎山多是三层架构的原因（风评被害）。&lt;/p>
+&lt;h3 id="最小人力成本">最小人力成本
+&lt;/h3>&lt;p>简单的东西却蕴藏大设计，架构大道反而在最简单的三层之中。只要适当的简化信息，边界划分的足够合适，架构最终会形成一个个&lt;strong>聚合&lt;/strong>，开始有了&lt;strong>领域驱动&lt;/strong>的味道。可难点就是&lt;strong>边界&lt;/strong>如何划分的足够合适，信息如何简化才算符合抽象。&lt;/p>
+&lt;p>因为现实世界复杂的，软件系统的复杂度是不断熵增的。不变的设计总会有一天会遇到冲击。总会遇见两难抉择：重构还是硬怼？&lt;/p>
+&lt;p>例如我曾碰见的 &lt;code>getRowDef(rowIndex)&lt;/code> ，起初这个方法是为了&lt;strong>获取数据的类型定义，以此解析并转换数据内容&lt;/strong>。但后来 Excel 变的很复杂，我们需要根据内容来推断列定义。所以方法变成了 &lt;code>getRowDef(rowIndex, rowReader, totalLines, prevRowDef...)&lt;/code>，多了很多参数，以便在方法内部推断此行的类型定义。变成了让人困惑的屎山代码：&lt;strong>获取数据的类型定义，需要先读取数据，然后再拿定义去转换数据&lt;/strong>。理念上有了冲突，让人产生了困惑。但还是选择了硬怼，因为这样改动最&lt;strong>省力&lt;/strong>，写好注释后也能让人理解。&lt;/p>
+&lt;p>看似上面例子重构一下成本也不大，但其实功能本质已经变了。也就是设计理念变了。类型定义和数据内容的关系变了。重构就要从类型定义和数据内容这种基层代码改起。结合实际工期限制，适当的抽象减轻维护难度就可以了。如果碰到设计瑕疵就要重构，反而会给自己增加压力，延后工期，浪费人力~~，失去工作~~。&lt;/p>
+&lt;p>《架构整洁之道》里提到：==“软件架构的终极⽬标是，⽤最⼩的⼈⼒成本来满⾜构建和维护该系统的需求”==。遇到设计瑕疵时，有重构的想法时，需要慎重思考自己新的设计，减少的维护复杂度和花费的精力相比是否值得。&lt;/p>
+&lt;h2 id="代码设计">代码设计
+&lt;/h2>&lt;p>百科对抽象的解释是「找出事物的本质，剥离其它表象、杂质，最终形成一个&lt;strong>概念&lt;/strong>」。&lt;/p>
+&lt;h3 id="抽象的本质">抽象的本质
+&lt;/h3>&lt;p>务实的看，抽象可以帮助我们简化代码，封装复用、继承多态、接口声明。都是在抽象代码，以形成“某某功能”的概念，实现细节则是在具象（补完）这个&lt;strong>概念&lt;/strong>。这个概念就是前文一直在提到的功能本质、设计理念等抽象的词汇。&lt;/p>
+&lt;p>使用第三方库时，遇到一些不清楚的方法，一般只需要在源码中找几个接口定义（注释）看看，或者阅读官网文档的 &lt;code>Api Reference&lt;/code> 就能理解。这些框架都是作者的匠心之作，单从它们的版本发布就能略知一二，它们的更新维护通常都是非 &lt;code>breaks&lt;/code> 的。屎山才会经常不停的重构，导致 &lt;code>breaks&lt;/code>。&lt;/p>
+&lt;p>这些框架怎么做到的？虽然框架支持的特性多样且复杂。但框架作者依靠抽象简化了信息，思考本质。不论是修复 bug，还是新增功能，作者只需要确保框架的&lt;strong>概念&lt;/strong>还是不变的。这里的&lt;strong>概念&lt;/strong>相当于其抽象的出发点，或者本质。每次维护、更新只需要确定这个&lt;strong>本质&lt;/strong>不会发生改变。&lt;/p>
+&lt;h3 id="信息隐藏">信息隐藏
+&lt;/h3>&lt;p>理解抽象，彻底的理解什么是“简化信息”很关键。并非是单纯的精简代码，而是一种形意拳。精简代码只是其形。意在降低复杂度。&lt;/p>
+&lt;p>我在《代码大全》里看到&lt;strong>信息隐藏&lt;/strong>时，意识到到这个东西可以和&lt;strong>简化信息&lt;/strong>联系起来，更直观的解释&lt;strong>抽象&lt;/strong>。我们降低复杂度、抽象代码、简化信息。最终达成的效果就是&lt;strong>隐藏&lt;/strong>了代码所蕴含的&lt;strong>信息&lt;/strong>。&lt;/p>
+&lt;p>结合一段代码，有点极端但简单地例子。直观的看一下信息隐藏是什么。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-kotlin" data-lang="kotlin">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// domain
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">class&lt;/span> &lt;span class="nc">User&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fun&lt;/span> &lt;span class="nf">login&lt;/span>&lt;span class="p">():&lt;/span> &lt;span class="n">Boolean&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 核心逻辑：只有周一允许登录
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">today&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">周一&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">true&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="k">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// service
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">fun&lt;/span> &lt;span class="nf">loginService&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">val&lt;/span> &lt;span class="py">user&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">getUser&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span>&lt;span class="p">(!&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">login&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 错误的
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="s2">&amp;#34;登录失败，失败原因：只有周一才能登录&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 正确的
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="s2">&amp;#34;登录失败&amp;#34;&lt;/span> &lt;span class="c1">// “我”不知道失败原因，因为原因被“隐藏”了
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ...
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>例子中，代码的边界体现在「今天是周一才能登录系统」这个核心逻辑。服务层&lt;strong>不应该&lt;/strong>知道这个信息。只应根据业务对象的返回值来做判断，或者说&lt;strong>我们隐藏了这个信息&lt;/strong>。&lt;/p>
+&lt;p>为什么”告知用户“「只有周一才能登录」的写法是错误的？因为核心逻辑层只返回了 false，没有说原因。服务层及更上层理应不知道原因，即使所有代码都是同一个程序员写的。&lt;/p>
+&lt;p>程序员应该克制，或者说欺骗自己。这样才能保持住代码的边界，即使告知用户「只有周一才能登录」是更好的用户体验，仅从代码设计来看，隐藏信息是首要的。&lt;/p>
+&lt;p>简单来说就是，“我”忘记了核心逻辑，业务对象只返回了一个 &lt;code>Boolean&lt;/code>，只包含了“登录是否成功”这条信息。这样“我”的做法是「登录失败，但我不知道原因」就很合理了。&lt;/p>
+&lt;p>当然上边的例子有点极端。来点实际的例子，就像我们写 &lt;code>java&lt;/code>，不用去理解 &lt;code>public void main()&lt;/code> 背后发生了什么，只需要知道这是程序的主入口。这就是设计 &lt;code>java&lt;/code> 语言的人，隐藏了信息，我们只需要往 &lt;code>main&lt;/code> 方法里浇灌&lt;del>屎山&lt;/del>代码就行了，降低不少复杂度。&lt;/p>
+&lt;p>简化信息，降低复杂度的本质，似乎就是信息隐藏。&lt;/p>
+&lt;h3 id="依赖接口">依赖接口
+&lt;/h3>&lt;p>再来理解依赖接口而非实现就很简单了，接口就是隐藏信息的集大成者，如果没有 &lt;code>go to implementation&lt;/code>，就是在天然的在隐藏信息，达成：&lt;/p>
+&lt;ul>
+&lt;li>这个接口的实现是哪个同事写的？
+&lt;ul>
+&lt;li>我不在意（除非要找个人背锅了）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>这个接口的实现具体做了什么，怎么写的，用到了什么技术？
+&lt;ul>
+&lt;li>关我什么事。我只关注它可以达成什么效果，我要给它什么参数，它返回了什么。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>接口调用出错了，这可咋办？
+&lt;ul>
+&lt;li>确认调用方式没问题。那抽空修复、替换下实现吧。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>就算脱离了接口实现，软件代码也能被理解。这样说明了简化信息很成功，复杂度理所应当的被降低了。&lt;/p>
+&lt;h2 id="边界与约定">边界与约定
+&lt;/h2>&lt;p>想要理解&lt;strong>领域驱动&lt;/strong>，理解&lt;strong>限界上下文&lt;/strong>必不可少。直接看&lt;strong>限界上下文&lt;/strong>会感觉很抽象。不过通过&lt;strong>信息隐藏&lt;/strong>，可以很简单的理解、接纳限界上下文的&lt;strong>理念&lt;/strong>。&lt;/p>
+&lt;h3 id="约束与限界上下文">约束与限界上下文
+&lt;/h3>&lt;p>&lt;strong>边界&lt;/strong>像是一种&lt;strong>约束&lt;/strong>，只允许边界外知道边界内&lt;strong>泄漏&lt;/strong>出的信息。例如登录失败的原因，只泄漏了 &lt;code>True&lt;/code> 或 &lt;code>False&lt;/code>，真正的登录失败原因，被我们隐藏起来了。&lt;/p>
+&lt;p>这种隐藏方式和我们在面向对象代码语言里的 &lt;code>private&lt;/code> &lt;strong>私有&lt;/strong>特性密切相关。例如边界内的业务对象的 &lt;code>set&lt;/code> 方法通常是&lt;strong>私有&lt;/strong>的，不对外&lt;strong>公开&lt;/strong>。这就是一种约束、或者隐藏。边界外只允许获取边界内&lt;strong>公开&lt;/strong>的信息。&lt;/p>
+&lt;p>构成&lt;strong>边界内/边界外&lt;/strong>的&lt;strong>约束&lt;/strong>就可以理解为限界上下文。上下文内一个领域、一个聚合，都是一些很纯粹、完整的业务信息，因为他们被&lt;strong>约束&lt;/strong>了，不会泄漏核心信息，不会被外界影响。&lt;strong>上下文外&lt;/strong>则是服务层，应用层，包含诸多的技术细节等“噪音信息”。&lt;/p>
+&lt;h3 id="约定先于配置">约定先于配置
+&lt;/h3>&lt;p>&lt;strong>约定大于配置&lt;/strong>你可能在某些技术框架里看到过这个理念，可以理解为一种更轻量的&lt;strong>约束&lt;/strong>。这种&lt;strong>约定&lt;/strong>随处可见：&lt;/p>
+&lt;ul>
+&lt;li>在 &lt;code>Spring&lt;/code> 中，我们依赖注入一个 &lt;code>@Resource&lt;/code> 。一般是不会特意&lt;strong>配置&lt;/strong> &lt;code>name&lt;/code> 的 。而是采用默认的&lt;strong>约定&lt;/strong>，即按属性名称注入。&lt;/li>
+&lt;li>&lt;code>Asp Net Core&lt;/code> 会约定文件夹结构，如 &lt;code>Controller&lt;/code>、&lt;code>Views&lt;/code>&amp;hellip; &lt;code>HomeController.Index()&lt;/code> 会被”翻译“为 &lt;code>/Home/Index&lt;/code> 路由等。&lt;/li>
+&lt;/ul>
+&lt;p>或者更通用的一种约定，客户端调用后端 &lt;code>REST&lt;/code> 规范接口时，一般没有强制性的&lt;strong>约束&lt;/strong>。意味着客户端无法确定接口的输入输出结构。这种情况多靠程序猿们之间的&lt;strong>约定&lt;/strong>，如文档注释，甚至是口头传达。&lt;/p>
+&lt;p>这种&lt;strong>约定&lt;/strong>看似需要我们多记住一些规则，增加了心智负担。但反过来想，如果没有这些约定，我们要做的工作是不是会更复杂，要显示配置很多东西，引入更多的技术框架，如 &lt;code>Swagger&lt;/code>、&lt;code>Spring XML Configuration&lt;/code>&amp;hellip;&lt;/p>
+&lt;p>例子说的太多，有点偏上层应用了。回到&lt;strong>约定&lt;/strong>的抽象意义。有时我们只想为特定的服务公开一些领域内的能力，但不可避免地泄漏了这部分能力给所有的服务，此时我们会定下&lt;strong>约定&lt;/strong>：在注释里写上“只允许在 &lt;code>XXXXService&lt;/code> 内使用此方法，所有程序员必须遵守此约定“。这条约定就成为了&lt;strong>边界&lt;/strong>的一部分，为功能的抽象边界填砖加瓦。&lt;/p>
+&lt;p>总之，这些&lt;strong>约定&lt;/strong>也可以形成&lt;strong>边界&lt;/strong>。&lt;/p>
+&lt;h2 id="后言">后言
+&lt;/h2>&lt;p>受限于个人表达水平以及技术尚未炉火纯青。我只能分享这点个人理解了。然后推荐看些 &lt;code>DDD&lt;/code> 相关的文章，就算不用，知道 &lt;code>DDD&lt;/code> 中的诸多概念后，对写一手容易维护的代码会有很大的帮助。&lt;/p></description></item><item><title>iptables + clash 透明网关实践与总结</title><link>https://blog.zonowry.com/posts/clash_iptables_tproxy/</link><pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/clash_iptables_tproxy/</guid><description>&lt;img src="https://arthurchiao.art/assets/img/deep-dive-into-iptables-netfilter/Netfilter-packet-flow.svg" alt="Featured image of post iptables + clash 透明网关实践与总结" />&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>尝试用 &lt;code>clash tun&lt;/code> 模式来实现过网关，虽然过程很流畅也比较“新潮“，但对于我来说有点魔法了，因为比较难搞清楚 &lt;code>clash&lt;/code> 帮我们做了哪些工作，出现问题不好找原因。也可能是我比较“洁癖” ，所以我采用了 &lt;code>iptables + tproxy&lt;/code> 这种更加“简单“的方式，&lt;code>clash&lt;/code> 只作为流量中继，流量包的路由都依靠 linux 内核的 &lt;code>netfilter&lt;/code> 模块实现，这样搭建的网关会更加“可控”一点。&lt;/p>
+&lt;p>然后我看了不少 &lt;code>clash + linux netfilter(iptables/nftables) 搭建“富强”网关&lt;/code> 的教程文章。步骤都是很简单的，照着做就能实现。但每个人总会有点特殊需求，不去理解这些步骤的奥秘，很难解决一些特殊问题。&lt;/p>
+&lt;p>我就是遇到了公网上无法访问我网关上的 &lt;code>docker&lt;/code> 服务，debug 排查了好久，虽然最后凭感觉解决了。但一直没有理顺流量是怎么路由的，只是稍有眉目、模棱两可。所以我去尝试理解了过程中每个操作（命令）的底层逻辑，现在写篇文章梳理一下这些知识。&lt;/p>
+&lt;h1 id="linux-网络之-netfilter">linux 网络之 netfilter
+&lt;/h1>&lt;p>首先说说这一切的基石：linux 的 &lt;code>netfilter&lt;/code> 模块及延伸工具 &lt;code>iptables&lt;/code>。&lt;/p>
+&lt;p>&lt;code>iptables&lt;/code> 只是个命令行工具，依赖 &lt;code>netfilter&lt;/code> 内核模块，也即真正实现防火墙功能的是 linux 内核的 &lt;code>netfilter&lt;/code> 模块。可惜不仅 &lt;code>iptables&lt;/code> 的命令宛若天书，&lt;code>netfilter&lt;/code> 的链路也错综复杂，很难去使用。想要理解使用这些工具或命令，必须得先了解一些 &lt;code>netfilter&lt;/code> 与 &lt;code>iptables&lt;/code> 的基础知识。&lt;/p>
+&lt;h2 id="iptables-的链">iptables 的链
+&lt;/h2>&lt;p>&lt;code>netfilter&lt;/code> 提供了 &lt;strong>5 个 hook&lt;/strong> 点，&lt;code>iptables&lt;/code> 根据这些 &lt;strong>hook&lt;/strong> 点，搞出了 &lt;code>链 (chain)&lt;/code> 的概念，也就&lt;strong>内置&lt;/strong>了 &lt;strong>5 个默认链&lt;/strong>。可以看出 5 个 &lt;code>iptables chian&lt;/code> 和 5 个 &lt;code>netfilter hook&lt;/code> 一一对应。当然，我们可以添加自定义链，不过想要某个自定义链生效，需要追加一条从&lt;strong>内置链&lt;/strong>跳转到这个自定义链的规则。因为内核的 5 个 hook 点只会触发这 5 个内置链。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>netfilter hook&lt;/th>
+&lt;th>iptables chain&lt;/th>
+&lt;th>netfilter hook 解释&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>NF_IP_PRE_ROUTING&lt;/td>
+&lt;td>PREROUTING&lt;/td>
+&lt;td>接收到的包进入协议栈后立即触发此 hook，在进行任何路由判断 （将包发往哪里）之前&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NF_IP_LOCAL_IN&lt;/td>
+&lt;td>INPUT&lt;/td>
+&lt;td>接收到的包经过路由判断，如果目的是本机，将触发此 hook&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NF_IP_FORWARD&lt;/td>
+&lt;td>FORWARD&lt;/td>
+&lt;td>接收到的包经过路由判断，如果目的是其他机器，将触发此 hook&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NF_IP_LOCAL_OUT&lt;/td>
+&lt;td>OUTPUT&lt;/td>
+&lt;td>  本机产生的准备发送的包，在进入协议栈后立即触发此 hook&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NF_IP_POST_ROUTING&lt;/td>
+&lt;td>POSTROUTING&lt;/td>
+&lt;td>本机产生的准备发送的包或者转发的包，在经过路由判断之后， 将触发此 hook&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="iptables-的表与动作">iptables 的表与动作
+&lt;/h3>&lt;p>&lt;code>iptables&lt;/code> 为了更颗粒度的管理流量，又设计出 &lt;code>table&lt;/code> 的概念。用 &lt;code>table&lt;/code> 来组织这些链，可以理解为每个 &lt;code>table&lt;/code> 根据其用处包含了不同的链。每个 &lt;code>table&lt;/code> 都支持一些“&lt;strong>动作&lt;/strong>“。例如 &lt;code>nat&lt;/code> 表的 &lt;code>DNAT&lt;/code> 动作支持重写目标地址。不过有些动作只在特定的 &lt;code>chain&lt;/code>（或者说 &lt;code>hook&lt;/code>）上才有意义。例如向 &lt;code>INPUT&lt;/code> 链添加 &lt;code>DNAT&lt;/code> 动作时，内核会抛出这个错误：&lt;code>ip_tables: DNAT target: used from hooks INPUT, but only usable from PREROUTING/OUTPUT&lt;/code>。另一个例子是 &lt;code>mangle&lt;/code> 表不允许添加 &lt;code>SNAT&lt;/code> 等动作，所以一个&lt;strong>动作&lt;/strong>需要 &lt;code>table&lt;/code> + &lt;code>chain&lt;/code> 都允许才能被添加。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>表&lt;/th>
+&lt;th style="text-align: left">支持的内置链&lt;/th>
+&lt;th style="text-align: left">支持的动作（部分，仅供参考）&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>mangle&lt;/td>
+&lt;td style="text-align: left">支持全部 5 个内置链&lt;/td>
+&lt;td style="text-align: left">&lt;code>RETURN&lt;/code> &lt;code>TPROXY&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>raw&lt;/td>
+&lt;td style="text-align: left">&lt;code>PREROUTING&lt;/code> &lt;code>OUTPUT&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>TRACE&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>nat&lt;/td>
+&lt;td style="text-align: left">&lt;code>PREROUTING&lt;/code> &lt;code>INPUT&lt;/code> &lt;code>OUTPUT&lt;/code> &lt;code>POSTROUTING&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>SNAT&lt;/code> &lt;code>DNAT&lt;/code> &lt;code>REDIRECT&lt;/code> &lt;code>MASQURADE&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>filter&lt;/td>
+&lt;td style="text-align: left">&lt;code>INPUT&lt;/code> &lt;code>FORWARD&lt;/code> &lt;code>OUTPUT&lt;/code>&lt;/td>
+&lt;td style="text-align: left">略&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>security&lt;/td>
+&lt;td style="text-align: left">略&lt;/td>
+&lt;td style="text-align: left">略&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>每个 &lt;code>table&lt;/code> 的 &lt;code>chain&lt;/code> 当然也是有触发顺序的，具体顺序可以参考那张著名的 &lt;code>netfilter 流程图&lt;/code> ，或&lt;a class="link" href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" target="_blank" rel="noopener"
+>这篇文章&lt;/a>的介绍 。&lt;/p>
+&lt;div style="background: #fff">
+&lt;img src="https://arthurchiao.art/assets/img/deep-dive-into-iptables-netfilter/Netfilter-packet-flow.svg" title="netfilter 流程图"/>
+&lt;/div>
+&lt;h2 id="流量方向-与-iptables-规则">流量方向 与 iptables 规则
+&lt;/h2>&lt;h3 id="开启内核转发功能">开启内核转发功能
+&lt;/h3>&lt;p>要想把一台 linux 机器配置成有路由转发功能的机器，第一步需要用以下命令开启内核转发功能。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sysctl -w net.ipv4.ip_forward&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>单单这条命令只是将 linux 机器做成中继路由，一般情况下没太大意义。我们还需要处理途径机器的流量。即设定规则将途径流量“路由（转发）”到本机某些程序上（常用如 &lt;code>clash&lt;/code> 或者 &lt;code>v2ray&lt;/code> ），经代理中转后再原路返回。达成“加速网络”的目的。 &lt;code>iptables&lt;/code> 等相关工具就登场了。&lt;/p>
+&lt;h3 id="局域网流量跳过处理直连主路由">局域网流量跳过处理，直连主路由
+&lt;/h3>&lt;p>linux 系统是可以作为&lt;strong>主路由&lt;/strong>的，但一般的机器没有多个网口，所以都是作为&lt;strong>旁路由&lt;/strong>来辅助主路由。既然作为旁路由来使用，我们只想代理加速公网流量，局域网内机器的流量肯定还是希望通过&lt;strong>主路由&lt;/strong>来直连，没必要再来来回回途径一次旁路由了。所以需要添加一些&lt;strong>转发规则&lt;/strong>，让旁路由跳过局域网内流量，原封不动转出去，让主路由继续去路由。&lt;/p>
+&lt;p>结合 netfilter 段落的知识，逆向思考一下要怎么做。首先我们要添加一些&lt;strong>路由规则&lt;/strong>，这些规则最终肯定是注入到 netfilter hook 里的，可以通过 &lt;strong>iptables chain&lt;/strong> 操作 netfikter hook。所以规则要添加到一个&lt;strong>合适&lt;/strong>的 &lt;strong>chain&lt;/strong> 里，&lt;strong>iptables&lt;/strong> 又是通过 &lt;strong>table&lt;/strong> 来组织管理 &lt;strong>chain&lt;/strong> 的。我们还需要找一个&lt;strong>合适&lt;/strong>的 &lt;strong>table&lt;/strong> 来添加 &lt;strong>chain&lt;/strong>（或者说规则）。思考了这些后，我们再回头看命令：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># clash 链负责处理转发流量&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -N clash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 让所有流量通过 clash 链进行处理&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A PREROUTING -j clash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 目标地址为局域网或保留地址的流量跳过处理&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 0.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 127.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 10.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 172.16.0.0/12 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 192.168.0.0/16 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 169.254.0.0/16 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 224.0.0.0/4 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 240.0.0.0/4 -j RETURN
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>首先我们新建了一个自定义链管理规则：&lt;code>iptables -t mangle -N clash&lt;/code>&lt;/li>
+&lt;li>然后从内置链 &lt;code>PREROUTING&lt;/code> 跳转而来：&lt;code>iptables -t mangle -A PREROUTING -j clash&lt;/code>
+&lt;ul>
+&lt;li>当然我们可以直接不写这两句，直接将规则添加到 &lt;code>PREROUTING&lt;/code> 链。但那样写不是很规范，不推荐直接向内置链（这里是 &lt;code>PREROUTING&lt;/code> ）添加规则。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>然后追加局域网 IP 直连规则到 &lt;code>clash&lt;/code> 表中
+我们使用的表是 mangle 表，链是 链。
+总而言之，最终实现了局域网机器流量发到&lt;strong>旁路由&lt;/strong>时，旁路由发现目标地址是局域网内 ip，跳过处理，转发出去给到主路由，就是主路由和源主机直接通信了，之后的网络传输本网关就不会参与了。&lt;/li>
+&lt;/ul>
+&lt;h3 id="中转外网流量clash-透明代理">中转外网流量，clash 透明代理
+&lt;/h3>&lt;p>由于上一步我们跳过了内部（局域网内）流量，剩下的流量基本就是外部（互联网）流量了。这些&lt;strong>外部流量&lt;/strong>应该要转发到 &lt;code>clash&lt;/code> 中进行透明代理。&lt;/p>
+&lt;p>虽然可以简单的通过 &lt;code>REDIRECT&lt;/code> 动作将流量转发到 &lt;code>7893&lt;/code> 端口。但 &lt;code>REDIRECT&lt;/code> 不能很好的支持 &lt;code>UDP&lt;/code> 流量。所以采用 &lt;code>TPROXY&lt;/code> 方式，这样 &lt;code>TCP&lt;/code> 和 &lt;code>UDP&lt;/code> 都能支持。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># tproxy 7893（clash） 端口，并打上 mark 666 命中策略，走 666 路由表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -p tcp -j TPROXY --on-port &lt;span class="m">7893&lt;/span> --tproxy-mark &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -p udp -j TPROXY --on-port &lt;span class="m">7893&lt;/span> --tproxy-mark &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 转发所有 DNS 查询到 1053 端口&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 此操作会导致所有 DNS 请求全部返回虚假 IP(fake ip 198.18.0.1/16)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t nat -I PREROUTING -p udp --dport &lt;span class="m">53&lt;/span> -j REDIRECT --to &lt;span class="m">1053&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 添加策略与路由表（）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ip rule add fwmark &lt;span class="m">666&lt;/span> lookup &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ip route add &lt;span class="nb">local&lt;/span> 0.0.0.0/0 dev lo table &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>前两句 &lt;code>iptables&lt;/code> 命令，追加了两条 &lt;code>TPROXY&lt;/code> 规则。将 &lt;code>tcp&lt;/code> &amp;amp; &lt;code>udp&lt;/code> 流量转发到 &lt;code>clash&lt;/code> 的 &lt;code>7893&lt;/code> 端口，且打了 &lt;code>666&lt;/code> 标记。&lt;/p>
+&lt;p>因为 &lt;code>TPROXY&lt;/code> 不会修改 IP 数据包，数据包的 dest ip 一般都是外网地址，所以数据包下一跳会直接 forward 转出到下一跳机器上。因此 &lt;code>TPROXY&lt;/code> 大部分情况都需要搭配 &lt;code>ip route&lt;/code> 策略路由一起使用。比如我们这里就是新建了一个名为 &lt;code>666&lt;/code> 的路由表，此路由表会将所有数据包发到本地回环上。这样就阻断了 forward 过程，相当于让（ &lt;code>tproxy&lt;/code> 过的）数据包重新走一边网络栈流程。这样数据包就可以转发到 &lt;code>7893&lt;/code> 端口上了，然后我们只让有 &lt;code>666&lt;/code> 标记的数据包经过此路由表。&lt;/p>
+&lt;h3 id="代理网关本机的流量">代理网关本机的流量
+&lt;/h3>&lt;p>经过以上步骤，局域网内的其它机器已可以正常使用本网关了。当然，一台 llinux 机器只用来当一个网关太浪费了，还可以跑各种服务以及日常使用。顺便将本机的流量也代理一下，也即代理本机发出（经过 &lt;code>OUTPUT&lt;/code> 链）的数据包。&lt;/p>
+&lt;p>首先与上一步类似的步骤，将本机发出的流量（OUTPUT）打上标记，触发重新路由。这样本机发出的流量就和局域网内其它机器进入的流量相同了，路由的流程也就一样了。不过 &lt;code>OUTPUT&lt;/code> 上的数据包也会包含 clash 发出流量，这样会出现数据包死循环，得处理一下。只需要跳过 clash 程序发出的数据包，避免死循环。用 clash 用户启动 clash 程序，根据 uid 跳过数据包即可。。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># clash_local 链负责处理网关本身发出的流量&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -N clash_local
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># nerdctl 容器流量重新路由&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#iptables -t mangle -A clash_local -i nerdctl2 -p udp -j MARK --set-mark 666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#iptables -t mangle -A clash_local -i nerdctl2 -p tcp -j MARK --set-mark 666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 跳过内网流量&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 0.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 127.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 10.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 172.16.0.0/12 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 192.168.0.0/16 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 169.254.0.0/16 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 224.0.0.0/4 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 240.0.0.0/4 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 为本机发出的流量打 mark&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -p tcp -j MARK --set-mark &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -p udp -j MARdocK --set-mark &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 跳过 clash 程序本身发出的流量, 防止死循环(clash 程序需要使用 &amp;#34;clash&amp;#34; 用户启动)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A OUTPUT -p tcp -m owner --uid-owner clash -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A OUTPUT -p udp -m owner --uid-owner clash -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 让本机发出的流量跳转到 clash_local&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># clash_local 链会为本机流量打 mark, 打过 mark 的流量会重新回到 PREROUTING 上&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A OUTPUT -j clash_local
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="外网访问内网-docker-问题">外网访问内网 docker 问题
+&lt;/h2>&lt;p>也可以说外网访问局域网内机器（非网关机器）的问题。我们这样配置好后，会发现无法从外网访问内网的 docker 服务（设置路由器端口转发）。可以通过手机流量访问测试。&lt;/p>
+&lt;p>我是参考该 &lt;a class="link" href="https://github.com/Dreamacro/clash/issues/432#issuecomment-571634905" target="_blank" rel="noopener"
+>github issue&lt;/a> 受到了启发，最终解决了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 跳过 docker0 的 ip 范围。即跳过 docker 服务的出站数据包&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo iptables -t mangle -A clash -p tcp -s 172.18.0.0/16 -j RETURN
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后以下是个人的推测，可能有误，仅供参考。&lt;/p>
+&lt;p>首先手机入站数据包经过路由器，&lt;code>NAT&lt;/code> 到 &lt;code>docker&lt;/code> 服务（网关机器）上。此时因为 &lt;strong>dest ip&lt;/strong> 是内网 ip，&lt;strong>clash 链&lt;/strong> 会跳过。&lt;strong>DOCKER 链&lt;/strong> 接手处理，通过 &lt;code>DNAT&lt;/code> 转发到了 &lt;strong>docker0 bridge&lt;/strong> 网卡上，这几步都很正常。顺利到达 docker 容器。&lt;/p>
+&lt;p>随后是 docker 容器的出站数据包，此时数据包会从 &lt;strong>docker0 bridge&lt;/strong> 发到宿主机的物理网卡 &lt;strong>eth&lt;/strong> 网卡。这时数据包之于宿主机来说，是一个入站数据包。数据包会经过 &lt;code>PREROUTING&lt;/code> 链，jump 到 &lt;strong>clash&lt;/strong> 链，而此时的 &lt;strong>dest ip&lt;/strong> 为手机的 ip 。会被转发到 clash 上处理，但这个数据包只在出站时转发给 clash 处理。入站的时候跳过了。估计 clash 无法处理这个数据包，可能就丢弃了。就出现了外网无法访问内网 docker 容器的问题。&lt;/p>
+&lt;p>所以根据 source ip 判断， 将 docker 容器的数据包也跳过。跳过后就解决了～&lt;/p>
+&lt;h2 id="参考">参考
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a class="link" href="https://moecm.com/something-about-v2ray-with-tproxy/" target="_blank" rel="noopener"
+>第一篇万字长文：围绕透明代理的又一次探究&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" target="_blank" rel="noopener"
+>「译」深入理解 iptables 和 netfilter 架构&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://mritd.com/2022/02/06/clash-tproxy/" target="_blank" rel="noopener"
+>树莓派 Clash 透明代理(TProxy)_&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/mritd/tpclash/wiki/2%E3%80%81%E8%BF%9B%E9%98%B6%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6" target="_blank" rel="noopener"
+>tpclash wiki - 2、进阶流量控制&lt;/a> 。&lt;/li>
+&lt;li>&lt;a class="link" href="https://tinychen.com/20200414-iptables-principle-introduction/" target="_blank" rel="noopener"
+>iptables 的四表五链与 NAT 工作原理  _&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.zhaohuabing.com/learning-linux/docs/tproxy/" target="_blank" rel="noopener"
+>https://www.zhaohuabing.com/learning-linux/docs/tproxy/&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Archives</title><link>https://blog.zonowry.com/page/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/page/archives/</guid><description/></item><item><title>Links</title><link>https://blog.zonowry.com/page/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/page/links/</guid><description>&lt;p>To use this feature, add &lt;code>links&lt;/code> section to frontmatter.&lt;/p>
+&lt;p>This page&amp;rsquo;s frontmatter:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">links&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">title&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">GitHub&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">description&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">GitHub is the world&amp;#39;s largest software development platform.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">website&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://github.com&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="nt">title&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">TypeScript&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">description&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">website&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">https://www.typescriptlang.org&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">ts-logo-128.jpg&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>image&lt;/code> field accepts both local and external images.&lt;/p></description></item><item><title>Search</title><link>https://blog.zonowry.com/page/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/page/search/</guid><description/></item></channel></rss>

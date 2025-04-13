@@ -1,1 +1,281 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>iptables on Zonowry 的博客</title><link>https://blog.zonowry.com/tags/iptables/</link><description>Recent content in iptables on Zonowry 的博客</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>zonowry</copyright><lastBuildDate>Wed, 01 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zonowry.com/tags/iptables/index.xml" rel="self" type="application/rss+xml"/><item><title>iptables + clash 透明网关实践与总结</title><link>https://blog.zonowry.com/posts/build-a-proxy-gateway-based-on-iptables-and-clash/</link><pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/build-a-proxy-gateway-based-on-iptables-and-clash/</guid><description>前言 尝试用 clash tun 模式来实现过网关，虽然过程很流畅也比较“新潮“，但对于我来说有点魔法了，因为比较难搞清楚 clash 帮我们做了哪些工作，出现问题不好找原因。也可能</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Iptables on Zonowry</title><link>https://blog.zonowry.com/tags/iptables/</link><description>Recent content in Iptables on Zonowry</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>zonowry</copyright><lastBuildDate>Wed, 01 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zonowry.com/tags/iptables/index.xml" rel="self" type="application/rss+xml"/><item><title>iptables + clash 透明网关实践与总结</title><link>https://blog.zonowry.com/posts/clash_iptables_tproxy/</link><pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/clash_iptables_tproxy/</guid><description>&lt;img src="https://arthurchiao.art/assets/img/deep-dive-into-iptables-netfilter/Netfilter-packet-flow.svg" alt="Featured image of post iptables + clash 透明网关实践与总结" />&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>尝试用 &lt;code>clash tun&lt;/code> 模式来实现过网关，虽然过程很流畅也比较“新潮“，但对于我来说有点魔法了，因为比较难搞清楚 &lt;code>clash&lt;/code> 帮我们做了哪些工作，出现问题不好找原因。也可能是我比较“洁癖” ，所以我采用了 &lt;code>iptables + tproxy&lt;/code> 这种更加“简单“的方式，&lt;code>clash&lt;/code> 只作为流量中继，流量包的路由都依靠 linux 内核的 &lt;code>netfilter&lt;/code> 模块实现，这样搭建的网关会更加“可控”一点。&lt;/p>
+&lt;p>然后我看了不少 &lt;code>clash + linux netfilter(iptables/nftables) 搭建“富强”网关&lt;/code> 的教程文章。步骤都是很简单的，照着做就能实现。但每个人总会有点特殊需求，不去理解这些步骤的奥秘，很难解决一些特殊问题。&lt;/p>
+&lt;p>我就是遇到了公网上无法访问我网关上的 &lt;code>docker&lt;/code> 服务，debug 排查了好久，虽然最后凭感觉解决了。但一直没有理顺流量是怎么路由的，只是稍有眉目、模棱两可。所以我去尝试理解了过程中每个操作（命令）的底层逻辑，现在写篇文章梳理一下这些知识。&lt;/p>
+&lt;h1 id="linux-网络之-netfilter">linux 网络之 netfilter
+&lt;/h1>&lt;p>首先说说这一切的基石：linux 的 &lt;code>netfilter&lt;/code> 模块及延伸工具 &lt;code>iptables&lt;/code>。&lt;/p>
+&lt;p>&lt;code>iptables&lt;/code> 只是个命令行工具，依赖 &lt;code>netfilter&lt;/code> 内核模块，也即真正实现防火墙功能的是 linux 内核的 &lt;code>netfilter&lt;/code> 模块。可惜不仅 &lt;code>iptables&lt;/code> 的命令宛若天书，&lt;code>netfilter&lt;/code> 的链路也错综复杂，很难去使用。想要理解使用这些工具或命令，必须得先了解一些 &lt;code>netfilter&lt;/code> 与 &lt;code>iptables&lt;/code> 的基础知识。&lt;/p>
+&lt;h2 id="iptables-的链">iptables 的链
+&lt;/h2>&lt;p>&lt;code>netfilter&lt;/code> 提供了 &lt;strong>5 个 hook&lt;/strong> 点，&lt;code>iptables&lt;/code> 根据这些 &lt;strong>hook&lt;/strong> 点，搞出了 &lt;code>链 (chain)&lt;/code> 的概念，也就&lt;strong>内置&lt;/strong>了 &lt;strong>5 个默认链&lt;/strong>。可以看出 5 个 &lt;code>iptables chian&lt;/code> 和 5 个 &lt;code>netfilter hook&lt;/code> 一一对应。当然，我们可以添加自定义链，不过想要某个自定义链生效，需要追加一条从&lt;strong>内置链&lt;/strong>跳转到这个自定义链的规则。因为内核的 5 个 hook 点只会触发这 5 个内置链。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>netfilter hook&lt;/th>
+&lt;th>iptables chain&lt;/th>
+&lt;th>netfilter hook 解释&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>NF_IP_PRE_ROUTING&lt;/td>
+&lt;td>PREROUTING&lt;/td>
+&lt;td>接收到的包进入协议栈后立即触发此 hook，在进行任何路由判断 （将包发往哪里）之前&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NF_IP_LOCAL_IN&lt;/td>
+&lt;td>INPUT&lt;/td>
+&lt;td>接收到的包经过路由判断，如果目的是本机，将触发此 hook&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NF_IP_FORWARD&lt;/td>
+&lt;td>FORWARD&lt;/td>
+&lt;td>接收到的包经过路由判断，如果目的是其他机器，将触发此 hook&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NF_IP_LOCAL_OUT&lt;/td>
+&lt;td>OUTPUT&lt;/td>
+&lt;td>  本机产生的准备发送的包，在进入协议栈后立即触发此 hook&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NF_IP_POST_ROUTING&lt;/td>
+&lt;td>POSTROUTING&lt;/td>
+&lt;td>本机产生的准备发送的包或者转发的包，在经过路由判断之后， 将触发此 hook&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="iptables-的表与动作">iptables 的表与动作
+&lt;/h3>&lt;p>&lt;code>iptables&lt;/code> 为了更颗粒度的管理流量，又设计出 &lt;code>table&lt;/code> 的概念。用 &lt;code>table&lt;/code> 来组织这些链，可以理解为每个 &lt;code>table&lt;/code> 根据其用处包含了不同的链。每个 &lt;code>table&lt;/code> 都支持一些“&lt;strong>动作&lt;/strong>“。例如 &lt;code>nat&lt;/code> 表的 &lt;code>DNAT&lt;/code> 动作支持重写目标地址。不过有些动作只在特定的 &lt;code>chain&lt;/code>（或者说 &lt;code>hook&lt;/code>）上才有意义。例如向 &lt;code>INPUT&lt;/code> 链添加 &lt;code>DNAT&lt;/code> 动作时，内核会抛出这个错误：&lt;code>ip_tables: DNAT target: used from hooks INPUT, but only usable from PREROUTING/OUTPUT&lt;/code>。另一个例子是 &lt;code>mangle&lt;/code> 表不允许添加 &lt;code>SNAT&lt;/code> 等动作，所以一个&lt;strong>动作&lt;/strong>需要 &lt;code>table&lt;/code> + &lt;code>chain&lt;/code> 都允许才能被添加。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>表&lt;/th>
+&lt;th style="text-align: left">支持的内置链&lt;/th>
+&lt;th style="text-align: left">支持的动作（部分，仅供参考）&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>mangle&lt;/td>
+&lt;td style="text-align: left">支持全部 5 个内置链&lt;/td>
+&lt;td style="text-align: left">&lt;code>RETURN&lt;/code> &lt;code>TPROXY&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>raw&lt;/td>
+&lt;td style="text-align: left">&lt;code>PREROUTING&lt;/code> &lt;code>OUTPUT&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>TRACE&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>nat&lt;/td>
+&lt;td style="text-align: left">&lt;code>PREROUTING&lt;/code> &lt;code>INPUT&lt;/code> &lt;code>OUTPUT&lt;/code> &lt;code>POSTROUTING&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>SNAT&lt;/code> &lt;code>DNAT&lt;/code> &lt;code>REDIRECT&lt;/code> &lt;code>MASQURADE&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>filter&lt;/td>
+&lt;td style="text-align: left">&lt;code>INPUT&lt;/code> &lt;code>FORWARD&lt;/code> &lt;code>OUTPUT&lt;/code>&lt;/td>
+&lt;td style="text-align: left">略&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>security&lt;/td>
+&lt;td style="text-align: left">略&lt;/td>
+&lt;td style="text-align: left">略&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>每个 &lt;code>table&lt;/code> 的 &lt;code>chain&lt;/code> 当然也是有触发顺序的，具体顺序可以参考那张著名的 &lt;code>netfilter 流程图&lt;/code> ，或&lt;a class="link" href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" target="_blank" rel="noopener"
+>这篇文章&lt;/a>的介绍 。&lt;/p>
+&lt;div style="background: #fff">
+&lt;img src="https://arthurchiao.art/assets/img/deep-dive-into-iptables-netfilter/Netfilter-packet-flow.svg" title="netfilter 流程图"/>
+&lt;/div>
+&lt;h2 id="流量方向-与-iptables-规则">流量方向 与 iptables 规则
+&lt;/h2>&lt;h3 id="开启内核转发功能">开启内核转发功能
+&lt;/h3>&lt;p>要想把一台 linux 机器配置成有路由转发功能的机器，第一步需要用以下命令开启内核转发功能。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sysctl -w net.ipv4.ip_forward&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>单单这条命令只是将 linux 机器做成中继路由，一般情况下没太大意义。我们还需要处理途径机器的流量。即设定规则将途径流量“路由（转发）”到本机某些程序上（常用如 &lt;code>clash&lt;/code> 或者 &lt;code>v2ray&lt;/code> ），经代理中转后再原路返回。达成“加速网络”的目的。 &lt;code>iptables&lt;/code> 等相关工具就登场了。&lt;/p>
+&lt;h3 id="局域网流量跳过处理直连主路由">局域网流量跳过处理，直连主路由
+&lt;/h3>&lt;p>linux 系统是可以作为&lt;strong>主路由&lt;/strong>的，但一般的机器没有多个网口，所以都是作为&lt;strong>旁路由&lt;/strong>来辅助主路由。既然作为旁路由来使用，我们只想代理加速公网流量，局域网内机器的流量肯定还是希望通过&lt;strong>主路由&lt;/strong>来直连，没必要再来来回回途径一次旁路由了。所以需要添加一些&lt;strong>转发规则&lt;/strong>，让旁路由跳过局域网内流量，原封不动转出去，让主路由继续去路由。&lt;/p>
+&lt;p>结合 netfilter 段落的知识，逆向思考一下要怎么做。首先我们要添加一些&lt;strong>路由规则&lt;/strong>，这些规则最终肯定是注入到 netfilter hook 里的，可以通过 &lt;strong>iptables chain&lt;/strong> 操作 netfikter hook。所以规则要添加到一个&lt;strong>合适&lt;/strong>的 &lt;strong>chain&lt;/strong> 里，&lt;strong>iptables&lt;/strong> 又是通过 &lt;strong>table&lt;/strong> 来组织管理 &lt;strong>chain&lt;/strong> 的。我们还需要找一个&lt;strong>合适&lt;/strong>的 &lt;strong>table&lt;/strong> 来添加 &lt;strong>chain&lt;/strong>（或者说规则）。思考了这些后，我们再回头看命令：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># clash 链负责处理转发流量&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -N clash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 让所有流量通过 clash 链进行处理&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A PREROUTING -j clash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 目标地址为局域网或保留地址的流量跳过处理&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 0.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 127.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 10.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 172.16.0.0/12 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 192.168.0.0/16 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 169.254.0.0/16 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 224.0.0.0/4 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -d 240.0.0.0/4 -j RETURN
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>首先我们新建了一个自定义链管理规则：&lt;code>iptables -t mangle -N clash&lt;/code>&lt;/li>
+&lt;li>然后从内置链 &lt;code>PREROUTING&lt;/code> 跳转而来：&lt;code>iptables -t mangle -A PREROUTING -j clash&lt;/code>
+&lt;ul>
+&lt;li>当然我们可以直接不写这两句，直接将规则添加到 &lt;code>PREROUTING&lt;/code> 链。但那样写不是很规范，不推荐直接向内置链（这里是 &lt;code>PREROUTING&lt;/code> ）添加规则。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>然后追加局域网 IP 直连规则到 &lt;code>clash&lt;/code> 表中
+我们使用的表是 mangle 表，链是 链。
+总而言之，最终实现了局域网机器流量发到&lt;strong>旁路由&lt;/strong>时，旁路由发现目标地址是局域网内 ip，跳过处理，转发出去给到主路由，就是主路由和源主机直接通信了，之后的网络传输本网关就不会参与了。&lt;/li>
+&lt;/ul>
+&lt;h3 id="中转外网流量clash-透明代理">中转外网流量，clash 透明代理
+&lt;/h3>&lt;p>由于上一步我们跳过了内部（局域网内）流量，剩下的流量基本就是外部（互联网）流量了。这些&lt;strong>外部流量&lt;/strong>应该要转发到 &lt;code>clash&lt;/code> 中进行透明代理。&lt;/p>
+&lt;p>虽然可以简单的通过 &lt;code>REDIRECT&lt;/code> 动作将流量转发到 &lt;code>7893&lt;/code> 端口。但 &lt;code>REDIRECT&lt;/code> 不能很好的支持 &lt;code>UDP&lt;/code> 流量。所以采用 &lt;code>TPROXY&lt;/code> 方式，这样 &lt;code>TCP&lt;/code> 和 &lt;code>UDP&lt;/code> 都能支持。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># tproxy 7893（clash） 端口，并打上 mark 666 命中策略，走 666 路由表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -p tcp -j TPROXY --on-port &lt;span class="m">7893&lt;/span> --tproxy-mark &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash -p udp -j TPROXY --on-port &lt;span class="m">7893&lt;/span> --tproxy-mark &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 转发所有 DNS 查询到 1053 端口&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 此操作会导致所有 DNS 请求全部返回虚假 IP(fake ip 198.18.0.1/16)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t nat -I PREROUTING -p udp --dport &lt;span class="m">53&lt;/span> -j REDIRECT --to &lt;span class="m">1053&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 添加策略与路由表（）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ip rule add fwmark &lt;span class="m">666&lt;/span> lookup &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ip route add &lt;span class="nb">local&lt;/span> 0.0.0.0/0 dev lo table &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>前两句 &lt;code>iptables&lt;/code> 命令，追加了两条 &lt;code>TPROXY&lt;/code> 规则。将 &lt;code>tcp&lt;/code> &amp;amp; &lt;code>udp&lt;/code> 流量转发到 &lt;code>clash&lt;/code> 的 &lt;code>7893&lt;/code> 端口，且打了 &lt;code>666&lt;/code> 标记。&lt;/p>
+&lt;p>因为 &lt;code>TPROXY&lt;/code> 不会修改 IP 数据包，数据包的 dest ip 一般都是外网地址，所以数据包下一跳会直接 forward 转出到下一跳机器上。因此 &lt;code>TPROXY&lt;/code> 大部分情况都需要搭配 &lt;code>ip route&lt;/code> 策略路由一起使用。比如我们这里就是新建了一个名为 &lt;code>666&lt;/code> 的路由表，此路由表会将所有数据包发到本地回环上。这样就阻断了 forward 过程，相当于让（ &lt;code>tproxy&lt;/code> 过的）数据包重新走一边网络栈流程。这样数据包就可以转发到 &lt;code>7893&lt;/code> 端口上了，然后我们只让有 &lt;code>666&lt;/code> 标记的数据包经过此路由表。&lt;/p>
+&lt;h3 id="代理网关本机的流量">代理网关本机的流量
+&lt;/h3>&lt;p>经过以上步骤，局域网内的其它机器已可以正常使用本网关了。当然，一台 llinux 机器只用来当一个网关太浪费了，还可以跑各种服务以及日常使用。顺便将本机的流量也代理一下，也即代理本机发出（经过 &lt;code>OUTPUT&lt;/code> 链）的数据包。&lt;/p>
+&lt;p>首先与上一步类似的步骤，将本机发出的流量（OUTPUT）打上标记，触发重新路由。这样本机发出的流量就和局域网内其它机器进入的流量相同了，路由的流程也就一样了。不过 &lt;code>OUTPUT&lt;/code> 上的数据包也会包含 clash 发出流量，这样会出现数据包死循环，得处理一下。只需要跳过 clash 程序发出的数据包，避免死循环。用 clash 用户启动 clash 程序，根据 uid 跳过数据包即可。。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># clash_local 链负责处理网关本身发出的流量&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -N clash_local
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># nerdctl 容器流量重新路由&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#iptables -t mangle -A clash_local -i nerdctl2 -p udp -j MARK --set-mark 666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#iptables -t mangle -A clash_local -i nerdctl2 -p tcp -j MARK --set-mark 666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 跳过内网流量&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 0.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 127.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 10.0.0.0/8 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 172.16.0.0/12 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 192.168.0.0/16 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 169.254.0.0/16 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 224.0.0.0/4 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -d 240.0.0.0/4 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 为本机发出的流量打 mark&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -p tcp -j MARK --set-mark &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A clash_local -p udp -j MARdocK --set-mark &lt;span class="m">666&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 跳过 clash 程序本身发出的流量, 防止死循环(clash 程序需要使用 &amp;#34;clash&amp;#34; 用户启动)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A OUTPUT -p tcp -m owner --uid-owner clash -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A OUTPUT -p udp -m owner --uid-owner clash -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 让本机发出的流量跳转到 clash_local&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># clash_local 链会为本机流量打 mark, 打过 mark 的流量会重新回到 PREROUTING 上&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">iptables -t mangle -A OUTPUT -j clash_local
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="外网访问内网-docker-问题">外网访问内网 docker 问题
+&lt;/h2>&lt;p>也可以说外网访问局域网内机器（非网关机器）的问题。我们这样配置好后，会发现无法从外网访问内网的 docker 服务（设置路由器端口转发）。可以通过手机流量访问测试。&lt;/p>
+&lt;p>我是参考该 &lt;a class="link" href="https://github.com/Dreamacro/clash/issues/432#issuecomment-571634905" target="_blank" rel="noopener"
+>github issue&lt;/a> 受到了启发，最终解决了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 跳过 docker0 的 ip 范围。即跳过 docker 服务的出站数据包&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo iptables -t mangle -A clash -p tcp -s 172.18.0.0/16 -j RETURN
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后以下是个人的推测，可能有误，仅供参考。&lt;/p>
+&lt;p>首先手机入站数据包经过路由器，&lt;code>NAT&lt;/code> 到 &lt;code>docker&lt;/code> 服务（网关机器）上。此时因为 &lt;strong>dest ip&lt;/strong> 是内网 ip，&lt;strong>clash 链&lt;/strong> 会跳过。&lt;strong>DOCKER 链&lt;/strong> 接手处理，通过 &lt;code>DNAT&lt;/code> 转发到了 &lt;strong>docker0 bridge&lt;/strong> 网卡上，这几步都很正常。顺利到达 docker 容器。&lt;/p>
+&lt;p>随后是 docker 容器的出站数据包，此时数据包会从 &lt;strong>docker0 bridge&lt;/strong> 发到宿主机的物理网卡 &lt;strong>eth&lt;/strong> 网卡。这时数据包之于宿主机来说，是一个入站数据包。数据包会经过 &lt;code>PREROUTING&lt;/code> 链，jump 到 &lt;strong>clash&lt;/strong> 链，而此时的 &lt;strong>dest ip&lt;/strong> 为手机的 ip 。会被转发到 clash 上处理，但这个数据包只在出站时转发给 clash 处理。入站的时候跳过了。估计 clash 无法处理这个数据包，可能就丢弃了。就出现了外网无法访问内网 docker 容器的问题。&lt;/p>
+&lt;p>所以根据 source ip 判断， 将 docker 容器的数据包也跳过。跳过后就解决了～&lt;/p>
+&lt;h2 id="参考">参考
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a class="link" href="https://moecm.com/something-about-v2ray-with-tproxy/" target="_blank" rel="noopener"
+>第一篇万字长文：围绕透明代理的又一次探究&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" target="_blank" rel="noopener"
+>「译」深入理解 iptables 和 netfilter 架构&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://mritd.com/2022/02/06/clash-tproxy/" target="_blank" rel="noopener"
+>树莓派 Clash 透明代理(TProxy)_&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/mritd/tpclash/wiki/2%E3%80%81%E8%BF%9B%E9%98%B6%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6" target="_blank" rel="noopener"
+>tpclash wiki - 2、进阶流量控制&lt;/a> 。&lt;/li>
+&lt;li>&lt;a class="link" href="https://tinychen.com/20200414-iptables-principle-introduction/" target="_blank" rel="noopener"
+>iptables 的四表五链与 NAT 工作原理  _&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.zhaohuabing.com/learning-linux/docs/tproxy/" target="_blank" rel="noopener"
+>https://www.zhaohuabing.com/learning-linux/docs/tproxy/&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>
