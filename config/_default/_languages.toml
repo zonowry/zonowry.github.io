@@ -1,0 +1,6 @@
+# Rename this file to languages.toml to enable multilingual support
+[zh-cn]
+languageName = "简体中文"
+languageCode = "zh-cn"
+languagedirection = "ltr"
+weight = 1

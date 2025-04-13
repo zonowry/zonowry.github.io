@@ -1,0 +1,24 @@
+# Configure main menu and social menu
+#[[main]]
+#identifier = "home"
+#name = "Home"
+#url = "/"
+#[main.params]
+#icon = "home"
+#newtab = true
+
+[[social]]
+identifier = "github"
+name = "GitHub"
+url = "https://github.com/zonowry"
+
+[social.params]
+icon = "brand-github"
+
+[[social]]
+identifier = "mail"
+name = "Outlook"
+url = "mailto:zonowry@outlook.com"
+
+[social.params]
+icon = "messages"

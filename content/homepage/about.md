@@ -1,5 +1,5 @@
 ---
-title: Zonowry 的博客
+title: Zonowry
 draft: false
 avatar: images/avatar.png
 bio: no worry, everything will be over in the end.
