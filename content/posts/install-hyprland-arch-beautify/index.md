@@ -189,7 +189,7 @@ genfstab /mnt > /mnt/etc/fstab
 cat /mnt/etc/fstab
 ```
 
-![[cat-fstab.png]]
+![[image-2023_09_25_16_44_46.png]]
 
 ## 重启进入系统
 
@@ -327,7 +327,7 @@ fc-cache -vf # 刷新字体缓存
 
 ### 输入法
 
-得益于 Hyprland 作者好像也是日语输入法用户，所以 Hyprland 的 input-method 相关协议较其它 wayland 合成器更为完善。现在 Hyprland 安装 chrome，fcitx5 之后，基本是开箱即用了，~~（只需要设置 fcitix5 环境变量与 electron flags）~~好起来了！
+得益于 Hyprland 作者好像也是日语输入法用户，所以 Hyprland 的 input-method 相关协议较其它 wayland 合成器更为完善。现在 Hyprland 安装 chrome，fcitx5 之后，基本是开箱即用了，~~ 只需要设置 fcitix5 环境变量与 electron flags~~好起来了！
 
 ```bash
 pacman -S fcitx5-im \

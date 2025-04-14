@@ -1,24 +1,20 @@
 ---
-tags:
-  - Handbook
-  - OpenWRT
-  - Network
-name: Steps to flash Openwrt to Redmi AX6S router
-title: 红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤
-description: 如题，只是一个简单的操作手册
+date: 2024-04-01
+name: ax6s-openwrt
+title: 红米 AX6S 路由器刷入原版 ImmortalWrt 步骤
+description: 红米 AX6S 路由器刷入原版 ImmortalWrt 步骤
 image: image-2024_04_01_20_17_39.png
-date: 2024-03-31
-lastmod: 2024-04-01
-toc: true
-isCJKLanguage: true
+tags:
+  - network
+  - openwrt
 keywords:
-  - zonowry
   - AX6S
   - OpenWRT
   - ImmortalWrt
   - Router
-  - Openclash
 ---
+
+直接装整合包的话，大多服务/插件对我都没什么用，~~感觉卸载也会有残留~~所以装个纯净的，可以根据自己需求慢慢完善路由器。~~最主要的是它很**干净哇**！~~
 
 ## 启用路由器的 telnet
 
@@ -102,15 +98,7 @@ opkg install /tmp/luci-app-openclash_0.46.003-beta_all.ipk
 
 安装后重启路由器，就可以看到“服务”菜单了。按照自己需求配置 `openclash` ，接入**互联网**。
 
-![preview](image-2024_04_01_20_17_39.png)
-
-## 为什么不装整合包
-
-整合包挺方便的，不过内核都比较老旧，直接更新还容易变砖。而且大多服务/插件都没什么用。
-
-这样是获得了一个最新版本的 openwrt 内核，不会再碰见内核版本不兼容问题了，可以放心的安装各种新版插件了。
-
-最主要的是它很**干净**哇！
+![[image-2024_04_01_20_17_39.png]]
 
 ## 参考
 

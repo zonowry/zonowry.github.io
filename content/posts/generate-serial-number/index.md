@@ -1,20 +1,17 @@
 ---
-date: 2025-04-13
-tags:
-  - concurrent
-  - redis
-name: NAT in different environments
+name: generate-serial-number
 title: 并发安全的生成一个时间相关的订单流水号
 description: 总结下利用 redis 生成流水号的一个解决方案。
-keywords:
-  - serial number generator
-  - redis
-  - order number
+date: 2025-04-13
 isCJKLanguage: true
 toc: true
+tags:
+  - redis
+  - concurrent
+keywords:
+  - serial number generator
+  - order number generator
 ---
-
-总结下利用 redis 生成流水号的一个解决方案。
 
 ## 序列号部分
 
@@ -142,7 +139,7 @@ fun postInit() {
 }
 ```
 
-## plan 2 - 生命周期 Hook
+### plan 2 - 生命周期 Hook
 
 如果 redis 服务也重启了，还是要想办法持久化 `lastNumber`。什么时候持久化比较好呢，因为持久化是一个 IO 操作，在每次生成时即时持久化不够优雅，最好是通过各种手段监控到业务服务的销毁后，在业务服务启动前持久化 `lastNumber`。
 
@@ -187,30 +184,24 @@ fun postInit() {
 
 但前面的还是不靠谱，单机服务、机房淹水，来不及正常停止服务，这些容错方案就不起作用了。
 
-我们可以抽象一个 `StateStorage` 出来，交给下游实现，主要作用是持久化 `lastNumber`，例如 ``
+我们可以抽象一个 `StateStorage` 出来，交给下游实现，主要作用是持久化 `lastNumber`。至于怎么实现就敬请想象了，可以利用心跳检测，服务监控等各种中间件，部署一个外部监控服务（守卫），在一系列连环措施下，终于可以安全的 hook 掉业务服务宕机了。最终我们可以简单的启动时恢复，例如：
 
 ```kotlin
 @PostConstruct
 fun initLastNumber() {
-    // Plan 3: 尝试从状态存储器恢复  ，大概会是这样
+	// Plan 3: 尝试从状态存储器恢复  ，大概会是这样
 	val last = stateStorage.getLast()
 	lastNumber.set(fileVal)
 }
 ```
 
-`StateStorage` 怎么实现就敬请想象了，可以利用心跳检测，服务监控等各种中间件，部署一个外部监控服务（守卫），在一系列连环措施下，终于可以安全的 hook 掉业务服务宕机了。
+不过依靠中间件服务器的异构架构过于庞大，可以简单一点的实现，让业务服务自己监控自己，实现一个内部的 scheduler 。例如以 heartbeat 的形式持久化 `lastNumber`，也足够应付。
 
-或者简单点，让业务服务自己监控自己，实现一个内部的 scheduler ，例如以 heartbeat 的形式持久化 `lastNumber`。
-
-### 其它
-
-关于启动时恢复，是为了解决新序列号过小牵扯出来的问题。那只要我们的业务服务的系统时间恢复正常，解决掉「新序列号 < 旧序列号」的问题。新旧序列号大小比较通过，此时启动时恢复的靠不靠谱就不重要了。
+最后想说关于启动时恢复，是为了解决新序列号过小牵扯出来的问题。那只要我们的业务服务的系统时间恢复正常，解决掉「新序列号 < 旧序列号」的问题。新旧序列号大小比较通过，此时启动时恢复的靠不靠谱就不重要了。
 
 或者不够优雅也无所谓了，我这个业务很重要，不太关心性能，那就每次生成后即时持久化。
 
-当然也可以不强依赖 redis，将 redis 抽象成一个原子性质的自增方法，称之为「分发器」。把 redis 作为一种分发器的实现，这样或许会更「通用」一点。
-
-分布式场景的话，再加上一个 machineid 节点标识位，但也会有
+如果再增加一个 machineid bit，就很像分布式环境下的 snowflake id 了。不过也要面临分布式下才需要考虑的诸多问题。
 
 ## 参考
 
