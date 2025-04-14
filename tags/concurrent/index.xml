@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Concurrent on Zonowry</title><link>https://blog.zonowry.com/tags/concurrent/</link><description>Recent content in Concurrent on Zonowry</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>zonowry</copyright><lastBuildDate>Sun, 13 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zonowry.com/tags/concurrent/index.xml" rel="self" type="application/rss+xml"/><item><title>并发安全的生成一个时间相关的订单流水号</title><link>https://blog.zonowry.com/posts/generate-time-related-serial-number-in-concurrently/</link><pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/generate-time-related-serial-number-in-concurrently/</guid><description>&lt;p>总结下利用 redis 生成流水号的一个解决方案。&lt;/p>
-&lt;h2 id="序列号部分">序列号部分
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Concurrent on Zonowry</title><link>https://blog.zonowry.com/tags/concurrent/</link><description>Recent content in Concurrent on Zonowry</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>zonowry</copyright><lastBuildDate>Sun, 13 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zonowry.com/tags/concurrent/index.xml" rel="self" type="application/rss+xml"/><item><title>并发安全的生成一个时间相关的订单流水号</title><link>https://blog.zonowry.com/posts/generate-serial-number/</link><pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/generate-serial-number/</guid><description>&lt;h2 id="序列号部分">序列号部分
 &lt;/h2>&lt;p>得益于 redis 的原子性与其自增方法 &lt;code>INCR&lt;/code>，我们业务方法并不需要线程锁，即可获取一个并发安全的自增序列号；随后将序列号的 key 精确到秒，我们就可以获得一个秒级别的自增序列号。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -186,8 +185,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="plan-2---生命周期-hook">plan 2 - 生命周期 Hook
-&lt;/h2>&lt;p>如果 redis 服务也重启了，还是要想办法持久化 &lt;code>lastNumber&lt;/code>。什么时候持久化比较好呢，因为持久化是一个 IO 操作，在每次生成时即时持久化不够优雅，最好是通过各种手段监控到业务服务的销毁后，在业务服务启动前持久化 &lt;code>lastNumber&lt;/code>。&lt;/p>
+&lt;/div>&lt;h3 id="plan-2---生命周期-hook">plan 2 - 生命周期 Hook
+&lt;/h3>&lt;p>如果 redis 服务也重启了，还是要想办法持久化 &lt;code>lastNumber&lt;/code>。什么时候持久化比较好呢，因为持久化是一个 IO 操作，在每次生成时即时持久化不够优雅，最好是通过各种手段监控到业务服务的销毁后，在业务服务启动前持久化 &lt;code>lastNumber&lt;/code>。&lt;/p>
 &lt;p>当然设计允许的话，也可以直接从相关业务表里恢复，例如 &lt;code>select max(orderNumber) from order&lt;/code>，获取最大（新）的订单号。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -255,7 +254,7 @@
 &lt;/div>
 &lt;/div>&lt;h3 id="plan-3---守卫服务">plan 3 - 守卫服务
 &lt;/h3>&lt;p>但前面的还是不靠谱，单机服务、机房淹水，来不及正常停止服务，这些容错方案就不起作用了。&lt;/p>
-&lt;p>我们可以抽象一个 &lt;code>StateStorage&lt;/code> 出来，交给下游实现，主要作用是持久化 &lt;code>lastNumber&lt;/code>，例如 ``&lt;/p>
+&lt;p>我们可以抽象一个 &lt;code>StateStorage&lt;/code> 出来，交给下游实现，主要作用是持久化 &lt;code>lastNumber&lt;/code>。至于怎么实现就敬请想象了，可以利用心跳检测，服务监控等各种中间件，部署一个外部监控服务（守卫），在一系列连环措施下，终于可以安全的 hook 掉业务服务宕机了。最终我们可以简单的启动时恢复，例如：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -274,13 +273,10 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;code>StateStorage&lt;/code> 怎么实现就敬请想象了，可以利用心跳检测，服务监控等各种中间件，部署一个外部监控服务（守卫），在一系列连环措施下，终于可以安全的 hook 掉业务服务宕机了。&lt;/p>
-&lt;p>或者简单点，让业务服务自己监控自己，实现一个内部的 scheduler ，例如以 heartbeat 的形式持久化 &lt;code>lastNumber&lt;/code>。&lt;/p>
-&lt;h3 id="其它">其它
-&lt;/h3>&lt;p>关于启动时恢复，是为了解决新序列号过小牵扯出来的问题。那只要我们的业务服务的系统时间恢复正常，解决掉「新序列号 &amp;lt; 旧序列号」的问题。新旧序列号大小比较通过，此时启动时恢复的靠不靠谱就不重要了。&lt;/p>
+&lt;/div>&lt;p>不过依靠中间件服务器的异构架构过于庞大，可以简单一点的实现，让业务服务自己监控自己，实现一个内部的 scheduler 。例如以 heartbeat 的形式持久化 &lt;code>lastNumber&lt;/code>，也足够应付。&lt;/p>
+&lt;p>最后想说关于启动时恢复，是为了解决新序列号过小牵扯出来的问题。那只要我们的业务服务的系统时间恢复正常，解决掉「新序列号 &amp;lt; 旧序列号」的问题。新旧序列号大小比较通过，此时启动时恢复的靠不靠谱就不重要了。&lt;/p>
 &lt;p>或者不够优雅也无所谓了，我这个业务很重要，不太关心性能，那就每次生成后即时持久化。&lt;/p>
-&lt;p>当然也可以不强依赖 redis，将 redis 抽象成一个原子性质的自增方法，称之为「分发器」。把 redis 作为一种分发器的实现，这样或许会更「通用」一点。&lt;/p>
-&lt;p>分布式场景的话，再加上一个 machineid 节点标识位，但也会有&lt;/p>
+&lt;p>如果再增加一个 machineid bit，就很像分布式环境下的 snowflake id 了。不过也要面临分布式下才需要考虑的诸多问题。&lt;/p>
 &lt;h2 id="参考">参考
 &lt;/h2>&lt;p>&lt;a class="link" href="https://cosid.ahoo.me/guide/snowflake.html" target="_blank" rel="noopener"
 >SnowflakeId | CosId&lt;/a>&lt;/p></description></item></channel></rss>

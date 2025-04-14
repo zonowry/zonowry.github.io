@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zonowry</title><link>https://blog.zonowry.com/posts/</link><description>Recent content on Zonowry</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>zonowry</copyright><lastBuildDate>Sun, 13 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zonowry.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>并发安全的生成一个时间相关的订单流水号</title><link>https://blog.zonowry.com/posts/generate-time-related-serial-number-in-concurrently/</link><pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/generate-time-related-serial-number-in-concurrently/</guid><description>&lt;p>总结下利用 redis 生成流水号的一个解决方案。&lt;/p>
-&lt;h2 id="序列号部分">序列号部分
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zonowry</title><link>https://blog.zonowry.com/posts/</link><description>Recent content on Zonowry</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>zonowry</copyright><lastBuildDate>Sun, 13 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.zonowry.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>并发安全的生成一个时间相关的订单流水号</title><link>https://blog.zonowry.com/posts/generate-serial-number/</link><pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/generate-serial-number/</guid><description>&lt;h2 id="序列号部分">序列号部分
 &lt;/h2>&lt;p>得益于 redis 的原子性与其自增方法 &lt;code>INCR&lt;/code>，我们业务方法并不需要线程锁，即可获取一个并发安全的自增序列号；随后将序列号的 key 精确到秒，我们就可以获得一个秒级别的自增序列号。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -186,8 +185,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="plan-2---生命周期-hook">plan 2 - 生命周期 Hook
-&lt;/h2>&lt;p>如果 redis 服务也重启了，还是要想办法持久化 &lt;code>lastNumber&lt;/code>。什么时候持久化比较好呢，因为持久化是一个 IO 操作，在每次生成时即时持久化不够优雅，最好是通过各种手段监控到业务服务的销毁后，在业务服务启动前持久化 &lt;code>lastNumber&lt;/code>。&lt;/p>
+&lt;/div>&lt;h3 id="plan-2---生命周期-hook">plan 2 - 生命周期 Hook
+&lt;/h3>&lt;p>如果 redis 服务也重启了，还是要想办法持久化 &lt;code>lastNumber&lt;/code>。什么时候持久化比较好呢，因为持久化是一个 IO 操作，在每次生成时即时持久化不够优雅，最好是通过各种手段监控到业务服务的销毁后，在业务服务启动前持久化 &lt;code>lastNumber&lt;/code>。&lt;/p>
 &lt;p>当然设计允许的话，也可以直接从相关业务表里恢复，例如 &lt;code>select max(orderNumber) from order&lt;/code>，获取最大（新）的订单号。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -255,7 +254,7 @@
 &lt;/div>
 &lt;/div>&lt;h3 id="plan-3---守卫服务">plan 3 - 守卫服务
 &lt;/h3>&lt;p>但前面的还是不靠谱，单机服务、机房淹水，来不及正常停止服务，这些容错方案就不起作用了。&lt;/p>
-&lt;p>我们可以抽象一个 &lt;code>StateStorage&lt;/code> 出来，交给下游实现，主要作用是持久化 &lt;code>lastNumber&lt;/code>，例如 ``&lt;/p>
+&lt;p>我们可以抽象一个 &lt;code>StateStorage&lt;/code> 出来，交给下游实现，主要作用是持久化 &lt;code>lastNumber&lt;/code>。至于怎么实现就敬请想象了，可以利用心跳检测，服务监控等各种中间件，部署一个外部监控服务（守卫），在一系列连环措施下，终于可以安全的 hook 掉业务服务宕机了。最终我们可以简单的启动时恢复，例如：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -274,16 +273,13 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;code>StateStorage&lt;/code> 怎么实现就敬请想象了，可以利用心跳检测，服务监控等各种中间件，部署一个外部监控服务（守卫），在一系列连环措施下，终于可以安全的 hook 掉业务服务宕机了。&lt;/p>
-&lt;p>或者简单点，让业务服务自己监控自己，实现一个内部的 scheduler ，例如以 heartbeat 的形式持久化 &lt;code>lastNumber&lt;/code>。&lt;/p>
-&lt;h3 id="其它">其它
-&lt;/h3>&lt;p>关于启动时恢复，是为了解决新序列号过小牵扯出来的问题。那只要我们的业务服务的系统时间恢复正常，解决掉「新序列号 &amp;lt; 旧序列号」的问题。新旧序列号大小比较通过，此时启动时恢复的靠不靠谱就不重要了。&lt;/p>
+&lt;/div>&lt;p>不过依靠中间件服务器的异构架构过于庞大，可以简单一点的实现，让业务服务自己监控自己，实现一个内部的 scheduler 。例如以 heartbeat 的形式持久化 &lt;code>lastNumber&lt;/code>，也足够应付。&lt;/p>
+&lt;p>最后想说关于启动时恢复，是为了解决新序列号过小牵扯出来的问题。那只要我们的业务服务的系统时间恢复正常，解决掉「新序列号 &amp;lt; 旧序列号」的问题。新旧序列号大小比较通过，此时启动时恢复的靠不靠谱就不重要了。&lt;/p>
 &lt;p>或者不够优雅也无所谓了，我这个业务很重要，不太关心性能，那就每次生成后即时持久化。&lt;/p>
-&lt;p>当然也可以不强依赖 redis，将 redis 抽象成一个原子性质的自增方法，称之为「分发器」。把 redis 作为一种分发器的实现，这样或许会更「通用」一点。&lt;/p>
-&lt;p>分布式场景的话，再加上一个 machineid 节点标识位，但也会有&lt;/p>
+&lt;p>如果再增加一个 machineid bit，就很像分布式环境下的 snowflake id 了。不过也要面临分布式下才需要考虑的诸多问题。&lt;/p>
 &lt;h2 id="参考">参考
 &lt;/h2>&lt;p>&lt;a class="link" href="https://cosid.ahoo.me/guide/snowflake.html" target="_blank" rel="noopener"
->SnowflakeId | CosId&lt;/a>&lt;/p></description></item><item><title>Arch + Hyprland 安装美化手册</title><link>https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/</link><pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/</guid><description>&lt;img src="https://blog.zonowry.com/posts/install-hyprland-on-arch-and-simple-beautify/image-2024_02_25_03_47_36.png" alt="Featured image of post Arch + Hyprland 安装美化手册" />&lt;blockquote>
+>SnowflakeId | CosId&lt;/a>&lt;/p></description></item><item><title>Arch + Hyprland 安装美化手册</title><link>https://blog.zonowry.com/posts/install-hyprland-arch-beautify/</link><pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/install-hyprland-arch-beautify/</guid><description>&lt;img src="https://blog.zonowry.com/posts/install-hyprland-arch-beautify/image-2024_02_25_03_47_36.png" alt="Featured image of post Arch + Hyprland 安装美化手册" />&lt;blockquote>
 &lt;p>!TIPS
 文中提到的软件配置、dotfiles 相关都可以在
 &lt;a class="link" href="https://github.com/zonowry/dotfiles" target="_blank" rel="noopener"
@@ -546,7 +542,7 @@ alt="preview"
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat /mnt/etc/fstab
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>![[cat-fstab.png]]&lt;/p>
+&lt;/div>&lt;p>![[image-2023_09_25_16_44_46.png]]&lt;/p>
 &lt;h2 id="重启进入系统">重启进入系统
 &lt;/h2>&lt;p>上边的步骤做完，重启应该就可以引导并进入系统了。&lt;/p>
 &lt;h3 id="初始化网络">初始化网络
@@ -757,7 +753,7 @@ alt="preview"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h3 id="输入法">输入法
-&lt;/h3>&lt;p>得益于 Hyprland 作者好像也是日语输入法用户，所以 Hyprland 的 input-method 相关协议较其它 wayland 合成器更为完善。现在 Hyprland 安装 chrome，fcitx5 之后，基本是开箱即用了，~~（只需要设置 fcitix5 环境变量与 electron flags）~~好起来了！&lt;/p>
+&lt;/h3>&lt;p>得益于 Hyprland 作者好像也是日语输入法用户，所以 Hyprland 的 input-method 相关协议较其它 wayland 合成器更为完善。现在 Hyprland 安装 chrome，fcitx5 之后，基本是开箱即用了，~~ 只需要设置 fcitix5 环境变量与 electron flags~~好起来了！&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -999,7 +995,7 @@ alt="preview"
 >\[译\] NAT - 网络地址转换（2016）&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" target="_blank" rel="noopener"
 >\[译\] 深入理解 iptables 和 netfilter 架构&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>关系型数据库如何检索数据</title><link>https://blog.zonowry.com/posts/how-to-retrieve-data-in-relational-database/</link><pubDate>Thu, 18 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/how-to-retrieve-data-in-relational-database/</guid><description>&lt;p>说实话研究数据库的底层对常见的项目帮助不大，或者说不受重视，更多是在业务编排上。数据库随便建建，增删改查随便写写，功能就完成了，项目就上线了。但程序员总要有些追求，并且数据库的细节知识很泛用。如 Schema、索引、数据结构、事务、锁，这些知识不止是数据库独有的，说是学习数据库，不如说是借由数据库来学习一下这些知识。&lt;del>不参透数据库设计，就像四大名著不读红楼梦，后面忘了…&lt;/del>。&lt;/p>
+&lt;/ul></description></item><item><title>关系型数据库如何检索数据</title><link>https://blog.zonowry.com/posts/retrieve-relational-database/</link><pubDate>Thu, 18 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/retrieve-relational-database/</guid><description>&lt;p>说实话研究数据库的底层对常见的项目帮助不大，或者说不受重视，更多是在业务编排上。数据库随便建建，增删改查随便写写，功能就完成了，项目就上线了。但程序员总要有些追求，并且数据库的细节知识很泛用。如 Schema、索引、数据结构、事务、锁，这些知识不止是数据库独有的，说是学习数据库，不如说是借由数据库来学习一下这些知识。&lt;del>不参透数据库设计，就像四大名著不读红楼梦，后面忘了…&lt;/del>。&lt;/p>
 &lt;blockquote>
 &lt;p>本文主要讨论关系型数据库，可能会顺带一提与 NoSql 相关的知识。&lt;/p>&lt;/blockquote>
 &lt;h2 id="数据库的-schema">数据库的 Schema
@@ -1411,7 +1407,8 @@ loading="lazy"
 &lt;li>访问 Neo4j http://ip:30075 (nodeport 监听的端口)&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;/ul></description></item><item><title>红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤</title><link>https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/</link><pubDate>Sun, 31 Mar 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/</guid><description>&lt;img src="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39.png" alt="Featured image of post 红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤" />&lt;h2 id="启用路由器的-telnet">启用路由器的 telnet
+&lt;/ul></description></item><item><title>红米 AX6S 路由器刷入原版 ImmortalWrt 步骤</title><link>https://blog.zonowry.com/posts/ax6s-openwrt/</link><pubDate>Mon, 01 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/ax6s-openwrt/</guid><description>&lt;img src="https://blog.zonowry.com/posts/ax6s-openwrt/image-2024_04_01_20_17_39.png" alt="Featured image of post 红米 AX6S 路由器刷入原版 ImmortalWrt 步骤" />&lt;p>直接装整合包的话，大多服务/插件对我都没什么用，&lt;del>感觉卸载也会有残留&lt;/del>所以装个纯净的，可以根据自己需求慢慢完善路由器。&lt;del>最主要的是它很&lt;strong>干净哇&lt;/strong>！&lt;/del>&lt;/p>
+&lt;h2 id="启用路由器的-telnet">启用路由器的 telnet
 &lt;/h2>&lt;p>为了启用 telnet，需要手动升级路由器固件到开发版，开发版固件可以在 &lt;a class="link" href="https://github.com/YangWang92/AX6S-unlock" target="_blank" rel="noopener"
 >GitHub - YangWang92/AX6S-unlock&lt;/a> 仓库下载。(&lt;a class="link" href="https://github.com/YangWang92/AX6S-unlock/blob/master/miwifi_rb03_firmware_stable_1.2.7.bin" target="_blank" rel="noopener"
 >miwifi_rb03_firmware_stable_1.2.7.bin&lt;/a>)&lt;/p>
@@ -1511,27 +1508,14 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>安装后重启路由器，就可以看到“服务”菜单了。按照自己需求配置 &lt;code>openclash&lt;/code> ，接入&lt;strong>互联网&lt;/strong>。&lt;/p>
-&lt;p>&lt;img src="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39.png"
-width="931"
-height="690"
-srcset="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39_hu_4171761ed476956d.png 480w, https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39_hu_2c9784e0a5f1e60b.png 1024w"
-loading="lazy"
-alt="preview"
-class="gallery-image"
-data-flex-grow="134"
-data-flex-basis="323px"
->&lt;/p>
-&lt;h2 id="为什么不装整合包">为什么不装整合包
-&lt;/h2>&lt;p>整合包挺方便的，不过内核都比较老旧，直接更新还容易变砖。而且大多服务/插件都没什么用。&lt;/p>
-&lt;p>这样是获得了一个最新版本的 openwrt 内核，不会再碰见内核版本不兼容问题了，可以放心的安装各种新版插件了。&lt;/p>
-&lt;p>最主要的是它很&lt;strong>干净&lt;/strong>哇！&lt;/p>
+&lt;p>![[image-2024_04_01_20_17_39.png]]&lt;/p>
 &lt;h2 id="参考">参考
 &lt;/h2>&lt;ul>
 &lt;li>&lt;a class="link" href="https://www.right.com.cn/forum/thread-8187405-1-1.html" target="_blank" rel="noopener"
 >\[2-2\]AX6S 闭源无线驱动 Openwrt 刷机教程/固件下载-小米无线路由器及小米网络设备-恩山无线论坛&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://www.right.com.cn/forum/thread-8290496-1-1.html" target="_blank" rel="noopener"
 >360T7 安装 immortalwrt 官方原版固件（含 Luci Web 页面），供新手参考-360 无线路由器及其他 360 网络设备-恩山无线论坛&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>怎样安全的并发编程</title><link>https://blog.zonowry.com/posts/safe-concurrent-programming/</link><pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/safe-concurrent-programming/</guid><description>&lt;h2 id="引言">引言
+&lt;/ul></description></item><item><title>怎样安全的并发编程</title><link>https://blog.zonowry.com/posts/safe-concurrent/</link><pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/safe-concurrent/</guid><description>&lt;h2 id="引言">引言
 &lt;/h2>&lt;p>说到并发，首先会想到多线程。若只关注多线程如何使用，却对并发编程没有深入的了解，很容易在代码里挖坑，变成这个段子的模样：“从前有个程序员遇到了一个性能问题。他想，没事，我懂，用线程就好了。现他有在个两题了问“。&lt;/p>
 &lt;p>为了避免这种情况，我们该思考“为什么需要多线程，为什么 &lt;code>js&lt;/code> 里没有多线程？”等诸类问题。将多线程看成是并发的一种手段，也就是让我们往下面 （the lower）走一点，越过线程理解并发编程。&lt;/p>
 &lt;blockquote>
@@ -1540,22 +1524,22 @@ data-flex-basis="323px"
 &lt;h2 id="理论指导实践">理论指导实践
 &lt;/h2>&lt;p>分析 &lt;code>thread（线程）&lt;/code>、&lt;code>coroutine（协程）&lt;/code>、&lt;code>reactive（反应式）&lt;/code>、&lt;code>event/task queue（任务队列）&lt;/code> 等各种并发&lt;strong>手段&lt;/strong>。不讨论它们的用法、优劣，而是关注它们的的相似之处——它们实际都是通过编排、调度&lt;strong>逻辑控制流&lt;/strong>实现的并发。所以只需要搞清楚它们是如何调度&lt;strong>执行单元&lt;/strong>的，就掌握了核心&lt;del>科技&lt;/del>。&lt;/p>
 &lt;blockquote>
-&lt;p>逻辑控制流，底层一点的理解是硬件电路形成的一组逻辑。应用级一点的解释是一个可以被执行的内容，可能是线程、协程、一个可观察对象 Observable、Subscription、FutureTask、Event Callback&amp;hellip;&amp;hellip; 等等。不过用 &lt;code>CSAPP&lt;/code> 书中的&lt;strong>逻辑控制流&lt;/strong>表示一个可执行内容有点极简，所以下文就称之为&lt;strong>任务&lt;/strong>或&lt;strong>执行单元&lt;/strong>吧，&lt;strong>代表一个可被执行的片段&lt;/strong>（you know it）。&lt;/p>&lt;/blockquote>
+&lt;p>逻辑控制流，底层一点的理解是硬件电路形成的一组逻辑。应用级一点的解释是一个可以被执行的内容，可能是线程、协程、一个可观察对象 Observable、Subscription、FutureTask、Event Callback&amp;hellip;&amp;hellip; 等等。不过用 &lt;code>CSAPP&lt;/code> 书中的&lt;strong>逻辑控制流&lt;/strong>表示一个可执行内容有点极简，所以下文就称之为&lt;strong>任务&lt;/strong>或&lt;strong>执行单元&lt;/strong>吧，&lt;strong>代表一个可被执行的片段&lt;/strong>（you know what i&amp;rsquo;m saying）。&lt;/p>&lt;/blockquote>
 &lt;h3 id="抢占式调度">抢占式调度
 &lt;/h3>&lt;p>首先是最常见的抢占式调度，执行单元间呈&lt;strong>竞争&lt;/strong>关系，A 任务与 B 任务互相争夺执行机会。最常见的例子是“操作系统内核利用 CPU 时钟中断，达成多线程并发“。每次中断都代表某个线程抢到了 CPU 时间片”。因为 CPU 中断是纳秒级的，实际效果是内核在飞快的切换执行单元以交错执行。提供一种所有执行单元在&lt;strong>并行&lt;/strong>的假象。在多核心 CPU 下，内核的抢占式调度也足以实现真正的&lt;strong>并行&lt;/strong>。&lt;/p>
 &lt;p>抢占式调度下，执行单元无法确定自己什么时候会被执行，且任何时刻都可能会被中断执行。反过来说，只要我们基于此特性，处理好执行单元的竞争与中断，就可以实现一个抢占式调度器。也可以看出抢占式调度的好处是不会存在独占情况——某个执行单元永远占用着 CPU。因为每个执行单元都有被执行的机会，就像在等红绿灯一样。&lt;/p>
 &lt;h3 id="协作式调度">协作式调度
 &lt;/h3>&lt;p>协作式调度可以引出一大堆技术，例如 &lt;code>IO 多路复用&lt;/code> 、&lt;code>迭代器&lt;/code>、&lt;code>事件驱动&lt;/code> 等等。&lt;/p>
-&lt;p>它们都有一个点——主动让渡控制权，或者说主动挂起的（释放并等待）。A 任务与 B 任务可以在&lt;strong>合适&lt;/strong>的时机&lt;strong>主动&lt;/strong>让渡出控制权。特点是持有控制权的任务主动中断，~~抛开现实不谈（例如 CPU 中断），~~这也突出了协作式调度的优点与理念——“调度不会影响&lt;strong>顺序性&lt;/strong>“。因为我们是主动让出的，继续执行时可以找到让渡时的节点来保证顺序性，也可以理解为调度器会帮我们将执行单元恢复到让渡前一刻的状态，然后就像没让渡过一样继续执行。&lt;/p>
-&lt;p>协作式调度，执行单元知道自己什么时候会让出，但同时对程序员也是&lt;strong>无感知&lt;/strong>的，因为当再次拿到控制权时，协作式调度器可以保持顺序性&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>。这个特性提高了程序员们的并发编程体验。于是出现了很多协作式调度框架。抽象的角度看，不论是 &lt;code>Reactive Stream&lt;/code>，还是 &lt;code>coroutine&lt;/code> ，在我看来都是协作式调度的不同实现。它们都有着执行单元可以主动挂起的特性，与其它执行单元&lt;strong>协作式&lt;/strong>的完成逻辑。&lt;/p>
+&lt;p>它们都有一个点——主动让渡控制权，或者说主动挂起的（释放并等待）。A 任务与 B 任务可以在&lt;strong>合适&lt;/strong>的时机&lt;strong>主动&lt;/strong>让渡出控制权。特点是持有控制权的任务主动中断，&lt;del>抛开现实不谈，如 CPU 中断&lt;/del>这也突出了协作式调度的优点与理念——“调度不会影响&lt;strong>顺序性&lt;/strong>“。因为我们是主动让出的，继续执行时可以找到让渡时的节点来保证顺序性，也可以理解为调度器会帮我们将执行单元恢复到让渡前一刻的状态，然后就像没让渡过一样继续执行。&lt;/p>
+&lt;p>协作式调度，执行单元知道自己什么时候会让出，但同时对程序员也是&lt;strong>无感知&lt;/strong>的，因为当再次拿到控制权时，协作式调度器可以保持顺序性 &lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>。这个特性提高了程序员们的并发编程体验。于是出现了很多协作式调度框架。抽象的角度看，不论是 &lt;code>Reactive Stream&lt;/code>，还是 &lt;code>coroutine&lt;/code> ，在我看来都是协作式调度的不同实现。它们都有着执行单元可以主动挂起的特性，与其它执行单元&lt;strong>协作式&lt;/strong>的完成逻辑。&lt;/p>
 &lt;h2 id="实践中的问题">实践中的问题
-&lt;/h2>&lt;p>是时候为线程正名一下了，虽然前面段落回避提及线程，但现在开始线程必不可少，因为线程作为系统内核最小的调度单位，实现&lt;strong>并行&lt;/strong>基本&lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup>离不开线程。协程、反应式等用户态的并发模型到底还是跑在线程上的。&lt;/p>
+&lt;/h2>&lt;p>是时候为线程正名一下了，虽然前面段落回避提及线程，但现在开始线程必不可少，因为线程作为系统内核最小的调度单位，实现&lt;strong>并行&lt;/strong>基本 &lt;sup id="fnref:2">&lt;a href="#fn:2" class="footnote-ref" role="doc-noteref">2&lt;/a>&lt;/sup> 离不开线程。协程、反应式等用户态的并发模型到底还是跑在线程上的。&lt;/p>
 &lt;p>单线程的话，就不存在着并发编程中的问题，无非就是线程安全了。原因只有&lt;strong>并发环境下访问共享可变的状态&lt;/strong>一种。但为什么&lt;strong>共享状态&lt;/strong>这个操作会引起问题？因为数据读写不一致。为什么会读写不一致？需要搞清楚并发下计算机是如何读写状态的。&lt;/p>
 &lt;blockquote>
 &lt;p>专业一点的说共享状态就是&lt;strong>竞态条件&lt;/strong>。也说明两个执行单元可能有某种依赖关系，它们需要协商好谁可以使用这个状态。&lt;/p>&lt;/blockquote>
 &lt;h3 id="缓存一致性">缓存一致性
-&lt;/h3>&lt;p>假设计算机的内存&lt;strong>非常快&lt;/strong>且&lt;strong>非常大&lt;/strong>，那我们就不需要担心&lt;strong>缓存一致性&lt;/strong>问题了，为什么？因为每次读取状态，都是最新的状态，这是纳秒级实时读写。&lt;del>（最后说一次，时间要加速了）&lt;/del>，这是美好的未来。可现实世界的计算机是有极限的（&lt;del>我不做电子计算机了！JOJO！&lt;/del>），计算机的妥协设计是每个 CPU 核心都有一块&lt;strong>独立的&lt;/strong>非常快，但非常小的内存，称之为&lt;strong>高速缓存&lt;/strong>；再加一块速度尚可（远不及 CPU 计算速度），但非常大的内存，它就是我们的内存条，称之为&lt;strong>主内存&lt;/strong>。&lt;/p>
-&lt;p>两块内存特性互补，让数据读写不至于拖慢 CPU 计算。妥协的代价就是数据一致性问题，或者说数据可见性问题。因为 cpu 运行一个线程时，需要先从主内存读取数据拷贝到高速缓存里，之后就是 cpu 与高速缓存的时间了，期间 CPU 会适时的将高速缓存里的堆积数据刷写到主内存中。问题出在线程间可以共享数据，会牵扯到&lt;strong>数据同步&lt;/strong>（&lt;del>最小的分布式了吧？&lt;/del>），有数据同步就不可避免的有一致性问题了，与分布式、数据库领域的&lt;strong>数据一致性&lt;/strong>大同小异。&lt;/p>
+&lt;/h3>&lt;p>假设计算机的内存&lt;strong>非常快&lt;/strong>且&lt;strong>非常大&lt;/strong>，那我们就不需要担心&lt;strong>缓存一致性&lt;/strong>问题了，为什么？因为每次读取状态，都是最新的状态，这是纳秒级实时读写。&lt;del>最后说一次，时间要加速了&lt;/del>，这是美好的未来。可现实世界的计算机是有极限的&lt;del>我不做电子计算机了！JOJO！&lt;/del>，计算机的妥协设计是每个 CPU 核心都有一块&lt;strong>独立的&lt;/strong>非常快，但非常小的内存，称之为&lt;strong>高速缓存&lt;/strong>；再加一块速度尚可（远不及 CPU 计算速度），但非常大的内存，它就是我们的内存条，称之为&lt;strong>主内存&lt;/strong>。&lt;/p>
+&lt;p>两块内存特性互补，让数据读写不至于拖慢 CPU 计算。妥协的代价就是数据一致性问题，或者说数据可见性问题。因为 cpu 运行一个线程时，需要先从主内存读取数据拷贝到高速缓存里，之后就是 cpu 与高速缓存的时间了，期间 CPU 会适时的将高速缓存里的堆积数据刷写到主内存中。问题出在线程间可以共享数据，会牵扯到&lt;strong>数据同步&lt;/strong>&lt;del>最小的分布式了吧？&lt;/del>，有数据同步就不可避免的有一致性问题了，与分布式、数据库领域的&lt;strong>数据一致性&lt;/strong>大同小异。&lt;/p>
 &lt;p>高级语言为了避免我们太操心这些事情，抽象了运行时内存区域（堆栈、常量区、方法区&amp;hellip;），然后设计了内存模型，负责线程间通信，保证线程间数据同步，线程空间隔离。让多线程容易使用，程序员们要操心的事情变少了（不用和系统底层打交道），但也也让线程间通信变的陷阱重重。&lt;/p>
 &lt;h3 id="读写有序性">读写有序性
 &lt;/h3>&lt;p>不考虑性能，假设不存在中间&lt;strong>缓存&lt;/strong>，每个 CPU 核心实时读写主内存，可以保证所有线程共享数据的&lt;strong>一致性&lt;/strong>。但这样能解决线程安全问题吗？还是不行，因为计算机并不会 &lt;code>line by line&lt;/code> 的执行代码，因为计算机/虚拟机会在不影响语义的情况下，优化代码的执行顺序。也就是优化后应该与不优化执行的结果一致，称之为&lt;strong>重排序&lt;/strong>。&lt;/p>
@@ -1612,8 +1596,8 @@ data-flex-basis="323px"
 0 的情况，因为赋值 &lt;code>value = 8&lt;/code> 是&lt;strong>原子操作&lt;/strong>（下面介绍）。&lt;del>2 个线程，2 个共享变量，非常简单代码，使我的大脑宕机，爱来自&amp;hellip;..&lt;/del>&lt;/p>
 &lt;p>真实的代码会更复杂，可见编译器和 CPU 很难确保&lt;strong>重排序&lt;/strong>优化在&lt;strong>多线程多共享&lt;/strong>的情况下不会出现异外结果。就像这个理论不该出现的 &lt;code>print&lt;/code> 0，即使我们理解线程的交错执行，且阅读并人脑编译了代码可能的执行过程，但因为指令重排序的存在，这一切变得混沌。&lt;/p>
 &lt;h3 id="原子一致性">原子一致性
-&lt;/h3>&lt;p>进一步假设~~（现在是幻想时间）~~，不存在指令重排序，不存在缓存一致性问题，相当于 &lt;code>java&lt;/code> 的 &lt;code>volatile&lt;/code> 关键字的效果。线程安全问题还会存在吗？还是会存在，因为程序不仅有指令、数据，还有&lt;strong>算法&lt;/strong>（&lt;strong>逻辑&lt;/strong>）。&lt;/p>
-&lt;p>编排一系列指令形成逻辑，可以称之为&lt;strong>算法&lt;/strong>或操作（&lt;del>算法帅一点，所以下文统称算法&lt;/del>）。既然是一系列指令，那么每条指令都有可能会被系统内核中断或被其它并行的线程影响，导致算法结果不符合预期。而原子性的百科定义是：&lt;/p>
+&lt;/h3>&lt;p>进一步假设&lt;del>现在是幻想时间&lt;/del>，不存在指令重排序，不存在缓存一致性问题，相当于 &lt;code>java&lt;/code> 的 &lt;code>volatile&lt;/code> 关键字的效果。线程安全问题还会存在吗？还是会存在，因为程序不仅有指令、数据，还有&lt;strong>算法&lt;/strong>（&lt;strong>逻辑&lt;/strong>）。&lt;/p>
+&lt;p>编排一系列指令形成逻辑，可以称之为&lt;strong>算法&lt;/strong>或操作&lt;del>算法帅一点，所以下文统称算法&lt;/del>。既然是一系列指令，那么每条指令都有可能会被系统内核中断或被其它并行的线程影响，导致算法结果不符合预期。而原子性的百科定义是：&lt;/p>
 &lt;blockquote>
 &lt;p>原文：&lt;strong>线性一致性&lt;/strong>（Linearizability），或称&lt;strong>原子一致性&lt;/strong>或&lt;strong>严格一致性&lt;/strong>指的是程序在执行的历史中在存在可线性化点 P 的执行模型，这意味着一个操作将在程序的调用和返回之间的某个点 P 起作用。这里“起作用”的意思是被系统中并发运行的所有其他线程所感知。&lt;/p>&lt;/blockquote>
 &lt;p>大概意思是如果某个指令被执行，其它线程一定会知道这个指令被某个线程执行了，就像单线程一样，等待执行的代码行可以感知到已执行的代码行。或者常见的理解基于「原子是不可再分割的最小物质」并发原子性就是「不可再打断的最小操作序列」。这个解释与&lt;strong>数据库的原子性&lt;/strong>「要么全都成功，要么全都失败」异曲同工，当然细说还是有区别的，例如并发的原子性不会 &lt;code>rollback&lt;/code> 。&lt;/p>
@@ -1640,7 +1624,7 @@ data-flex-basis="323px"
 &lt;h4 id="原子指令">原子指令
 &lt;/h4>&lt;p>原子指令比较容易理解，就像定理一样。从 CPU 硬件级别限制了此指令不会被中断，一但执行，不可取消。&lt;/p>
 &lt;p>常见的 &lt;code>CAS&lt;/code> 原子指令就是实现各种&lt;strong>乐观锁&lt;/strong>的关键，因为 &lt;code>CAS&lt;/code> 指令不可被中断，才能保证乐观锁自旋的检测与更新是线程安全的。例如 &lt;code>AtomicInteger&lt;/code>。&lt;/p>
-&lt;p>&lt;strong>原子指令&lt;/strong>在性能损耗上大大小于整块代码加锁，但使用场景上也比较受限。~~因为不如加锁一把梭简单。~~对于一段多线程代码，需要人脑编译来判断“仅依靠原子指令是否可以保证线程安全“，说多线程优化通常就是在说这个，依靠原子指令让你的线程锁（阻塞）变少。就像乐观锁做的一样，通过 &lt;code>CAS&lt;/code> 指令，来应对多读少写的场景。&lt;del>或者直接改变你的算法逻辑&lt;/del>&lt;/p>
+&lt;p>&lt;strong>原子指令&lt;/strong>在性能损耗上大大小于整块代码加锁，但使用场景上也比较受限。&lt;del>因为不如加锁一把梭简单&lt;/del>对于一段多线程代码，需要人脑编译来判断“仅依靠原子指令是否可以保证线程安全“，说多线程优化通常就是在说这个，依靠原子指令让你的线程锁（阻塞）变少。就像乐观锁做的一样，通过 &lt;code>CAS&lt;/code> 指令，来应对多读少写的场景。&lt;del>或者直接改变你的算法逻辑&lt;/del>&lt;/p>
 &lt;h4 id="信号量">信号量
 &lt;/h4>&lt;blockquote>
 &lt;p>以提供互斥为目的的二元信号量常常也称为&lt;strong>互斥锁&lt;/strong>（mutex）。
@@ -1669,7 +1653,7 @@ data-flex-basis="323px"
 &lt;h3 id="分布式事务">分布式事务
 &lt;/h3>&lt;p>再来看好像最简单的一种：&lt;strong>不在线程之间共享该状态变量&lt;/strong>。&lt;del>作者本意应该不是让我们放弃。&lt;/del>&lt;/p>
 &lt;p>其实联想一下，不共享状态，每个线程对于变量的当前正确值是没有感知的，把每个线程看作一个分布式节点，像不像分布式里的数据一致性问题？那瞬间就变的很复杂了。&lt;/p>
-&lt;p>不共享状态，但我们又需要访问该状态。只要我们可以接受短暂的线程不安全，退一步，就会有很多方案。可以参考分布式事务的一些成熟做法，例如&lt;strong>最终一致性&lt;/strong>、&lt;strong>两阶段提交&lt;/strong>等。~~不过这已经算脱离了线程安全话题了，算是数据设计了。~~简单的介绍一下吧，其实纯编程实现没太大意义，通常结合数据库、消息队列等中间件来实现。&lt;/p>
+&lt;p>不共享状态，但我们又需要访问该状态。只要我们可以接受短暂的线程不安全，退一步，就会有很多方案。可以参考分布式事务的一些成熟做法，例如&lt;strong>最终一致性&lt;/strong>、&lt;strong>两阶段提交&lt;/strong>等。&lt;del>不过这已经算脱离了线程安全话题了，算是数据设计了&lt;/del>简单的介绍一下吧，其实纯编程实现没太大意义，通常结合数据库、消息队列等中间件来实现。&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>最终一致性&lt;/strong>：两个线程执行时，拿到的是共享变量的副本，各自执行完成后，可能还有定时器在不停的纠正数据。&lt;/li>
 &lt;li>&lt;strong>两阶段提交&lt;/strong>：每个线程执行完毕后，发出准备提交的通知。主线程收到所有线程&lt;strong>都准备就绪&lt;/strong>后，允许各个线程进行提交。然后各个线程开始提交。&lt;/li>

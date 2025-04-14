@@ -47,7 +47,8 @@
 >\[译\] NAT - 网络地址转换（2016）&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://arthurchiao.art/blog/deep-dive-into-iptables-and-netfilter-arch-zh/" target="_blank" rel="noopener"
 >\[译\] 深入理解 iptables 和 netfilter 架构&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤</title><link>https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/</link><pubDate>Sun, 31 Mar 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/</guid><description>&lt;img src="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39.png" alt="Featured image of post 红米 AX6S 路由器刷入纯净最新 ImmortalWrt 步骤" />&lt;h2 id="启用路由器的-telnet">启用路由器的 telnet
+&lt;/ul></description></item><item><title>红米 AX6S 路由器刷入原版 ImmortalWrt 步骤</title><link>https://blog.zonowry.com/posts/ax6s-openwrt/</link><pubDate>Mon, 01 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.zonowry.com/posts/ax6s-openwrt/</guid><description>&lt;img src="https://blog.zonowry.com/posts/ax6s-openwrt/image-2024_04_01_20_17_39.png" alt="Featured image of post 红米 AX6S 路由器刷入原版 ImmortalWrt 步骤" />&lt;p>直接装整合包的话，大多服务/插件对我都没什么用，&lt;del>感觉卸载也会有残留&lt;/del>所以装个纯净的，可以根据自己需求慢慢完善路由器。&lt;del>最主要的是它很&lt;strong>干净哇&lt;/strong>！&lt;/del>&lt;/p>
+&lt;h2 id="启用路由器的-telnet">启用路由器的 telnet
 &lt;/h2>&lt;p>为了启用 telnet，需要手动升级路由器固件到开发版，开发版固件可以在 &lt;a class="link" href="https://github.com/YangWang92/AX6S-unlock" target="_blank" rel="noopener"
 >GitHub - YangWang92/AX6S-unlock&lt;/a> 仓库下载。(&lt;a class="link" href="https://github.com/YangWang92/AX6S-unlock/blob/master/miwifi_rb03_firmware_stable_1.2.7.bin" target="_blank" rel="noopener"
 >miwifi_rb03_firmware_stable_1.2.7.bin&lt;/a>)&lt;/p>
@@ -147,20 +148,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>安装后重启路由器，就可以看到“服务”菜单了。按照自己需求配置 &lt;code>openclash&lt;/code> ，接入&lt;strong>互联网&lt;/strong>。&lt;/p>
-&lt;p>&lt;img src="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39.png"
-width="931"
-height="690"
-srcset="https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39_hu_4171761ed476956d.png 480w, https://blog.zonowry.com/posts/steps-to-flash-redmi-ax6s-router-with-openwrt/image-2024_04_01_20_17_39_hu_2c9784e0a5f1e60b.png 1024w"
-loading="lazy"
-alt="preview"
-class="gallery-image"
-data-flex-grow="134"
-data-flex-basis="323px"
->&lt;/p>
-&lt;h2 id="为什么不装整合包">为什么不装整合包
-&lt;/h2>&lt;p>整合包挺方便的，不过内核都比较老旧，直接更新还容易变砖。而且大多服务/插件都没什么用。&lt;/p>
-&lt;p>这样是获得了一个最新版本的 openwrt 内核，不会再碰见内核版本不兼容问题了，可以放心的安装各种新版插件了。&lt;/p>
-&lt;p>最主要的是它很&lt;strong>干净&lt;/strong>哇！&lt;/p>
+&lt;p>![[image-2024_04_01_20_17_39.png]]&lt;/p>
 &lt;h2 id="参考">参考
 &lt;/h2>&lt;ul>
 &lt;li>&lt;a class="link" href="https://www.right.com.cn/forum/thread-8187405-1-1.html" target="_blank" rel="noopener"
