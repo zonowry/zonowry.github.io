@@ -1,20 +1,15 @@
 ---
 name: safe-concurrent
-title: 怎样安全的并发编程
-description: 我们仍未确定那天所见变量的状态
-date: 2024-02-29
-tag:
-  - concurrent
 title: "怎样安全的并发编程"
 description: 我们仍未确定那天所见变量的状态
 date: 2024-02-29
 toc: true
 isCJKLanguage: true
 keywords:
-    - concurrent
-    - threads
-    - coroutine
-    - reactive
+  - concurrent
+  - threads
+  - coroutine
+  - reactive
 ---
 
 ## 引言
@@ -187,4 +182,5 @@ fun main() {
 - [既然 CPU 有缓存一致性协议（MESI），为什么 JMM 还需要 volatile 关键字？](https://www.zhihu.com/question/296949412)
 
 [^注：顺序性]: 可能会对 `rx` 的顺序性提出质疑，这里非指过程式一样的代码的编写顺序，例如容易理解的协程的顺序性，而是“可以较为容易”的预测代码执行的顺序。例如 `rx` 的 `obserable.flatmap().reduce().publishOn().map().tap()` 例子，还是可以预测出这段代码的整体顺序性的，只是操作符联合起来会很复杂，让人难以理解，不过还是可以说 `rx` 是有一定顺序性的，毕竟本质上是一个流处理，流的流转过程就是顺序。
+
 [^注：单线程并行]: 如果不把异步 IO 看作一个特殊的“线程”，那将 IO 读写操作交由内核调度，注册回调后继续干活，变相实现了一个线程逻辑计算的同时，其它 IO 硬件也正在读写数据（如网卡），实现并行处理：一个 IO 硬件，一个 CPU。虽然多数场景我们都是要挂起线程，等待 IO 硬件响应的。再展开就是 IO 模型的话题了，本文不过多讨论，不过也可以看出 IO 模型与并发编程的关系密不可分。
